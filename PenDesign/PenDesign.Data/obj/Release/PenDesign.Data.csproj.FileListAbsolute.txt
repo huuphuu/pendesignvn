@@ -1,0 +1,14 @@
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\PenDesign.Data.dll.config
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\PenDesign.Data.dll
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\PenDesign.Data.pdb
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\EntityFramework.dll
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\PenDesign.Common.dll
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\PenDesign.Core.dll
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\PenDesign.Common.pdb
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\PenDesign.Core.pdb
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\EntityFramework.xml
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\obj\Release\PenDesign.Data.csprojResolveAssemblyReference.cache
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\obj\Release\PenDesign.Data.dll
+C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Data\obj\Release\PenDesign.Data.pdb

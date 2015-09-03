@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace PenDesign.Data.Interface
 {
-    interface IDatabaseFactory
+    public interface IDatabaseFactory: IDisposable
     {
+        IDataContext Get();
     }
 }

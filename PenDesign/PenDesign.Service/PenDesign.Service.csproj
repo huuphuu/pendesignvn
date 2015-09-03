@@ -39,7 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="Base\AdminMenuService.cs" />
+    <Compile Include="Base\BannerMappingService.cs" />
+    <Compile Include="Base\BannerService.cs" />
+    <Compile Include="Base\ConfigService.cs" />
+    <Compile Include="Base\ContactService.cs" />
+    <Compile Include="Base\ControlMappingService.cs" />
+    <Compile Include="Base\ControlService.cs" />
+    <Compile Include="Base\GroupControlService.cs" />
+    <Compile Include="Base\LanguageService.cs" />
+    <Compile Include="Base\NewsMappingService.cs" />
+    <Compile Include="Base\NewsService.cs" />
+    <Compile Include="Base\ProjectImageMappingService.cs" />
+    <Compile Include="Base\ProjectImageService.cs" />
+    <Compile Include="Base\ProjectMappingService.cs" />
+    <Compile Include="Base\ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +66,9 @@
       <Project>{e115fcf0-705c-4cd2-b04c-eac0280bdf43}</Project>
       <Name>PenDesign.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

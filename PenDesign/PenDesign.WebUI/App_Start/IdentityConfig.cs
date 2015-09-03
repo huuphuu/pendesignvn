@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using PenDesign.WebUI.Models;
+using PenDesign.Core.Models;
 
 namespace PenDesign.WebUI
 {

@@ -18,7 +18,7 @@ namespace PenDesign.WebUI.Controllers
             return View();
         }
 
-        public ActionResult Factory()
+        public ActionResult About()
         {
             return View();
         }

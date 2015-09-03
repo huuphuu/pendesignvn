@@ -3,42 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PenDesign.WebUI.Models
 {
-    public class ExternalLoginConfirmationViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
-
-    public class ExternalLoginListViewModel
-    {
-        public string ReturnUrl { get; set; }
-    }
-
-    public class SendCodeViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-        public string ReturnUrl { get; set; }
-        public bool RememberMe { get; set; }
-    }
-
-    public class VerifyCodeViewModel
-    {
-        [Required]
-        public string Provider { get; set; }
-
-        [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
-        public string ReturnUrl { get; set; }
-
-        [Display(Name = "Remember this browser?")]
-        public bool RememberBrowser { get; set; }
-
-        public bool RememberMe { get; set; }
-    }
-
     public class ForgotViewModel
     {
         [Required]
@@ -49,9 +13,8 @@ namespace PenDesign.WebUI.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +27,10 @@ namespace PenDesign.WebUI.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +46,29 @@ namespace PenDesign.WebUI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Avatar")]
+        public string Avatar { get; set; }
+
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Display(Name = "Skype")]
+        public string Skype { get; set; }
+
+        [Display(Name = "Yahoo")]
+        public string Yahoo { get; set; }
+
+        [Display(Name = "Facebook")]
+        public string Facebook { get; set; }
+
+        [Required]
+        [Display(Name = "Role Name")]
+        public string RoleName { get; set; }
+
+        [Display(Name = "Available")]
+        public bool Available { get; set; }
+
     }
 
     public class ResetPasswordViewModel

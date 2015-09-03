@@ -1,0 +1,204 @@
+﻿<section class="content-header" ng-controller="galleryController">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{categoryName}}</a></li>
+        <li class="active">Danh sách {{categoryName}}</li>
+    </ol>
+</section>
+
+
+<section class="content" ng-controller="galleryController">
+    <h3></h3>
+    <!--danh sach tin tuc-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-list"></i>
+                    <h3 class="box-title text-uppercase">DANH SÁCH {{categoryName}}</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-danger btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                        <!--<button class="btn btn-danger btn-sm" data-widget="remove" data-toggle="tooltip" title="Bỏ đi"><i class="fa fa-times"></i></button>-->
+                    </div><!-- /. tools -->
+                </div>
+                <div class="box-body">
+                    <table datatable="ng" id="galleryTable" class="table table-bordered table-hover"
+                           dt-options="dtOptions" dt-column-defs="dtColumnDefs">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Người cập nhật</th>
+                                <th>Tình trạng</th>
+                                <th>Vị trí</th>
+                                <th>Chỉnh sửa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="gallery in allGalleries | orderBy:'order'">
+                                <td>{{$index + 1}}</td>
+                                <td>{{gallery.name}}</td>
+                                <td>
+                                    <img ng-src="{{gallery.previewImage}}" alt="" style="max-width: 200px;" />
+                                </td>
+                                <td>{{gallery.createTime | date: dateTimeFormat }}</td>
+                                <td>{{gallery.editDeleteTime | date: dateTimeFormat}}</td>
+                                <td>{{gallery.editDeleteBy}}</td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" name="available" ng-model="gallery.available" />
+                                        <span ng-show="gallery.available">&nbsp;Hiển thị</span>
+                                        <span ng-show="!gallery.available">&nbsp;Ẩn</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    {{gallery.order}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-xs btn-warning" title="Chỉnh sửa" ng-click="getGallery($index)"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteGallery(gallery)"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Người cập nhật</th>
+                                <th>Tình trạng</th>
+                                <th>Vị trí</th>
+                                <th>Chỉnh sửa</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a ui-sref="controlPanel.addGallery({galleryCategoryId: galleryCategoryId })" class="btn btn-danger btn-flat">Thêm {{categoryName}} mới</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--chinh sua khoa hoc-->
+    <div class="editGallery"></div>
+    <div class="row" ng-show="currentGallery">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-plus-circle"></i>
+                    <h3 class="box-title">CHỈNH SỬA {{categoryName}}: <b>{{currentGallery.name}}</b></h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                        <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
+                        <button class="btn btn-info btn-sm" ng-click="currentGallery = null" title="Tắt"><i class="fa fa-times"></i></button>
+                    </div><!-- /. tools -->
+                </div>
+                <div class="box-body">
+                    <form id="editGalleryForm" name="editGalleryForm" method="post" novalidate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="name">Tên: </label>
+                                            <input type="text" class="form-control" name="name" ng-model="currentGallery.name" placeholder="Tên khóa học:" required />
+                                            <div ng-messages="editGalleryForm.name.$error"
+                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="order">Vị trí: </label>
+                                            <input type="number" class="form-control" name="order" ng-model="currentGallery.order" placeholder="Vị trí:" required min="1"/>
+                                            <div ng-messages="editGalleryForm.order.$error"
+                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" ng-if="categoryName == 'Video Clip'">
+                                        <div class="form-group">
+                                            <label for="order">Đường dẫn đến Video Clip (Url): </label>
+                                            <input type="text" class="form-control" name="url" ng-model="currentGallery.url" placeholder="Đường dẫn đến Video Clip (Url):" required />
+                                            <div ng-messages="editGalleryForm.url.$error"
+                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="name">Hình đại diện: </label>
+                                        <img src="{{currentGallery.previewImage}}" alt="" class="img-responsive" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>&nbsp;</label>
+                                            <div>
+                                                <button dropzone="dropzoneConfigHome" class="dropzone">
+                                                    <span class="dz-message">Chọn ảnh đại diện<br /></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="box-footer clearfix">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 pull-right">
+                            <div class="col-xs-3 pull-right">
+                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentGallery = null">
+                                    Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="col-xs-5 pull-right">
+                                <button class="pull-right btn btn-success" id="addGallery" ng-click="updateGallery(currentGallery)"
+                                        ng-disabled="editGalleryForm.name.$error.required
+                                                    ||  editGalleryForm.order.$error.required
+                                                    ||  editGalleryForm.url.$error.required
+                                    ">
+                                    Cập nhật {{categoryName}}&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<script type="text/javascript">
+ 
+
+    //Toggle button
+    var o = $.AdminLTE.options;
+    if (o.enableBoxWidget) {
+        $.AdminLTE.boxWidget.activate();
+    }
+
+    //checkbox
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red'
+    });
+
+    //dropdzone
+    $('button.dropzone').click(function (e) {
+        e.preventDefault();
+    });
+
+</script>

@@ -1,0 +1,436 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Cài đặt</a></li>
+        <li class="active">Cấu hình chung</li>
+    </ol>
+</section>
+
+
+<section class="content" ng-controller="configController">
+    <h3></h3>
+    <!--danh sach email lien he-->
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="editConfigForm" name="editConfigForm" class="form-horizontal" method="post" novalidate>
+                <!--Thong tin chung-->
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <i class="fa fa-plus-circle"></i>
+                        <h3 class="box-title">
+                            THÔNG TIN CHUNG
+                        </h3>
+                        <!-- tools box -->
+                        <div class="pull-right box-tools">
+                            <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                            <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
+                        </div><!-- /. tools -->
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-2">Tên công ty:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="companyName" ng-model="config.companyName" placeholder="Tên công ty:" required/>
+                                        <div ng-messages="editConfigForm.companyName.$error" ng-if="editConfigForm.companyName.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Slogan:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="Slogan" ng-model="config.slogan" placeholder="Slogan:" required />
+                                        <div ng-messages="editConfigForm.slogan.$error" ng-if="editConfigForm.slogan.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Địa chỉ:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="address" ng-model="config.address" placeholder="Địa chỉ:" required />
+                                        <div ng-messages="editConfigForm.address.$error" ng-if="editConfigForm.address.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Điện thoại:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="phone" ng-model="config.phone" placeholder="Điện thoại:" required />
+                                        <div ng-messages="editConfigForm.phone.$error" ng-if="editConfigForm.phone.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Google Maps:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="googleMap" ng-model="config.googleMap" placeholder="Google Maps:" required />
+                                        <div ng-messages="editConfigForm.googleMap.$error" ng-if="editConfigForm.googleMap.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Google Analytics:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="googleAnalytics" ng-model="config.googleAnalytics" placeholder="Google Analytics:" required />
+                                        <div ng-messages="editConfigForm.googleAnalytics.$error" ng-if="editConfigForm.googleAnalytics.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Google Web Master:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="googleWebMaster" ng-model="config.googleWebMaster" placeholder="Google Web Master:" required />
+                                        <div ng-messages="editConfigForm.googleWebMaster.$error" ng-if="editConfigForm.googleWebMaster.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Facebook Retager:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="facebookRetager" ng-model="config.facebookRetager" placeholder="Facebook Retager:" required />
+                                        <div ng-messages="editConfigForm.facebookRetager.$error" ng-if="editConfigForm.facebookRetager.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Logo công ty:</label>
+                                    <div class="col-md-5">
+                                        <button dropzone="dropzoneConfigHome" class="dropzone">
+                                            <span class="dz-message">Chọn ảnh Logo công ty</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <img ng-src="{{config.logoUrl}}" alt="" class="img-responsive"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Logo banner:</label>
+                                    <div class="col-md-5">
+                                        <button dropzone="dropzoneConfigSub" class="dropzone">
+                                            <span class="dz-message">Chọn ảnh Logo của Banner</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <img ng-src="{{config.bannerLogo}}" alt="" class="img-responsive" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Giới thiệu:</label>
+                                    <div class="col-md-10">
+                                        <textarea id="about" required name="about" ng-model="config.about" class="textarea" placeholder="Nội dung giới thiệu" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Nội dung Footer:</label>
+                                    <div class="col-md-10">
+                                        <textarea id="footerContent" required name="footerContent" ng-model="config.footerContent" class="textarea" placeholder="Nội dung Footer" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 pull-right">
+                                <div class="col-md-2 pull-right">
+                                    <a class="pull-right btn btn-danger" id="cancel" ui-sref="controlPanel.notification">
+                                        Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-5 pull-right">
+                                    <button class="pull-right btn btn-success" id="updateConfigGeneral" ng-click="updateConfig(config)"
+                                            ng-disabled="editConfigForm.companyName.$error.required
+                                                    ||  editConfigForm.slogan.$error.required
+                                                    ||  editConfigForm.address.$error.required
+                                                    ||  editConfigForm.about.$error.required
+                                                    || editConfigForm.footerContent.$error.required
+                                                    || clicked
+                                    ">
+                                        Cập nhật&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--email-->
+                <div class="box box-success">
+                    <div class="box-header">
+                        <i class="fa fa-plus-circle"></i>
+                        <h3 class="box-title">
+                            THÔNG TIN EMAIL
+                        </h3>
+                        <!-- tools box -->
+                        <div class="pull-right box-tools">
+                            <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                            <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
+                        </div><!-- /. tools -->
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-2">Email:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="email" ng-model="config.email" placeholder="Email:" required />
+                                        <div ng-messages="editConfigForm.email.$error" ng-if="editConfigForm.email.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Mật khẩu:</label>
+                                    <div class="col-md-10">
+                                        <input type="password" class="form-control" name="emailPassword" ng-model="config.emailPassword" placeholder="Mật khẩu:" required />
+                                        <div ng-messages="editConfigForm.emailPassword.$error" ng-if="editConfigForm.emailPassword.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group has-feedback">
+                                    <label class="col-md-2">Nhập lại mật khẩu:</label>
+                                    <div class="col-md-10">
+                                        <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="confirmEmailPassword"
+                                               ng-model="config.confirmEmailPassword"
+                                               compare-to="config.emailPassword"
+                                               required />
+                                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                                        <div ng-messages="editConfigForm.confirmEmailPassword.$error"
+                                             ng-messages-multiple
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Port:</label>
+                                    <div class="col-md-10">
+                                        <input type="number" class="form-control" name="emailPort" ng-model="config.emailPort" placeholder="Port:" required />
+                                        <div ng-messages="editConfigForm.emailPort.$error" ng-if="editConfigForm.emailPort.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Chữ ký:</label>
+                                    <div class="col-md-10">
+                                        <textarea id="emailSignature" required name="emailSignature" ng-model="config.emailSignature" class="textarea" placeholder="Nội dung giới thiệu" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 pull-right">
+                                <div class="col-md-2 pull-right">
+                                    <a class="pull-right btn btn-danger" id="cancel" ui-sref="controlPanel.notification">
+                                        Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-5 pull-right">
+                                    <button class="pull-right btn btn-success" id="updateConfig" ng-click="updateConfig(config)"
+                                            ng-disabled="editConfigForm.email.$error.required
+                                                    ||  editConfigForm.emailPassword.$error.required
+                                                    ||  editConfigForm.confirmEmailPassword.$error.required || editConfigForm.confirmEmailPassword.$error.compareTo
+                                                    || editConfigForm.emailPort.$error.required
+                                                    || clicked
+                                    ">
+                                        Cập nhật&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Noi dung form-->
+                <div class="box box-info">
+                    <div class="box-header">
+                        <i class="fa fa-plus-circle"></i>
+                        <h3 class="box-title">
+                            THÔNG TIN FORM ĐĂNG KÝ & LIÊN HỆ
+                        </h3>
+                        <!-- tools box -->
+                        <div class="pull-right box-tools">
+                            <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                            <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
+                        </div><!-- /. tools -->
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-2">Nội dung Form đăng ký:</label>
+                                    <div class="col-md-10">
+                                        <textarea id="registerForm" required name="registerForm" ng-model="config.registerForm" class="textarea" placeholder="Nội dung Form đăng ký" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Nội dung Form liên hệ:</label>
+                                    <div class="col-md-10">
+                                        <textarea id="contactForm" required name="contactForm" ng-model="config.contactForm" class="textarea" placeholder="Nội dung Form liên hệ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 pull-right">
+                                <div class="col-md-2 pull-right">
+                                    <a class="pull-right btn btn-danger" id="cancel" ui-sref="controlPanel.notification">
+                                        Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-5 pull-right">
+                                    <button class="pull-right btn btn-success" id="addNewBanner" ng-click="updateConfig(config)"
+                                            ng-disabled="editConfigForm.registerForm.$error.required
+                                                    ||  editConfigForm.contactForm.$error.required
+                                                    || clicked
+                                    ">
+                                        Cập nhật&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--social-->
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <i class="fa fa-plus-circle"></i>
+                        <h3 class="box-title">
+                            SOCIAL NETWORK
+                        </h3>
+                        <!-- tools box -->
+                        <div class="pull-right box-tools">
+                            <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                            <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
+                        </div><!-- /. tools -->
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-2">Yahoo:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="yahoo" ng-model="config.yahoo" placeholder="Yahoo:" required />
+                                        <div ng-messages="editConfigForm.yahoo.$error" ng-if="editConfigForm.yahoo.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Skype:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="skype" ng-model="config.skype" placeholder="Skype:" required />
+                                        <div ng-messages="editConfigForm.skype.$error" ng-if="editConfigForm.skype.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Facebook:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="facebookSocial" ng-model="config.facebookSocial" placeholder="Facebook:" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Google:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="googleSocial" ng-model="config.googleSocial" placeholder="Google Plus:" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Twitter:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="twitterSocial" ng-model="config.twitterSocial" placeholder="Twitter:" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Picasa:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="picasaSocial" ng-model="config.picasaSocial" placeholder="Picasa:" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Youtube:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="youtube" ng-model="config.youtube" placeholder="Youtube:" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Instagram:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="instagram" ng-model="config.instagram" placeholder="Instagram:" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 pull-right">
+                                <div class="col-md-2 pull-right">
+                                    <a class="pull-right btn btn-danger" id="cancel" ui-sref="controlPanel.notification">
+                                        Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-5 pull-right">
+                                    <button class="pull-right btn btn-success" id="updateConfig" ng-click="updateConfig(config)"
+                                            ng-disabled="clicked">
+                                        Cập nhật&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    var editor1 = CKEDITOR.instances['about'];
+    if (editor1) { editor1.destroy(true); }
+    CKEDITOR.replace('about', {
+        enterMode: CKEDITOR.ENTER_BR
+    });
+
+    var editor2 = CKEDITOR.instances['footerContent'];
+    if (editor2) { editor2.destroy(true); }
+    CKEDITOR.replace('footerContent', {
+        enterMode: CKEDITOR.ENTER_BR
+    });
+
+    var editor3 = CKEDITOR.instances['registerForm'];
+    if (editor3) { editor3.destroy(true); }
+    CKEDITOR.replace('registerForm', {
+        enterMode: CKEDITOR.ENTER_BR
+    });
+
+    var editor4 = CKEDITOR.instances['contactForm'];
+    if (editor4) { editor4.destroy(true); }
+    CKEDITOR.replace('contactForm', {
+        enterMode: CKEDITOR.ENTER_BR
+    });
+
+    var editor5 = CKEDITOR.instances['emailSignature'];
+    if (editor5) { editor5.destroy(true); }
+    CKEDITOR.replace('emailSignature', {
+        enterMode: CKEDITOR.ENTER_BR
+    });
+
+    CKFinder.setupCKEditor(null, "/ckfinder/");
+
+    //Toggle button
+    var o = $.AdminLTE.options;
+    if (o.enableBoxWidget) {
+        $.AdminLTE.boxWidget.activate();
+    }
+
+    //dropdzone
+    $('button.dropzone').click(function (e) {
+        e.preventDefault();
+    });
+</script>

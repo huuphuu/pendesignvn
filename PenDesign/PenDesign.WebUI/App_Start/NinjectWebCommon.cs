@@ -7,18 +7,15 @@ namespace PenDesign.WebUI.App_Start
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
+    using NinjectConfig;
     using Ninject;
     using Ninject.Web.Common;
-
-    using PenDesign.Common;
-    using PenDesign.Data;
-    using PenDesign.Service;
-    using PenDesign.Core.Interface.Data;
-    using PenDesign.Core.Interface.Service.BasicServiceInterface;
-    using PenDesign.Data.Interface;
     using PenDesign.Core.Model;
+    using PenDesign.Core.Interface.Service.BasicServiceInterface;
     using PenDesign.Service.Base;
+    using PenDesign.Data;
+    using PenDesign.Core.Interface.Data;
+    using PenDesign.Data.Interface;
 
     public static class NinjectWebCommon 
     {
@@ -55,6 +52,7 @@ namespace PenDesign.WebUI.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -85,6 +83,7 @@ namespace PenDesign.WebUI.App_Start
             kernel.Bind<IRepository<Language>>().To<Repository<Language>>().InRequestScope();
             kernel.Bind<IRepository<News>>().To<Repository<News>>().InRequestScope();
             kernel.Bind<IRepository<NewsMapping>>().To<Repository<NewsMapping>>().InRequestScope();
+            kernel.Bind<IRepository<NewsDraft>>().To<Repository<NewsDraft>>().InRequestScope();
             kernel.Bind<IRepository<Project>>().To<Repository<Project>>().InRequestScope();
             kernel.Bind<IRepository<ProjectMapping>>().To<Repository<ProjectMapping>>().InRequestScope();
             kernel.Bind<IRepository<ProjectImage>>().To<Repository<ProjectImage>>().InRequestScope();
@@ -103,12 +102,12 @@ namespace PenDesign.WebUI.App_Start
             kernel.Bind<ILanguageService>().To<LanguageService>().InRequestScope();
             kernel.Bind<INewsService>().To<NewsService>().InRequestScope();
             kernel.Bind<INewsMappingService>().To<NewsMappingService>().InRequestScope();
+            kernel.Bind<INewsDraftService>().To<NewsDraftService>().InRequestScope();
             kernel.Bind<IProjectService>().To<ProjectService>().InRequestScope();
             kernel.Bind<IProjectMappingService>().To<ProjectMappingService>().InRequestScope();
             kernel.Bind<IProjectImageService>().To<ProjectImageService>().InRequestScope();
             kernel.Bind<IProjectImageMappingService>().To<ProjectImageMappingService>().InRequestScope();
             kernel.Bind<IConfigService>().To<ConfigService>().InRequestScope();
-
         }        
     }
 }

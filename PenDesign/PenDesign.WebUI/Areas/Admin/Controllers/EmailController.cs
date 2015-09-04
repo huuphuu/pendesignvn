@@ -11,8 +11,9 @@ using PenDesign.Common.Utils;
 using PenDesign.Data;
 using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Interface.Data;
+using PenDesign.Core.ViewModel;
 
-namespace thapsangthuonghieu.vn.Areas.Admin.Controllers
+namespace PenDesign.WebUI.Areas.Admin.Controllers
 {
     [CustomAuthorize(Roles = "Admin")]
     public class EmailController : ApiController

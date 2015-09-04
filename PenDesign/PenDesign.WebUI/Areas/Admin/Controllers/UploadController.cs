@@ -10,7 +10,7 @@ using System.Web.Http;
 using PenDesign.WebUI.Authencation;
 using PenDesign.Common.Utils;
 
-namespace thapsangthuonghieu.vn.Areas.Admin.Controllers
+namespace PenDesign.WebUI.Areas.Admin.Controllers
 {
     [CustomAuthorize(Roles = "Admin, Users")]
     public class UploadController : ApiController

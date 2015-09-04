@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace thapsangthuonghieu.vn.Areas.Admin.Controllers
+namespace PenDesign.Core.ViewModel
 {
     public class EmailVM
     {

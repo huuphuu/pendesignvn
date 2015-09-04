@@ -16,7 +16,7 @@ using PenDesign.Data;
 using PenDesign.Core.Models;
 using PenDesign.Core.Interface.Service.BasicServiceInterface;
 
-namespace PenDesign.WebUI.Admin.Controllers
+namespace PenDesign.WebUI.Areas.Admin.Controllers
 {
     [CustomAuthorize(Roles = "Admin, Users")]
     public class AdminMenuController : ApiController

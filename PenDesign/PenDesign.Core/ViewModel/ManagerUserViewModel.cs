@@ -5,7 +5,8 @@ using System.Linq;
 using System.Web;
 using PenDesign.Core.Model;
 
-namespace thapsangthuonghieu.vn.Areas.Admin.Models
+
+namespace PenDesign.Core.ViewModel
 {
     public class ManagerUserViewModel
     {

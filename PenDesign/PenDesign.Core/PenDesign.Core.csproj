@@ -99,6 +99,7 @@
     <Compile Include="Interface\Service\BasicServiceInterface\IControlService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IGroupControlService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\ILanguageService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsDraftService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\INewsMappingService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\INewsService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IProjectImageMappingService.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AdminMenuViewModel.cs" />
+    <Compile Include="ViewModel\EmailVM.cs" />
     <Compile Include="ViewModel\ManagerUserViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="ViewModel\UserNotificationViewModel.cs" />

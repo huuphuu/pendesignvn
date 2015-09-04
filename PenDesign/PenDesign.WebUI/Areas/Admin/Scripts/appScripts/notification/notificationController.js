@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller('notificationController', function ($rootScope, $scope, toaster, notificationService, checkFileNameService, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs) {
+    .controller('notificationController', function ($rootScope, $scope, toaster, notificationService, checkFileNameService, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs,$window,$timeout) {
         //demo dialog
         //$scope.launch = function (which, obj) {
         //    switch (which) {
@@ -256,5 +256,8 @@ angular.module("adminApp")
                 });
             }, function (btn) { })
         }
+        $timeout(function () {
+            $(window).trigger("resize");
+        },300);
 
     })

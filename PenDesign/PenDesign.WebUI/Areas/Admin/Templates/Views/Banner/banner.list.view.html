@@ -36,11 +36,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="banner in bannerList track by $index | orderBy:'registerTime'">
+                            <tr ng-repeat="banner in bannerList track by $index | orderBy:'modifiedDateTime'">
                                 <td>{{$index + 1}}</td>
                                 <td>{{banner.name}}</td>
                                 <td>
-                                    <img ng-src="{{banner.imageUrl}}" alt="" class="img-responsive" style="max-width: 200px;" />
+                                    <img ng-src="{{banner.mediaUrl}}" alt="" class="img-responsive" style="max-width: 50px;" />
                                 </td>
                                 <td>
                                     <span ng-if="banner.type == 'HomeBanner'" class="text-success text-bold">Trang chủ</span>

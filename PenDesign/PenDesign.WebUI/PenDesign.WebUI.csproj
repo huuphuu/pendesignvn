@@ -198,6 +198,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminMenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BannerController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Areas\Admin\Controllers\EmailController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadController.cs" />

@@ -132,6 +132,7 @@
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AdminMenuViewModel.cs" />
+    <Compile Include="ViewModel\BannerViewModel\BannerVM.cs" />
     <Compile Include="ViewModel\EmailVM.cs" />
     <Compile Include="ViewModel\ManagerUserViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />

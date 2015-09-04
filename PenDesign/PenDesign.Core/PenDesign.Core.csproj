@@ -116,7 +116,9 @@
     <Compile Include="Model\Control.cs" />
     <Compile Include="Model\ControlMapping.cs" />
     <Compile Include="Model\GroupControl.cs" />
-    <Compile Include="Model\IdentityModels.cs" />
+    <Compile Include="Model\IdentityModels.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Model\Language.cs" />
     <Compile Include="Model\News.cs" />
     <Compile Include="Model\NewsDraft.cs" />
@@ -133,9 +135,7 @@
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="ViewModel\UserNotificationViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\PenDesign.Common\PenDesign.Common.csproj">
       <Project>{35a8d363-39ca-4958-a067-6d820d35592a}</Project>

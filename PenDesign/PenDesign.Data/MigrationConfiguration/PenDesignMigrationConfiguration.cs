@@ -46,7 +46,7 @@ namespace PenDesign.Data.MigrationConfiguration
 
                 var user = new ApplicationUser { UserName = "administrator", Email = "mrthanh.testemail@gmail.com" };
                 user.UserInfo = userInfo;
-                var result = UserManager.Create(user, "kt123456789!");
+                var result = UserManager.Create(user, "Kt123456789!");
                 if (result.Succeeded)
                 {
                     if (!roleManager.RoleExists("Admin"))

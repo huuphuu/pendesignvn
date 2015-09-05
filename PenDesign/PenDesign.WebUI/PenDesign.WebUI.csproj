@@ -1858,6 +1858,13 @@
     <Content Include="Content\fonts\IE\MyriadPro-It\MyriadProIt.svg" />
     <Content Include="Content\fonts\metro.svg" />
     <Content Include="Content\fonts\MyriadPro-Cond.svg" />
+    <Content Include="Content\icons\fb.png" />
+    <Content Include="Content\icons\google+.png" />
+    <Content Include="Content\icons\instagram.png" />
+    <Content Include="Content\icons\picasa.png" />
+    <Content Include="Content\icons\pinterest.png" />
+    <Content Include="Content\icons\twitter.png" />
+    <Content Include="Content\icons\youtube.png" />
     <Content Include="Content\images\arrows.png" />
     <Content Include="Content\images\arrowws.png" />
     <Content Include="Content\images\big1.jpg" />
@@ -2105,6 +2112,9 @@
     <Content Include="Views\Home\Video.cshtml" />
     <Content Include="Views\Home\Construction.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Shared\_Banner.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_ContactForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,6 +15,7 @@ namespace PenDesign.Core.Model
         public int Position { get; set; }
         public int MediaType { get; set; }
         public string MediaUrl { get; set; }
+        public string MediaThumbUrl { get; set; }
         public int ZOrder { get; set; }
 
         public virtual ICollection<BannerMapping> BannerMappings { get; set; }

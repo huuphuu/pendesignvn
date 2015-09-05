@@ -88,31 +88,148 @@ namespace PenDesign.Data.MigrationConfiguration
             }
             #endregion
 
-            #region CONFIG
-            var contactForm = "<h3>CÔNG TY TNHH ĐÀO TẠO VÀ TƯ VẤN TRUYỀN THÔNG THƯƠNG HIỆU BRAND</h3>";
-            contactForm += "<p><i class='fa fa-map-marker text-danger'></i>&nbsp;&nbsp;14 Hoa Huệ, Phường 7, Quận Phú Nhuận, TP. HCM</p>";
-            contactForm += "<p><i class='glyphicon glyphicon-plus'></i>&nbsp;&nbsp;Yêu cầu sẽ được phản hồi trong vòng 1h từ 8h:AM - 5h:PM.</p>";
-            contactForm += "<p><i class='glyphicon glyphicon-plus'></i>&nbsp;&nbsp;Yêu cầu gửi sau giờ hành chính sẽ được trả lời vào sáng ngày làm việc tiếp theo.</p>";
-            contactForm += "<p><i class='glyphicon glyphicon-phone'></i>&nbsp;&nbsp;Hotline: 0917.934.141 - Mr.Toàn - Tư vấn viên</p>";
-            contactForm += "<p><i class='glyphicon glyphicon-triangle-right'></i>Qúy vị có thể liên hệ qua email, vui lòng cung cấp thông tin một cách đầy đủ, chính xác.</p>";
+            #region Banner
+            if (context.Banners.Count() == 0)
+            {
+                var userId = UserManager.FindByName("Administrator").Id;
+                var bannerList = new List<Banner>()
+                {
+                    //Main menu
+                    new Banner() { 
+                        Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 1,
+                        MediaUrl = "/Content/images/slide.jpg", MediaThumbUrl = "/Content/images/thumb.png",
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        BannerMappings = new List<BannerMapping>()
+                        {
+                            new BannerMapping()
+                            {
+                                BannerId = 1, LanguageId = 129, Status = 0,
+                                Name = "Tên Banner 1", Description = "Các dự án nội thất thông minh cho nhà của bạn",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new BannerMapping()
+                            {
+                                BannerId = 1, LanguageId = 29, Status = 0,
+                                Name = "Banner Name 1", Description = "Clever interior projects for your home",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        }
+                    },
+                    new Banner() { 
+                        Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 2,
+                        MediaUrl = "/Content/images/slide1.jpg", MediaThumbUrl = "/Content/images/thumb1.png",
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        BannerMappings = new List<BannerMapping>()
+                        {
+                            new BannerMapping()
+                            {
+                                BannerId = 2, LanguageId = 129, Status = 0,
+                                Name = "Tên Banner 2", Description = "Ý tưởng cải tiến nhà cho bạn",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new BannerMapping()
+                            {
+                                BannerId = 2, LanguageId = 29, Status = 0,
+                                Name = "Banner Name 2", Description = "Home improvement ideas for you",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        }
+                    },
+                    new Banner() { 
+                        Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 3,
+                        MediaUrl = "/Content/images/slide2.jpg", MediaThumbUrl = "/Content/images/thumb2.png",
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        BannerMappings = new List<BannerMapping>()
+                        {
+                            new BannerMapping()
+                            {
+                                BannerId = 3, LanguageId = 129, Status = 0,
+                                Name = "Tên Banner 3", Description = "Thủ thuật thiết kế cao cấp",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new BannerMapping()
+                            {
+                                BannerId = 3, LanguageId = 29, Status = 0,
+                                Name = "Banner Name 3", Description = "Premium design tips",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        }
+                    },
+                    new Banner() { 
+                        Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 4,
+                        MediaUrl = "/Content/images/slide3.jpg", MediaThumbUrl = "/Content/images/thumb3.png",
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        BannerMappings = new List<BannerMapping>()
+                        {
+                            new BannerMapping()
+                            {
+                                BannerId = 4, LanguageId = 129, Status = 0,
+                                Name = "Tên Banner 4", Description = "Chỉ có những ý tưởng sáng tạo",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new BannerMapping()
+                            {
+                                BannerId = 4, LanguageId = 29, Status = 0,
+                                Name = "Banner Name 4", Description = "Only creative ideas",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        }
+                    }
+                    
+                };
 
-            var footerContent = "<div class='col-xs-12 col-md-3 text-left'>";
-            footerContent += "<h2>Trụ sở Chính HCM</h2>";
-            footerContent += "<ul>";
-            footerContent += "<li><i class='glyphicon glyphicon-home'></i>&nbsp;&nbsp;Toà nhà BRAND - Số 14 Hoa Huệ, Phường 7, Quận Phú Nhuận, TP. HCM</li>";
-            footerContent += "<li><i class='glyphicon glyphicon-phone'></i>&nbsp;&nbsp;<a href='tel:0917934141' title='Gọi điện'>0917 934 141</a></li>";
-            footerContent += "<li><i class='glyphicon glyphicon-phone'></i>&nbsp;&nbsp;<a href='tel:0938089926' title='Gọi điện'>0938 0899 26</a></li>";
-            footerContent += "<li><i class='glyphicon glyphicon-envelope'></i>&nbsp;&nbsp;info@thapsangthuonghieu.edu.vn</li>";
-            footerContent += "</ul>";
-            footerContent += "</div>";
-            footerContent += "<div class='col-xs-12 col-md-3 text-left'>";
-            footerContent += "<h2>Văn phòng đạo tạo</h2>";
-            footerContent += "<ul>";
-            footerContent += "<li><i class='glyphicon glyphicon-home'></i>&nbsp;&nbsp;TÒA NHÀ VĂN HÓA SINH VIÊN LẦU 2 – 643 ĐIỆN BIÊN PHỦ – QUẬN 3 – TP HỒ CHÍ MINH</li>";
-            footerContent += "<li><i class='glyphicon glyphicon-phone'></i>&nbsp;&nbsp;<a href='tel:0917934141' title='Gọi điện'>0917 934 141</a></li>";
-            footerContent += "<li><i class='glyphicon glyphicon-phone'></i>&nbsp;&nbsp;<a href='tel:0938089926' title='Gọi điện'>0938 0899 26</a></li>";
-            footerContent += "<li><i class='glyphicon glyphicon-envelope'></i>&nbsp;&nbsp;info@thapsangthuonghieu.edu.vn</li>";
-            footerContent += "</ul></div>";
+                bannerList.ForEach(m => context.Banners.AddOrUpdate(p => p.Id, m));
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    var msg = ex.Message;
+                }
+            }
+
+            #endregion
+
+            #region CONFIG
+            var contactForm = "<h3 class='head1'>Find Us</h3>";
+            contactForm += "<p>You can always get 24/7 support for all <span class='col1'><a href='#' rel='nofollow'>premium website templates</a></span> from <br>TemplateMonster. Free themes go without it. </p>";
+            contactForm += "<p><span class='col1'><a href='#' rel='nofollow'>TemplateTuning</a></span> will help you with any questions regarding customization of the chosen themes.</p>";
+            contactForm += "<p>";
+            contactForm += "The Company Name Inc. <br>";
+            contactForm += "8901 Marmora Road, <br>";
+            contactForm += "Glasgow, D04 89GR.";
+            contactForm += "</p>";
+            contactForm += "Freephone:+1 800 559 6580 <br>";
+            contactForm += "Telephone:+1 800 603 6035<br>";
+            contactForm += "FAX:+1 800 889 9898<br>";
+            contactForm += "E-mail: <a href='#' class='col1'>mail@thanhit.net</a>";
+
+            var slogan = "<h2>Welcome!</h2>";
+            slogan += "Our company offers you the best design solutions to make your home interior unique and stylish";
+            slogan += "<div class='alright'>";
+            slogan += "<a href='#' class='btn'>Xem thêm</a>";
+            slogan += "</div>";
+         
+
+            var footerContent = "Địa chỉ: 141 Gò Ô Môi, Phường Phú Thuận, Quận 7, TP.HCM";
+            footerContent += "<br/>" ;
+            footerContent += "Điện thoại: 08 3774 0218";
+            footerContent += "<br/>";
+            footerContent += "PenDesign &copy; 2015 | <a href='#'>Privacy Policy</a> <br> Website designed by <a href='http://www.thanhit.net/' rel='nofollow'>thanhit.net </a>";
 
             if (context.Configs.Count() == 0)
             {
@@ -120,7 +237,7 @@ namespace PenDesign.Data.MigrationConfiguration
                 {
                     CompanyName = "CÔNG TY TNHH PenDesign",
                     About = "CÔNG TY TNHH PenDesign",
-                    Slogan = "",
+                    Slogan = slogan,
                     Email = "mrthanh.testemail@gmail.com",
                     EmailPassword = "kt123456789",
                     EmailPort = 487,
@@ -130,8 +247,8 @@ namespace PenDesign.Data.MigrationConfiguration
                     FacebookRetager = "<script>facebook<script>",
                     GoogleWebMaster = "<meta name='google-site-verification' content='CqoI2eXvbapz6SW47AALzXpx4_ozI3mZb13QBP541d4' />",
 
-                    Address = "14 Hoa Huệ, Phường 7, Quận Phú Nhuận, TP. HCM",
-                    GoogleMap = "<iframe class='embed-responsive-item' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.484596702444!2d106.70130999999999!3d10.774148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f476aafeac3%3A0x706052921c500887!2zNTkgTMOqIEzhu6NpLCBC4bq_biBOZ2jDqSwgUXXhuq1uIDEsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1435669394151' frameborder='0' style='border:0' allowfullscreen></iframe>",
+                    Address = "141 Gò Ô Môi, Phường Phú Thuận, Quận 7, TP.HCM",
+                    GoogleMap = "<iframe class='embed-responsive-item' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.060876544128!2d106.7358477!3d10.729788200000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175256f79e66e01%3A0xf3843eee25fb1859!2zMTQxIEfDsiDDlCBNw7RpLCBQaMO6IFRodeG6rW4sIFF14bqtbiA3LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1441451785499' frameborder='0' style='border:0' allowfullscreen></iframe>",
                     Phone = "0996614884",
                     BannerLogo = "/Content/images/logo.png",
                     LogoUrl = "/Content/images/Logo-Brand.png",
@@ -144,7 +261,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     TwitterSocial = "www.twitter.com",
                     PicasaSocial = "",
                     Youtube = "www.youtube.com",
-                    Instagram = "www.instagram.com"
+                    Instagram = ""
                 };
 
                 context.Configs.Add(config);

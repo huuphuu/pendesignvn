@@ -88,10 +88,6 @@
     <Compile Include="MigrationConfiguration\PenDesignMigrationConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Migrations\201509040641594_banner.cs" />
-    <Compile Include="Migrations\201509040641594_banner.Designer.cs">
-      <DependentUpon>201509040641594_banner.cs</DependentUpon>
-    </Compile>
     <Compile Include="PenDesignDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -112,9 +108,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509040641594_banner.resx">
-      <DependentUpon>201509040641594_banner.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

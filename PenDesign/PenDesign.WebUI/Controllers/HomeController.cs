@@ -14,7 +14,6 @@ namespace PenDesign.WebUI.Controllers
         private IConfigService _configService;
         private IBannerService _bannerService;
         private IBannerMappingService _bannerMappingService;
-
         public HomeController(IConfigService configService, IBannerService bannerService, IBannerMappingService bannerMappingService)
         {
             this._configService = configService;
@@ -25,7 +24,9 @@ namespace PenDesign.WebUI.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.logo = _configService.GetAll().FirstOrDefault().LogoUrl;
+            var configModel = _configService.GetAll().SingleOrDefault();
+            ViewBag.logo = configModel.LogoUrl;
+            ViewBag.slogan = configModel.Slogan;
             return View();
         }
 
@@ -73,8 +74,9 @@ namespace PenDesign.WebUI.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.contactForm = _configService.GetAll().FirstOrDefault().ContactForm;
-            ViewBag.googleMap = _configService.GetAll().FirstOrDefault().GoogleMap;
+            var configModel = _configService.GetAll().SingleOrDefault();
+            ViewBag.contactForm = configModel.ContactForm;
+            ViewBag.googleMap = configModel.GoogleMap;
             return View();
         }
     }

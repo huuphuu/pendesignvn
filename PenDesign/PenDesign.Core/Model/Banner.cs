@@ -11,6 +11,8 @@ namespace PenDesign.Core.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        public string Name { get; set; }
         public int Type { get; set; }
         public int Position { get; set; }
         public int MediaType { get; set; }

@@ -56,6 +56,14 @@ namespace PenDesign.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.Entity<Project>()
+            //            .HasKey(p => p.Id);
+
+            //// Configure StudentId as FK for StudentAddress
+            //modelBuilder.Entity<News>()
+            //            .HasRequired(n => n.Project)
+            //            .WithOptional(s => s.News); 
         }
 
         public IDbSet<T> DbSet<T>() where T : EditableEntity

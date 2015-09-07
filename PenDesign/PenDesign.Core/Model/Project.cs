@@ -12,11 +12,12 @@ namespace PenDesign.Core.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        //public int? NewsId { get; set; }
         public string Name { get; set; }
         public int Type { get; set; }
         public int ZOrder { get; set; }
 
-        public virtual ICollection<News> Newses { get; set; }
+        public virtual News News { get; set; }
         public virtual ICollection<ProjectMapping> ProjectMappings { get; set; }
         public virtual ICollection<ProjectImage> ProjectImages { get; set; }
     }

@@ -16,7 +16,7 @@ namespace PenDesign.Data.MigrationConfiguration
         public PenDesignMigrationConfiguration()
         {
             this.AutomaticMigrationDataLossAllowed = true;
-            this.AutomaticMigrationsEnabled = true; 
+            this.AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(PenDesignDbContext context)
@@ -97,7 +97,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     //Main menu
                     new Banner() { 
                         Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 1,
-                        MediaUrl = "/Content/images/slide.jpg", MediaThumbUrl = "/Content/images/thumb.png",
+                        Name = "Banner 1", MediaUrl = "/Content/images/slide.jpg", MediaThumbUrl = "/Content/images/thumb.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -120,7 +120,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     },
                     new Banner() { 
                         Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 2,
-                        MediaUrl = "/Content/images/slide1.jpg", MediaThumbUrl = "/Content/images/thumb1.png",
+                        Name = "Banner 2", MediaUrl = "/Content/images/slide1.jpg", MediaThumbUrl = "/Content/images/thumb1.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -143,7 +143,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     },
                     new Banner() { 
                         Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 3,
-                        MediaUrl = "/Content/images/slide2.jpg", MediaThumbUrl = "/Content/images/thumb2.png",
+                        Name = "Banner 3", MediaUrl = "/Content/images/slide2.jpg", MediaThumbUrl = "/Content/images/thumb2.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -166,7 +166,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     },
                     new Banner() { 
                         Type = 1, Position = 1, MediaType = 1, Status = 0, ZOrder = 4,
-                        MediaUrl = "/Content/images/slide3.jpg", MediaThumbUrl = "/Content/images/thumb3.png",
+                        Name = "Banner 4", MediaUrl = "/Content/images/slide3.jpg", MediaThumbUrl = "/Content/images/thumb3.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -204,6 +204,224 @@ namespace PenDesign.Data.MigrationConfiguration
 
             #endregion
 
+            #region Project
+            if (context.Projects.Count() == 0)
+            {
+                var userId = UserManager.FindByName("Administrator").Id;
+                var projectList = new List<Project>()
+                {
+                    //Main menu
+                    new Project() { 
+                        Name = "Project 1", Type = 1, Status = 0, ZOrder = 1,
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        ProjectMappings = new List<ProjectMapping>()
+                        {
+                            new ProjectMapping()
+                            {
+                                ProjectId = 1, LanguageId = 129, Status = 0,
+                                Name = "Tên Dự Án 1", Description = "Dự án 1 Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new ProjectMapping()
+                            {
+                                ProjectId = 1, LanguageId = 29, Status = 0,
+                                Name = "Project Name 1", Description = "Project 1 Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        },
+                        ProjectImages = new List<ProjectImage>()
+                        {
+                            new ProjectImage()
+                            {
+                                ProjectId = 1, Type = 1, Status = 0, ZOrder = 1,
+                                ResourceUrl = "/Content/images/slide.jpg", Thumbnail = "/Content/images/page2_img1.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 1, LanguageId = 129, Status = 0,
+                                        Name = "Tên ảnh 1-  Dự Án 1", Description = "Dự án 1 - ảnh 1 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 1, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 2 - image 1", Description = "Project 1 - image 1 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 1, Type = 1, Status = 0, ZOrder = 2,
+                                ResourceUrl = "/Content/images/slide1.jpg", Thumbnail = "/Content/images/page2_img2.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 2, LanguageId = 129, Status = 0,
+                                        Name = "Tên ảnh 2-  Dự Án 2", Description = "Dự án 2 - ảnh 2 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 2, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 2 - image 2", Description = "Project 2 - image 2 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 1, Type = 1, Status = 0, ZOrder = 3,
+                                ResourceUrl = "/Content/images/slide2.jpg", Thumbnail = "/Content/images/page2_img3.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 3, LanguageId = 129, Status = 0,
+                                        Name = "Tên ảnh 3-  Dự Án 3", Description = "Dự án 3 - ảnh 3 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 3, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 3 - image 3", Description = "Project 3 - image 3 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    new Project() { 
+                        Name = "Project 2", Type = 1, Status = 0, ZOrder = 2,
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        ProjectMappings = new List<ProjectMapping>()
+                        {
+                            new ProjectMapping()
+                            {
+                                ProjectId = 2, LanguageId = 129, Status = 0,
+                                Name = "Tên Dự Án 2", Description = "Dự án 2 Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new ProjectMapping()
+                            {
+                                ProjectId = 2, LanguageId = 29, Status = 0,
+                                Name = "Project Name 2", Description = "Project 2 Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        },
+                        ProjectImages = new List<ProjectImage>()
+                        {
+                            new ProjectImage()
+                            {
+                                ProjectId = 2, Type = 1, Status = 0, ZOrder = 1,
+                                ResourceUrl = "/Content/images/slide.jpg", Thumbnail = "/Content/images/page2_img1.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 4, LanguageId = 129, Status = 0,
+                                        Name = "Tên ảnh 1-  Dự Án 2", Description = "Dự án 2 - ảnh 1 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 4, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 2 - image 1", Description = "Project 2 - image 1 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 2, Type = 1, Status = 0, ZOrder = 2,
+                                ResourceUrl = "/Content/images/slide1.jpg", Thumbnail = "/Content/images/page2_img2.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 5, LanguageId = 129, Status = 0,
+                                        Name = "Tên ảnh 2-  Dự Án 2", Description = "Dự án 2 - ảnh 2 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 5, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 2 - image 2", Description = "Project 2 - image 2 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 1, Type = 1, Status = 0, ZOrder = 3,
+                                ResourceUrl = "/Content/images/slide2.jpg", Thumbnail = "/Content/images/page2_img3.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 6, LanguageId = 129, Status = 0,
+                                        Name = "Tên ảnh 3-  Dự Án 2", Description = "Dự án 2 - ảnh 3 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 6, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 2 - image 3", Description = "Project 2 - image 3 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                };
+
+                projectList.ForEach(m => context.Projects.AddOrUpdate(p => p.Id, m));
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    var msg = ex.Message;
+                }
+            }
+
+            #endregion
+
             #region CONFIG
             var contactForm = "<h3 class='head1'>Find Us</h3>";
             contactForm += "<p>You can always get 24/7 support for all <span class='col1'><a href='#' rel='nofollow'>premium website templates</a></span> from <br>TemplateMonster. Free themes go without it. </p>";
@@ -223,10 +441,10 @@ namespace PenDesign.Data.MigrationConfiguration
             slogan += "<div class='alright'>";
             slogan += "<a href='#' class='btn'>Xem thêm</a>";
             slogan += "</div>";
-         
+
 
             var footerContent = "Địa chỉ: 141 Gò Ô Môi, Phường Phú Thuận, Quận 7, TP.HCM";
-            footerContent += "<br/>" ;
+            footerContent += "<br/>";
             footerContent += "Điện thoại: 08 3774 0218";
             footerContent += "<br/>";
             footerContent += "PenDesign &copy; 2015 | <a href='#'>Privacy Policy</a> <br> Website designed by <a href='http://www.thanhit.net/' rel='nofollow'>thanhit.net </a>";

@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Trang chhủ";
+﻿@using WebViewPage
+@{
+    ViewBag.Title = "Trang chủ";
 }
 
 @section ScriptsFooter{
@@ -26,11 +27,7 @@
     <div class="container_12">
         <div class="grid_12">
             <div class="center">
-                @*<h2>Welcome!</h2>
-                Our company offers you the best design solutions to make your home interior unique and stylish
-                <div class="alright">
-                    <a href="#" class="btn">Xem thêm</a>
-                </div>*@
+                @Html.Raw(ViewBag.slogan)
             </div>
         </div>
     </div>

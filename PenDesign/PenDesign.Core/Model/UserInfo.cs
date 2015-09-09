@@ -45,9 +45,5 @@ namespace PenDesign.Core.Model
         [Required]
         [DataMember]
         public ApplicationUser AspNetUser { get; set; }
-
-        [JsonIgnore]
-        [IgnoreDataMember]
-        public virtual List<News> News { get; set; }
     }
 }

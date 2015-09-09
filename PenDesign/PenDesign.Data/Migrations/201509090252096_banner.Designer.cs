@@ -7,13 +7,13 @@ namespace PenDesign.Data.MigrationConfiguration
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class a : IMigrationMetadata
+    public sealed partial class banner : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(a));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(banner));
         
         string IMigrationMetadata.Id
         {
-            get { return "201509070202188_a"; }
+            get { return "201509090252096_banner"; }
         }
         
         string IMigrationMetadata.Source

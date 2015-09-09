@@ -88,9 +88,9 @@
     <Compile Include="MigrationConfiguration\PenDesignMigrationConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Migrations\201509070202188_a.cs" />
-    <Compile Include="Migrations\201509070202188_a.Designer.cs">
-      <DependentUpon>201509070202188_a.cs</DependentUpon>
+    <Compile Include="Migrations\201509090252096_banner.cs" />
+    <Compile Include="Migrations\201509090252096_banner.Designer.cs">
+      <DependentUpon>201509090252096_banner.cs</DependentUpon>
     </Compile>
     <Compile Include="PenDesignDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,8 +113,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509070202188_a.resx">
-      <DependentUpon>201509070202188_a.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509090252096_banner.resx">
+      <DependentUpon>201509090252096_banner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

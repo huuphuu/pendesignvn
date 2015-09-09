@@ -3,7 +3,7 @@ namespace PenDesign.Data.MigrationConfiguration
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class a : DbMigration
+    public partial class banner : DbMigration
     {
         public override void Up()
         {
@@ -269,9 +269,8 @@ namespace PenDesign.Data.MigrationConfiguration
                 "dbo.News",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false),
                         Name = c.String(),
-                        ZOrder = c.Int(nullable: false),
                         CategoryId = c.Int(nullable: false),
                         ListTagId = c.String(),
                         Status = c.Int(nullable: false),
@@ -279,13 +278,10 @@ namespace PenDesign.Data.MigrationConfiguration
                         CreatedDateTime = c.DateTime(),
                         ModifiedById = c.String(),
                         ModifiedDateTime = c.DateTime(),
-                        UserInfo_UserInfoId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Projects", t => t.Id)
-                .ForeignKey("dbo.UserInfoes", t => t.UserInfo_UserInfoId)
-                .Index(t => t.Id)
-                .Index(t => t.UserInfo_UserInfoId);
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.NewsMappings",
@@ -464,7 +460,6 @@ namespace PenDesign.Data.MigrationConfiguration
         
         public override void Down()
         {
-            DropForeignKey("dbo.News", "UserInfo_UserInfoId", "dbo.UserInfoes");
             DropForeignKey("dbo.UserInfoes", "AspNetUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -490,7 +485,6 @@ namespace PenDesign.Data.MigrationConfiguration
             DropIndex("dbo.ProjectImageMappings", new[] { "ProjectImageId" });
             DropIndex("dbo.ProjectImages", new[] { "ProjectId" });
             DropIndex("dbo.NewsMappings", new[] { "NewsId" });
-            DropIndex("dbo.News", new[] { "UserInfo_UserInfoId" });
             DropIndex("dbo.News", new[] { "Id" });
             DropIndex("dbo.Controls", new[] { "GroupControlId" });
             DropIndex("dbo.ControlMappings", new[] { "Control_Id" });

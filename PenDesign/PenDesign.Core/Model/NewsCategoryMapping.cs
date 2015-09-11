@@ -6,15 +6,14 @@ using PenDesign.Core.Model.BaseClass;
 
 namespace PenDesign.Core.Model
 {
-    public partial class ProjectMapping: EditableEntity
+    public partial class NewsCategoryMapping: EditableEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int ProjectId { get; set; }
+        public int NewsCategoryId { get; set; }
         public int LanguageId { get; set; }
-
         public string Title { get; set; }
         public string Intro { get; set; }
         public string Detail { get; set; }
@@ -22,6 +21,7 @@ namespace PenDesign.Core.Model
         public string Keyword { get; set; }
         public string Description { get; set; }
 
-        public virtual Project Project { get; set; }
+        public virtual NewsCategory NewsCategory { get; set; }
+
     }
 }

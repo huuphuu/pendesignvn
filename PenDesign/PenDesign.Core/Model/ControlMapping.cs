@@ -12,6 +12,7 @@ namespace PenDesign.Core.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        public int ControlId { get; set; }
         public int LanguageId { get; set; }
         public string Text { get; set; }
 

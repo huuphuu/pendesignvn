@@ -8,17 +8,22 @@ namespace PenDesign.Core.Model
 {
     public partial class News: EditableEntity
     {
-        [Key, ForeignKey("Project")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[Key, ForeignKey("Project")] // 1-1 relation Ship Config
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int Id { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //public int? ProjectId { get; set; }
+        public int? NewsCategoryId { get; set; }
+        public int? ProjectId { get; set; }
 
         public string Name { get; set; }
-
-        public int CategoryId { get; set; }
+        public string Thumbnail { get; set; }
         public string ListTagId { get; set; }
 
+        public virtual NewsCategory NewsCategory { get; set; }
         public virtual Project Project { get; set; }
         public virtual ICollection<NewsMapping> NewsMappings { get; set; }
     }

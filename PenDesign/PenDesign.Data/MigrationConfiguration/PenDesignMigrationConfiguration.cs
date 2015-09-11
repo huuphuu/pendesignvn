@@ -24,6 +24,11 @@ namespace PenDesign.Data.MigrationConfiguration
             base.Seed(context);
 
 #if DEBUG
+            var detail = "Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.<br/>";
+            detail += "Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.<br/>";
+            detail += "Scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue.";
+            
+
             #region seed ROLES & RolesMission
             //Roles
             var UserStore = new UserStore<ApplicationUser>(context);
@@ -216,44 +221,50 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 1", Type = 1, Status = 0, ZOrder = 1,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 1 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 1 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 1, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 1 - News - Intro", Detail = "Dự Án 1 - News - Detail", MetaData = "Dự Án 1 - News - MetaData",
-                                    Title = "Dự Án 1 - News ", Keyword = "Dự án 1 - News Keyword", Description = "Dự án 1 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 1, LanguageId = 29, Status = 0,
-                                    Intro = "Project 1 - News - Intro", Detail = "Project 1 - News - Detail", MetaData = "Project 1 - News - MetaData",
-                                    Title = "Project 1 - News", Keyword = "Project 1 - News Keyword", Description = "Project 1 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 1, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 1 - News - Intro", Detail = "Dự Án 1 - News - Detail", MetaData = "Dự Án 1 - News - MetaData",
+                                        Title = "Dự Án 1 - News ", Keyword = "Dự án 1 - News Keyword", Description = "Dự án 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 1, LanguageId = 29, Status = 0,
+                                        Intro = "Project 1 - News - Intro", Detail = "Project 1 - News - Detail", MetaData = "Project 1 - News - MetaData",
+                                        Title = "Project 1 - News", Keyword = "Project 1 - News Keyword", Description = "Project 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
+                        
                         ProjectMappings = new List<ProjectMapping>()
                         {
                             new ProjectMapping()
                             {
                                 ProjectId = 1, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 1", Description = "Dự án 1 Description",
+                                Title = "Tên Dự Án 1", Keyword = "Dự Án 1 Keyword", Description = "Dự án 1 Description", MetaData = "",
+                                Intro = "Dự Án 1 - Intro", Detail = "Dự Án 1 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 1, LanguageId = 29, Status = 0,
-                                Name = "Project Name 1", Description = "Project 1 Description",
+                                Title = "Project Name 1", Keyword = "Project 1 Keyword", Description = "Project 1 Description", MetaData = "",
+                                Intro = "Project 1 - Intro", Detail = "Project 1 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -339,28 +350,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 2", Type = 1, Status = 0, ZOrder = 2,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 2 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 2 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 2, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 2 - News - Intro", Detail = "Dự Án 2 - News - Detail", MetaData = "Dự Án 2 - News - MetaData",
-                                    Title = "Dự Án 2 - News ", Keyword = "Dự án 2 - News Keyword", Description = "Dự án 2 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 1, LanguageId = 29, Status = 0,
-                                    Intro = "Project 2 - News - Intro", Detail = "Project 2- News - Detail", MetaData = "Project 2 - News - MetaData",
-                                    Title = "Project 2 - News", Keyword = "Project 2 - News Keyword", Description = "Project 2 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 2, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 2 - News - Intro", Detail = "Dự Án 2 - News - Detail", MetaData = "Dự Án 2 - News - MetaData",
+                                        Title = "Dự Án 2 - News ", Keyword = "Dự án 2 - News Keyword", Description = "Dự án 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 1, LanguageId = 29, Status = 0,
+                                        Intro = "Project 2 - News - Intro", Detail = "Project 2- News - Detail", MetaData = "Project 2 - News - MetaData",
+                                        Title = "Project 2 - News", Keyword = "Project 2 - News Keyword", Description = "Project 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -369,14 +383,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 2, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 2", Description = "Dự án 2 Description",
+                                Title = "Tên Dự Án 2", Keyword = "Dự Án 2 Keyword", Description = "Dự án 2 Description", MetaData = "",
+                                Intro = "Dự Án 2 - Intro", Detail = "Dự Án 2 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 2, LanguageId = 29, Status = 0,
-                                Name = "Project Name 2", Description = "Project 2 Description",
+                                Title = "Project Name 2", Keyword = "Project 2 Keyword", Description = "Project 2 Description", MetaData = "",
+                                Intro = "Project 2 - Intro", Detail = "Project 2 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -433,7 +449,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new ProjectImage()
                             {
-                                ProjectId = 1, Type = 1, Status = 0, ZOrder = 3,
+                                ProjectId = 2, Type = 1, Status = 0, ZOrder = 3,
                                 ResourceUrl = "/Content/images/slide2.jpg", Thumbnail = "/Content/images/page2_img3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -462,28 +478,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 3", Type = 1, Status = 0, ZOrder = 3,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 3 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 3 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 3, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 3 - News - Intro", Detail = "Dự Án 3 - News - Detail", MetaData = "Dự Án 3 - News - MetaData",
-                                    Title = "Dự Án 3 - News ", Keyword = "Dự án 3 - News Keyword", Description = "Dự án 3 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 3, LanguageId = 29, Status = 0,
-                                    Intro = "Project 3 - News - Intro", Detail = "Project 3- News - Detail", MetaData = "Project 3 - News - MetaData",
-                                    Title = "Project 3 - News", Keyword = "Project 3 - News Keyword", Description = "Project 3 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 3, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 3 - News - Intro", Detail = "Dự Án 3 - News - Detail", MetaData = "Dự Án 3 - News - MetaData",
+                                        Title = "Dự Án 3 - News ", Keyword = "Dự án 3 - News Keyword", Description = "Dự án 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 3, LanguageId = 29, Status = 0,
+                                        Intro = "Project 3 - News - Intro", Detail = "Project 3- News - Detail", MetaData = "Project 3 - News - MetaData",
+                                        Title = "Project 3 - News", Keyword = "Project 3 - News Keyword", Description = "Project 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -492,14 +511,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 3, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 3", Description = "Dự án 3 Description",
+                                Title = "Tên Dự Án 3", Keyword = "Dự Án 3 Keyword", Description = "Dự án 3 Description", MetaData = "",
+                                Intro = "Dự Án 3 - Intro", Detail = "Dự Án 3 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 3, LanguageId = 29, Status = 0,
-                                Name = "Project Name 3", Description = "Project 3 Description",
+                                Title = "Project Name 3", Keyword = "Project 3 Keyword", Description = "Project 3 Description", MetaData = "",
+                                Intro = "Project 3 - Intro", Detail = "Project 3 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -585,28 +606,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 4", Type = 1, Status = 0, ZOrder = 4,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 4 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 4 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 4, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 4 - News - Intro", Detail = "Dự Án 4 - News - Detail", MetaData = "Dự Án 4 - News - MetaData",
-                                    Title = "Dự Án 4 - News ", Keyword = "Dự án 4 - News Keyword", Description = "Dự án 4 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 4, LanguageId = 29, Status = 0,
-                                    Intro = "Project 4 - News - Intro", Detail = "Project 4- News - Detail", MetaData = "Project 4 - News - MetaData",
-                                    Title = "Project 4 - News", Keyword = "Project 4 - News Keyword", Description = "Project 4 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 4, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 4 - News - Intro", Detail = "Dự Án 4 - News - Detail", MetaData = "Dự Án 4 - News - MetaData",
+                                        Title = "Dự Án 4 - News ", Keyword = "Dự án 4 - News Keyword", Description = "Dự án 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 4, LanguageId = 29, Status = 0,
+                                        Intro = "Project 4 - News - Intro", Detail = "Project 4- News - Detail", MetaData = "Project 4 - News - MetaData",
+                                        Title = "Project 4 - News", Keyword = "Project 4 - News Keyword", Description = "Project 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -615,14 +639,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 4, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 4", Description = "Dự án 4 Description",
+                                Title = "Tên Dự Án 4", Keyword = "Dự Án 4 Keyword", Description = "Dự án 4 Description", MetaData = "",
+                                Intro = "Dự Án 4 - Intro", Detail = "Dự Án 4 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 4, LanguageId = 29, Status = 0,
-                                Name = "Project Name 4", Description = "Project 4 Description",
+                                Title = "Project Name 4", Keyword = "Project 4 Keyword", Description = "Project 4 Description", MetaData = "",
+                                Intro = "Project 4 - Intro", Detail = "Project 4 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -708,28 +734,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 5", Type = 1, Status = 0, ZOrder = 5,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 5 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 5 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 5, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 5 - News - Intro", Detail = "Dự Án 5 - News - Detail", MetaData = "Dự Án 5 - News - MetaData",
-                                    Title = "Dự Án 5 - News ", Keyword = "Dự án 5 - News Keyword", Description = "Dự án 5 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 5, LanguageId = 29, Status = 0,
-                                    Intro = "Project 5 - News - Intro", Detail = "Project 5 - News - Detail", MetaData = "Project 5 - News - MetaData",
-                                    Title = "Project 5 - News", Keyword = "Project 5 - News Keyword", Description = "Project 5 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 5, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 5 - News - Intro", Detail = "Dự Án 5 - News - Detail", MetaData = "Dự Án 5 - News - MetaData",
+                                        Title = "Dự Án 5 - News ", Keyword = "Dự án 5 - News Keyword", Description = "Dự án 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 5, LanguageId = 29, Status = 0,
+                                        Intro = "Project 5 - News - Intro", Detail = "Project 5 - News - Detail", MetaData = "Project 5 - News - MetaData",
+                                        Title = "Project 5 - News", Keyword = "Project 5 - News Keyword", Description = "Project 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -738,14 +767,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 5, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 3", Description = "Dự án 5 Description",
+                                Title = "Tên Dự Án 5", Keyword = "Dự Án 5 Keyword", Description = "Dự án 5 Description", MetaData = "",
+                                Intro = "Dự Án 5 - Intro", Detail = "Dự Án 5 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
-                                ProjectId = 3, LanguageId = 29, Status = 0,
-                                Name = "Project Name 5", Description = "Project 5 Description",
+                                ProjectId = 5, LanguageId = 29, Status = 0,
+                                Title = "Project Name 5", Keyword = "Project 5 Keyword", Description = "Project 5 Description", MetaData = "",
+                                Intro = "Project 5 - Intro", Detail = "Project 5 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -831,28 +862,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 6", Type = 1, Status = 0, ZOrder = 6,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 6 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 6 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 6, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 6 - News - Intro", Detail = "Dự Án 6 - News - Detail", MetaData = "Dự Án 6 - News - MetaData",
-                                    Title = "Dự Án 6 - News ", Keyword = "Dự án 6 - News Keyword", Description = "Dự án 6 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 6, LanguageId = 29, Status = 0,
-                                    Intro = "Project 6 - News - Intro", Detail = "Project 6- News - Detail", MetaData = "Project 6 - News - MetaData",
-                                    Title = "Project 6 - News", Keyword = "Project 6 - News Keyword", Description = "Project 6 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 6, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 6 - News - Intro", Detail = "Dự Án 6 - News - Detail", MetaData = "Dự Án 6 - News - MetaData",
+                                        Title = "Dự Án 6 - News ", Keyword = "Dự án 6 - News Keyword", Description = "Dự án 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 6, LanguageId = 29, Status = 0,
+                                        Intro = "Project 6 - News - Intro", Detail = "Project 6- News - Detail", MetaData = "Project 6 - News - MetaData",
+                                        Title = "Project 6 - News", Keyword = "Project 6 - News Keyword", Description = "Project 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -861,14 +895,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 6, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 6", Description = "Dự án 6 Description",
+                                Title = "Tên Dự Án 6", Keyword = "Dự Án 6 Keyword", Description = "Dự án 6 Description", MetaData = "",
+                                Intro = "Dự Án 6 - Intro", Detail = "Dự Án 6 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 6, LanguageId = 29, Status = 0,
-                                Name = "Project Name 6", Description = "Project 7 Description",
+                                Title = "Project Name 6", Keyword = "Project 6 Keyword", Description = "Project 6 Description", MetaData = "",
+                                Intro = "Project 6 - Intro", Detail = "Project 6 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -954,28 +990,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 7", Type = 1, Status = 0, ZOrder = 7,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 7 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 7 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 7, LanguageId = 129, Status = 0,
-                                    Intro = "Dự án 7 - News - Intro", Detail = "Dự án 7 - News - Detail", MetaData = "Dự án 7 - News - MetaData",
-                                    Title = "Dự án 7 - News ", Keyword = "Dự án 7 - News Keyword", Description = "Dự án 7 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 7, LanguageId = 29, Status = 0,
-                                    Intro = "Project 7 - News - Intro", Detail = "Project 7- News - Detail", MetaData = "Project 7 - News - MetaData",
-                                    Title = "Project 7 - News", Keyword = "Project 7 - News Keyword", Description = "Project 7 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 7, LanguageId = 129, Status = 0,
+                                        Intro = "Dự án 7 - News - Intro", Detail = "Dự án 7 - News - Detail", MetaData = "Dự án 7 - News - MetaData",
+                                        Title = "Dự án 7 - News ", Keyword = "Dự án 7 - News Keyword", Description = "Dự án 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 7, LanguageId = 29, Status = 0,
+                                        Intro = "Project 7 - News - Intro", Detail = "Project 7- News - Detail", MetaData = "Project 7 - News - MetaData",
+                                        Title = "Project 7 - News", Keyword = "Project 7 - News Keyword", Description = "Project 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -984,14 +1023,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 7, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 7", Description = "Dự án 7 Description",
+                                Title = "Tên Dự Án 7", Keyword = "Dự Án 7 Keyword", Description = "Dự án 7 Description", MetaData = "",
+                                Intro = "Dự Án 7 - Intro", Detail = "Dự Án 7 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 7, LanguageId = 29, Status = 0,
-                                Name = "Project Name 7", Description = "Project 7 Description",
+                                Title = "Project Name 7", Keyword = "Project 7 Keyword", Description = "Project 7 Description", MetaData = "",
+                                Intro = "Project 7 - Intro", Detail = "Project 7 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1077,28 +1118,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 8", Type = 1, Status = 0, ZOrder = 8,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 8 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 8 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 8, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 8 - News - Intro", Detail = "Dự Án 8 - News - Detail", MetaData = "Dự Án 8 - News - MetaData",
-                                    Title = "Dự Án 8 - News ", Keyword = "Dự Án 8 - News Keyword", Description = "Dự Án 8 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 8, LanguageId = 29, Status = 0,
-                                    Intro = "Project 8 - News - Intro", Detail = "Project 8- News - Detail", MetaData = "Project 8 - News - MetaData",
-                                    Title = "Project 8 - News", Keyword = "Project 8 - News Keyword", Description = "Project 8 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 8, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 8 - News - Intro", Detail = "Dự Án 8 - News - Detail", MetaData = "Dự Án 8 - News - MetaData",
+                                        Title = "Dự Án 8 - News ", Keyword = "Dự Án 8 - News Keyword", Description = "Dự Án 8 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 8, LanguageId = 29, Status = 0,
+                                        Intro = "Project 8 - News - Intro", Detail = "Project 8- News - Detail", MetaData = "Project 8 - News - MetaData",
+                                        Title = "Project 8 - News", Keyword = "Project 8 - News Keyword", Description = "Project 8 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -1107,14 +1151,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 8, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 8", Description = "Dự Án 8 Description",
+                                Title = "Tên Dự Án 8", Keyword = "Dự Án 8 Keyword", Description = "Dự án 8 Description", MetaData = "",
+                                Intro = "Dự Án 8 - Intro", Detail = "Dự Án 8 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 8, LanguageId = 29, Status = 0,
-                                Name = "Project Name 8", Description = "Project 8 Description",
+                                Title = "Project Name 8", Keyword = "Project 8 Keyword", Description = "Project 8 Description", MetaData = "",
+                                Intro = "Project 8 - Intro", Detail = "Project 8 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1200,28 +1246,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 9", Type = 1, Status = 0, ZOrder = 9,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 9 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 9 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 9, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 9 - News - Intro", Detail = "Dự Án 9 - News - Detail", MetaData = "Dự Án 9 - News - MetaData",
-                                    Title = "Dự Án 9 - News ", Keyword = "Dự Án 9 - News Keyword", Description = "Dự Án 9 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 9, LanguageId = 29, Status = 0,
-                                    Intro = "Project 9 - News - Intro", Detail = "Project 9- News - Detail", MetaData = "Project 9 - News - MetaData",
-                                    Title = "Project 9 - News", Keyword = "Project 9 - News Keyword", Description = "Project 9 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 9, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 9 - News - Intro", Detail = "Dự Án 9 - News - Detail", MetaData = "Dự Án 9 - News - MetaData",
+                                        Title = "Dự Án 9 - News ", Keyword = "Dự Án 9 - News Keyword", Description = "Dự Án 9 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 9, LanguageId = 29, Status = 0,
+                                        Intro = "Project 9 - News - Intro", Detail = "Project 9- News - Detail", MetaData = "Project 9 - News - MetaData",
+                                        Title = "Project 9 - News", Keyword = "Project 9 - News Keyword", Description = "Project 9 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -1230,14 +1279,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 9, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 9", Description = "Dự Án 9 Description",
+                                Title = "Tên Dự Án 9", Keyword = "Dự Án 9 Keyword", Description = "Dự án 9 Description", MetaData = "",
+                                Intro = "Dự Án 9 - Intro", Detail = "Dự Án 9 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 9, LanguageId = 29, Status = 0,
-                                Name = "Project Name 9", Description = "Project 9 Description",
+                                Title = "Project Name 9", Keyword = "Project 9 Keyword", Description = "Project 9 Description", MetaData = "",
+                                Intro = "Project 9 - Intro", Detail = "Project 9 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1323,28 +1374,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 10", Type = 1, Status = 0, ZOrder = 10,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 10 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 10 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 10, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 10 - News - Intro", Detail = "Dự Án 10 - News - Detail", MetaData = "Dự Án 10 - News - MetaData",
-                                    Title = "Dự Án 10 - News ", Keyword = "Dự Án 10 - News Keyword", Description = "Dự Án 10 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 10, LanguageId = 29, Status = 0,
-                                    Intro = "Project 10 - News - Intro", Detail = "Project 10- News - Detail", MetaData = "Project 10 - News - MetaData",
-                                    Title = "Project 10 - News", Keyword = "Project 10 - News Keyword", Description = "Project 10 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 10, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 10 - News - Intro", Detail = "Dự Án 10 - News - Detail", MetaData = "Dự Án 10 - News - MetaData",
+                                        Title = "Dự Án 10 - News ", Keyword = "Dự Án 10 - News Keyword", Description = "Dự Án 10 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 10, LanguageId = 29, Status = 0,
+                                        Intro = "Project 10 - News - Intro", Detail = "Project 10- News - Detail", MetaData = "Project 10 - News - MetaData",
+                                        Title = "Project 10 - News", Keyword = "Project 10 - News Keyword", Description = "Project 10 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -1353,14 +1407,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 10, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 10", Description = "Dự Án 10 Description",
+                                Title = "Tên Dự Án 10", Keyword = "Dự Án 10 Keyword", Description = "Dự án 10 Description", MetaData = "",
+                                Intro = "Dự Án 10 - Intro", Detail = "Dự Án 10 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 10, LanguageId = 29, Status = 0,
-                                Name = "Project Name 10", Description = "Project 10 Description",
+                                Title = "Project Name 10", Keyword = "Project 10 Keyword", Description = "Project 10 Description", MetaData = "",
+                                Intro = "Project 10 - Intro", Detail = "Project 10 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1446,28 +1502,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 11", Type = 1, Status = 0, ZOrder = 11,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 11 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 11 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 11, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 11 - News - Intro", Detail = "Dự Án 11 - News - Detail", MetaData = "Dự Án 11 - News - MetaData",
-                                    Title = "Dự Án 11 - News ", Keyword = "Dự Án 11 - News Keyword", Description = "Dự Án 11 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 11, LanguageId = 29, Status = 0,
-                                    Intro = "Project 11 - News - Intro", Detail = "Project 11- News - Detail", MetaData = "Project 11 - News - MetaData",
-                                    Title = "Project 11 - News", Keyword = "Project 11 - News Keyword", Description = "Project 11 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 11, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 11 - News - Intro", Detail = "Dự Án 11 - News - Detail", MetaData = "Dự Án 11 - News - MetaData",
+                                        Title = "Dự Án 11 - News ", Keyword = "Dự Án 11 - News Keyword", Description = "Dự Án 11 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 11, LanguageId = 29, Status = 0,
+                                        Intro = "Project 11 - News - Intro", Detail = "Project 11- News - Detail", MetaData = "Project 11 - News - MetaData",
+                                        Title = "Project 11 - News", Keyword = "Project 11 - News Keyword", Description = "Project 11 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -1476,14 +1535,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 11, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 11", Description = "Dự Án 11 Description",
+                                Title = "Tên Dự Án 11", Keyword = "Dự Án 11 Keyword", Description = "Dự án 11 Description", MetaData = "",
+                                Intro = "Dự Án 11 - Intro", Detail = "Dự Án 11 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 11, LanguageId = 29, Status = 0,
-                                Name = "Project Name 11", Description = "Project 11 Description",
+                                Title = "Project Name 11", Keyword = "Project 11 Keyword", Description = "Project 11 Description", MetaData = "",
+                                Intro = "Project 11 - Intro", Detail = "Project 11 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1569,28 +1630,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 12", Type = 1, Status = 0, ZOrder = 12,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 12 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 12 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 12, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 12 - News - Intro", Detail = "Dự Án 12 - News - Detail", MetaData = "Dự Án 12 - News - MetaData",
-                                    Title = "Dự Án 12 - News ", Keyword = "Dự Án 12 - News Keyword", Description = "Dự Án 12 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 12, LanguageId = 29, Status = 0,
-                                    Intro = "Project 12 - News - Intro", Detail = "Project 12- News - Detail", MetaData = "Project 12 - News - MetaData",
-                                    Title = "Project 12 - News", Keyword = "Project 12 - News Keyword", Description = "Project 12 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 12, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 12 - News - Intro", Detail = "Dự Án 12 - News - Detail", MetaData = "Dự Án 12 - News - MetaData",
+                                        Title = "Dự Án 12 - News ", Keyword = "Dự Án 12 - News Keyword", Description = "Dự Án 12 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 12, LanguageId = 29, Status = 0,
+                                        Intro = "Project 12 - News - Intro", Detail = "Project 12- News - Detail", MetaData = "Project 12 - News - MetaData",
+                                        Title = "Project 12 - News", Keyword = "Project 12 - News Keyword", Description = "Project 12 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -1599,14 +1663,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 12, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 12", Description = "Dự Án 12 Description",
+                                Title = "Tên Dự Án 12", Keyword = "Dự Án 12 Keyword", Description = "Dự án 12 Description", MetaData = "",
+                                Intro = "Dự Án 12 - Intro", Detail = "Dự Án 12 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 12, LanguageId = 29, Status = 0,
-                                Name = "Project Name 12", Description = "Project 12 Description",
+                                Title = "Project Name 12", Keyword = "Project 12 Keyword", Description = "Project 12 Description", MetaData = "",
+                                Intro = "Project 12 - Intro", Detail = "Project 12 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1692,28 +1758,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 13", Type = 1, Status = 0, ZOrder = 13,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 13 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 13 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 13, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 13 - News - Intro", Detail = "Dự Án 13 - News - Detail", MetaData = "Dự Án 13 - News - MetaData",
-                                    Title = "Dự Án 13 - News ", Keyword = "Dự Án 13 - News Keyword", Description = "Dự Án 13 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 13, LanguageId = 29, Status = 0,
-                                    Intro = "Project 13 - News - Intro", Detail = "Project 13- News - Detail", MetaData = "Project 13 - News - MetaData",
-                                    Title = "Project 13 - News", Keyword = "Project 13 - News Keyword", Description = "Project 13 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 13, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 13 - News - Intro", Detail = "Dự Án 13 - News - Detail", MetaData = "Dự Án 13 - News - MetaData",
+                                        Title = "Dự Án 13 - News ", Keyword = "Dự Án 13 - News Keyword", Description = "Dự Án 13 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 13, LanguageId = 29, Status = 0,
+                                        Intro = "Project 13 - News - Intro", Detail = "Project 13- News - Detail", MetaData = "Project 13 - News - MetaData",
+                                        Title = "Project 13 - News", Keyword = "Project 13 - News Keyword", Description = "Project 13 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -1722,14 +1791,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 13, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 13", Description = "Dự Án 13 Description",
+                                Title = "Tên Dự Án 13", Keyword = "Dự Án 13 Keyword", Description = "Dự án 13 Description", MetaData = "",
+                                Intro = "Dự Án 13 - Intro", Detail = "Dự Án 13 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 13, LanguageId = 29, Status = 0,
-                                Name = "Project Name 13", Description = "Project 13 Description",
+                                Title = "Project Name 13", Keyword = "Project 13 Keyword", Description = "Project 13 Description", MetaData = "",
+                                Intro = "Project 13 - Intro", Detail = "Project 13 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1815,28 +1886,31 @@ namespace PenDesign.Data.MigrationConfiguration
                         Name = "Project 14", Type = 1, Status = 0, ZOrder = 14,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                        News = new News()
+                        News = new List<News>
                         {
-                            Name = "Project 14 - News", Status = 0,  CategoryId = 1,  ListTagId = "", 
-                            CreatedById = userId, CreatedDateTime = DateTime.Now,
-                            ModifiedById = userId, ModifiedDateTime = DateTime.Now,
-                            NewsMappings = new List<NewsMapping>()
+                            new News()
                             {
-                                new NewsMapping()
+                                Name = "Project 14 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
                                 {
-                                    NewsId = 14, LanguageId = 129, Status = 0,
-                                    Intro = "Dự Án 14 - News - Intro", Detail = "Dự Án 14 - News - Detail", MetaData = "Dự Án 14 - News - MetaData",
-                                    Title = "Dự Án 14 - News ", Keyword = "Dự Án 14 - News Keyword", Description = "Dự Án 14 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
-                                },
-                                new NewsMapping()
-                                {
-                                    NewsId = 14, LanguageId = 29, Status = 0,
-                                    Intro = "Project 14 - News - Intro", Detail = "Project 14- News - Detail", MetaData = "Project 14 - News - MetaData",
-                                    Title = "Project 14 - News", Keyword = "Project 14 - News Keyword", Description = "Project 14 - News Description",
-                                    CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                    ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 14, LanguageId = 129, Status = 0,
+                                        Intro = "Dự Án 14 - News - Intro", Detail = "Dự Án 14 - News - Detail", MetaData = "Dự Án 14 - News - MetaData",
+                                        Title = "Dự Án 14 - News ", Keyword = "Dự Án 14 - News Keyword", Description = "Dự Án 14 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 14, LanguageId = 29, Status = 0,
+                                        Intro = "Project 14 - News - Intro", Detail = "Project 14- News - Detail", MetaData = "Project 14 - News - MetaData",
+                                        Title = "Project 14 - News", Keyword = "Project 14 - News Keyword", Description = "Project 14 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
                                 }
                             }
                         },
@@ -1845,14 +1919,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 14, LanguageId = 129, Status = 0,
-                                Name = "Tên Dự Án 14", Description = "Dự Án 14 Description",
+                                Title = "Tên Dự Án 14", Keyword = "Dự Án 14 Keyword", Description = "Dự án 14 Description", MetaData = "",
+                                Intro = "Dự Án 14 - Intro", Detail = "Dự Án 14 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new ProjectMapping()
                             {
                                 ProjectId = 14, LanguageId = 29, Status = 0,
-                                Name = "Project Name 14", Description = "Project 14 Description",
+                                Title = "Project Name 14", Keyword = "Project 14 Keyword", Description = "Project 14 Description", MetaData = "",
+                                Intro = "Project 14 - Intro", Detail = "Project 14 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -1932,10 +2008,825 @@ namespace PenDesign.Data.MigrationConfiguration
                                 }
                             }
                         }
+                    },
+                    // project 15
+                    new Project() { 
+                        Name = "Project 15 - Video Clip", Type = 1, Status = 0, ZOrder = 15,
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        ProjectMappings = new List<ProjectMapping>()
+                        {
+                            new ProjectMapping()
+                            {
+                                ProjectId = 15, LanguageId = 129, Status = 0,
+                                Title = "Project 15 - Video Clip", Keyword = "Project 15 - Video Clip Keyword", Description = "Project 15 - Video Clip Description", MetaData = "",
+                                Intro = "Project 15 - Video Clip - Intro", Detail = "Project 15 - Video Clip Detail",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new ProjectMapping()
+                            {
+                                ProjectId = 15, LanguageId = 29, Status = 0,
+                                Title = "Project 15 - Video Clip", Keyword = "Project 15 - Video Clip Keyword", Description = "Project 15 - Video Clip Description", MetaData = "",
+                                Intro = "Project 15 - Video Clip - Intro", Detail = "Project 15 - Video Clip Detail",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        },
+                        ProjectImages = new List<ProjectImage>()
+                        {
+                            new ProjectImage()
+                            {
+                                ProjectId = 15, Type = 2, Status = 0, ZOrder = 1,
+                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img1.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 43, LanguageId = 129, Status = 0,
+                                        Name = "Tên Video 1 -  Dự Án 15", Description = "Dự Án 15 - Video 1 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 43, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 15 - Video 1", Description = "Project 15 - Video 1 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 15, Type = 2, Status = 0, ZOrder = 2,
+                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img2.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 44, LanguageId = 129, Status = 0,
+                                        Name = "Tên Video 2 -  Dự Án 15", Description = "Dự Án 15 - Video 2 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 44, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 15 - Video 2", Description = "Project 15 - Video 2 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 15, Type = 2, Status = 0, ZOrder = 3,
+                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img3.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 45, LanguageId = 129, Status = 0,
+                                        Name = "Tên Video 3 -  Dự Án 15", Description = "Dự Án 15 - Video 3 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 45, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 15 - Video 3", Description = "Project 15 - Video 3 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 15, Type = 2, Status = 0, ZOrder = 4,
+                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img1.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 46, LanguageId = 129, Status = 0,
+                                        Name = "Tên Video 4 -  Dự Án 15", Description = "Dự Án 15 - Video 4 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 46, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 15 - Video 4", Description = "Project 15 - Video 4 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 15, Type = 2, Status = 0, ZOrder = 5,
+                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img2.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 47, LanguageId = 129, Status = 0,
+                                        Name = "Tên Video 5 -  Dự Án 15", Description = "Dự Án 15 - Video 5 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 47, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 15 - Video 5", Description = "Project 15 - Video 5 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 15, Type = 2, Status = 0, ZOrder = 6,
+                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img3.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 48, LanguageId = 129, Status = 0,
+                                        Name = "Tên Video 6 -  Dự Án 15", Description = "Dự Án 15 - Video 6 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 48, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 15 - Video 6", Description = "Project 15 - Video 6 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            },
+                            new ProjectImage()
+                            {
+                                ProjectId = 15, Type = 2, Status = 0, ZOrder = 7,
+                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img3.jpg",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ProjectImageMappings = new List<ProjectImageMapping>()
+                                {
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 49, LanguageId = 129, Status = 0,
+                                        Name = "Tên Video 7 -  Dự Án 15", Description = "Dự Án 15 - Video 7 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now  
+                                    },
+                                    new ProjectImageMapping()
+                                    {
+                                        ProjectImageId = 49, LanguageId = 29, Status = 0,
+                                        Name = "Project Name 15 - Video 7", Description = "Project 15 - Video 7 Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now 
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    // project 16
+                    new Project() { 
+                        Name = "Project 16 - Công trình thực tế", Type = 1, Status = 0, ZOrder = 16,
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        ProjectMappings = new List<ProjectMapping>()
+                        {
+                            new ProjectMapping()
+                            {
+                                ProjectId = 16, LanguageId = 129, Status = 0,
+                                Title = "Project 16 - Công trình thực tế", Keyword = "Project 16 - Công trình thực tế Keyword", Description = "Project 16 - Công trình thực tế Description", MetaData = "",
+                                Intro = "Project 16 - Công trình thực tế - Intro", Detail = "Project 16 - Công trình thực tế Detail",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new ProjectMapping()
+                            {
+                                ProjectId = 16, LanguageId = 29, Status = 0,
+                                Title = "Project 16 - Công trình thực tế", Keyword = "Project 16 - Công trình thực tế Keyword", Description = "Project 16 - Công trình thực tế Description", MetaData = "",
+                                Intro = "Project 16 - Công trình thực tế - Intro", Detail = "Project 16 - Công trình thực tế Detail",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        },
+                        News = new List<News>()
+                        {
+                            
+                        }
                     }
                 };
 
                 projectList.ForEach(m => context.Projects.AddOrUpdate(p => p.Id, m));
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    var msg = ex.Message;
+                }
+            }
+
+            #endregion
+
+            #region menu
+            if (context.GroupControls.Count() == 0)
+            {
+                var userId = UserManager.FindByName("Administrator").Id;
+                var groupControlList = new List<GroupControl>()
+                {
+                    //Main menu
+                    new GroupControl() { 
+                        Name = "Menu", Type = "Menu", Code = "", Parent = 0, Status = 0, ZOrder = 1,
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        Controls = new List<Control>()
+                        {
+                            new Control()
+                            {
+                                GroupControlId = 1, Name = "Trang chủ", Url = "/", Parent = 0, Image = "", Description = "", ZOrder = 1, Status = 0,
+                                MenuController = "Home", MenuAction = "Index", MenuId = "",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                ControlMappings = new List<ControlMapping>()
+                                {
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 1, LanguageId = 129, Status = 0, Text = "Trang chủ", 
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 1, LanguageId = 29, Status = 0, Text = "Home",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new Control()
+                            {
+                                GroupControlId = 1, Name = "Giới thiệu", Url = "/gioi-thieu", Parent = 0, Image = "", Description = "", ZOrder = 2, Status = 0,
+                                MenuController = "Home", MenuAction = "About", MenuId = "",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                 ControlMappings = new List<ControlMapping>()
+                                {
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 2, LanguageId = 129, Status = 0, Text = "Giới thiệu", 
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 2, LanguageId = 29, Status = 0, Text = "About us",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new Control()
+                            {
+                                GroupControlId = 1, Name = "Dự án", Url = "/du-an", Parent = 0, Image = "", Description = "", ZOrder = 3, Status = 0,
+                                MenuController = "Project", MenuAction = "Index, Detail", MenuId = "",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                 ControlMappings = new List<ControlMapping>()
+                                {
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 3, LanguageId = 129, Status = 0, Text = "Dự án", 
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 3, LanguageId = 29, Status = 0, Text = "Projects",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new Control()
+                            {
+                                GroupControlId = 1, Name = "Video", Url = "/video-clip", Parent = 0, Image = "", Description = "", ZOrder = 4, Status = 0,
+                                MenuController = "Video", MenuAction = "Index", MenuId = "",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                 ControlMappings = new List<ControlMapping>()
+                                {
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 4, LanguageId = 129, Status = 0, Text = "Video", 
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 4, LanguageId = 29, Status = 0, Text = "Video",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new Control()
+                            {
+                                GroupControlId = 1, Name = "Công trình thực tế", Url = "/cong-trinh-thuc-te", Parent = 0, Image = "", Description = "", ZOrder = 5, Status = 0,
+                                MenuController = "Construction", MenuAction = "Index, Detail", MenuId = "",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                 ControlMappings = new List<ControlMapping>()
+                                {
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 5, LanguageId = 129, Status = 0, Text = "Công trình thực tế", 
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 5, LanguageId = 29, Status = 0, Text = "Constructions",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new Control()
+                            {
+                                GroupControlId = 1, Name = "Liên hệ", Url = "/lien-he", Parent = 0, Image = "", Description = "", ZOrder = 6, Status = 0,
+                                MenuController = "Home", MenuAction = "Contact", MenuId = "",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                 ControlMappings = new List<ControlMapping>()
+                                {
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 6, LanguageId = 129, Status = 0, Text = "Liên hệ", 
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new ControlMapping()
+                                    {
+                                        ControlId = 6, LanguageId = 29, Status = 0, Text = "Contact",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+
+                groupControlList.ForEach(m => context.GroupControls.AddOrUpdate(p => p.Id, m));
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    var msg = ex.Message;
+                }
+            }
+
+            #endregion
+
+            #region News
+            if (context.NewsCategories.Count() == 0)
+            {
+                var userId = UserManager.FindByName("Administrator").Id;
+                var newsCategoryList = new List<NewsCategory>()
+                {
+                    //Main menu
+                    new NewsCategory() { 
+                        Name = "Xu Hướng", Parent = 0, Status = 0, ZOrder = 1, 
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        NewsCategoryMappings = new List<NewsCategoryMapping>()
+                        {
+                            new NewsCategoryMapping()
+                            {
+                                NewsCategoryId = 15, LanguageId = 129, Status = 0,
+                                Intro = "Xu Hướng 1 - NewsCategory - Intro", Detail = "Xu Hướng 1 - NewsCategory - Detail", MetaData = "Xu Hướng 1 - NewsCategory - MetaData",
+                                Title = "Xu Hướng 1 - NewsCategory ", Keyword = "Xu Hướng 1 - NewsCategory Keyword", Description = "Xu Hướng 1 - NewsCategory Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new NewsCategoryMapping()
+                            {
+                                NewsCategoryId = 15, LanguageId = 29, Status = 0,
+                                Intro = "Trend 1 - NewsCategory - Intro", Detail = "Trend 1 - NewsCategory - Detail", MetaData = "Trend 1 - NewsCategory - MetaData",
+                                Title = "Trend 1 - NewsCategory", Keyword = "Trend 1 - NewsCategory Keyword", Description = "Trend 1 - NewsCategory Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        },
+                        Newses = new List<News>()
+                        {
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Xu Hướng 1", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 15, LanguageId = 129, Status = 0,
+                                        Intro = "Xu Hướng 1 - News - Intro", Detail = "Xu Hướng 1 - News - Detail" + detail, MetaData = "Xu Hướng 1 - News - MetaData",
+                                        Title = "Xu Hướng 1 - News ", Keyword = "Xu Hướng 1 - News Keyword", Description = "Xu Hướng 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 15, LanguageId = 29, Status = 0,
+                                        Intro = "Trend 1 - News - Intro", Detail = "Trend 1 - News - Detail" + detail, MetaData = "Trend 1 - News - MetaData",
+                                        Title = "Trend 1 - News", Keyword = "Trend 1 - News Keyword", Description = "Trend 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Xu Hướng 2", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 16, LanguageId = 129, Status = 0,
+                                        Intro = "Xu Hướng 2 - News - Intro", Detail = "Xu Hướng 2 - News - Detail" + detail, MetaData = "Xu Hướng 2 - News - MetaData",
+                                        Title = "Xu Hướng 2 - News ", Keyword = "Xu Hướng 2 - News Keyword", Description = "Xu Hướng 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 16, LanguageId = 29, Status = 0,
+                                        Intro = "Trend 2 - News - Intro", Detail = "Trend 2 - News - Detail" + detail, MetaData = "Trend 2 - News - MetaData",
+                                        Title = "Trend 2 - News", Keyword = "Trend 2 - News Keyword", Description = "Trend 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Xu hướng 3", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 17, LanguageId = 129, Status = 0,
+                                        Intro = "Xu hướng 3 - News - Intro", Detail = "Xu hướng 3 - News - Detail" + detail, MetaData = "Xu hướng 3 - News - MetaData",
+                                        Title = "Xu hướng 3 - News ", Keyword = "Xu hướng 3 - News Keyword", Description = "Xu hướng 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 17, LanguageId = 29, Status = 0,
+                                        Intro = "Trend 3 - News - Intro", Detail = "Trend 3 - News - Detail" + detail, MetaData = "Trend 3 - News - MetaData",
+                                        Title = "Trend 3 - News", Keyword = "Trend 3 - News Keyword", Description = "Trend 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Xu hướng 4", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 18, LanguageId = 129, Status = 0,
+                                        Intro = "Xu hướng 4 - News - Intro", Detail = "Xu hướng 4 - News - Detail" + detail, MetaData = "Xu hướng 4 - News - MetaData",
+                                        Title = "Xu hướng 4 - News ", Keyword = "Xu hướng 4 - News Keyword", Description = "Xu hướng 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 18, LanguageId = 29, Status = 0,
+                                        Intro = "Trend 4 - News - Intro", Detail = "Trend 4 - News - Detail" + detail, MetaData = "Trend 4 - News - MetaData",
+                                        Title = "Trend 4 - News", Keyword = "Trend 4 - News Keyword", Description = "Trend 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Xu hướng 5", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 19, LanguageId = 129, Status = 0,
+                                        Intro = "Xu hướng 5 - News - Intro", Detail = "Xu hướng 5 - News - Detail" + detail, MetaData = "Xu hướng 5 - News - MetaData",
+                                        Title = "Xu hướng 5 - News ", Keyword = "Xu hướng 5 - News Keyword", Description = "Xu hướng 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 19, LanguageId = 29, Status = 0,
+                                        Intro = "Trend 5 - News - Intro", Detail = "Trend 5 - News - Detail" + detail, MetaData = "Trend 5 - News - MetaData",
+                                        Title = "Trend 5 - News", Keyword = "Trend 5 - News Keyword", Description = "Trend 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Xu hướng 6", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 20, LanguageId = 129, Status = 0,
+                                        Intro = "Xu hướng 6 - News - Intro", Detail = "Xu hướng 6 - News - Detail" + detail, MetaData = "Xu hướng 6 - News - MetaData",
+                                        Title = "Xu hướng 6 - News ", Keyword = "Xu hướng 6 - News Keyword", Description = "Xu hướng 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 20, LanguageId = 29, Status = 0,
+                                        Intro = "Trend 6 - News - Intro", Detail = "Trend 6 - News - Detail" + detail, MetaData = "Trend 6 - News - MetaData",
+                                        Title = "Trend 6 - News", Keyword = "Trend 6 - News Keyword", Description = "Trend 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Xu hướng 7", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 21, LanguageId = 129, Status = 0,
+                                        Intro = "Xu hướng 7 - News - Intro", Detail = "Xu hướng 7 - News - Detail" + detail, MetaData = "Xu hướng 7 - News - MetaData",
+                                        Title = "Xu hướng 7 - News ", Keyword = "Xu hướng 7 - News Keyword", Description = "Xu hướng 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 21, LanguageId = 29, Status = 0,
+                                        Intro = "Trend 7 - News - Intro", Detail = "Trend 7 - News - Detail" + detail, MetaData = "Trend 7 - News - MetaData",
+                                        Title = "Trend 7 - News", Keyword = "Trend 7 - News Keyword", Description = "Trend 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    new NewsCategory() { 
+                        Name = "Khách Hàng", Parent = 0, Status = 0, ZOrder = 1, 
+                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                        NewsCategoryMappings = new List<NewsCategoryMapping>()
+                        {
+                            new NewsCategoryMapping()
+                            {
+                                NewsCategoryId = 15, LanguageId = 129, Status = 0,
+                                Intro = "Khách Hàng 1 - NewsCategory - Intro", Detail = "Khách Hàng 1 - NewsCategory - Detail", MetaData = "Khách Hàng 1 - NewsCategory - MetaData",
+                                Title = "Khách Hàng 1 - NewsCategory ", Keyword = "Khách Hàng 1 - NewsCategory Keyword", Description = "Khách Hàng 1 - NewsCategory Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new NewsCategoryMapping()
+                            {
+                                NewsCategoryId = 15, LanguageId = 29, Status = 0,
+                                Intro = "Customers 1 - NewsCategory - Intro", Detail = "Customers 1 - NewsCategory - Detail", MetaData = "Customers 1 - NewsCategory - MetaData",
+                                Title = "Customers 1 - NewsCategory", Keyword = "Customers 1 - NewsCategory Keyword", Description = "Customers 1 - NewsCategory Description",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                        },
+                        Newses = new List<News>()
+                        {
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Khách Hàng 1", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 15, LanguageId = 129, Status = 0,
+                                        Intro = "Khách Hàng 1 - News - Intro", Detail = "Khách Hàng 1 - News - Detail" + detail, MetaData = "Khách Hàng 1 - News - MetaData",
+                                        Title = "Khách Hàng 1 - News ", Keyword = "Khách Hàng 1 - News Keyword", Description = "Khách Hàng 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 15, LanguageId = 29, Status = 0,
+                                        Intro = "Customers 1 - News - Intro", Detail = "Customers 1 - News - Detail" + detail, MetaData = "Customers 1 - News - MetaData",
+                                        Title = "Customers 1 - News", Keyword = "Customers 1 - News Keyword", Description = "Customers 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Khách Hàng 2", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 16, LanguageId = 129, Status = 0,
+                                        Intro = "Khách Hàng 2 - News - Intro", Detail = "Khách Hàng 2 - News - Detail" + detail, MetaData = "Khách Hàng 2 - News - MetaData",
+                                        Title = "Khách Hàng 2 - News ", Keyword = "Khách Hàng 2 - News Keyword", Description = "Khách Hàng 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 16, LanguageId = 29, Status = 0,
+                                        Intro = "Customers 2 - News - Intro", Detail = "Customers 2 - News - Detail" + detail, MetaData = "Customers 2 - News - MetaData",
+                                        Title = "Customers 2 - News", Keyword = "Customers 2 - News Keyword", Description = "Customers 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Khách Hàng 3", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 17, LanguageId = 129, Status = 0,
+                                        Intro = "Khách Hàng 3 - News - Intro", Detail = "Khách Hàng 3 - News - Detail" + detail, MetaData = "Khách Hàng 3 - News - MetaData",
+                                        Title = "Khách Hàng 3 - News ", Keyword = "Khách Hàng 3 - News Keyword", Description = "Khách Hàng 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 17, LanguageId = 29, Status = 0,
+                                        Intro = "Customers 3 - News - Intro", Detail = "Customers 3 - News - Detail" + detail, MetaData = "Customers 3 - News - MetaData",
+                                        Title = "Customers 3 - News", Keyword = "Customers 3 - News Keyword", Description = "Customers 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Khách Hàng 4", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 18, LanguageId = 129, Status = 0,
+                                        Intro = "Khách Hàng 4 - News - Intro", Detail = "Khách Hàng 4 - News - Detail" + detail, MetaData = "Khách Hàng 4 - News - MetaData",
+                                        Title = "Khách Hàng 4 - News ", Keyword = "Khách Hàng 4 - News Keyword", Description = "Khách Hàng 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 18, LanguageId = 29, Status = 0,
+                                        Intro = "Customers 4 - News - Intro", Detail = "Customers 4 - News - Detail" + detail, MetaData = "Customers 4 - News - MetaData",
+                                        Title = "Customers 4 - News", Keyword = "Customers 4 - News Keyword", Description = "Customers 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Khách Hàng 5", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 19, LanguageId = 129, Status = 0,
+                                        Intro = "Khách Hàng 5 - News - Intro", Detail = "Khách Hàng 5 - News - Detail" + detail, MetaData = "Khách Hàng 5 - News - MetaData",
+                                        Title = "Khách Hàng 5 - News ", Keyword = "Khách Hàng 5 - News Keyword", Description = "Khách Hàng 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 19, LanguageId = 29, Status = 0,
+                                        Intro = "Customers 5 - News - Intro", Detail = "Customers 5 - News - Detail" + detail, MetaData = "Customers 5 - News - MetaData",
+                                        Title = "Customers 5 - News", Keyword = "Customers 5 - News Keyword", Description = "Customers 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Khách Hàng 6", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 20, LanguageId = 129, Status = 0,
+                                        Intro = "Khách Hàng 6 - News - Intro", Detail = "Khách Hàng 6 - News - Detail" + detail, MetaData = "Khách Hàng 6 - News - MetaData",
+                                        Title = "Khách Hàng 6 - News ", Keyword = "Khách Hàng 6 - News Keyword", Description = "Khách Hàng 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 20, LanguageId = 29, Status = 0,
+                                        Intro = "Customers 6 - News - Intro", Detail = "Customers 6 - News - Detail" + detail, MetaData = "Customers 6 - News - MetaData",
+                                        Title = "Customers 6 - News", Keyword = "Customers 6 - News Keyword", Description = "Customers 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                NewsCategoryId = 1, Name = "Khách Hàng 7", Status = 0, ListTagId = "",  
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 21, LanguageId = 129, Status = 0,
+                                        Intro = "Khách Hàng 7 - News - Intro", Detail = "Khách Hàng 7 - News - Detail" + detail, MetaData = "Khách Hàng 7 - News - MetaData",
+                                        Title = "Khách Hàng 7 - News ", Keyword = "Khách Hàng 7 - News Keyword", Description = "Khách Hàng 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 21, LanguageId = 29, Status = 0,
+                                        Intro = "Customers 7 - News - Intro", Detail = "Customers 7 - News - Detail" + detail, MetaData = "Customers 7 - News - MetaData",
+                                        Title = "Customers 7 - News", Keyword = "Customers 7 - News Keyword", Description = "Customers 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+
+                newsCategoryList.ForEach(m => context.NewsCategories.AddOrUpdate(p => p.Id, m));
 
                 try
                 {

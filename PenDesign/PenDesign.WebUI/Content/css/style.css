@@ -84,7 +84,7 @@ h2 {
 }
 
 .page1 h2 {
-    padding-top: 85px;
+    padding-top: 0;
     margin-bottom: 23px;
 }
 
@@ -297,7 +297,7 @@ header {
     font-size: 20px;
     line-height: 24px;
     font-weight: 300;
-    margin-bottom: 19px;
+    margin: 10px 0 ;
 }
 
 .clear.cl1 {
@@ -305,7 +305,7 @@ header {
 }
 
 .serv img {
-    margin-bottom: 35px;
+    /*margin-bottom: 35px;*/
 }
 
 .serv .clear {
@@ -788,13 +788,14 @@ footer {
 
 .sidebarSocial {
     position: fixed;
-    top: 30%;
+    top: 25%;
     left: 10px;
     width: 53px;
 }
 
     .sidebarSocial.socials section {
         float: left;
+        padding: 5px 0;
     }
 
     .sidebarSocial.socials a > span {
@@ -802,6 +803,14 @@ footer {
         margin: 5px auto;
     }
 
-    .img-responsive {
-        width: 100%;
-    }
+.img-responsive {
+    width: 100%;
+}
+
+.breadcrumb {
+    margin: 20px 10px;
+    font-size: 16px;
+}
+.pd-t-85 {
+    padding-top: 85px;
+}

@@ -14,6 +14,7 @@ namespace PenDesign.WebUI.Controllers
         private IConfigService _configService;
         private IBannerService _bannerService;
         private IBannerMappingService _bannerMappingService;
+
         public HomeController(IConfigService configService, IBannerService bannerService, IBannerMappingService bannerMappingService)
         {
             this._configService = configService;
@@ -47,17 +48,7 @@ namespace PenDesign.WebUI.Controllers
             return PartialView("_Footer");
         }
 
-        public ActionResult Project()
-        {
-            return View();
-        }
-
         public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Video()
         {
             return View();
         }

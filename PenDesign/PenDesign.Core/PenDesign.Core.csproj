@@ -122,6 +122,8 @@
     </Compile>
     <Compile Include="Model\Language.cs" />
     <Compile Include="Model\News.cs" />
+    <Compile Include="Model\NewsCategory.cs" />
+    <Compile Include="Model\NewsCategoryMapping.cs" />
     <Compile Include="Model\NewsDraft.cs" />
     <Compile Include="Model\NewsMapping.cs" />
     <Compile Include="Model\Project.cs" />

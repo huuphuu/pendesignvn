@@ -27,19 +27,22 @@ namespace PenDesign.Data
 
         public DbSet<Banner> Banners { get; set; }
         public DbSet<BannerMapping> BannerMappings { get; set; }
-        
+
         public DbSet<Contact> Contacts { get; set; }
-        
+
         public DbSet<Control> Controls { get; set; }
         public DbSet<ControlMapping> ControlMappings { get; set; }
         public DbSet<GroupControl> GroupControls { get; set; }
-        
+
         public DbSet<Language> Languages { get; set; }
-        
+
+        public DbSet<NewsCategory> NewsCategories { get; set; }
+        public DbSet<NewsCategoryMapping> NewsCategoryMappings { get; set; }
         public DbSet<News> Newses { get; set; }
-        public DbSet<NewsDraft> NewsDrafts { get; set; }
         public DbSet<NewsMapping> NewsMappings { get; set; }
-        
+        public DbSet<NewsDraft> NewsDrafts { get; set; }
+
+
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectMapping> ProjectMappings { get; set; }
         public DbSet<ProjectImage> ProjectImages { get; set; }

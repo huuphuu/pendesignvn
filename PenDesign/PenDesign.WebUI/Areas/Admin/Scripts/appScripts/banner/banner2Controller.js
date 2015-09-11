@@ -23,7 +23,6 @@ angular.module("adminApp")
             pageLength: 16,
             searchQuery: '',
             onActionClick: function (rowID, act) {
-                debugger;
                 var i = 0;
                 for (; i < $scope.gridInfo.data.length; i++)
                     if ($scope.gridInfo.data[i].id == rowID) {
@@ -40,7 +39,7 @@ angular.module("adminApp")
                         break;
                 }
             },
-            setData: function (row, col) {
+            setData: function (row, col) {//ham nay dung xoa
             },
 
             getGridData: function () {
@@ -48,18 +47,6 @@ angular.module("adminApp")
                 return bannerService.getAllBanners().$promise.then(
                 function (data) {
                     $rootScope.showModal = false;
-
-
-                    //    $scope.gridInfo.display(
-                    //    [{id: "1",
-                    //    languageId: "129",
-                    //    "mediaType": "1",
-                    //    "mediaUrl": "/Content/images/slide.jpg",
-                    //    "name": "Tên Banner 1",
-                    //    " position": 1,
-                    //    "type": 1,
-                    //    "order": 1
-                    //}]);
                     $scope.gridInfo.display(data);
                 }, function (response) {
                     $rootScope.showModal = false;
@@ -67,6 +54,11 @@ angular.module("adminApp")
                 });
             }
         }
+
+        $scope.searchTable = function () {
+            var query = $scope.gridInfo.searchQuery;
+            $scope.gridInfo.tableInstance.search(query).draw();
+        };
 
 
         $scope.gridInfo.getGridData();

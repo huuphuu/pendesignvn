@@ -328,6 +328,7 @@
     <Content Include="Areas\Admin\Scripts\appScripts\account\accountService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\account\loginApp.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\app.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\banner\banner2Controller.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\banner\bannerController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\banner\bannerService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\config\configController.js" />
@@ -848,6 +849,7 @@
     <Content Include="Areas\Admin\Templates\CP.index.html" />
     <Content Include="Areas\Admin\Templates\Dialogs\confirmDialog.html" />
     <Content Include="Areas\Admin\Templates\Directives\dropzone\dropzone-directive.js" />
+    <Content Include="Areas\Admin\Templates\Directives\grid\vmis-Table.html" />
     <Content Include="Areas\Admin\Templates\Directives\header\nav\header-Navbar-Menu-dropdown.html" />
     <Content Include="Areas\Admin\Templates\Directives\header\nav\header-Navbar-Menu.html" />
     <Content Include="Areas\Admin\Templates\Directives\listFolderTreeView\listFolder-Fileschilds.html" />
@@ -859,6 +861,7 @@
     <Content Include="Areas\Admin\Templates\Views\Account\login.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Banner\addBanner.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Banner\banner.list.view.html" />
+    <Content Include="Areas\Admin\Templates\Views\Banner\banner.list.view2.html" />
     <Content Include="Areas\Admin\Templates\Views\Configs\configs.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Course\addCourse.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Course\course.list.view.html" />
@@ -2081,7 +2084,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

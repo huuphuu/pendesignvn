@@ -1,4 +1,6 @@
-﻿'use strict';
+﻿/// <reference path="../../Templates/Directives/grid/datatable.html" />
+/// <reference path="../../Templates/Directives/grid/datatable.html" />
+'use strict';
 
 angular.module('adminApp')
     .config(function ($httpProvider) {
@@ -23,7 +25,7 @@ angular.module('adminApp')
                     $rootScope.showModal = false;
                     $scope.currentUser = data;
                 },
-                function(response) {
+                function (response) {
                     $rootScope.showModal = false;
                     toaster.pop('error', "Lỗi!", response.data);
                 }
@@ -40,7 +42,7 @@ angular.module('adminApp')
                     $rootScope.showModal = false;
                     $scope.currentUser = data;
                 },
-                function(response) {
+                function (response) {
                     $rootScope.showModal = false;
                     toaster.pop('error', "Lỗi!", response.data);
                 }
@@ -335,7 +337,165 @@ angular.module('adminApp')
                 });
             }
         };
-    });
+    })
+.directive('vmisTable', function () {
+    return {
+        // restrict: "AE",
+        templateUrl: function (elem, attrs) {
+            return attrs["templateUrl"] || 'Areas/Admin/Templates/directives/grid/vmis-Table.html';
+        },
+        scope: {
+            gridInfo: '=vmisTable'
+        },
+        controller: function ($scope, $element, $attrs, $q, DTOptionsBuilder, DTColumnBuilder, $timeout, $compile) {
+            var pageLength = 20;
+            if (typeof $scope.gridInfo.pageLength != 'undefined')
+                pageLength = $scope.gridInfo.pageLength
+            $scope.dtOptions = DTOptionsBuilder.newOptions()
+                                .withOption("paging", true)
+                                .withOption("pagingType", 'simple_numbers')
+                                .withOption("pageLength", pageLength)
+                                .withOption("searching", true)
+                                .withOption("autowidth", false)
+            //.withOption('responsive', true)
+            // .withOption('scrollX', '30%')
+            //.withOption('scrollCollapse', true)
+            .withOption('createdRow', createdRow)
+            // .withFixedColumns({
+            //     leftColumns: 3,
+            //     rightColumns: 0
+            // })
+            .withOption('rowCallback', rowCallback);
+
+            function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td', nRow).unbind('click');
+                $('td', nRow).bind('click', function ($event) {
+                    var col = $(this).attr('class').split(' ')[0];
+                    var row = $(this).closest('tr');
+                    $scope.gridInfo.nRow = row[0];
+                    $("tr").removeClass('selected');
+                    $(this).parent().addClass('selected');
+                    $scope.gridInfo.setData(aData, col);
+                    $event.preventDefault();
+                    $event.stopPropagation();
+                });
+                return nRow;
+            }
+
+            function createdRow(row, data, dataIndex) {
+                // Recompiling so we can bind Angular directive to the DT
+                $compile(angular.element(row).contents())($scope);
+            }
+
+
+            $scope.dtColumns = standardFields($scope.gridInfo.cols);
+            $scope.dtInstance = {}
+
+            $scope.searchTable = function () {
+                var query = $scope.searchQuery;
+                $scope.gridInfo.tableInstance.search(query).draw();
+            };
+            $scope.deleteRow = function () {
+                //debugger;
+                $scope.dtInstance.DataTable.rows('.selected').remove().draw(false);
+                $scope.dtInstance.dataTable.fnDeleteRow($scope.gridInfo.nRow, null, false);
+            }
+            $scope.addRow = function (entry) {
+                $scope.dtInstance.dataTable.fnAddData(entry);
+            }
+            $scope.updateRow = function (aData) {
+                loadData();
+                // $scope.dtInstance.dataTable.fnUpdate(aData, $scope.gridInfo.nRow);
+            }
+            $scope.gridInfo.display = function (data) {
+                $scope.gridInfo.data = angular.copy(data);
+
+                $scope.dtInstance.dataTable.fnClearTable();
+                for (var i in $scope.gridInfo.data)
+                    $scope.dtInstance.dataTable.fnAddData($scope.gridInfo.data[i]);
+                $scope.gridInfo.tableInstance = $scope.dtInstance.DataTable;
+                $scope.gridInfo.instance = $scope;
+            }
+
+            //loadData();
+            //function loadData() {
+            //    coreService.getList($scope.gridInfo.sysViewID, function (data) {
+            //        $scope.gridInfo.data = angular.copy(data[1]);
+            //        $scope.dtInstance.dataTable.fnClearTable();
+            //        $scope.dtInstance.dataTable.fnAddData($scope.gridInfo.data);
+            //        $scope.gridInfo.tableInstance = $scope.dtInstance.DataTable;
+            //        $scope.gridInfo.instance = $scope;
+            //        window.setTimeout(function () {
+            //            $(window).trigger("resize")
+            //        }, 200);
+            //    });
+            //}
+            function standardFields(fields) {
+                var columns = [];
+                for (var i = 0; i < fields.length; i++) {
+                    var field = fields[i];
+                    columns.push(standardField2Column(field));
+                }
+                return columns;
+            }
+            $scope.actionClick = function (row, act, obj) {
+                debugger;
+                $scope.gridInfo.onActionClick(row, act)
+            }
+
+            function standardField2Column(field) {
+                var col = DTColumnBuilder.newColumn(field.name);
+                col.withTitle(field.heading);
+                col.notSortable();
+                if (typeof field.className == 'undefined')
+                    field.className = '';
+                col.withClass(field.name + " " + field.className);
+                switch (field.type) {
+                    //case controls.ICON_AND_TEXT:
+                    //    col.notSortable();
+                    //    col.renderWith(function (data, type, full, meta) {
+
+                    //        return [
+                    //           //'<i  ng-click="action(data,field)" class="fa ', field.classIcon, '">&nbsp;&nbsp;', data, '</i>'
+                    //            '<i  ng-click="action(', full.ID, ",\'", field.name, '\')" class="fa ', field.classIcon, '">&nbsp;&nbsp;', data, '</i>'
+                    //        ].join('');
+                    //    });
+                    //    break;
+                    case controls.IMAGE:
+                        col.notSortable();
+                        col.renderWith(function (data, type, full, meta) {
+                            return [
+                                   '<img src="', data, '" alt="" class="img-responsive" style="max-width: 50px;" />'
+
+                            ].join('');
+                        });
+                        break;
+
+                    case controls.LIST_ICON:
+                        col.notSortable();
+                        col.renderWith(function (data, type, full, meta) {
+                            var result = '';
+                            angular.forEach(field.listAction, function (value, key) {
+                                result += '<a class="btn btn-xs ' + value.classButton + '" title="' + value.title + '" ng-click="actionClick(' + full.id + ",\'" + value.action + '\',this)"><i class="' + value.classIcon + '"></i></a> ';
+
+                            });
+
+                            return result;
+                        });
+                        break;
+
+                    default:
+
+                        break;
+                }
+
+                return col;
+
+            }
+
+        }
+    }
+})
 
 
 

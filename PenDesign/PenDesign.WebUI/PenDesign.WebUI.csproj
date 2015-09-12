@@ -343,8 +343,6 @@
     <Content Include="Areas\Admin\Scripts\appScripts\indexApp.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsService.js" />
-    <Content Include="Areas\Admin\Scripts\appScripts\notification\notificationController.js" />
-    <Content Include="Areas\Admin\Scripts\appScripts\notification\notificationService.js" />
     <Content Include="Areas\Admin\Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Areas\Admin\Scripts\jquery\jquery-2.1.3.min.js" />
     <Content Include="Areas\Admin\Scripts\jquery\jquery-ui.1.10.2.min.js" />

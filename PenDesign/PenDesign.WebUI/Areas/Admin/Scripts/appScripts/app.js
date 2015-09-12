@@ -5,7 +5,7 @@ var app = angular.module('adminApp', ['ui.bootstrap', 'dialogs.main', 'toaster',
 //ui.router
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/controlPanel/notifications');
+    $urlRouterProvider.otherwise('/controlPanel/banner-list');
 
     $stateProvider
         //.state('login', {
@@ -20,11 +20,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('controlPanel.index', {
             url: '/index',
             templateUrl: '/Areas/Admin/Templates/Views/Index/index.html'
-        })
-        //notification
-        .state('controlPanel.notification', {
-            url: '/notifications',
-            templateUrl: '/Areas/Admin/Templates/Views/Notification/notifications.view.html'
         })
         //gallery
         .state('controlPanel.addGallery', {

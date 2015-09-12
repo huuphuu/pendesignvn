@@ -66,8 +66,6 @@ namespace PenDesign.WebUI.Controllers
         {
             ViewBag.logo = configModel.LogoUrl;
             ViewBag.companyName = configModel.CompanyName;
-            //var menuModel = _groupControlService.GetMany(m => m.Type == "Menu" && m.Status == 0)
-            //                                    .Select(m => m.Controls.Where(c => c.Status == 0));
             var menuModel = _controlService.GetMany(c => c.GroupControl.Type == "Menu" && c.Status == 0)
                                             .Include(c => c.ControlMappings)
                                             .Select(c => c.ControlMappings.Where(cm => cm.LanguageId == 129));

@@ -5,7 +5,6 @@ angular.module("loginApp", [])
         $scope.avatar = "";
         $scope.clicked = false;
         $scope.signIn = function (user) {
-            console.log("user", user);
             $scope.clicked = true;
             $(".feedback-loading").show().animate({ "opacity": "1", "bottom": "-80px" }, 400);
             loginService.login(user).then(

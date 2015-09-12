@@ -97,7 +97,7 @@ angular.module("adminApp")
                         $scope.allUsers = data;
                     },
                     function (response) {
-                        //toaster.pop('error', "Lỗi!", response);
+                        toaster.pop('error', "Lỗi!", response);
                     });
         }
         $scope.getAllUsers();

@@ -4,6 +4,7 @@ using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Model;
 using PenDesign.Core.Models;
 using PenDesign.Core.ViewModel.BannerViewModel;
+using PenDesign.Data;
 using PenDesign.WebUI.Authencation;
 using System;
 using System.Collections.Generic;
@@ -19,14 +20,18 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
     {
         private IBannerService _bannerService;
         private IBannerMappingService _bannerMappingService;
-        private 
+        private UserFactory _userFactory;
+        private string _userId;
 
 
-        public BannerController(IBannerService bannerService, IBannerMappingService bannerMappingService)
+
+        public BannerController(IBannerService bannerService, IBannerMappingService bannerMappingService, UserFactory userFactory)
         {
             this._bannerService = bannerService;
             this._bannerMappingService = bannerMappingService;
             //this.userId = User.i
+            this._userFactory = userFactory;
+            this._userId = _userFactory.GetUserId(User.Identity.Name);
         }
 
         // GET: api/Banner
@@ -36,7 +41,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
             {
 
                 var bannerList = new List<BannerVM>();
-                var model = _bannerService.Entities
+                var model = _bannerService.Entities.Where(b => b.Status == 0)
                                             .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),
                                                 b => b.Id,
                                                 bm => bm.BannerId,
@@ -74,29 +79,38 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                     banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
 
                 banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + mediaUrlName;
+
                 banner.Status = 0; // 0 hien, 1 an, 2 xoa database
+                banner.CreatedById = _userId;
+                banner.CreatedDateTime = DateTime.Now;
+                banner.ModifiedById = _userId;
+                banner.ModifiedDateTime = DateTime.Now;
 
                 _bannerService.Add(banner);
 
                 var justAddedBannerId = _bannerService.Entities.Max(b => b.Id);
-
-                banner.BannerMappings = new List<BannerMapping>()
+                var bannerMappingsModels = new List<BannerMapping>()
                 {
                     new BannerMapping()
                             {
                                 BannerId = justAddedBannerId, LanguageId = 129, Status = 0,
                                 Name = banner.Name, Description = "",
-                                CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                CreatedById = _userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = _userId, ModifiedDateTime = DateTime.Now
                             },
                             new BannerMapping()
                             {
                                 BannerId = justAddedBannerId, LanguageId = 29, Status = 0,
-                                Name = "Banner Name 1", Description = "Clever interior projects for your home",
-                                CreatedById = userId, CreatedDateTime = DateTime.Now,
-                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                Name = banner.Name + "-en", Description = "",
+                                CreatedById = _userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = _userId, ModifiedDateTime = DateTime.Now
                             }
                 };
+                foreach (var bm in bannerMappingsModels)
+                {
+                    _bannerMappingService.Add(bm);
+                }
+
                 var responseMessage = new { message = "Thêm thành công!" };
                 return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
             }
@@ -154,9 +168,9 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
             try
             {
                 var banner = _bannerService.GetById(id);
-                //var banner = db.BannerSliders.Find(id);
-                //db.BannerSliders.Remove(banner);
-                //db.SaveChanges();
+                _bannerMappingService.Delete(bm => bm.BannerId == banner.Id);
+                _bannerService.Delete(banner);
+
                 var responseMessage = new { message = "Xóa thành công!" };
                 return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
             }

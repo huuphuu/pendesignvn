@@ -79,7 +79,7 @@ angular.module("adminApp")
         $scope.addNewBanner = function (banner) {
             $rootScope.showModal = true;
             if ($scope.mediaUrl != "")
-                banner.imageUrl = $scope.mediaUrl;
+                banner.mediaUrl = $scope.mediaUrl;
 
             bannerService.addNewBanner(banner).$promise.then(
                 function (response) {

@@ -2,7 +2,7 @@
 
 angular.module("adminApp")
     .controller("bannerController", function ($rootScope, $scope, toaster, bannerService, checkFileNameService,
-                                                $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
+                                                $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs, $state) {
 
 
         $scope.gridInfo = {
@@ -59,9 +59,8 @@ angular.module("adminApp")
             var query = $scope.gridInfo.searchQuery;
             $scope.gridInfo.tableInstance.search(query).draw();
         };
-
-
-        $scope.gridInfo.getGridData();
+        if ($state.current.url != "/add-banner")
+            $scope.gridInfo.getGridData();
 
         $scope.getAllBanners = function () {
             $rootScope.showModal = true;

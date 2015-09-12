@@ -2,6 +2,7 @@
 using PenDesign.Core.Interface.Data;
 using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Model;
+using PenDesign.Core.Models;
 using PenDesign.Core.ViewModel.BannerViewModel;
 using PenDesign.WebUI.Authencation;
 using System;
@@ -18,13 +19,14 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
     {
         private IBannerService _bannerService;
         private IBannerMappingService _bannerMappingService;
-        private IUnitOfWork _unitOfWork;
+        private 
 
-        public BannerController(IBannerService bannerService, IBannerMappingService bannerMappingService, IUnitOfWork unitOfWork)
+
+        public BannerController(IBannerService bannerService, IBannerMappingService bannerMappingService)
         {
             this._bannerService = bannerService;
             this._bannerMappingService = bannerMappingService;
-            this._unitOfWork = unitOfWork;
+            //this.userId = User.i
         }
 
         // GET: api/Banner
@@ -42,11 +44,12 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                                                 {
                                                     Id = b.Id,
                                                     LanguageId = bm.LanguageId,
-                                                    Name = bm.Name,
+                                                    Name = b.Name,
                                                     Type = b.Type,
                                                     Position = b.Position,
                                                     MediaType = b.MediaType,
                                                     MediaUrl = b.MediaUrl,
+                                                    LinkUrl = b.LinkUrl,
                                                     ZOrder = b.ZOrder
                                                 }).AsQueryable();
 
@@ -74,13 +77,26 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 banner.Status = 0; // 0 hien, 1 an, 2 xoa database
 
                 _bannerService.Add(banner);
-                //_unitOfWork.Commit();
 
+                var justAddedBannerId = _bannerService.Entities.Max(b => b.Id);
 
-                //banner.BannerMappings = new BannerMapping()
-                //{
-
-                //};
+                banner.BannerMappings = new List<BannerMapping>()
+                {
+                    new BannerMapping()
+                            {
+                                BannerId = justAddedBannerId, LanguageId = 129, Status = 0,
+                                Name = banner.Name, Description = "",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            },
+                            new BannerMapping()
+                            {
+                                BannerId = justAddedBannerId, LanguageId = 29, Status = 0,
+                                Name = "Banner Name 1", Description = "Clever interior projects for your home",
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                            }
+                };
                 var responseMessage = new { message = "Thêm thành công!" };
                 return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
             }

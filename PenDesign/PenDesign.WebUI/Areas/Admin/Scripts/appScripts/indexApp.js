@@ -225,7 +225,7 @@ angular.module('adminApp')
 //Filter ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Directive /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    .directive('headerNavbarDropdown', function ($timeout, accountService, dialogs, $window,$rootScope, toaster) {
+    .directive('headerNavbarDropdown', function ($timeout, accountService, dialogs, $window, $rootScope, toaster) {
         return {
             restrict: 'EA',
             replace: true,
@@ -284,11 +284,12 @@ angular.module('adminApp')
 
                         accountService.changePassword($scope.currentUser).then(
                                     function (data) {
-                                      $rootScope.showModal = false;
+                                        $rootScope.showModal = false;
                                         // toaster.pop('success', "Thành công!", "Đã thêm người dùng " + user.userName);
-                                      dialogs.notify(data.title, data.message, { size: 'sm', keyboard: false, backdrop: true }, function () {
-                                            });
-                                      //  debugger;
+                                        dialogs.notify(data.title, data.message, { size: 'sm', keyboard: false, backdrop: true }, function () {
+                                        });
+                                        if (data.isSuccess)
+                                            $scope.dlgChangePassword.close();
                                     },
                                     function (response) {
                                         $rootScope.showModal = false;

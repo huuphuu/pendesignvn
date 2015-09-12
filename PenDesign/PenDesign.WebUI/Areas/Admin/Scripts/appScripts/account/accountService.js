@@ -180,6 +180,14 @@ angular.module("adminApp")
             return deferred.promise;
         }
 
+        //Account Manager
+        accountService.changePassword = function (user) {
+            var deferred = $q.defer();
+            $http.post('/admin/api/userAccount/ChangePassword/', user)
+                .success(deferred.resolve)
+                .error(deferred.reject)
+            return deferred.promise;
+        }
 
         return accountService;
     }])

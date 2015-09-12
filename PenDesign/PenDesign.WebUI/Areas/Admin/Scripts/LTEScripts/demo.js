@@ -137,6 +137,7 @@ function change_skin(cls) {
   });
 
   $("body").addClass(cls);
+  $(".modal-header ").addClass(cls);
   store('skin', cls);
   return false;
 }

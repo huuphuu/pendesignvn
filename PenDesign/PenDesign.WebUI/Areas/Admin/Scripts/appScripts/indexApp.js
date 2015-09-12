@@ -225,7 +225,7 @@ angular.module('adminApp')
 //Filter ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Directive /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    .directive('headerNavbarDropdown', function ($timeout, accountService, $window) {
+    .directive('headerNavbarDropdown', function ($timeout, accountService, dialogs, $window,$rootScope, toaster) {
         return {
             restrict: 'EA',
             replace: true,
@@ -250,6 +250,57 @@ angular.module('adminApp')
                         function () { alert("singgout failed"); }
                     );
                 }
+
+                $scope.changePassword = function () {
+                    $scope.dlgChangePassword = dialogs.create('/Areas/Admin/Templates/Views/Account/changepassword.html', 'changePasswordDialogCtrl', { title: 'Change Password', execAction: $scope.actionConfirm }, { size: 'lg', keyboard: false, backdrop: true });
+                    $scope.dlgChangePassword.result.then(function (name) {
+                        $scope.name = name;
+                    }, function () {
+                        if (angular.equals($scope.name, ''))
+                            $scope.name = 'You did not enter in your name!';
+                    });
+                }
+                $scope.actionConfirm = function (entry, callback) {
+                    //entry.UserID = coreService.userID;
+                    $scope.currentUser.UserId = $scope.currentUser.id;
+                    $scope.currentUser.Password = entry.OldPassword;
+                    $scope.currentUser.NewPassword = entry.NewPassword;
+                    console.log(' $scope.currentUser', $scope.currentUser);
+                    //entry.NewPassword = md5.createHash(entry.NewPassword || '');
+                    var dlg = dialogs.confirm('Confirmation', 'Confirmation required', { size: 'sm', keyboard: false, backdrop: true });
+                    dlg.result.then(function (btn) {
+                        //coreService.actionEntry2(entry, function (data) {
+                        //    dialogs.notify(data.Message.Name, data.Message.Description, { size: 'sm', keyboard: false, backdrop: true }, function () {
+
+                        //    });
+
+                        //    if (data.Success) {
+                        //        $scope.dlgChangePassword.close();
+                        //    }
+
+                        //    $scope.$apply();
+                        //});
+                        $rootScope.showModal = true;
+
+                        accountService.changePassword($scope.currentUser).then(
+                                    function (data) {
+                                      $rootScope.showModal = false;
+                                        // toaster.pop('success', "Thành công!", "Đã thêm người dùng " + user.userName);
+                                      dialogs.notify(data.title, data.message, { size: 'sm', keyboard: false, backdrop: true }, function () {
+                                            });
+                                      //  debugger;
+                                    },
+                                    function (response) {
+                                        $rootScope.showModal = false;
+                                        $scope.clicked = false;
+                                        toaster.pop('error', "Lỗi!", response.data);
+                                    }
+                                    );
+                    }, function (btn) {
+                        //$scope.confirmed = 'You confirmed "No."';
+                    });
+                }
+
             }
         };
     })

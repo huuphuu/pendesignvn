@@ -855,6 +855,7 @@
     <Content Include="Areas\Admin\Templates\Directives\navigation\navigation-childs.html" />
     <Content Include="Areas\Admin\Templates\Directives\navigation\navigation.html" />
     <Content Include="Areas\Admin\Templates\Directives\ngMessage\message.html" />
+    <Content Include="Areas\Admin\Templates\Views\Account\changepassword.html" />
     <Content Include="Areas\Admin\Templates\Views\Account\login.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Banner\addBanner.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Banner\banner.list.view.html" />

@@ -1,4 +1,6 @@
-﻿using PenDesign.Core.Interface.Service.BasicServiceInterface;
+﻿using PenDesign.Common.Utils;
+using PenDesign.Core.Interface.Data;
+using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Model;
 using PenDesign.Core.ViewModel.BannerViewModel;
 using PenDesign.WebUI.Authencation;
@@ -16,11 +18,13 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
     {
         private IBannerService _bannerService;
         private IBannerMappingService _bannerMappingService;
+        private IUnitOfWork _unitOfWork;
 
-        public BannerController(IBannerService bannerService, IBannerMappingService bannerMappingService)
+        public BannerController(IBannerService bannerService, IBannerMappingService bannerMappingService, IUnitOfWork unitOfWork)
         {
             this._bannerService = bannerService;
             this._bannerMappingService = bannerMappingService;
+            this._unitOfWork = unitOfWork;
         }
 
         // GET: api/Banner
@@ -31,20 +35,20 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
                 var bannerList = new List<BannerVM>();
                 var model = _bannerService.Entities
-                    .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),
-                        b => b.Id,
-                        bm => bm.BannerId,
-                        (b, bm) => new BannerVM()
-                        {
-                            Id = b.Id,
-                            LanguageId = bm.LanguageId,
-                            Name = bm.Name,
-                            Type = b.Type,
-                            Position = b.Position,
-                            MediaType = b.MediaType,
-                            MediaUrl = b.MediaUrl,
-                            ZOrder = b.ZOrder
-                        }).AsQueryable();
+                                            .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),
+                                                b => b.Id,
+                                                bm => bm.BannerId,
+                                                (b, bm) => new BannerVM()
+                                                {
+                                                    Id = b.Id,
+                                                    LanguageId = bm.LanguageId,
+                                                    Name = bm.Name,
+                                                    Type = b.Type,
+                                                    Position = b.Position,
+                                                    MediaType = b.MediaType,
+                                                    MediaUrl = b.MediaUrl,
+                                                    ZOrder = b.ZOrder
+                                                }).AsQueryable();
 
                 return model;
             }
@@ -54,90 +58,98 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
             }
         }
 
-        // GET: api/Banner/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
 
         // POST: api/Banner
-        //public HttpResponseMessage Post([FromBody] Banner banner)
-        //{
-        //    try
-        //    {
-        //        if (banner.MediaUrl.ToString() != "")
-        //            banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
-        //        else
-        //            banner.MediaUrl = "/Content/images/No_image_available.png";
+        public HttpResponseMessage Post([FromBody] Banner banner)
+        {
+            try
+            {
+                var mediaUrlName = banner.MediaUrl;
+                if (banner.MediaUrl != null)
+                    banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
+                else
+                    banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
 
-        //        banner.Status = 0; // 0 hien, 1 an, 2 xoa database
-        //        //using (var db = new DBContext())
-        //        //{
-        //        //    db.BannerSliders.Add(banner);
-        //        //    db.SaveChanges();
-        //        //}
+                banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + mediaUrlName;
+                banner.Status = 0; // 0 hien, 1 an, 2 xoa database
 
-        //        var responseMessage = new { message = "Thêm thành công!" };
-        //        return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        var responseMessage = new { message = "Lỗi! Vui lòng thử lại sau!" };
-        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, responseMessage);
-        //        throw;
-        //    }
-        //}
+                _bannerService.Add(banner);
+                //_unitOfWork.Commit();
+
+
+                //banner.BannerMappings = new BannerMapping()
+                //{
+
+                //};
+                var responseMessage = new { message = "Thêm thành công!" };
+                return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
+            }
+            catch (Exception)
+            {
+                var responseMessage = new { message = "Lỗi! Vui lòng thử lại sau!" };
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, responseMessage);
+                throw;
+            }
+        }
 
         // PUT: api/Banner/5
-        //public HttpResponseMessage Put([FromBody] Banner banner)
-        //{
-        //    try
-        //    {
-        //        if (banner.ImageUrl.ToString() != "")
-        //        {
-        //            if (banner.ImageUrl.ToString().Contains("/Content"))
-        //                banner.ImageUrl = banner.ImageUrl;
-        //            else
-        //                banner.ImageUrl = "/Content/UploadFiles/images/images/" + banner.ImageUrl;
-        //        }
-        //        else
-        //            banner.ImageUrl = "/Content/images/No_image_available.png";
+        public HttpResponseMessage Put([FromBody] Banner banner)
+        {
+            try
+            {
+                if (banner.MediaUrl.ToString() != "")
+                {
+                    if (banner.MediaUrl.ToString().Contains("/Content"))
+                        banner.MediaUrl = banner.MediaUrl;
+                    else
+                    {
+                        if (WebTools.CreateThumbnail(banner.MediaUrl, "/Content/UploadFiles/images/images/", 78, 56, true, null))
+                        {
+                            banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + banner.MediaUrl;
+                            banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
+                        }
+                    }
 
-        //        banner.Available = true;
+                }
+                else
+                    banner.MediaUrl = "/Content/images/No_image_available.png";
 
-        //        using (var db = new DBContext())
-        //        {
-        //            db.Entry(banner).State = System.Data.Entity.EntityState.Modified;
-        //            db.SaveChanges();
-        //        }
-        //        var responseMessage = new { message = "Chỉnh sửa thành công!" };
-        //        return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        var responseMessage = new { message = "Lỗi! Vui lòng thử lại sau!" };
-        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, responseMessage);
-        //        throw;
-        //    }
-        //}
+                banner.Status = 0;
+
+                //using (var db = new DBContext())
+                //{
+                //    db.Entry(banner).State = System.Data.Entity.EntityState.Modified;
+                //    db.SaveChanges();
+                //}
+                var responseMessage = new { message = "Chỉnh sửa thành công!" };
+                return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
+            }
+            catch (Exception)
+            {
+                var responseMessage = new { message = "Lỗi! Vui lòng thử lại sau!" };
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, responseMessage);
+                throw;
+            }
+        }
 
         // DELETE: api/Banner/5
-        //public HttpResponseMessage Delete(int id)
-        //{
-        //    try
-        //    {
-        //        var banner = db.BannerSliders.Find(id);
-        //        db.BannerSliders.Remove(banner);
-        //        db.SaveChanges();
-        //        var responseMessage = new { message = "Xóa thành công!" };
-        //        return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        var responseMessage = new { message = "Lỗi! Vui lòng thử lại sau!" };
-        //        return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-        //        throw;
-        //    }
-        //}
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                var banner = _bannerService.GetById(id);
+                //var banner = db.BannerSliders.Find(id);
+                //db.BannerSliders.Remove(banner);
+                //db.SaveChanges();
+                var responseMessage = new { message = "Xóa thành công!" };
+                return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
+            }
+            catch (Exception)
+            {
+                var responseMessage = new { message = "Lỗi! Vui lòng thử lại sau!" };
+                return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
+                throw;
+            }
+        }
     }
 }

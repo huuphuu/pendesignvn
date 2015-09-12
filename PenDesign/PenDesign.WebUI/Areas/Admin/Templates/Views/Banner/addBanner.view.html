@@ -7,7 +7,7 @@
 </section>
 
 
-<section class="content" ng-controller="bannerController">
+<section class="content" ng-controller="banner2Controller">
     <h3></h3>
     <!--danh sach email lien he-->
     <div class="row">
@@ -41,8 +41,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="order" ng-model="currentBanner.order" placeholder="Vị trí:" required min="1" />
-                                            <div ng-messages="editBannerForm.order.$error"
+                                            <input type="number" class="form-control" name="zOrder" ng-model="currentBanner.zOrder" placeholder="Vị trí:" required min="1" />
+                                            <div ng-messages="editBannerForm.zOrder.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>&nbsp;</label>
-                                        <div class="row">
+                                        <!--<div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="name">Loại Banner: &nbsp;</label>
@@ -73,27 +73,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <!--<div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Vị trí Zoom (ngang): &nbsp;</label>
-                                                    <select ng-model="currentBanner.horizontalPosition" name="horizontalPosition" class="form-control">
-                                                        <option value="center">Giữa</option>
-                                                        <option value="left">Trái</option>
-                                                        <option value="right">Phải</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Vị trí Zoom (dọc): &nbsp;</label>
-                                                    <select ng-model="currentBanner.verticalPosition" name="verticalPosition" class="form-control">
-                                                        <option value="center">Giữa</option>
-                                                        <option value="top">Trên</option>
-                                                        <option value="bottom">Dưới</option>
-                                                    </select>
-                                                </div>
-                                            </div>-->
-                                        </div>
+                                        </div>-->
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -105,118 +85,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="bannerImageIntro">Nội dung 1: </label>
-                                            <textarea id="text1" required name="text1" ng-model="currentBanner.text1" class="textarea" placeholder="Nội dung văn bản 1 trên slider" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>&nbsp;</label>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Start Left: </label>
-                                                    <input type="number" class="form-control" name="text1StartLeftPosition" ng-model="currentBanner.text1StartLeftPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trái):" required />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Final Left: </label>
-                                                    <input type="number" class="form-control" name="text1FinalLeftPosition" ng-model="currentBanner.text1FinalLeftPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trái):" required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Start Top: </label>
-                                                    <input type="number" class="form-control" name="text1StartTopPosition" ng-model="currentBanner.text1StartTopPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trên):" required />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Final Top: </label>
-                                                    <input type="number" class="form-control" name="text1FinalTopPosition" ng-model="currentBanner.text1FinalTopPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trên):" required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Start Top: </label>
-                                                    <input type="number" class="form-control" name="text1TimeDuration" ng-model="currentBanner.text1TimeDuration" min="0" step="0.1" max="1" placeholder="Thời gian thực hiện (0.1 - 0.5):" required />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Final Top: </label>
-                                                    <input type="number" class="form-control" name="text1Delay" ng-model="currentBanner.text1Delay" min="0" step="0.1" max="1" placeholder="Thời gian Delay (0.1 - 0.5):" required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="bannerImageIntro">Nội dung 2: </label>
-                                            <textarea id="text2" required name="text2" ng-model="currentBanner.text2" class="textarea" placeholder="Nội dung văn bản 2 trên slider" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>&nbsp;</label>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Start Left: </label>
-                                                    <input type="number" class="form-control" name="text2StartLeftPosition" ng-model="currentBanner.text2StartLeftPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trái):" required />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Final Left: </label>
-                                                    <input type="number" class="form-control" name="text2FinalLeftPosition" ng-model="currentBanner.text2FinalLeftPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trái):" required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Start Top: </label>
-                                                    <input type="number" class="form-control" name="text2StartTopPosition" ng-model="currentBanner.text2StartTopPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trên):" required />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Final Top: </label>
-                                                    <input type="number" class="form-control" name="text2FinalTopPosition" ng-model="currentBanner.text2FinalTopPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trên):" required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Start Top: </label>
-                                                    <input type="number" class="form-control" name="text2TimeDuration" ng-model="currentBanner.text2TimeDuration" min="0" step="0.1" max="1" placeholder="Thời gian thực hiện (0.1 - 0.5):" required />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Final Top: </label>
-                                                    <input type="number" class="form-control" name="text2Delay" ng-model="currentBanner.text2Delay" min="0" step="0.1" max="1" placeholder="Thời gian Delay (0.1 - 0.5):" required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>-->
                         </div>
                     </form>
                 </div>
@@ -233,7 +101,7 @@
                                         ng-disabled="editBannerForm.name.$error.required
                                                     ||  editBannerForm.keyword.$error.required
                                                     ||  editBannerForm.description.$error.required
-                                                    || editBannerForm.order.$error.required ||  editBannerForm.order.$error.min
+                                                    || editBannerForm.zOrder.$error.required ||  editBannerForm.zOrder.$error.min
                                     ">
                                     Thêm Banner&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                 </button>

@@ -78,11 +78,8 @@ angular.module("adminApp")
 
         $scope.addNewBanner = function (banner) {
             $rootScope.showModal = true;
-            if ($scope.HomeBannerImageUrl != "")
-                banner.imageUrl = $scope.HomeBannerImageUrl;
-
-            //banner.text1 = CKEDITOR.instances.text1.getData();
-            //banner.text2 = CKEDITOR.instances.text2.getData();
+            if ($scope.mediaUrl != "")
+                banner.mediaUrl = $scope.mediaUrl;
 
             bannerService.addNewBanner(banner).$promise.then(
                 function (response) {
@@ -127,8 +124,8 @@ angular.module("adminApp")
 
         $scope.updateBanner = function (banner) {
 
-            if ($scope.HomeBannerImageUrl != "")
-                banner.imageUrl = $scope.HomeBannerImageUrl;
+            if ($scope.mediaUrl != "")
+                banner.mediaUrl = $scope.mediaUrl;
 
             //banner.text1 = CKEDITOR.instances.text1.getData();
             //banner.text2 = CKEDITOR.instances.text2.getData();
@@ -142,9 +139,7 @@ angular.module("adminApp")
                function (response) {
                    $scope.getAllBanners();
                    $rootScope.showModal = false;
-                   $scope.currentNews = null;
-                   CKEDITOR.instances.text1.setData('');
-                   CKEDITOR.instances.text2.setData('');
+                   $scope.currentBanner = null;
                    toaster.pop('success', "Thành công!", "Đã cập nhật Banner " + banner.name + " - " + response.message);
                    $('html,body').animate({ scrollTop: 0 });
                }, function (response) {
@@ -177,8 +172,7 @@ angular.module("adminApp")
         ];
 
         // Uploader Plugin Code
-        $scope.HomeBannerImageUrl = "";
-        $scope.SubBannerImageUrl = "";
+        $scope.mediaUrl = "";
         $scope.dropzoneConfigHome = {
             'options': { // passed into the Dropzone constructor
                 'url': '/admin/api/upload',
@@ -198,10 +192,10 @@ angular.module("adminApp")
                         }
                         checkFileNameService.checkFileName(this.files[0].name).then(
                             function () {
-                                $scope.HomeBannerImageUrl = dz.files[0].name;
+                                $scope.mediaUrl = dz.files[0].name;
                             },
                             function () {
-                                $scope.HomeBannerImageUrl = dz.files[0].name;
+                                $scope.mediaUrl = dz.files[0].name;
                                 toaster.pop("warning", "Lỗi", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
                             }
                         )

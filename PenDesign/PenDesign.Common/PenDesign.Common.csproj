@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -63,6 +64,7 @@
     <Compile Include="Utils\Security.cs" />
     <Compile Include="Utils\TransactionalInformation.cs" />
     <Compile Include="Utils\WebpageMailer.cs" />
+    <Compile Include="Utils\WebTools.cs" />
     <Compile Include="Utils\XMail.cs" />
     <Compile Include="Utils\XString.cs" />
   </ItemGroup>

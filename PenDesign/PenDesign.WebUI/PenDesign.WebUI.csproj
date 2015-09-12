@@ -1930,7 +1930,7 @@
     <Content Include="Content\images\slide3.jpg" />
     <Content Include="Content\images\socials.png" />
     <Content Include="Content\images\thumb.png" />
-    <Content Include="Content\images\thumb1.jpg" />
+    <Content Include="Content\images\thumb1.png" />
     <Content Include="Content\images\thumb2.png" />
     <Content Include="Content\images\thumb3.png" />
     <Content Include="Content\images\totop.png" />
@@ -2122,6 +2122,7 @@
     <Content Include="Views\Shared\_ContactForm.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

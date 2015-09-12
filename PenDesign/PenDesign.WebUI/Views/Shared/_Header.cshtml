@@ -1,0 +1,36 @@
+﻿@model System.Data.Entity.Infrastructure.DbQuery<IEnumerable<PenDesign.Core.Model.ControlMapping>>
+<header>
+    <div class="container_12">
+        <div class="grid_12">
+            <h1>
+                <a href="index.html">
+                    <img src="@Html.Raw(ViewBag.logo)" alt="@ViewBag.companyName">
+                </a>
+            </h1>
+            @if (Model != null) {
+                <div class="menu_block ">
+                    <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+                        <ul class="sf-menu">
+                            @foreach (var menu in Model)
+                            {
+                                foreach (var item in menu)
+                                {
+                                    <li><a href="@item.Control.Url">@item.Text</a></li>
+                                }
+                            }
+
+                            @*<li><a href="/">Trang chủ</a></li>
+                        <li><a href="/Home/About">Giới thiệu</a></li>
+                        <li><a href="/Project">Dự án</a></li>
+                        <li><a href="/Video">Video</a></li>
+                        <li><a href="/Home/Construction">Công trình thực tế</a></li>
+                        <li><a href="/Home/Blog">Nhật Ký</a></li>*
+                        <li class="current"><a href="/Home/Contact">Liên hệ</a></li>*@
+                        </ul>
+                    </nav>
+                    <div class="clear"></div>
+                </div>
+            }
+        </div>
+    </div>
+</header>

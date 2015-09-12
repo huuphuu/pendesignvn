@@ -55,15 +55,6 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                     Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Content/UploadFiles/images/images"));
                 var fileSavePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/UploadFiles/images/images"), filename);
 
-                //var path = HttpContext.Current.Server.MapPath("~/Content/UploadFiles/images");
-                //DirectoryInfo di = new DirectoryInfo(path);
-                //FileInfo[] TXTFiles = di.GetFiles(filename);
-                //if (TXTFiles.Length != 0)
-                //{
-                //    filename = DateTime.Now.Ticks.ToString().Substring(DateTime.Now.Ticks.ToString().Length - 7, 7) + "-" + httpPostedFile.FileName;
-                //    fileSavePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/UploadFiles/images"), filename);
-                //}
-
                 httpPostedFile.SaveAs(fileSavePath);
 
                 var contentType = MimeTypes.GetContentType(fileSavePath);
@@ -79,6 +70,9 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 {
                     fileName = "/Content/UploadFiles/images/images/" + filename
                 };
+                if (!WebTools.CreateThumbnail(filename, "/Content/UploadFiles/images/images/", 78, 56, false))
+                    return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+
                 return Request.CreateResponse(HttpStatusCode.OK, responseObj);
             }
             return new HttpResponseMessage(HttpStatusCode.InternalServerError);

@@ -2207,7 +2207,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     },
                     // project 16
                     new Project() { 
-                        Name = "Project 16 - Công trình thực tế", Type = 1, Status = 0, ZOrder = 16,
+                        Name = "Project 16 - Công trình thực tế", Type = 3, Status = 0, ZOrder = 16,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         ProjectMappings = new List<ProjectMapping>()
@@ -2231,7 +2231,344 @@ namespace PenDesign.Data.MigrationConfiguration
                         },
                         News = new List<News>()
                         {
-                            
+                            new News()
+                            {
+                                Name = "Công trình thực tế 1 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat1.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 16, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 1 - News - Intro", Detail = "Công trình thực tế 1 - News - Detail" + detail, MetaData = "Công trình thực tế 1 - News - MetaData",
+                                        Title = "Công trình thực tế 1 - News ", Keyword = "Công trình thực tế 1 - News Keyword", Description = "Công trình thực tế 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 16, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 1 - News - Intro", Detail = "Construction 1- News - Detail" + detail, MetaData = "Construction 1 - News - MetaData",
+                                        Title = "Construction 1 - News", Keyword = "Construction 1 - News Keyword", Description = "Construction 1 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 2 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat2.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 17, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 2 - News - Intro", Detail = "Công trình thực tế 2 - News - Detail" + detail, MetaData = "Công trình thực tế 2 - News - MetaData",
+                                        Title = "Công trình thực tế 2 - News ", Keyword = "Công trình thực tế 2 - News Keyword", Description = "Công trình thực tế 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 17, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 2 - News - Intro", Detail = "Construction 2- News - Detail" + detail, MetaData = "Construction 2 - News - MetaData",
+                                        Title = "Construction 2 - News", Keyword = "Construction 2 - News Keyword", Description = "Construction 2 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 3 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat3.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 18, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 3 - News - Intro", Detail = "Công trình thực tế 3 - News - Detail" + detail, MetaData = "Công trình thực tế 3 - News - MetaData",
+                                        Title = "Công trình thực tế 3 - News ", Keyword = "Công trình thực tế 3 - News Keyword", Description = "Công trình thực tế 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 18, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 3 - News - Intro", Detail = "Construction 3- News - Detail" + detail, MetaData = "Construction 3 - News - MetaData",
+                                        Title = "Construction 3 - News", Keyword = "Construction 3 - News Keyword", Description = "Construction 3 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 4 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat4.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 19, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 4 - News - Intro", Detail = "Công trình thực tế 4 - News - Detail" + detail, MetaData = "Công trình thực tế 4 - News - MetaData",
+                                        Title = "Công trình thực tế 4 - News ", Keyword = "Công trình thực tế 4 - News Keyword", Description = "Công trình thực tế 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 19, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 4 - News - Intro", Detail = "Construction 4- News - Detail" + detail, MetaData = "Construction 4 - News - MetaData",
+                                        Title = "Construction 4 - News", Keyword = "Construction 4 - News Keyword", Description = "Construction 4 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 5 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat5.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 20, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 5 - News - Intro", Detail = "Công trình thực tế 5 - News - Detail" + detail, MetaData = "Công trình thực tế 5 - News - MetaData",
+                                        Title = "Công trình thực tế 5 - News ", Keyword = "Công trình thực tế 5 - News Keyword", Description = "Công trình thực tế 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 20, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 5 - News - Intro", Detail = "Construction 5- News - Detail" + detail, MetaData = "Construction 5 - News - MetaData",
+                                        Title = "Construction 5 - News", Keyword = "Construction 5 - News Keyword", Description = "Construction 5 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 6 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat6.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 21, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 6 - News - Intro", Detail = "Công trình thực tế 6 - News - Detail" + detail, MetaData = "Công trình thực tế 6 - News - MetaData",
+                                        Title = "Công trình thực tế 6 - News ", Keyword = "Công trình thực tế 6 - News Keyword", Description = "Công trình thực tế 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 21, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 6 - News - Intro", Detail = "Construction 6- News - Detail" + detail, MetaData = "Construction 6 - News - MetaData",
+                                        Title = "Construction 6 - News", Keyword = "Construction 6 - News Keyword", Description = "Construction 6 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 7 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat7.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 22, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 7 - News - Intro", Detail = "Công trình thực tế 7 - News - Detail" + detail, MetaData = "Công trình thực tế 7 - News - MetaData",
+                                        Title = "Công trình thực tế 7 - News ", Keyword = "Công trình thực tế 7 - News Keyword", Description = "Công trình thực tế 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 22, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 7 - News - Intro", Detail = "Construction 7- News - Detail" + detail, MetaData = "Construction 7 - News - MetaData",
+                                        Title = "Construction 7 - News", Keyword = "Construction 7 - News Keyword", Description = "Construction 7 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 8 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat8.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 23, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 8 - News - Intro", Detail = "Công trình thực tế 8 - News - Detail" + detail, MetaData = "Công trình thực tế 8 - News - MetaData",
+                                        Title = "Công trình thực tế 8 - News ", Keyword = "Công trình thực tế 8 - News Keyword", Description = "Công trình thực tế 8 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 23, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 8 - News - Intro", Detail = "Construction 8- News - Detail" + detail, MetaData = "Construction 8 - News - MetaData",
+                                        Title = "Construction 8 - News", Keyword = "Construction 8 - News Keyword", Description = "Construction 8 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 9 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat9.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 24, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 9 - News - Intro", Detail = "Công trình thực tế 9 - News - Detail" + detail, MetaData = "Công trình thực tế 9 - News - MetaData",
+                                        Title = "Công trình thực tế 9 - News ", Keyword = "Công trình thực tế 9 - News Keyword", Description = "Công trình thực tế 9 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 24, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 9 - News - Intro", Detail = "Construction 9- News - Detail" + detail, MetaData = "Construction 9 - News - MetaData",
+                                        Title = "Construction 9 - News", Keyword = "Construction 9 - News Keyword", Description = "Construction 9 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 10 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat10.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 25, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 10 - News - Intro", Detail = "Công trình thực tế 10 - News - Detail" + detail, MetaData = "Công trình thực tế 10 - News - MetaData",
+                                        Title = "Công trình thực tế 10 - News ", Keyword = "Công trình thực tế 10 - News Keyword", Description = "Công trình thực tế 10 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 25, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 10 - News - Intro", Detail = "Construction 10- News - Detail" + detail, MetaData = "Construction 10 - News - MetaData",
+                                        Title = "Construction 10 - News", Keyword = "Construction 10 - News Keyword", Description = "Construction 10 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 11 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat11.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 26, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 11 - News - Intro", Detail = "Công trình thực tế 11 - News - Detail" + detail, MetaData = "Công trình thực tế 11 - News - MetaData",
+                                        Title = "Công trình thực tế 11 - News ", Keyword = "Công trình thực tế 11 - News Keyword", Description = "Công trình thực tế 11 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 26, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 11 - News - Intro", Detail = "Construction 11- News - Detail" + detail, MetaData = "Construction 11 - News - MetaData",
+                                        Title = "Construction 11 - News", Keyword = "Construction 11 - News Keyword", Description = "Construction 11 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 12 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat12.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 27, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 12 - News - Intro", Detail = "Công trình thực tế 12 - News - Detail" + detail, MetaData = "Công trình thực tế 12 - News - MetaData",
+                                        Title = "Công trình thực tế 12 - News ", Keyword = "Công trình thực tế 12 - News Keyword", Description = "Công trình thực tế 12 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 27, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 12 - News - Intro", Detail = "Construction 12- News - Detail" + detail, MetaData = "Construction 12 - News - MetaData",
+                                        Title = "Construction 12 - News", Keyword = "Construction 12 - News Keyword", Description = "Construction 12 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            },
+                            new News()
+                            {
+                                Name = "Công trình thực tế 13 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Thumbnail = "/Content/images/feat12.jpg", 
+                                CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                ModifiedById = userId, ModifiedDateTime = DateTime.Now,
+                                NewsMappings = new List<NewsMapping>()
+                                {
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 28, LanguageId = 129, Status = 0,
+                                        Intro = "Công trình thực tế 13 - News - Intro", Detail = "Công trình thực tế 13 - News - Detail" + detail, MetaData = "Công trình thực tế 13 - News - MetaData",
+                                        Title = "Công trình thực tế 13 - News ", Keyword = "Công trình thực tế 13 - News Keyword", Description = "Công trình thực tế 13 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    },
+                                    new NewsMapping()
+                                    {
+                                        NewsId = 28, LanguageId = 29, Status = 0,
+                                        Intro = "Construction 13 - News - Intro", Detail = "Construction 13- News - Detail" + detail, MetaData = "Construction 13 - News - MetaData",
+                                        Title = "Construction 13 - News", Keyword = "Construction 13 - News Keyword", Description = "Construction 13 - News Description",
+                                        CreatedById = userId, CreatedDateTime = DateTime.Now,
+                                        ModifiedById = userId, ModifiedDateTime = DateTime.Now
+                                    }
+                                }
+                            }
                         }
                     }
                 };
@@ -2428,7 +2765,7 @@ namespace PenDesign.Data.MigrationConfiguration
                         {
                             new NewsCategoryMapping()
                             {
-                                NewsCategoryId = 15, LanguageId = 129, Status = 0,
+                                NewsCategoryId = 1, LanguageId = 129, Status = 0,
                                 Intro = "Xu Hướng 1 - NewsCategory - Intro", Detail = "Xu Hướng 1 - NewsCategory - Detail", MetaData = "Xu Hướng 1 - NewsCategory - MetaData",
                                 Title = "Xu Hướng 1 - NewsCategory ", Keyword = "Xu Hướng 1 - NewsCategory Keyword", Description = "Xu Hướng 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2436,7 +2773,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new NewsCategoryMapping()
                             {
-                                NewsCategoryId = 15, LanguageId = 29, Status = 0,
+                                NewsCategoryId = 1, LanguageId = 29, Status = 0,
                                 Intro = "Trend 1 - NewsCategory - Intro", Detail = "Trend 1 - NewsCategory - Detail", MetaData = "Trend 1 - NewsCategory - MetaData",
                                 Title = "Trend 1 - NewsCategory", Keyword = "Trend 1 - NewsCategory Keyword", Description = "Trend 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2454,7 +2791,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 15, LanguageId = 129, Status = 0,
+                                        NewsId = 29, LanguageId = 129, Status = 0,
                                         Intro = "Xu Hướng 1 - News - Intro", Detail = "Xu Hướng 1 - News - Detail" + detail, MetaData = "Xu Hướng 1 - News - MetaData",
                                         Title = "Xu Hướng 1 - News ", Keyword = "Xu Hướng 1 - News Keyword", Description = "Xu Hướng 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2462,7 +2799,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 15, LanguageId = 29, Status = 0,
+                                        NewsId = 29, LanguageId = 29, Status = 0,
                                         Intro = "Trend 1 - News - Intro", Detail = "Trend 1 - News - Detail" + detail, MetaData = "Trend 1 - News - MetaData",
                                         Title = "Trend 1 - News", Keyword = "Trend 1 - News Keyword", Description = "Trend 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2479,7 +2816,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 16, LanguageId = 129, Status = 0,
+                                        NewsId = 30, LanguageId = 129, Status = 0,
                                         Intro = "Xu Hướng 2 - News - Intro", Detail = "Xu Hướng 2 - News - Detail" + detail, MetaData = "Xu Hướng 2 - News - MetaData",
                                         Title = "Xu Hướng 2 - News ", Keyword = "Xu Hướng 2 - News Keyword", Description = "Xu Hướng 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2487,7 +2824,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 16, LanguageId = 29, Status = 0,
+                                        NewsId = 30, LanguageId = 29, Status = 0,
                                         Intro = "Trend 2 - News - Intro", Detail = "Trend 2 - News - Detail" + detail, MetaData = "Trend 2 - News - MetaData",
                                         Title = "Trend 2 - News", Keyword = "Trend 2 - News Keyword", Description = "Trend 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2504,7 +2841,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 17, LanguageId = 129, Status = 0,
+                                        NewsId = 31, LanguageId = 129, Status = 0,
                                         Intro = "Xu hướng 3 - News - Intro", Detail = "Xu hướng 3 - News - Detail" + detail, MetaData = "Xu hướng 3 - News - MetaData",
                                         Title = "Xu hướng 3 - News ", Keyword = "Xu hướng 3 - News Keyword", Description = "Xu hướng 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2512,7 +2849,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 17, LanguageId = 29, Status = 0,
+                                        NewsId = 31, LanguageId = 29, Status = 0,
                                         Intro = "Trend 3 - News - Intro", Detail = "Trend 3 - News - Detail" + detail, MetaData = "Trend 3 - News - MetaData",
                                         Title = "Trend 3 - News", Keyword = "Trend 3 - News Keyword", Description = "Trend 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2529,7 +2866,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 18, LanguageId = 129, Status = 0,
+                                        NewsId = 32, LanguageId = 129, Status = 0,
                                         Intro = "Xu hướng 4 - News - Intro", Detail = "Xu hướng 4 - News - Detail" + detail, MetaData = "Xu hướng 4 - News - MetaData",
                                         Title = "Xu hướng 4 - News ", Keyword = "Xu hướng 4 - News Keyword", Description = "Xu hướng 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2537,7 +2874,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 18, LanguageId = 29, Status = 0,
+                                        NewsId = 32, LanguageId = 29, Status = 0,
                                         Intro = "Trend 4 - News - Intro", Detail = "Trend 4 - News - Detail" + detail, MetaData = "Trend 4 - News - MetaData",
                                         Title = "Trend 4 - News", Keyword = "Trend 4 - News Keyword", Description = "Trend 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2554,7 +2891,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 19, LanguageId = 129, Status = 0,
+                                        NewsId = 33, LanguageId = 129, Status = 0,
                                         Intro = "Xu hướng 5 - News - Intro", Detail = "Xu hướng 5 - News - Detail" + detail, MetaData = "Xu hướng 5 - News - MetaData",
                                         Title = "Xu hướng 5 - News ", Keyword = "Xu hướng 5 - News Keyword", Description = "Xu hướng 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2562,7 +2899,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 19, LanguageId = 29, Status = 0,
+                                        NewsId = 33, LanguageId = 29, Status = 0,
                                         Intro = "Trend 5 - News - Intro", Detail = "Trend 5 - News - Detail" + detail, MetaData = "Trend 5 - News - MetaData",
                                         Title = "Trend 5 - News", Keyword = "Trend 5 - News Keyword", Description = "Trend 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2579,7 +2916,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 20, LanguageId = 129, Status = 0,
+                                        NewsId = 34, LanguageId = 129, Status = 0,
                                         Intro = "Xu hướng 6 - News - Intro", Detail = "Xu hướng 6 - News - Detail" + detail, MetaData = "Xu hướng 6 - News - MetaData",
                                         Title = "Xu hướng 6 - News ", Keyword = "Xu hướng 6 - News Keyword", Description = "Xu hướng 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2587,7 +2924,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 20, LanguageId = 29, Status = 0,
+                                        NewsId = 34, LanguageId = 29, Status = 0,
                                         Intro = "Trend 6 - News - Intro", Detail = "Trend 6 - News - Detail" + detail, MetaData = "Trend 6 - News - MetaData",
                                         Title = "Trend 6 - News", Keyword = "Trend 6 - News Keyword", Description = "Trend 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2604,7 +2941,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 21, LanguageId = 129, Status = 0,
+                                        NewsId = 35, LanguageId = 129, Status = 0,
                                         Intro = "Xu hướng 7 - News - Intro", Detail = "Xu hướng 7 - News - Detail" + detail, MetaData = "Xu hướng 7 - News - MetaData",
                                         Title = "Xu hướng 7 - News ", Keyword = "Xu hướng 7 - News Keyword", Description = "Xu hướng 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2612,7 +2949,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 21, LanguageId = 29, Status = 0,
+                                        NewsId = 35, LanguageId = 29, Status = 0,
                                         Intro = "Trend 7 - News - Intro", Detail = "Trend 7 - News - Detail" + detail, MetaData = "Trend 7 - News - MetaData",
                                         Title = "Trend 7 - News", Keyword = "Trend 7 - News Keyword", Description = "Trend 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2623,14 +2960,14 @@ namespace PenDesign.Data.MigrationConfiguration
                         }
                     },
                     new NewsCategory() { 
-                        Name = "Khách Hàng", Parent = 0, Status = 0, ZOrder = 1, 
+                        Name = "Khách Hàng", Parent = 0, Status = 0, ZOrder = 2, 
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         NewsCategoryMappings = new List<NewsCategoryMapping>()
                         {
                             new NewsCategoryMapping()
                             {
-                                NewsCategoryId = 15, LanguageId = 129, Status = 0,
+                                NewsCategoryId = 2, LanguageId = 129, Status = 0,
                                 Intro = "Khách Hàng 1 - NewsCategory - Intro", Detail = "Khách Hàng 1 - NewsCategory - Detail", MetaData = "Khách Hàng 1 - NewsCategory - MetaData",
                                 Title = "Khách Hàng 1 - NewsCategory ", Keyword = "Khách Hàng 1 - NewsCategory Keyword", Description = "Khách Hàng 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2638,7 +2975,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new NewsCategoryMapping()
                             {
-                                NewsCategoryId = 15, LanguageId = 29, Status = 0,
+                                NewsCategoryId = 2, LanguageId = 29, Status = 0,
                                 Intro = "Customers 1 - NewsCategory - Intro", Detail = "Customers 1 - NewsCategory - Detail", MetaData = "Customers 1 - NewsCategory - MetaData",
                                 Title = "Customers 1 - NewsCategory", Keyword = "Customers 1 - NewsCategory Keyword", Description = "Customers 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2649,14 +2986,14 @@ namespace PenDesign.Data.MigrationConfiguration
                         {
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Khách Hàng 1", Status = 0, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 1", Status = 0, ListTagId = "",  
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 15, LanguageId = 129, Status = 0,
+                                        NewsId = 36, LanguageId = 129, Status = 0,
                                         Intro = "Khách Hàng 1 - News - Intro", Detail = "Khách Hàng 1 - News - Detail" + detail, MetaData = "Khách Hàng 1 - News - MetaData",
                                         Title = "Khách Hàng 1 - News ", Keyword = "Khách Hàng 1 - News Keyword", Description = "Khách Hàng 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2664,7 +3001,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 15, LanguageId = 29, Status = 0,
+                                        NewsId = 36, LanguageId = 29, Status = 0,
                                         Intro = "Customers 1 - News - Intro", Detail = "Customers 1 - News - Detail" + detail, MetaData = "Customers 1 - News - MetaData",
                                         Title = "Customers 1 - News", Keyword = "Customers 1 - News Keyword", Description = "Customers 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2674,14 +3011,14 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Khách Hàng 2", Status = 0, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 2", Status = 0, ListTagId = "",  
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 16, LanguageId = 129, Status = 0,
+                                        NewsId = 37, LanguageId = 129, Status = 0,
                                         Intro = "Khách Hàng 2 - News - Intro", Detail = "Khách Hàng 2 - News - Detail" + detail, MetaData = "Khách Hàng 2 - News - MetaData",
                                         Title = "Khách Hàng 2 - News ", Keyword = "Khách Hàng 2 - News Keyword", Description = "Khách Hàng 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2689,7 +3026,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 16, LanguageId = 29, Status = 0,
+                                        NewsId = 37, LanguageId = 29, Status = 0,
                                         Intro = "Customers 2 - News - Intro", Detail = "Customers 2 - News - Detail" + detail, MetaData = "Customers 2 - News - MetaData",
                                         Title = "Customers 2 - News", Keyword = "Customers 2 - News Keyword", Description = "Customers 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2699,14 +3036,14 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Khách Hàng 3", Status = 0, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 3", Status = 0, ListTagId = "",  
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 17, LanguageId = 129, Status = 0,
+                                        NewsId = 38, LanguageId = 129, Status = 0,
                                         Intro = "Khách Hàng 3 - News - Intro", Detail = "Khách Hàng 3 - News - Detail" + detail, MetaData = "Khách Hàng 3 - News - MetaData",
                                         Title = "Khách Hàng 3 - News ", Keyword = "Khách Hàng 3 - News Keyword", Description = "Khách Hàng 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2714,7 +3051,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 17, LanguageId = 29, Status = 0,
+                                        NewsId = 38, LanguageId = 29, Status = 0,
                                         Intro = "Customers 3 - News - Intro", Detail = "Customers 3 - News - Detail" + detail, MetaData = "Customers 3 - News - MetaData",
                                         Title = "Customers 3 - News", Keyword = "Customers 3 - News Keyword", Description = "Customers 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2724,14 +3061,14 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Khách Hàng 4", Status = 0, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 4", Status = 0, ListTagId = "",  
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 18, LanguageId = 129, Status = 0,
+                                        NewsId = 39, LanguageId = 129, Status = 0,
                                         Intro = "Khách Hàng 4 - News - Intro", Detail = "Khách Hàng 4 - News - Detail" + detail, MetaData = "Khách Hàng 4 - News - MetaData",
                                         Title = "Khách Hàng 4 - News ", Keyword = "Khách Hàng 4 - News Keyword", Description = "Khách Hàng 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2739,7 +3076,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 18, LanguageId = 29, Status = 0,
+                                        NewsId = 39, LanguageId = 29, Status = 0,
                                         Intro = "Customers 4 - News - Intro", Detail = "Customers 4 - News - Detail" + detail, MetaData = "Customers 4 - News - MetaData",
                                         Title = "Customers 4 - News", Keyword = "Customers 4 - News Keyword", Description = "Customers 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2749,14 +3086,14 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Khách Hàng 5", Status = 0, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 5", Status = 0, ListTagId = "",  
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 19, LanguageId = 129, Status = 0,
+                                        NewsId = 40, LanguageId = 129, Status = 0,
                                         Intro = "Khách Hàng 5 - News - Intro", Detail = "Khách Hàng 5 - News - Detail" + detail, MetaData = "Khách Hàng 5 - News - MetaData",
                                         Title = "Khách Hàng 5 - News ", Keyword = "Khách Hàng 5 - News Keyword", Description = "Khách Hàng 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2764,7 +3101,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 19, LanguageId = 29, Status = 0,
+                                        NewsId = 40, LanguageId = 29, Status = 0,
                                         Intro = "Customers 5 - News - Intro", Detail = "Customers 5 - News - Detail" + detail, MetaData = "Customers 5 - News - MetaData",
                                         Title = "Customers 5 - News", Keyword = "Customers 5 - News Keyword", Description = "Customers 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2774,14 +3111,14 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Khách Hàng 6", Status = 0, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 6", Status = 0, ListTagId = "",  
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 20, LanguageId = 129, Status = 0,
+                                        NewsId = 41, LanguageId = 129, Status = 0,
                                         Intro = "Khách Hàng 6 - News - Intro", Detail = "Khách Hàng 6 - News - Detail" + detail, MetaData = "Khách Hàng 6 - News - MetaData",
                                         Title = "Khách Hàng 6 - News ", Keyword = "Khách Hàng 6 - News Keyword", Description = "Khách Hàng 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2789,7 +3126,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 20, LanguageId = 29, Status = 0,
+                                        NewsId = 41, LanguageId = 29, Status = 0,
                                         Intro = "Customers 6 - News - Intro", Detail = "Customers 6 - News - Detail" + detail, MetaData = "Customers 6 - News - MetaData",
                                         Title = "Customers 6 - News", Keyword = "Customers 6 - News Keyword", Description = "Customers 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2799,14 +3136,14 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Khách Hàng 7", Status = 0, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 7", Status = 0, ListTagId = "",  
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
                                 {
                                     new NewsMapping()
                                     {
-                                        NewsId = 21, LanguageId = 129, Status = 0,
+                                        NewsId = 42, LanguageId = 129, Status = 0,
                                         Intro = "Khách Hàng 7 - News - Intro", Detail = "Khách Hàng 7 - News - Detail" + detail, MetaData = "Khách Hàng 7 - News - MetaData",
                                         Title = "Khách Hàng 7 - News ", Keyword = "Khách Hàng 7 - News Keyword", Description = "Khách Hàng 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2814,7 +3151,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     },
                                     new NewsMapping()
                                     {
-                                        NewsId = 21, LanguageId = 29, Status = 0,
+                                        NewsId = 42, LanguageId = 29, Status = 0,
                                         Intro = "Customers 7 - News - Intro", Detail = "Customers 7 - News - Detail" + detail, MetaData = "Customers 7 - News - MetaData",
                                         Title = "Customers 7 - News", Keyword = "Customers 7 - News Keyword", Description = "Customers 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
@@ -2886,8 +3223,8 @@ namespace PenDesign.Data.MigrationConfiguration
                     Address = "141 Gò Ô Môi, Phường Phú Thuận, Quận 7, TP.HCM",
                     GoogleMap = "<iframe class='embed-responsive-item' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.060876544128!2d106.7358477!3d10.729788200000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175256f79e66e01%3A0xf3843eee25fb1859!2zMTQxIEfDsiDDlCBNw7RpLCBQaMO6IFRodeG6rW4sIFF14bqtbiA3LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1441451785499' frameborder='0' style='border:0' allowfullscreen></iframe>",
                     Phone = "0996614884",
-                    BannerLogo = "/Content/images/logo.png",
-                    LogoUrl = "/Content/images/Logo-Brand.png",
+                    //BannerLogo = "/Content/images/logo.png",
+                    LogoUrl = "/Content/images/logo.png",
                     ContactForm = contactForm,
                     FooterContent = footerContent,
                     Yahoo = "lonely_start10882000@yahoo.com",

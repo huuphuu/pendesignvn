@@ -21,6 +21,7 @@ namespace PenDesign.Core.Model
 
         public string Name { get; set; }
         public string Thumbnail { get; set; }
+        public int? ZOrder { get; set; }
         public string ListTagId { get; set; }
 
         public virtual NewsCategory NewsCategory { get; set; }

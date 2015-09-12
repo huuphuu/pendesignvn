@@ -403,6 +403,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 var responseMessage = new { title = "Lỗi đổi mật khẩu", message = "Error", isSuccess = false };
                 if (UserManager.CheckPassword(userFromDb, user.Password))
                 {
+                    
                     IdentityResult result= UserManager.ChangePassword(user.UserId, user.Password, user.NewPassword);
                     context.SaveChanges();
                     if(result.Succeeded==true)

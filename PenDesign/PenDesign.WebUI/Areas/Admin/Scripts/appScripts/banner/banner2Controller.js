@@ -79,7 +79,7 @@ angular.module("adminApp")
         $scope.addNewBanner = function (banner) {
             $rootScope.showModal = true;
             if ($scope.mediaUrl != "")
-                banner.mediaUrl = $scope.mediaUrl;
+                banner.imageUrl = $scope.mediaUrl;
 
             bannerService.addNewBanner(banner).$promise.then(
                 function (response) {
@@ -96,8 +96,6 @@ angular.module("adminApp")
 
         $scope.getBanner = function (index) {
             $scope.currentBanner = $scope.bannerList[index];
-            //CKEDITOR.instances.text1.setData($scope.currentBanner.text1);
-            //CKEDITOR.instances.text2.setData($scope.currentBanner.text2);
             $('html,body').animate({ scrollTop: $('.currentBanner').offset().top });
         }
 
@@ -127,9 +125,6 @@ angular.module("adminApp")
             if ($scope.mediaUrl != "")
                 banner.mediaUrl = $scope.mediaUrl;
 
-            //banner.text1 = CKEDITOR.instances.text1.getData();
-            //banner.text2 = CKEDITOR.instances.text2.getData();
-
             var bodyMessage = "Bạn muốn cập nhật banner: " + banner.name + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
@@ -148,28 +143,6 @@ angular.module("adminApp")
                })
             }, function () { })
         }
-
-        //DataTable
-        $scope.dtOptions = DTOptionsBuilder.newOptions()
-        .withPaginationType('full_numbers')
-        .withOption('responsive', true)
-        .withDisplayLength(10)
-        .withLanguageSource('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/vnLanguageDataTable.json')
-        .withTableTools('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/copy_csv_xls_pdf.swf')
-        .withTableToolsButtons([
-            'copy',
-            'print', {
-                'sExtends': 'collection',
-                'sButtonText': 'Save',
-                'aButtons': ['csv', 'xls', 'pdf']
-            }
-        ]);
-
-        $scope.dtColumnDefs = [
-            DTColumnDefBuilder.newColumnDef(0),
-            //DTColumnDefBuilder.newColumnDef(1).notVisible(),
-            DTColumnDefBuilder.newColumnDef(5).notSortable()
-        ];
 
         // Uploader Plugin Code
         $scope.mediaUrl = "";

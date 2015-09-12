@@ -399,46 +399,6 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                //update user at aspNetUser Table
-                //var ApplicationUserUpdate = new ApplicationUser
-                //{
-                //    Id = user.UserId,
-                //    EmailConfirmed = false,
-                //    PasswordHash = UserManager.PasswordHasher.HashPassword(user.Password),
-                //    SecurityStamp = user.SecurityStamp,
-                //    UserName = user.UserName,
-                //    Email = user.Email,
-                //};
-                //context.Entry(ApplicationUserUpdate).State = System.Data.Entity.EntityState.Modified;
-                //context.SaveChanges();
-
-                //update userinfo at userinfo table
-                //UserInfo userInfoModel = new UserInfo();
-                ////check avatar
-                //if (user.UserInfo.Avatar != "")
-                //    user.UserInfo.Avatar = "/Content/UploadFiles/images/" + user.UserInfo.Avatar;
-                //else
-                //    user.UserInfo.Avatar = "/Content/UploadFiles/images/No_image_available.png";
-                //userInfoModel = user.UserInfo;
-                //using (var ncontext = new ApplicationDbContext())
-                //{
-                //    ncontext.Entry(userInfoModel).State = System.Data.Entity.EntityState.Modified;
-                //    ncontext.SaveChanges();
-                //};
-
-                ////update userRoles at aspNetRoles table
-                //ApplicationUser userFromDb = context.Users.Where(u => u.UserName.Equals(user.UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-                //var userRoles = UserManager.GetRoles(user.UserId);
-                //if (userRoles.Count() > 0)
-                //{
-                //    //remove user from current roles
-                //    foreach (var role in userRoles)
-                //    {
-                //        UserManager.RemoveFromRole(userFromDb.Id, role);
-                //    }
-                //    //add user to new roles
-                //    UserManager.AddToRole(user.UserId, user.Roles.SingleOrDefault().Name);
-                //}
                 ApplicationUser userFromDb = context.Users.Where(u => u.Id == user.UserId).FirstOrDefault();
                 var responseMessage = new { title = "Lỗi đổi mật khẩu", message = "Error", isSuccess = false };
                 if (UserManager.CheckPassword(userFromDb, user.Password))

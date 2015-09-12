@@ -408,7 +408,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                     if(result.Succeeded==true)
                         responseMessage = new { title = "Thành công", message = "Đổi mật khẩu thành công", isSuccess = true };
                     else
-                     responseMessage = new { title = "Lỗi đổi mật khẩu", message = "Mật khẩu phải bao gồm cả số, chữ thường và chữ in hoa", isSuccess = true };
+                     responseMessage = new { title = "Lỗi đổi mật khẩu", message = "Mật khẩu phải bao gồm cả số, chữ thường và chữ in hoa", isSuccess = false };
                    
 
 

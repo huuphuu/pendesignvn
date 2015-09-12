@@ -13,6 +13,7 @@ namespace PenDesign.Core.ViewModel.BannerViewModel
         public int Position { get; set; }
         public int MediaType { get; set; }
         public string MediaUrl { get; set; }
+        public string LinkUrl { get; set; }
         public int ZOrder { get; set; }
     }
 }

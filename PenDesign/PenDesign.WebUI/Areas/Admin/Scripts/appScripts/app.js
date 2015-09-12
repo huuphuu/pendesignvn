@@ -46,10 +46,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/banner-list',
             templateUrl: '/Areas/Admin/Templates/Views/Banner/banner.list.view.html'
         })
-         .state('controlPanel.bannerList2', {
-             url: '/banner-list2',
-             templateUrl: '/Areas/Admin/Templates/Views/Banner/banner.list.view2.html'
-         })
         //User
         .state('controlPanel.register', {
             url: '/user-regiser',

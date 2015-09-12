@@ -328,7 +328,6 @@
     <Content Include="Areas\Admin\Scripts\appScripts\account\accountService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\account\loginApp.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\app.js" />
-    <Content Include="Areas\Admin\Scripts\appScripts\banner\banner2Controller.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\banner\bannerController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\banner\bannerService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\config\configController.js" />

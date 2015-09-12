@@ -12,8 +12,9 @@ angular.module("adminApp")
                 { name: 'id', heading: '#', width: '2%', className: 'text-center' },
                 { name: 'name', heading: 'Tên', width: '2%', className: 'text-center' },
                 { name: 'mediaUrl', heading: 'Hình ảnh', width: '2%', className: 'text-center', type: controls.IMAGE },
-                { name: 'type', heading: 'Trang', width: '2%', className: 'text-center' },
+                //{ name: 'type', heading: 'Trang', width: '2%', className: 'text-center' },
                 { name: 'zOrder', heading: 'Vị trí', width: '2%', className: 'text-center' },
+                { name: 'linkUrl', heading: 'Link trỏ đến', width: '2%', className: 'text-left' },
                 { name: 'Action', heading: 'Thao tác', width: '3%', className: 'text-left', type: controls.LIST_ICON, listAction: [{ classButton: 'btn-warning', classIcon: 'fa fa-edit', action: 'getBanner', title: 'Sửa Banner' }, { classButton: 'btn-danger', classIcon: 'fa fa-times', action: 'deleteBanner', title: 'Xóa Banner' }] },
 
             ],

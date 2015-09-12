@@ -208,3 +208,33 @@ angular.module("adminApp")
                     function () { });
         }
     })
+   .controller('changePasswordDialogCtrl', function ($scope, $modalInstance, data) {
+       $scope.title = data.title;
+       $scope.enableChange = true;
+       $scope.ConfirmNewPassword = '';
+       $scope.CurrentPassword = '';
+       $scope.NewPassword = '';
+       $scope.execAction = data.execAction;
+       $scope.cancel = function () {
+           $modalInstance.dismiss('Canceled');
+       }; // end cancel
+       $scope.checkDisabled = function () {
+           $scope.enableChange = false;
+           if ($scope.NewPassword == '' || $scope.ConfirmNewPassword == '' || $scope.CurrentPassword == '' || ($scope.ConfirmNewPassword != $scope.NewPassword) || $scope.NewPassword.length < 1)
+               $scope.enableChange = true;
+
+
+       }; // 
+       $scope.Change = function () {
+           $scope.execAction({ OldPassword: $scope.CurrentPassword, NewPassword: $scope.NewPassword, Sys_ViewID: 7, Action: 'UPDATE::CHANGEPASS' }, function () { alert('qq'); $modalInstance.dismiss('Canceled'); });
+       }; // end save
+
+       $scope.hitEnter = function (evt) {
+           //if (angular.equals(evt.keyCode, 13) && !(angular.equals($scope.user.name, null) || angular.equals($scope.user.name, '')))
+           //    $scope.save();
+       };
+
+       $scope.IsRequestObject = function (object) {
+           return ($scope.dataSelected.RequestObjects & object == object) ? true : false;
+       }
+   })

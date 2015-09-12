@@ -8,8 +8,20 @@
 
 @section ScriptsFooter{
     <script src="~/Scripts/PenDesign/TMForm.js"></script>
+
+    <link href="~/Scripts/angularjs/toaster.min.css" rel="stylesheet" />
+    <script src="~/Scripts/angularjs/angular.min.js"></script>
+    <script src="~/Scripts/angularjs/angular-animate.min.js"></script>
+    <script src="~/Scripts/angularjs/angular-resource.min.js"></script>
+    <script src="~/Scripts/angularjs/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/angularjs/angular-messages.min.js"></script>
+    <script src="~/Scripts/angularjs/toaster.min.js"></script>
+    <script src="~/Scripts/app/app.js"></script>
+    <script src='//www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' async defer></script>
+    <script src="~/Scripts/angularjs/angular-recaptcha.js"></script>
+
 }
-<div class="content">
+<div class="content" ng-app="registerApp" ng-controller="formController">
     <div class="container_12">
         <div class="breadcrumb">
             <a href="/" title="Trang chủ">Trang chủ</a> / Liên hệ
@@ -29,37 +41,45 @@
         </div>
         <div class="grid_7">
             <h3 class="head1">Liên Hệ</h3>
-            <form id="form">
+            <form id="form" name="form" ng-submit="sendContact(contact)">
 
                 <div class="success_wrapper">
                     <div class="success-message">Contact form submitted</div>
                 </div>
                 <label class="name">
-                    <input type="text" placeholder="Name:"/>
+                    <input type="text" placeholder="Name:" ng-model="contact.name" name="name" required />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid name.</span>
                 </label>
 
                 <label class="email">
-                    <input type="text" placeholder="E-mail:"/>
+                    <input type="text" placeholder="E-mail:" ng-model="contact.email" name="email" />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid email.</span>
                 </label>
                 <label class="phone">
-                    <input type="text" placeholder="Phone:"/>
+                    <input type="text" placeholder="Phone:" ng-model="contact.phone" name="phone" />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid phone.</span>
                 </label>
                 <label class="message">
-                    <textarea placeholder="Message:"></textarea>
+                    <textarea placeholder="Message:" ng-model="contact.description" name="description"></textarea>
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*The message is too short.</span>
                 </label>
                 <div>
+                    <div vc-recaptcha
+                         theme="'light'"
+                         key="'6LcL-AoTAAAAAObVhV2B5hllIV2lHGknd-prcN9y'"
+                         on-create="setWidgetId(widgetId)"
+                         on-success="setResponse(response)"
+                         on-expire="cbExpiration()"></div>
                     <div class="clear"></div>
                     <div class="btns">
                         <a href="#" data-type="reset" class="btn">Clear</a>
-                        <a href="#" data-type="submit" class="btn">Send</a>
+                        <a href="#" data-type="button" class="btn" ng-click="sendContact(contact)"
+                           ng-disabled="response == null || contactForm.name.$error.required
+                           ">Send {{response}}</a>
                     </div>
                 </div>
             </form>

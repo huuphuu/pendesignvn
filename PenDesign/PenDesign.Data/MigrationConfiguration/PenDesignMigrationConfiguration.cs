@@ -3261,11 +3261,11 @@ namespace PenDesign.Data.MigrationConfiguration
                         Type = "notification", Parent = 0, Order = 1, Available = true, 
                         IsAdmin = true
                     },
-                    new AdminMenu() { 
-                        Name = "Thư viện", Url = "#", CssIcon =  "fa fa-folder-open", LabelCss =  "fa fa-angle-left", 
-                        Type = "", Parent = 0, Order = 2, Available = true,
-                        IsAdmin = true
-                    },
+                    //new AdminMenu() { 
+                    //    Name = "Thư viện", Url = "#", CssIcon =  "fa fa-folder-open", LabelCss =  "fa fa-angle-left", 
+                    //    Type = "", Parent = 0, Order = 2, Available = true,
+                    //    IsAdmin = true
+                    //},
                     new AdminMenu() { 
                         Name = "Banner", Url = "controlPanel.banner", CssIcon =  "fa fa-folder-open", LabelCss =  "fa fa-angle-left", 
                         Type = "", Parent = 0, Order = 3, Available = true,
@@ -3314,16 +3314,16 @@ namespace PenDesign.Data.MigrationConfiguration
                     //--------------
                     //SubMenu Thu vien
                     //--------------
-                    new AdminMenu() { 
-                        Name = "Quản lý hình ảnh", Url = "controlPanel.galleryList({galleryCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 2, Order = 1, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
-                        Name = "Quản lý Video Clip", Url = "controlPanel.galleryList({galleryCategoryId: 2})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 2, Order = 2, Available = true,
-                        IsAdmin = true
-                    },
+                    //new AdminMenu() { 
+                    //    Name = "Quản lý hình ảnh", Url = "controlPanel.galleryList({galleryCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                    //    Type = "", Parent = 2, Order = 1, Available = true,
+                    //    IsAdmin = true
+                    //},
+                    //new AdminMenu() { 
+                    //    Name = "Quản lý Video Clip", Url = "controlPanel.galleryList({galleryCategoryId: 2})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                    //    Type = "", Parent = 2, Order = 2, Available = true,
+                    //    IsAdmin = true
+                    //},
                     //--------------
                     //SubMenu Banner
                     //--------------

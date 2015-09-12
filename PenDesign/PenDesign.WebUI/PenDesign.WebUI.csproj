@@ -207,6 +207,7 @@
     <Compile Include="Areas\Admin\Controllers\UserAccountController.cs" />
     <Compile Include="Authencation\CustomAuthorize.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -2131,6 +2132,7 @@
     <Folder Include="Areas\Admin\Scripts\angularjs\angularjsPlugin\angularjsDataTable\plugins\fixedheader\" />
     <Folder Include="Content\UploadFiles\images\images\" />
     <Folder Include="Content\UploadFiles\images\_thumbs\Images\" />
+    <Folder Include="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

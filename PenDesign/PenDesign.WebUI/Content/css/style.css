@@ -152,7 +152,7 @@ a {
         color: #e97d25;
     }
 
-    a.btn {
+    a.btn, button.btn {
         margin-top: 15px;
         display: inline-block;
         padding: 5px 10px 5px;
@@ -161,11 +161,11 @@ a {
         font: 400 20px/20px 'Roboto Condensed', sans-serif;
     }
 
-.page1 a.btn {
+.page1 a.btn, .page1 button.btn {
     margin-top: 27px;
 }
 
-a.btn:hover {
+a.btn:hover, button.btn:hover {
     background-color: #FBCA3E;
 }
 

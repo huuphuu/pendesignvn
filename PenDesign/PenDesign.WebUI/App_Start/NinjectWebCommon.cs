@@ -81,6 +81,8 @@ namespace PenDesign.WebUI.App_Start
             kernel.Bind<IRepository<ControlMapping>>().To<Repository<ControlMapping>>().InRequestScope();
             kernel.Bind<IRepository<GroupControl>>().To<Repository<GroupControl>>().InRequestScope();
             kernel.Bind<IRepository<Language>>().To<Repository<Language>>().InRequestScope();
+            kernel.Bind<IRepository<NewsCategory>>().To<Repository<NewsCategory>>().InRequestScope();
+            kernel.Bind<IRepository<NewsCategoryMapping>>().To<Repository<NewsCategoryMapping>>().InRequestScope();
             kernel.Bind<IRepository<News>>().To<Repository<News>>().InRequestScope();
             kernel.Bind<IRepository<NewsMapping>>().To<Repository<NewsMapping>>().InRequestScope();
             kernel.Bind<IRepository<NewsDraft>>().To<Repository<NewsDraft>>().InRequestScope();
@@ -100,6 +102,8 @@ namespace PenDesign.WebUI.App_Start
             kernel.Bind<IControlMappingService>().To<ControlMappingService>().InRequestScope();
             kernel.Bind<IGroupControlService>().To<GroupControlService>().InRequestScope();
             kernel.Bind<ILanguageService>().To<LanguageService>().InRequestScope();
+            kernel.Bind<INewsCategoryService>().To<NewsCategoryService>().InRequestScope();
+            kernel.Bind<INewsCategoryMappingService>().To<NewsCategoryMappingService>().InRequestScope();
             kernel.Bind<INewsService>().To<NewsService>().InRequestScope();
             kernel.Bind<INewsMappingService>().To<NewsMappingService>().InRequestScope();
             kernel.Bind<INewsDraftService>().To<NewsDraftService>().InRequestScope();

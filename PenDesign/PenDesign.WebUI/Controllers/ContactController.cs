@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
+using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Model;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,14 @@ using System.Web.Http;
 namespace PenDesign.WebUI.Controllers
 {
     [AllowAnonymous]
-    public class ContactrController : ApiController
+    public class ContactController : ApiController
     {
+        private IContactService _contactService;
+
+        public ContactController(IContactService contactService)
+        {
+            this._contactService = contactService;
+        }
         [HttpPost]
         [Route("api/contact/EmailRegister")]
         public HttpResponseMessage EmailRegister(string recaptchaResponse, [FromBody] Contact contactModel)
@@ -30,7 +36,7 @@ namespace PenDesign.WebUI.Controllers
                 {
                     if (captchaResponse.ErrorCodes.Count <= 0)
                     {
-                        var responseMessage = new {message = "Thành công"};
+                        var responseMessage = new { message = "Thành công" };
                         return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
                     }
                     var error = captchaResponse.ErrorCodes[0].ToLower();
@@ -55,61 +61,34 @@ namespace PenDesign.WebUI.Controllers
                             message = "Error occured. Please try again";
                             break;
                     }
-                    var rpMessage = new {message = message};
+                    var rpMessage = new { message = message };
                     return Request.CreateResponse(HttpStatusCode.InternalServerError, rpMessage);
                 }
                 else
                 {
-                    //using (var db = new DBContext())
-                    //{
-                    //    if (contactModel.Type == "contact")
-                    //    {
-                    //        if (ModelState.IsValid)
-                    //        {
-                    //            db.EmailRegister.Add(contactModel);
-                    //            db.SaveChanges();
-                    //            var responseMessage = new { message = "Đã gửi tin thành công" };
-                    //            return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-                    //        }
-                    //        else
-                    //        {
-                    //            var responseMessage = new { message = "Lỗi! Nội dung nhập không đúng định dạng" };
-                    //            return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-                    //        }
 
-                    //    }
-                    //    else if (contactModel.Type == "register")
-                    //    {
-                    //        if (db.EmailRegister.Any(m => m.Email == contactModel.Email))
-                    //        {
-                    //            var responseMessage = new { message = "Email này đã được đăng ký!" };
-                    //            return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-                    //        }
-                    //        else
-                    //        {
-                    //            if (ModelState.IsValid)
-                    //            {
-                    //                db.EmailRegister.Add(contactModel);
-                    //                db.SaveChanges();
-                    //                var responseMessage = new { message = "Thành công" };
-                    //                return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-                    //            }
-                    //            else
-                    //            {
-                    //                var responseMessage = new { message = "Lỗi! Email nhập không đúng định dạng" };
-                    //                return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
-                    //            }
+                    if (ModelState.IsValid)
+                    {
+                        contactModel.Status = 0;
+                        _contactService.Add(contactModel);
 
-                    //        }
-                    //    }
-                    var response = new {message = "Thành công"};
-                    return Request.CreateResponse(HttpStatusCode.OK, response);
+                        var responseMessage = new { message = "Đã gửi tin thành công" };
+                        return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
+                    }
+                    else
+                    {
+                        var responseMessage = new { message = "Lỗi! Nội dung nhập không đúng định dạng" };
+                        return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
+                    }
+
+                    //var response = new { message = "Thành công" };
+                    //return Request.CreateResponse(HttpStatusCode.OK, response);
                 }
             }
 
             catch (Exception)
             {
-                var responseMessage = new {message = "Lỗi! Vui lòng thử lại"};
+                var responseMessage = new { message = "Lỗi! Vui lòng thử lại" };
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, responseMessage);
             }
         }

@@ -99,6 +99,8 @@
     <Compile Include="Interface\Service\BasicServiceInterface\IControlService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IGroupControlService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\ILanguageService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsCategoryMappingService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsCategoryService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\INewsDraftService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\INewsMappingService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\INewsService.cs" />

@@ -67,6 +67,7 @@
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*The message is too short.</span>
                 </label>
+
                 <div>
                     <div vc-recaptcha
                          theme="'light'"
@@ -76,10 +77,10 @@
                          on-expire="cbExpiration()"></div>
                     <div class="clear"></div>
                     <div class="btns">
-                        <a href="#" data-type="reset" class="btn">Clear</a>
-                        <a href="#" data-type="button" class="btn" ng-click="sendContact(contact)"
+                        <button type="reset" class="btn">Clear</button>
+                        <button type="button" class="btn" ng-click="sendContact(contact)"
                            ng-disabled="response == null || contactForm.name.$error.required
-                           ">Send {{response}}</a>
+                           ">Send</button>
                     </div>
                 </div>
             </form>

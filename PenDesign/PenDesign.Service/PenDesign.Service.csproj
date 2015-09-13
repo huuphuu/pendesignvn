@@ -49,6 +49,8 @@
     <Compile Include="Base\ControlService.cs" />
     <Compile Include="Base\GroupControlService.cs" />
     <Compile Include="Base\LanguageService.cs" />
+    <Compile Include="Base\NewsCategoryMappingService.cs" />
+    <Compile Include="Base\NewsCategoryService.cs" />
     <Compile Include="Base\NewsDraftService.cs" />
     <Compile Include="Base\NewsMappingService.cs" />
     <Compile Include="Base\NewsService.cs" />

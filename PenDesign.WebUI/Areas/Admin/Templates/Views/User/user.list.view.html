@@ -1,0 +1,228 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Nhóm/Thành viên</a></li>
+        <li class="active">Danh sách người dùng</li>
+    </ol>
+</section>
+
+
+<section class="content" ng-controller="accountController">
+    <h3></h3>
+    <!--danh sach NGUOI DUNG-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-list"></i>
+                    <h3 class="box-title">DANH SÁCH NGƯỜI DÙNG</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-danger btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                        <!--<button class="btn btn-danger btn-sm" data-widget="remove" data-toggle="tooltip" title="Bỏ đi"><i class="fa fa-times"></i></button>-->
+                    </div><!-- /. tools -->
+                </div>
+                <div class="box-body">
+                    <table datatable="ng" id="notificationTable" class="table table-bordered table-hover"
+                           dt-options="dtOptions" dt-column-defs="dtColumnDefs">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tên tài khoản</th>
+                                <th>Email</th>
+                                <th>Ẩn/Hiện</th>
+                                <th>Nhóm</th>
+                                <th>Chỉnh sửa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in allUsers track by $index | orderBy:'Order'">
+                                <td>{{$index + 1}}</td>
+                                <td>{{user.userName}}</td>
+                                <td>{{user.email}}</td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" name="status" ng-model="user.userInfo.available" />
+                                        <span ng-show="user.userInfo.available">&nbsp;Hiển thị</span>
+                                        <span ng-show="!user.userInfo.available">&nbsp;Ẩn</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <span ng-repeat="role in user.roles">
+                                        {{role.name}},&nbsp;
+                                    </span>
+
+                                </td>
+                                <td>
+                                    <a class="btn btn-xs btn-warning" title="Chỉnh sửa" ng-click="getEditingUser($index)"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteUser(user)"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Tên tài khoản</th>
+                                <th>Email</th>
+                                <th>Ẩn/Hiện</th>
+                                <th>Nhóm</th>
+                                <th>Chỉnh sửa</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a ui-sref="controlPanel.register" class="btn btn-danger btn-flat">Thêm người dùng mới</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--chinh sua NGUOI DUNG-->
+    <div class="editCurrentUserEditing"></div>
+    <div class="row" ng-show="currentUserEditing">
+        <!-- ng-show=" currentuserediting"-->
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-plus-circle"></i>
+                    <h3 class="box-title">CHỈNH SỬA NGƯỜI DÙNG: <b>{{currentUserEditing.userName}}</b></h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                        <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Bỏ đi"><i class="fa fa-times"></i></button>-->
+                    </div><!-- /. tools -->
+                </div>
+                <div class="box-body">
+                    <form name="updateUserForm" method="post" novalidate>
+                        <input type="hidden" name="securityStamp" ng-model="currentUserEditing.securityStamp" />
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Tên đăng nhập" name="userName" ng-model="currentUserEditing.userName" readonly />
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <div ng-messages="updateUserForm.userName.$error"
+                                     ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Email" name="email" ng-model="currentUserEditing.email" required />
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                <div ng-messages="updateUserForm.email.$error"
+                                     ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="password" class="form-control" placeholder="Mật khẩu" name="password" ng-model="currentUserEditing.password" required />
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                <div ng-messages="updateUserForm.password.$error"
+                                     ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="confirmPassword"
+                                       ng-model="currentUserEditing.confirmPassword"
+                                       compare-to="currentUserEditing.password"
+                                       required />
+                                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                                <div ng-messages="updateUserForm.confirmPassword.$error"
+                                     ng-messages-multiple
+                                     ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Address" name="address" ng-model="currentUserEditing.userInfo.address" />
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Skype" name="skype" ng-model="currentUserEditing.userInfo.skype" />
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Yahoo" name="yahoo" ng-model="currentUserEditing.userInfo.yahoo" />
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Facebook" name="facebook" ng-model="currentUserEditing.userInfo.facebook" />
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <select name="roleName" ng-model="currentUserEditing.roles[0].name" required>
+                                    <option value="">-- Chọn nhóm người dùng</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Users">Users</option>
+                                </select>
+                                <div ng-messages="updateUserForm.roleNam.$error"
+                                     ng-messages-multiple
+                                     ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="{{currentUserEditing.userInfo.avatar}}" alt="" c alt="" class="img-responsive" />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <button dropzone="dropzoneConfigHome" class="dropzone">
+                                            <span class="dz-message">Chọn ảnh đại diện<br /></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="box-footer clearfix">
+                    <div class="col-md-6">
+                        <button id="registerBtn" type="submit" class="btn btn-primary btn-block btn-flat"
+                                ng-disabled="updateUserForm.email.$invalid && updateUserForm.email.$pristine
+                                         || updateUserForm.password.$error.required
+                                         || updateUserForm.email.$error.required
+                                         || updateUserForm.roleName.$error.required
+                                         || updateUserForm.confirmPassword.$error.compareTo
+                                         || clicked"
+                                ng-click="updateUser(currentUserEditing)">
+                            Cập nhật người dùng&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <a ui-sref="controlPanel.userList" class="btn btn-danger btn-block btn-flat" ng-click="currentUserEditing = null" title="Hủy">Hủy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    //Toggle button
+    var o = $.AdminLTE.options;
+    if (o.enableBoxWidget) {
+        $.AdminLTE.boxWidget.activate();
+    }
+
+    //dropdzone
+    $('button.dropzone').click(function (e) {
+        e.preventDefault();
+    });
+
+</script>

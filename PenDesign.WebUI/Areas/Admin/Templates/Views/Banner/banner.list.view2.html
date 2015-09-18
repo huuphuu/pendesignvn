@@ -1,0 +1,302 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Banner</a></li>
+        <li class="active">Banner</li>
+    </ol>
+</section>
+
+
+<section class="content" ng-controller="banner2Controller">
+    <h3></h3>
+    <!--danh sach email lien he-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-list"></i>
+                    <h3 class="box-title text-uppercase">DANH SÁCH BANNER</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-danger btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                        <!--<button class="btn btn-danger btn-sm" data-widget="remove" data-toggle="tooltip" title="Bỏ đi"><i class="fa fa-times"></i></button>-->
+                    </div><!-- /. tools -->
+                </div>
+                <div class="box-body">
+                     <div vmis-table="gridInfo"></div>
+                </div>
+                <div class="box-footer clearfix">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a ui-sref="controlPanel.addBanner" class="btn btn-danger btn-flat">Thêm banner mới</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--xem email-->
+    <div class="currentBanner"></div>
+    <div class="row" ng-show="currentBanner">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-plus-circle"></i>
+                    <h3 class="box-title">
+                        CHỈNH SỬA BANNER: <b>{{currentBanner.name}}</b>
+                    </h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
+                        <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
+                        <button class="btn btn-info btn-sm" ng-click="currentBanner = null" title="Tắt"><i class="fa fa-times"></i></button>
+                    </div><!-- /. tools -->
+                </div>
+                <div class="box-body">
+                    <form id="editBannerForm" name="editBannerForm" method="post" novalidate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="name">Tên: </label>
+                                            <input type="text" class="form-control" name="name" ng-model="currentBanner.name" placeholder="Tên Banner:" required/>
+                                            <div ng-messages="editBannerForm.name.$error"
+                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="order">Vị trí: </label>
+                                            <input type="number" class="form-control" name="order" ng-model="currentBanner.zOrder" placeholder="Vị trí:" required min="1"/>
+                                            <div ng-messages="editBannerForm.order.$error"
+                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="name">Hình Banner: </label>
+                                        <img src="{{currentBanner.mediaUrl}}" alt="" class="img-responsive"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div>
+                                                <label for="name">&nbsp;</label>
+                                                <button dropzone="dropzoneConfigHome" class="dropzone">
+                                                    <span class="dz-message">Chọn ảnh banner (Trang chủ)<br /></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="name">Trang (vị trí hiển thị): &nbsp;</label>
+                                                    <select ng-model="currentBanner.type" name="type" class="form-control">
+                                                        <option value="HomeBanner">Trang chủ (banner chính)</option>
+                                                        <option value="FeedBack">Trang chủ (banner phụ)</option>
+                                                        <option value="SubBanner">Trang con</option>
+                                                    </select>
+                                                </div>
+                                            </div>-->
+                                            <!--<div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Vị trí Zoom (ngang): &nbsp;</label>
+                                                    <select ng-model="currentBanner.horizontalPosition" name="horizontalPosition" class="form-control">
+                                                        <option value="center">Giữa</option>
+                                                        <option value="left">Trái</option>
+                                                        <option value="right">Phải</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Vị trí Zoom (dọc): &nbsp;</label>
+                                                    <select ng-model="currentBanner.verticalPosition" name="verticalPosition" class="form-control">
+                                                        <option value="center">Giữa</option>
+                                                        <option value="top">Trên</option>
+                                                        <option value="bottom">Dưới</option>
+                                                    </select>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="linkUrl">Link trỏ đến:</label>
+                                                    <input type="text" class="form-control" ng-model="currentBanner.linkUrl" name="linkUrl" placeholder="ex: /lien-he" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="bannerImageIntro">Nội dung 1: </label>
+                                            <textarea id="text1" required name="text1" ng-model="currentBanner.text1" class="textarea" placeholder="Nội dung văn bản 1 trên slider" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>&nbsp;</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Start Left: </label>
+                                                    <input type="number" class="form-control" name="text1StartLeftPosition" ng-model="currentBanner.text1StartLeftPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trái):" required/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Final Left: </label>
+                                                    <input type="number" class="form-control" name="text1FinalLeftPosition" ng-model="currentBanner.text1FinalLeftPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trái):" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Start Top: </label>
+                                                    <input type="number" class="form-control" name="text1StartTopPosition" ng-model="currentBanner.text1StartTopPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trên):" required/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Final Top: </label>
+                                                    <input type="number" class="form-control" name="text1FinalTopPosition" ng-model="currentBanner.text1FinalTopPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trên):" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Start Top: </label>
+                                                    <input type="number" class="form-control" name="text1TimeDuration" ng-model="currentBanner.text1TimeDuration" min="0" step="0.1" max="1" placeholder="Thời gian thực hiện (0.1 - 0.5):" required/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Final Top: </label>
+                                                    <input type="number" class="form-control" name="text1Delay" ng-model="currentBanner.text1Delay" min="0" step="0.1" max="1" placeholder="Thời gian Delay (0.1 - 0.5):" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="bannerImageIntro">Nội dung 2: </label>
+                                            <textarea id="text2" required name="text2" ng-model="currentBanner.text2" class="textarea" placeholder="Nội dung văn bản 2 trên slider" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>&nbsp;</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Start Left: </label>
+                                                    <input type="number" class="form-control" name="text2StartLeftPosition" ng-model="currentBanner.text2StartLeftPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trái):" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Final Left: </label>
+                                                    <input type="number" class="form-control" name="text2FinalLeftPosition" ng-model="currentBanner.text2FinalLeftPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trái):" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Start Top: </label>
+                                                    <input type="number" class="form-control" name="text2StartTopPosition" ng-model="currentBanner.text2StartTopPosition" min="0" step="10" max="720" placeholder="Vị trí bắt đầu (trên):" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Final Top: </label>
+                                                    <input type="number" class="form-control" name="text2FinalTopPosition" ng-model="currentBanner.text2FinalTopPosition" min="0" step="10" max="720" placeholder="Vị trí kết thúc (trên):" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Start Top: </label>
+                                                    <input type="number" class="form-control" name="text2TimeDuration" ng-model="currentBanner.text2TimeDuration" min="0" step="0.1" max="1" placeholder="Thời gian thực hiện (0.1 - 0.5):" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Final Top: </label>
+                                                    <input type="number" class="form-control" name="text2Delay" ng-model="currentBanner.text2Delay" min="0" step="0.1" max="1" placeholder="Thời gian Delay (0.1 - 0.5):" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>-->
+                        </div>
+                    </form>
+                </div>
+                <div class="box-footer clearfix">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 pull-right">
+                            <div class="col-md-2 pull-right">
+                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentBanner = null">
+                                    Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-5 pull-right">
+                                <button class="pull-right btn btn-success" id="updateBanner" ng-click="updateBanner(currentBanner)"
+                                        ng-disabled="editBannerForm.name.$error.required
+                                                    ||  editBannerForm.keyword.$error.required
+                                                    ||  editBannerForm.description.$error.required
+                                                    || editBannerForm.order.$error.required ||  editBannerForm.order.$error.min
+                                    ">
+                                    Cập nhật Banner&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<script>
+    //var editor1 = CKEDITOR.instances['text1'];
+    //if (editor1) { editor1.destroy(true); }
+    //CKEDITOR.replace('text1', {
+    //    enterMode: CKEDITOR.ENTER_BR
+    //});
+
+    //var editor2 = CKEDITOR.instances['text2'];
+    //if (editor2) { editor2.destroy(true); }
+    //CKEDITOR.replace('text2', {
+    //    enterMode: CKEDITOR.ENTER_BR
+    //});
+
+    //CKFinder.setupCKEditor(null, "/ckfinder/");
+
+    //Toggle button
+    var o = $.AdminLTE.options;
+    if (o.enableBoxWidget) {
+        $.AdminLTE.boxWidget.activate();
+    }
+
+    //dropdzone
+    $('button.dropzone').click(function (e) {
+        e.preventDefault();
+    });
+</script>

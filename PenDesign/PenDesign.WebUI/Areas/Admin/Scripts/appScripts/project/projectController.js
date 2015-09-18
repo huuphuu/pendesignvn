@@ -1,25 +1,12 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("newsController", function ($rootScope, $scope, toaster, newsService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
-
-        $scope.newsCategoryId = $stateParams.newsCategoryId;
-        var categoryName = "";
-        if ($scope.newsCategoryId == 1)
-            categoryName = "Dịch vụ";
-        if ($scope.newsCategoryId == 2)
-            categoryName = "Sự kiện";
-        if ($scope.newsCategoryId == 3)
-            categoryName = "Kiến thức";
-        if ($scope.newsCategoryId == 4)
-            categoryName = "Đối tác";
-        $scope.categoryName = categoryName;
-
+    .controller("projectController", function ($rootScope, $scope, toaster, projectService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs) {
 
         $scope.allNews = {};
-        $scope.getAllNews = function () {
+        $scope.getAllProjects = function () {
             $rootScope.showModal = true;
-            return newsService.getAllNews($scope.newsCategoryId).$promise.then(
+            return projectService.getAllProjects($scope.newsCategoryId).$promise.then(
             function (data) {
                 $rootScope.showModal = false;
                 $scope.allNews = data;
@@ -28,27 +15,27 @@ angular.module("adminApp")
                 //toaster.pop('error', "Lỗi!", response.data);
             });
         }
-        $scope.getAllNews();
+        $scope.getAllProjects();
 
-        $scope.addNewNews = function (news) {
+        $scope.addNewProject = function (project) {
             $rootScope.showModal = true;
             if ($scope.HomeBannerImageUrl != "")
-                news.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
+                project.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
             if ($scope.SubBannerImageUrl != "")
-                news.SubBannerImageUrl = $scope.SubBannerImageUrl;
+                project.SubBannerImageUrl = $scope.SubBannerImageUrl;
 
-            news.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            news.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            news.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            news.contentRight = CKEDITOR.instances.contentRight.getData();
-            news.newsCategoryId = $scope.newsCategoryId;
+            project.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
+            project.contentIntro = CKEDITOR.instances.contentIntro.getData();
+            project.contentLeft = CKEDITOR.instances.contentLeft.getData();
+            project.contentRight = CKEDITOR.instances.contentRight.getData();
+            project.newsCategoryId = $scope.newsCategoryId;
 
-            newsService.addNewNews(news).$promise.then(
+            projectService.addNewProject(project).$promise.then(
                 function (response) {
                     $rootScope.showModal = false;
-                    toaster.pop('success', "Thành công!", "Đã thêm bài viết " + news.name + " - " + response.message);
-                    $scope.getAllNews();
-                    $location.path("/controlPanel/news-list/" + $scope.newsCategoryId);
+                    toaster.pop('success', "Thành công!", "Đã thêm bài viết " + project.name + " - " + response.message);
+                    $scope.getAllProjects();
+                    $location.path("/controlPanel/project-list");
                 }
                 , function (response) {
                     $rootScope.showModal = false;
@@ -56,28 +43,28 @@ angular.module("adminApp")
                 })
         };
 
-        $scope.getNews = function (index) {
-            $scope.currentNews = $scope.allNews[index];
-            CKEDITOR.instances.bannerImageIntro.setData($scope.currentNews.bannerImageIntro);
-            CKEDITOR.instances.contentIntro.setData($scope.currentNews.contentIntro);
-            CKEDITOR.instances.contentLeft.setData($scope.currentNews.contentLeft);
-            CKEDITOR.instances.contentRight.setData($scope.currentNews.contentRight);
-            $('html,body').animate({ scrollTop: $('.editNews').offset().top });
+        $scope.getProject = function (index) {
+            $scope.currentProject = $scope.allProjects[index];
+            CKEDITOR.instances.bannerImageIntro.setData($scope.currentProject.bannerImageIntro);
+            CKEDITOR.instances.contentIntro.setData($scope.currentProject.contentIntro);
+            CKEDITOR.instances.contentLeft.setData($scope.currentProject.contentLeft);
+            CKEDITOR.instances.contentRight.setData($scope.currentProject.contentRight);
+            $('html,body').animate({ scrollTop: $('.editProject').offset().top });
         }
 
-        $scope.deleteNews = function (news) {
+        $scope.deleteProject = function (project) {
 
-            var bodyMessage = "Bạn muốn xóa bài viết: " + news.name + " ?";
+            var bodyMessage = "Bạn muốn xóa dự án: " + project.name + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return newsService.deleteNews(news).$promise.then(
+                return projectService.deleteProject(project).$promise.then(
                 function (response) {
                     $scope.currentNews = null;
                     $rootScope.showModal = false;
-                    toaster.pop('success', "Thành công!", "Đã xóa bài viết " + news.name + " - " + response.message);
-                    $scope.allNews.splice($scope.allNews.indexOf(news), 1);
+                    toaster.pop('success', "Thành công!", "Đã xóa bài viết " + project.name + " - " + response.message);
+                    $scope.allProjects.splice($scope.allProjects.indexOf(project), 1);
                 }, function (response) {
                     $rootScope.showModal = false;
                     toaster.pop('error', "Lỗi!", response.data);
@@ -85,32 +72,32 @@ angular.module("adminApp")
             }, function () { })
         };
 
-        $scope.updateNews = function (news) {
+        $scope.updateProject = function (project) {
 
             if ($scope.HomeBannerImageUrl != "")
-                news.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
+                project.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
             if ($scope.SubBannerImageUrl != "")
-                news.SubBannerImageUrl = $scope.SubBannerImageUrl;
-            news.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            news.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            news.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            news.contentRight = CKEDITOR.instances.contentRight.getData();
+                project.SubBannerImageUrl = $scope.SubBannerImageUrl;
+            project.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
+            project.contentIntro = CKEDITOR.instances.contentIntro.getData();
+            project.contentLeft = CKEDITOR.instances.contentLeft.getData();
+            project.contentRight = CKEDITOR.instances.contentRight.getData();
 
-            var bodyMessage = "Bạn muốn cập nhật bài viết: " + news.name + " ?";
+            var bodyMessage = "Bạn muốn cập nhật bài viết: " + project.name + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return newsService.updateNews(news).$promise.then(
+                return projectService.updateProject(project).$promise.then(
                 function (response) {
-                    $scope.getAllNews();
+                    $scope.getAllProjects();
                     $rootScope.showModal = false;
-                    $scope.currentNews = null;
+                    $scope.currentProject = null;
                     CKEDITOR.instances.bannerImageIntro.setData('');
                     CKEDITOR.instances.contentIntro.setData('');
                     CKEDITOR.instances.contentLeft.setData('');
                     CKEDITOR.instances.contentRight.setData('');
-                    toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + news.name + " - " + response.message);
+                    toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + project.name + " - " + response.message);
                     $('html,body').animate({ scrollTop: 0 });
                 }, function (response) {
                     $rootScope.showModal = false;

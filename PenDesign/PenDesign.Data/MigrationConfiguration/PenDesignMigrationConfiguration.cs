@@ -3312,11 +3312,6 @@ namespace PenDesign.Data.MigrationConfiguration
                     //SubMenu Nhom/Thanh vien
                     //--------------
                     new AdminMenu() { 
-                        Name = "Danh sách Nhóm", Url = "controlPanel.userGroupsList", CssIcon = "fa fa-users", LabelCss = "", 
-                        Type = "", Parent = 2, Order = 1, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
                         Name = "Danh sách Thành viên", Url = "controlPanel.userList", CssIcon = "fa fa-user", LabelCss = "", 
                         Type = "", Parent = 2, Order = 2, Available = true,
                         IsAdmin = true
@@ -3339,12 +3334,12 @@ namespace PenDesign.Data.MigrationConfiguration
                     //SubMenu Du An
                     //--------------
                     new AdminMenu() { 
-                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Name = "Thêm Dự án mới", Url = "controlPanel.addProject", CssIcon = "fa fa-plus-circle", LabelCss = "", 
                         Type = "", Parent = 4, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Name = "Danh sách Dự án", Url = "controlPanel.projectList", CssIcon = "fa fa-list-ol", LabelCss = "", 
                         Type = "", Parent = 4, Order = 2, Available = true,
                         IsAdmin = true
                     },
@@ -3352,12 +3347,12 @@ namespace PenDesign.Data.MigrationConfiguration
                     //SubMenu Cong trinh thuc te
                     //--------------
                     new AdminMenu() { 
-                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Name = "Thêm Công trình thực tế mới", Url = "controlPanel.addConstruction", CssIcon = "fa fa-plus-circle", LabelCss = "", 
                         Type = "", Parent = 5, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Name = "Danh sách Công trình thực tế", Url = "controlPanel.constructionList", CssIcon = "fa fa-list-ol", LabelCss = "", 
                         Type = "", Parent = 5, Order = 2, Available = true,
                         IsAdmin = true
                     },
@@ -3365,12 +3360,12 @@ namespace PenDesign.Data.MigrationConfiguration
                     //SubMenu Video
                     //--------------
                     new AdminMenu() { 
-                        Name = "Thêm video mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Name = "Thêm video mới", Url = "controlPanel.addVideo", CssIcon = "fa fa-plus-circle", LabelCss = "", 
                         Type = "", Parent = 6, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Danh sách Video", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Name = "Danh sách Video", Url = "controlPanel.videoList", CssIcon = "fa fa-list-ol", LabelCss = "", 
                         Type = "", Parent = 6, Order = 2, Available = true,
                         IsAdmin = true
                     },

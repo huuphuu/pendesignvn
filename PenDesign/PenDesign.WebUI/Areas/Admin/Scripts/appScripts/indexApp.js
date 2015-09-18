@@ -391,7 +391,7 @@ angular.module('adminApp')
             }
         };
     })
-.directive('vmisTable', function () {
+    .directive('vmisTable', function () {
     return {
         // restrict: "AE",
         templateUrl: function (elem, attrs) {

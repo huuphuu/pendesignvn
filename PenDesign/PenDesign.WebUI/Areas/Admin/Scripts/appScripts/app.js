@@ -39,32 +39,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/users-list',
             templateUrl: '/Areas/Admin/Templates/Views/User/user.list.view.html'
         })
-        //UserGroup
-        .state('controlPanel.userGroupsRegister', {
-            url: '/user-groups-register',
-            templateUrl: '/Areas/Admin/Templates/Views/User/userGroup-register.view.html'
-        })
-        .state('controlPanel.userGroupsList', {
-            url: '/user-groups-list',
-            templateUrl: '/Areas/Admin/Templates/Views/User/userGroups.list.view.html'
-        })
-        //Course
-        .state('controlPanel.addCourse', {
-            url: '/add-course',
-            templateUrl: '/Areas/Admin/Templates/Views/Course/addCourse.view.html'
-        })
-        .state('controlPanel.coursesList', {
-            url: '/course-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Course/course.list.view.html'
-        })
-        //Student
-        .state('controlPanel.studentsList', {
-            url: '/students-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Course/students.list.view.html'
-        })
         //News
         .state('controlPanel.addNews', {
-            url: '/addNews/:newsCategoryId',
+            url: '/add-News/:newsCategoryId',
             templateUrl: '/Areas/Admin/Templates/Views/News/addNews.view.html',
             controller: 'newsController'
         })
@@ -72,6 +49,33 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/news-list/:newsCategoryId',
             templateUrl: '/Areas/Admin/Templates/Views/News/news.list.view.html',
             controller: 'newsController'
+        })
+         //Project
+        .state('controlPanel.addProject', {
+            url: '/add-project',
+            templateUrl: '/Areas/Admin/Templates/Views/Project/addProject.view.html'
+        })
+        .state('controlPanel.projectList', {
+            url: '/project-list',
+            templateUrl: '/Areas/Admin/Templates/Views/Project/project.list.view.html'
+        })
+         //Construction
+        .state('controlPanel.addConstruction', {
+            url: '/add-construction',
+            templateUrl: '/Areas/Admin/Templates/Views/Construction/addConstruction.view.html'
+        })
+        .state('controlPanel.constructionList', {
+            url: '/Construction-list',
+            templateUrl: '/Areas/Admin/Templates/Views/Construction/construction.list.view.html'
+        })
+        //Video
+        .state('controlPanel.addVideo', {
+            url: '/add-video',
+            templateUrl: '/Areas/Admin/Templates/Views/Video/addVideo.view.html'
+        })
+        .state('controlPanel.videoList', {
+            url: '/video-list',
+            templateUrl: '/Areas/Admin/Templates/Views/Video/video.list.view.html'
         })
         //Email
         .state('controlPanel.contactEmail', {

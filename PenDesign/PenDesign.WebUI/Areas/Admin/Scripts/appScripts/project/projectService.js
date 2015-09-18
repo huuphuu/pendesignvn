@@ -1,31 +1,31 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .factory("newsService", ['toaster', '$resource', function (toaster, $resource) {
-        var newsService = {};
+    .factory("projectService", ['toaster', '$resource', function (toaster, $resource) {
+        var projectService = {};
 
-        var newsResource = $resource('/admin/api/news/:Id', { Id: '@Id' }, {
+        var newsResource = $resource('/admin/api/project/:Id', { Id: '@Id' }, {
             'update': { method: 'PUT' }
         });
 
-        newsService.getAllNews = function (id) {
+        projectService.getAllProjects = function (id) {
             return newsResource.query({}, { 'Id': id });
         }
 
-        //newsService.getNewsById = function (news) {
+        //projectService.getNewsById = function (news) {
         //    return newsResource.query({}, { 'Id': news.id });
         //}
 
-        newsService.addNewNews = function (news) {
-            return newsResource.save(news);
+        projectService.addNewProject = function (project) {
+            return newsResource.save(project);
         }
 
-        newsService.deleteNews = function (news) {
-            return newsResource.delete({ 'Id': news.id });
+        projectService.deleteProject = function (project) {
+            return newsResource.delete({ 'Id': project.id });
         }
 
-        newsService.updateNews = function (news) {
-            return newsResource.update({ 'Id': news.id }, news);
+        projectService.updateProject = function (project) {
+            return newsResource.update({ 'Id': project.id }, project);
         }
-        return newsService;
+        return projectService;
     }])

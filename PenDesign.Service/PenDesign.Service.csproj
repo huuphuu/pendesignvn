@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07804774-5D00-4CE7-9A04-870A492E10DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PenDesign.Service</RootNamespace>
+    <AssemblyName>PenDesign.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseService.cs" />
+    <Compile Include="Base\AdminMenuService.cs" />
+    <Compile Include="Base\BannerMappingService.cs" />
+    <Compile Include="Base\BannerService.cs" />
+    <Compile Include="Base\ConfigService.cs" />
+    <Compile Include="Base\ContactService.cs" />
+    <Compile Include="Base\ControlMappingService.cs" />
+    <Compile Include="Base\ControlService.cs" />
+    <Compile Include="Base\GroupControlService.cs" />
+    <Compile Include="Base\LanguageService.cs" />
+    <Compile Include="Base\NewsCategoryMappingService.cs" />
+    <Compile Include="Base\NewsCategoryService.cs" />
+    <Compile Include="Base\NewsDraftService.cs" />
+    <Compile Include="Base\NewsMappingService.cs" />
+    <Compile Include="Base\NewsService.cs" />
+    <Compile Include="Base\ProjectImageMappingService.cs" />
+    <Compile Include="Base\ProjectImageService.cs" />
+    <Compile Include="Base\ProjectMappingService.cs" />
+    <Compile Include="Base\ProjectService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PenDesign.Common\PenDesign.Common.csproj">
+      <Project>{35a8d363-39ca-4958-a067-6d820d35592a}</Project>
+      <Name>PenDesign.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PenDesign.Core\PenDesign.Core.csproj">
+      <Project>{e115fcf0-705c-4cd2-b04c-eac0280bdf43}</Project>
+      <Name>PenDesign.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

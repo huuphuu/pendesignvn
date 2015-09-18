@@ -1,0 +1,24 @@
+﻿@model System.Data.Entity.Infrastructure.DbQuery<IEnumerable<PenDesign.Core.Model.BannerMapping>>
+
+@if (Model != null)
+{
+    <div class="container_12">
+        <div class="grid_12">
+            <div class="slider_wrapper ">
+                <div class="camera_wrap" id="camera_wrap">
+                    @foreach (var bannerList in Model)
+                    {
+                        foreach (var item in bannerList)
+                        {
+                            <div data-thumb="@item.Banner.MediaThumbUrl" data-src="@item.Banner.MediaUrl">
+                                <div class="caption fadeFromBottom">
+                                    @item.Description
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

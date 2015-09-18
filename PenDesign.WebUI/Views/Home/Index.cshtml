@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+
+@section ScriptsFooter{
+    <!--banner script-->
+    <script src="/Scripts/PenDesign/camera.js"></script>
+    <script>
+        jQuery('#camera_wrap').camera({
+            loader: 'pie',
+            pagination: true,
+            minHeight: '200',
+            thumbnails: true,
+            height: '40.85106382978723%',
+            caption: true,
+            navigation: true,
+            fx: 'mosaic'
+        });
+    </script>
+}
+
+<!--Banner-->
+@{ Html.RenderAction("_Banner", "Home");}
+
+<div class="page1_block">
+    <div class="container_12">
+        <div class="grid_12">
+            <div class="center pd-t-85">
+                @Html.Raw(ViewBag.slogan)
+            </div>
+        </div>
+    </div>
+</div>
+<!--==============================Content=================================-->
+<div class="content">
+    @{ Html.RenderAction("_Construction", "Home");}
+
+    <div class="hor"></div>
+    <div class="container_12">
+        <div class="grid_12 center">
+            <h3>Cộng Đồng</h3>
+        </div>
+
+        @{ Html.RenderAction("_Footer_Video", "Home");}
+
+        <!--xu huong-->
+        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 1 });} 
+        
+
+        <!--Khach hang-->
+        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 2 });}
+
+
+        <!--cong trinh tieu bieu-->
+        @{ Html.RenderAction("_Footer_Construction", "Home");}
+        
+    </div>
+</div>
+<!--==============================footer=================================-->

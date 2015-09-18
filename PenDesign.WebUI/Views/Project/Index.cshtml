@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Dự án";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@section ScriptsFooter{
+
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+    <script src="~/Content/colorbox/jquery.colorbox-min.js"></script>
+    <script>
+        $(".group1").colorbox({
+            rel: 'group1'
+        });
+        $(".group2").colorbox({
+            rel: 'group2'
+        });
+    </script>
+}
+
+<div class="content">
+    <div class="container_12">
+        <div class="breadcrumb">
+            <a href="/" title="Trang chủ">Trang chủ</a> / Dự án
+        </div>
+        <div class="grid_12">
+            <h2>Dự án</h2>
+        </div>
+        <div class="clear cl1"></div>
+        <div class="serv">
+            <div class="grid_4">
+                <a class="gal group1" href="~/Content/images/big1.jpg" title="Me and my grandfather on the Ohoopee.">
+                    <img src="/Content/images/page3_img1.jpg" class="img-responsive" alt="Video 1" />
+                </a>
+                <a class="group1 hidden" href="~/Content/images/big2.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                <a class="group1 hidden" href="~/Content/images/big3.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                <a class="group1 hidden" href="~/Content/images/big4.jpg" title="Me and my grandfather on the Ohoopee."></a>
+
+                <div class="text1">
+                    <a href="#">Vivamus at magna non nuncer </a>
+                </div>Adipiscing elin mollis eratttis neq acilisis, sit amet ultrecies erat rutrumsucilisis
+                <div class="alright">
+                    <a href="#" class="btn">More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

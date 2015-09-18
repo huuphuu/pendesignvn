@@ -1,7 +1,0 @@
-C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Core\bin\Release\PenDesign.Core.dll
-C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Core\bin\Release\PenDesign.Core.pdb
-C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Core\bin\Release\PenDesign.Common.dll
-C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Core\bin\Release\PenDesign.Common.pdb
-C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Core\obj\Release\PenDesign.Core.csprojResolveAssemblyReference.cache
-C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Core\obj\Release\PenDesign.Core.dll
-C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Core\obj\Release\PenDesign.Core.pdb

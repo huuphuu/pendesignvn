@@ -26,7 +26,7 @@ namespace PenDesign.Core.Model
 
         public string Phone { get; set; }
         public string LogoUrl { get; set; }
-        public string BannerLogo { get; set; }
+
         public string ContactForm { get; set; }
         public string FooterContent { get; set; }
 

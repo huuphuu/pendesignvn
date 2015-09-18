@@ -2,7 +2,9 @@
     background: #F56565;
     margin-bottom: 0;
 }
-
+.box-footer {
+    border: none;
+}
 .login-box-body, .register-box-body {
     background: #F8FAD7;
 }

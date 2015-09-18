@@ -25,7 +25,7 @@
 <div class="page1_block">
     <div class="container_12">
         <div class="grid_12">
-            <div class="center pd-t-85" >
+            <div class="center pd-t-85">
                 @Html.Raw(ViewBag.slogan)
             </div>
         </div>
@@ -33,79 +33,27 @@
 </div>
 <!--==============================Content=================================-->
 <div class="content">
-    <div class="container_12">
-        <div class="grid_12 center">
-            <h3>Công Trình Thực Tế</h3>
-            <section class="tt-grid-wrapper">
-                <ul class="tt-grid tt-effect-stackback tt-effect-delay">
+    @{ Html.RenderAction("_Construction", "Home");}
 
-                    <li><a href="#"><img src="/Content/images/feat1.jpg" alt="img01"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat2.jpg" alt="img02"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat3.jpg" alt="img03"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat4.jpg" alt="img04"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat5.jpg" alt="img05"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat6.jpg" alt="img06"></a></li>
-                </ul>
-                <nav>
-                    <a class="tt-current"></a><a></a><a></a><a></a>
-                </nav>
-            </section>
-            <div class="clear"></div>
-            <div class="alright">
-                <a href="#" class="btn">Xem thêm</a>
-            </div>
-        </div>
-    </div>
     <div class="hor"></div>
     <div class="container_12">
         <div class="grid_12 center">
             <h3>Cộng Đồng</h3>
         </div>
-        <div class="grid_3">
-            <h4>Video</h4>
-            <img src="/Content/images/page1_img1.jpg" alt="" class="img_inner">
-            Lorem ipsum dolor sit t,tetur adipiscing elit. In molliseri eratttis neque facilisi
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
-        <div class="grid_3">
-            <h4>Xu Hướng</h4>
-            <ul class="list">
-                <li><a href="#">Lorem ipsum dolor sit </a></li>
-                <li><a href="#">Amet,tetur adipiscing elit</a></li>
-                <li><a href="#">In mollis eratttis neque </a></li>
-                <li><a href="#">Facilisis, sit amet ultretr</a></li>
-                <li><a href="#">Icies erat rutrums facilisis</a></li>
-                <li><a href="#">Nulla vel viverra auctoreo</a></li>
-                <li><a href="#">Magna sodales felis, quis</a></li>
-            </ul>
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
-        <div class="grid_3">
-            <h4>Khách Hàng</h4>
-            <ul class="list">
-                <li><a href="#">Morem ipsum dolor site</a></li>
-                <li><a href="#">Kmet,tetur adipiscing eli</a></li>
-                <li><a href="#">In mollis eratttis nequ </a></li>
-                <li><a href="#">Facilisis, sit amet ultretre</a></li>
-                <li><a href="#">Cies erat rutrums facilis </a></li>
-                <li><a href="#">Kulla vel viverra auctore</a></li>
-                <li><a href="#">Bagna sodales felisquik </a></li>
-            </ul>
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
-        <div class="grid_3">
-            <h4>Công Trình Tiêu Biểu</h4>
-            <ul class="list">
-                <li><a href="#">Korem ipsum dolor sitilo</a></li>
-                <li><a href="#">Pmet, tetur adipiscing eli</a></li>
-                <li><a href="#">On mollis eratttis nequ </a></li>
-                <li><a href="#">Gacilisis, sit amet ultre</a></li>
-                <li><a href="#">Mcies erat rutrumsu </a></li>
-                <li><a href="#">Vacilisis Nulla vel uivra </a></li>
-                <li><a href="#">Nuctoreo Magna sodale </a></li>
-            </ul>
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
+
+        @{ Html.RenderAction("_Footer_Video", "Home");}
+
+        <!--xu huong-->
+        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 1 });} 
+        
+
+        <!--Khach hang-->
+        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 2 });}
+
+
+        <!--cong trinh tieu bieu-->
+        @{ Html.RenderAction("_Footer_Construction", "Home");}
+        
     </div>
 </div>
 <!--==============================footer=================================-->

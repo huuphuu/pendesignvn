@@ -403,7 +403,7 @@ angular.module('adminApp')
         controller: function ($scope, $element, $attrs, $q, DTOptionsBuilder, DTColumnBuilder, $timeout, $compile) {
             var pageLength = 20;
             if (typeof $scope.gridInfo.pageLength != 'undefined')
-                pageLength = $scope.gridInfo.pageLength
+                pageLength = $scope.gridInfo.pageLength;
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                                 .withOption("paging", true)
                                 .withOption("pagingType", 'simple_numbers')
@@ -418,6 +418,16 @@ angular.module('adminApp')
             //     leftColumns: 3,
             //     rightColumns: 0
             // })
+            //.withLanguageSource('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/vnLanguageDataTable.json')
+            .withTableTools('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/copy_csv_xls_pdf.swf')
+            .withTableToolsButtons([
+                'copy',
+                'print', {
+                    'sExtends': 'collection',
+                    'sButtonText': 'Save',
+                    'aButtons': ['csv', 'xls', 'pdf']
+                }
+            ])
             .withOption('rowCallback', rowCallback);
 
             function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {

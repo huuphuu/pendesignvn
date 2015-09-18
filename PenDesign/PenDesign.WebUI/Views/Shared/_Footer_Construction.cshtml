@@ -1,0 +1,20 @@
+﻿@model System.Data.Entity.Infrastructure.DbQuery<IEnumerable<PenDesign.Core.Model.NewsMapping>>
+
+
+@if (Model != null)
+{
+    <div class="grid_3">
+        <h4>Công Trình Tiêu Biểu</h4>
+        <ul class="list">
+            @foreach (var item in Model)
+            {
+                foreach (var construction in item)
+                {
+                    <li><a href="#">@construction.Title</a></li>
+                }
+            }
+            
+        </ul>
+        <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
+    </div>
+}

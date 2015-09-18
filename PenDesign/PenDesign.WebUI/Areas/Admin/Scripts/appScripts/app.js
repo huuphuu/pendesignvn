@@ -21,17 +21,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/index',
             templateUrl: '/Areas/Admin/Templates/Views/Index/index.html'
         })
-        //gallery
-        .state('controlPanel.addGallery', {
-            url: '/add-gallery/:galleryCategoryId',
-            templateUrl: '/Areas/Admin/Templates/Views/Gallery/addGallery.view.html',
-            controller: 'galleryController'
-        })
-        .state('controlPanel.galleryList', {
-            url: '/gallery-list/:galleryCategoryId',
-            templateUrl: '/Areas/Admin/Templates/Views/Gallery/gallery.list.view.html',
-            controller: 'galleryController'
-        })
         //Banner
         .state('controlPanel.addBanner', {
             url: '/add-banner',

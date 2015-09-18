@@ -201,6 +201,7 @@
     <Compile Include="Areas\Admin\Controllers\BannerController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Admin\Controllers\ConfigController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmailController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadController.cs" />
@@ -2122,6 +2123,10 @@
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Construction.cshtml" />
+    <Content Include="Views\Shared\_Footer_Video.cshtml" />
+    <Content Include="Views\Shared\_Footer_News.cshtml" />
+    <Content Include="Views\Shared\_Footer_Construction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

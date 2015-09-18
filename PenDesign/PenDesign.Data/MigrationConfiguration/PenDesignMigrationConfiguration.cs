@@ -2767,7 +2767,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             {
                                 NewsCategoryId = 1, LanguageId = 129, Status = 0,
                                 Intro = "Xu Hướng 1 - NewsCategory - Intro", Detail = "Xu Hướng 1 - NewsCategory - Detail", MetaData = "Xu Hướng 1 - NewsCategory - MetaData",
-                                Title = "Xu Hướng 1 - NewsCategory ", Keyword = "Xu Hướng 1 - NewsCategory Keyword", Description = "Xu Hướng 1 - NewsCategory Description",
+                                Title = "Xu Hướng", Keyword = "Xu Hướng 1 - NewsCategory Keyword", Description = "Xu Hướng 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
@@ -2775,7 +2775,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             {
                                 NewsCategoryId = 1, LanguageId = 29, Status = 0,
                                 Intro = "Trend 1 - NewsCategory - Intro", Detail = "Trend 1 - NewsCategory - Detail", MetaData = "Trend 1 - NewsCategory - MetaData",
-                                Title = "Trend 1 - NewsCategory", Keyword = "Trend 1 - NewsCategory Keyword", Description = "Trend 1 - NewsCategory Description",
+                                Title = "Trend 1", Keyword = "Trend 1 - NewsCategory Keyword", Description = "Trend 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -2969,7 +2969,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             {
                                 NewsCategoryId = 2, LanguageId = 129, Status = 0,
                                 Intro = "Khách Hàng 1 - NewsCategory - Intro", Detail = "Khách Hàng 1 - NewsCategory - Detail", MetaData = "Khách Hàng 1 - NewsCategory - MetaData",
-                                Title = "Khách Hàng 1 - NewsCategory ", Keyword = "Khách Hàng 1 - NewsCategory Keyword", Description = "Khách Hàng 1 - NewsCategory Description",
+                                Title = "Khách Hàng 1", Keyword = "Khách Hàng 1 - NewsCategory Keyword", Description = "Khách Hàng 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
@@ -2977,7 +2977,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             {
                                 NewsCategoryId = 2, LanguageId = 29, Status = 0,
                                 Intro = "Customers 1 - NewsCategory - Intro", Detail = "Customers 1 - NewsCategory - Detail", MetaData = "Customers 1 - NewsCategory - MetaData",
-                                Title = "Customers 1 - NewsCategory", Keyword = "Customers 1 - NewsCategory Keyword", Description = "Customers 1 - NewsCategory Description",
+                                Title = "Customers 1", Keyword = "Customers 1 - NewsCategory Keyword", Description = "Customers 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -3223,7 +3223,6 @@ namespace PenDesign.Data.MigrationConfiguration
                     Address = "141 Gò Ô Môi, Phường Phú Thuận, Quận 7, TP.HCM",
                     GoogleMap = "<iframe class='embed-responsive-item' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.060876544128!2d106.7358477!3d10.729788200000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175256f79e66e01%3A0xf3843eee25fb1859!2zMTQxIEfDsiDDlCBNw7RpLCBQaMO6IFRodeG6rW4sIFF14bqtbiA3LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1441451785499' frameborder='0' style='border:0' allowfullscreen></iframe>",
                     Phone = "0996614884",
-                    //BannerLogo = "/Content/images/logo.png",
                     LogoUrl = "/Content/images/logo.png",
                     ContactForm = contactForm,
                     FooterContent = footerContent,
@@ -3257,17 +3256,7 @@ namespace PenDesign.Data.MigrationConfiguration
                 {
                     //Main menu
                     new AdminMenu() { 
-                        Name = "Thông báo", Url = "controlPanel.notification", CssIcon =  "fa fa-bell-o", LabelCss =  "",
-                        Type = "notification", Parent = 0, Order = 1, Available = true, 
-                        IsAdmin = true
-                    },
-                    //new AdminMenu() { 
-                    //    Name = "Thư viện", Url = "#", CssIcon =  "fa fa-folder-open", LabelCss =  "fa fa-angle-left", 
-                    //    Type = "", Parent = 0, Order = 2, Available = true,
-                    //    IsAdmin = true
-                    //},
-                    new AdminMenu() { 
-                        Name = "Banner", Url = "controlPanel.banner", CssIcon =  "fa fa-folder-open", LabelCss =  "fa fa-angle-left", 
+                        Name = "Banner", Url = "#", CssIcon =  "fa fa-folder-open", LabelCss =  "fa fa-angle-left", 
                         Type = "", Parent = 0, Order = 3, Available = true,
                         IsAdmin = true
                     },
@@ -3277,27 +3266,22 @@ namespace PenDesign.Data.MigrationConfiguration
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Khóa học/Học viên", Url = "#", CssIcon =  "fa fa-folder", LabelCss =  "fa fa-angle-left", 
-                        Type = "", Parent = 0, Order = 5, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
-                        Name = "Dịch vụ", Url = "#", CssIcon =  "fa fa-rocket", LabelCss =  "fa fa-angle-left", 
+                        Name = "Tin tức", Url = "#", CssIcon =  "fa fa-rocket", LabelCss =  "fa fa-angle-left", 
                         Type = "", Parent = 0, Order = 6, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Tin tức", Url = "#", CssIcon =  "fa fa-file-text", LabelCss =  "fa fa-angle-left", 
+                        Name = "Dự án", Url = "#", CssIcon =  "fa fa-file-text", LabelCss =  "fa fa-angle-left", 
                         Type = "", Parent = 0, Order = 7, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Sự kiện", Url = "#", CssIcon =  "fa fa-glass", LabelCss =  "fa fa-angle-left", 
+                        Name = "Công trình thực tế", Url = "#", CssIcon =  "fa fa-glass", LabelCss =  "fa fa-angle-left", 
                         Type = "", Parent = 0, Order = 8, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Đối tác", Url = "#", CssIcon =  "fa fa-group", LabelCss =  "fa fa-angle-left", 
+                        Name = "Video", Url = "#", CssIcon =  "fa fa-group", LabelCss =  "fa fa-angle-left", 
                         Type = "", Parent = 0, Order = 9, Available = true,
                         IsAdmin = true
                     },
@@ -3312,29 +3296,16 @@ namespace PenDesign.Data.MigrationConfiguration
                         IsAdmin = true
                     },
                     //--------------
-                    //SubMenu Thu vien
-                    //--------------
-                    //new AdminMenu() { 
-                    //    Name = "Quản lý hình ảnh", Url = "controlPanel.galleryList({galleryCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                    //    Type = "", Parent = 2, Order = 1, Available = true,
-                    //    IsAdmin = true
-                    //},
-                    //new AdminMenu() { 
-                    //    Name = "Quản lý Video Clip", Url = "controlPanel.galleryList({galleryCategoryId: 2})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                    //    Type = "", Parent = 2, Order = 2, Available = true,
-                    //    IsAdmin = true
-                    //},
-                    //--------------
                     //SubMenu Banner
                     //--------------
                     new AdminMenu() { 
                         Name = "Thêm Banner", Url = "controlPanel.addBanner", CssIcon = "fa fa-users", LabelCss = "", 
-                        Type = "", Parent = 3, Order = 1, Available = true,
+                        Type = "", Parent = 1, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
                         Name = "Danh sách Banner", Url = "controlPanel.bannerList", CssIcon = "fa fa-user", LabelCss = "", 
-                        Type = "", Parent = 3, Order = 2, Available = true,
+                        Type = "", Parent = 1, Order = 2, Available = true,
                         IsAdmin = true
                     },
                     //--------------
@@ -3342,100 +3313,78 @@ namespace PenDesign.Data.MigrationConfiguration
                     //--------------
                     new AdminMenu() { 
                         Name = "Danh sách Nhóm", Url = "controlPanel.userGroupsList", CssIcon = "fa fa-users", LabelCss = "", 
-                        Type = "", Parent = 4, Order = 1, Available = true,
+                        Type = "", Parent = 2, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
                         Name = "Danh sách Thành viên", Url = "controlPanel.userList", CssIcon = "fa fa-user", LabelCss = "", 
-                        Type = "", Parent = 4, Order = 2, Available = true,
+                        Type = "", Parent = 2, Order = 2, Available = true,
                         IsAdmin = true
                     },
-                    //--------------
-                    //SubMenu Khoa hoc/Hoc vien
-                    //--------------
-                    new AdminMenu() { 
-                        Name = "Thêm khóa học", Url = "controlPanel.addCourse", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 5, Order = 1, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
-                        Name = "Danh sách khóa học", Url = "controlPanel.coursesList", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 5, Order = 2, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
-                        Name = "Thêm học viên", Url = "controlPanel.addStudent", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 5, Order = 3, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
-                        Name = "Danh sách học viên", Url = "controlPanel.studentsList", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 5, Order = 4, Available = true,
-                        IsAdmin = true
-                    },
-                    //--------------
-                    //SubMenu Dich vu
-                    //--------------
-                    new AdminMenu() { 
-                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 6, Order = 1, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
-                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 6, Order = 2, Available = true,
-                        IsAdmin = true
-                    },
+ 
                     //--------------
                     //SubMenu Tin tuc
                     //--------------
                     new AdminMenu() { 
-                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 3})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 7, Order = 1, Available = true,
+                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Type = "", Parent = 3, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 3})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 7, Order = 2, Available = true,
-                        IsAdmin = true
-                    },
-                    //--------------
-                    //SubMenu Su kien
-                    //--------------
-                    new AdminMenu() { 
-                        Name = "Thêm sự kiện mới", Url = "controlPanel.addNews({newsCategoryId: 2})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 8, Order = 1, Available = true,
-                        IsAdmin = true
-                    },
-                    new AdminMenu() { 
-                        Name = "Danh sách sự kiện", Url = "controlPanel.newsList({newsCategoryId: 2})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 8, Order = 2, Available = true,
+                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Type = "", Parent = 3, Order = 2, Available = true,
                         IsAdmin = true
                     },
                     //--------------
-                    //SubMenu Doi tac
+                    //SubMenu Du An
                     //--------------
                     new AdminMenu() { 
-                        Name = "Thêm đối tác", Url = "controlPanel.addNews({newsCategoryId: 4})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 9, Order = 1, Available = true,
+                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Type = "", Parent = 4, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Danh sách đối tác", Url = "controlPanel.newsList({newsCategoryId: 4})", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 9, Order = 2, Available = true,
+                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Type = "", Parent = 4, Order = 2, Available = true,
+                        IsAdmin = true
+                    },
+                    //--------------
+                    //SubMenu Cong trinh thuc te
+                    //--------------
+                    new AdminMenu() { 
+                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Type = "", Parent = 5, Order = 1, Available = true,
+                        IsAdmin = true
+                    },
+                    new AdminMenu() { 
+                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Type = "", Parent = 5, Order = 2, Available = true,
+                        IsAdmin = true
+                    },
+                    //--------------
+                    //SubMenu Video
+                    //--------------
+                    new AdminMenu() { 
+                        Name = "Thêm video mới", Url = "controlPanel.addNews({newsCategoryId: 1})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Type = "", Parent = 6, Order = 1, Available = true,
+                        IsAdmin = true
+                    },
+                    new AdminMenu() { 
+                        Name = "Danh sách Video", Url = "controlPanel.newsList({newsCategoryId: 1})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Type = "", Parent = 6, Order = 2, Available = true,
                         IsAdmin = true
                     },
                     //--------------
                     //SubMenu Email
                     //--------------
-                    new AdminMenu() { 
-                        Name = "Email đăng ký", Url = "controlPanel.email", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 10, Order = 1, Available = true,
-                        IsAdmin = true
-                    },
+                    //new AdminMenu() { 
+                    //    Name = "Email đăng ký", Url = "controlPanel.email", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                    //    Type = "", Parent = 10, Order = 1, Available = true,
+                    //    IsAdmin = true
+                    //},
                     new AdminMenu() { 
                         Name = "Email liên hệ", Url = "controlPanel.contactEmail", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 10, Order = 2, Available = true,
+                        Type = "", Parent = 7, Order = 2, Available = true,
                         IsAdmin = true
                     }
                     //--------------

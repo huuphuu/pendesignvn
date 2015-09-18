@@ -260,7 +260,7 @@ angular.module('adminApp')
                             $scope.name = 'You did not enter in your name!';
                     });
                 }
-                $scope.changePassword();
+               
                 $scope.actionConfirm = function (entry, callback) {
                     //entry.UserID = coreService.userID;
                     $scope.currentUser.UserId = $scope.currentUser.id;

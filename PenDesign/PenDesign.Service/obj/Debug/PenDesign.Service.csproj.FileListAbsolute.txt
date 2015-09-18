@@ -18,3 +18,21 @@ C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.S
 C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Service\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Service\bin\Debug\EntityFramework.xml
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\PenDesign.Service.dll.config
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\PenDesign.Service.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\PenDesign.Service.pdb
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\PenDesign.Common.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\PenDesign.Core.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\Newtonsoft.Json.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\EntityFramework.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\PenDesign.Common.pdb
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\PenDesign.Core.pdb
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\Newtonsoft.Json.xml
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\obj\Debug\PenDesign.Service.csprojResolveAssemblyReference.cache
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\obj\Debug\PenDesign.Service.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\obj\Debug\PenDesign.Service.pdb
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Service\bin\Debug\EntityFramework.xml

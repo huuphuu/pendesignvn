@@ -10,3 +10,11 @@ C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.C
 C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Common\obj\Debug\PenDesign.Common.csprojResolveAssemblyReference.cache
 C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Common\obj\Debug\PenDesign.Common.dll
 C:\Users\Ly\Dropbox\Websites\Du an website\pendesign\trunk\PenDesign\PenDesign.Common\obj\Debug\PenDesign.Common.pdb
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\bin\Debug\PenDesign.Common.dll.config
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\bin\Debug\PenDesign.Common.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\bin\Debug\PenDesign.Common.pdb
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\bin\Debug\Newtonsoft.Json.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\bin\Debug\Newtonsoft.Json.xml
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\obj\Debug\PenDesign.Common.dll
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\obj\Debug\PenDesign.Common.pdb
+D:\Working\Projects\PenDesignVN\trunk\PenDesign\PenDesign.Common\obj\Debug\PenDesign.Common.csprojResolveAssemblyReference.cache

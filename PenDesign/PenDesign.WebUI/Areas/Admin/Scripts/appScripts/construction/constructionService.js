@@ -8,9 +8,13 @@ angular.module("adminApp")
             'update': { method: 'PUT' }
         });
 
-        newsService.getAllNews = function (id) {
-            return newsResource.query({}, { 'Id': id });
+        videoService.getAllVideos = function () {
+            return videoResource.query();
         }
+
+        //newsService.getAllNews = function (id) {
+        //    return newsResource.query({}, { 'Id': id });
+        //}
 
         //newsService.getNewsById = function (news) {
         //    return newsResource.query({}, { 'Id': news.id });

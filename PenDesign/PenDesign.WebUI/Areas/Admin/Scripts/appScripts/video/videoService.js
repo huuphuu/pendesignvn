@@ -1,31 +1,35 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .factory("newsService", ['toaster', '$resource', function (toaster, $resource) {
-        var newsService = {};
+    .factory("videoService", ['toaster', '$resource', function (toaster, $resource) {
+        var videoService = {};
 
-        var newsResource = $resource('/admin/api/news/:Id', { Id: '@Id' }, {
+        var videoResource = $resource('/admin/api/video/:Id', { Id: '@Id' }, {
             'update': { method: 'PUT' }
         });
-
-        newsService.getAllNews = function (id) {
-            return newsResource.query({}, { 'Id': id });
+        
+        videoService.getAllVideos = function () {
+            return videoResource.query();
         }
 
-        //newsService.getNewsById = function (news) {
-        //    return newsResource.query({}, { 'Id': news.id });
+        //videoService.getAllVideos = function (id) {
+        //    return videoResource.query({}, { 'Id': id });
         //}
 
-        newsService.addNewNews = function (news) {
-            return newsResource.save(news);
+        //videoService.getNewsById = function (news) {
+        //    return videoResource.query({}, { 'Id': news.id });
+        //}
+
+        videoService.addNewVideo = function (video) {
+            return videoResource.save(video);
         }
 
-        newsService.deleteNews = function (news) {
-            return newsResource.delete({ 'Id': news.id });
+        videoService.deleteVideo = function (video) {
+            return videoResource.delete({ 'Id': video.id });
         }
 
-        newsService.updateNews = function (news) {
-            return newsResource.update({ 'Id': news.id }, news);
+        videoService.updateVideo= function (video) {
+            return videoResource.update({ 'Id': video.id }, video);
         }
-        return newsService;
+        return videoService;
     }])

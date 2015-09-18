@@ -15,7 +15,7 @@
             <div class="box box-danger">
                 <div class="box-header">
                     <i class="fa fa-list"></i>
-                    <h3 class="box-title text-uppercase">DANH SÁCH {{categoryName}}</h3>
+                    <h3 class="box-title text-uppercase">DANH SÁCH Dự án</h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
                         <button class="btn btn-danger btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="news in allNews | orderBy:'order'">
+                            <tr ng-repeat="news in allProjects | orderBy:'zOrder'">
                                 <td>{{$index + 1}}</td>
                                 <td>{{news.name}}</td>
                                 <td>{{news.createTime | date: dateTimeFormat }}</td>
@@ -86,18 +86,18 @@
         </div>
     </div>
     <!--chinh sua khoa hoc-->
-    <div class="editNews"></div>
-    <div class="row" ng-show="currentNews">
+    <div class="editProject"></div>
+    <div class="row" ng-show="currentProject">
         <div class="col-xs-12">
             <div class="box box-info">
                 <div class="box-header">
                     <i class="fa fa-plus-circle"></i>
-                    <h3 class="box-title">CHỈNH SỬA BÀI VIẾT: <b>{{currentNews.name}}</b></h3>
+                    <h3 class="box-title">CHỈNH SỬA DỰ ÁN: <b>{{currentProject.name}}</b></h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
                         <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
                         <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
-                        <button class="btn btn-info btn-sm" ng-click="currentNews = null" title="Tắt"><i class="fa fa-times"></i></button>
+                        <button class="btn btn-info btn-sm" ng-click="currentProject = null" title="Tắt"><i class="fa fa-times"></i></button>
                     </div><!-- /. tools -->
                 </div>
                 <div class="box-body">
@@ -108,7 +108,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="name">Tên: </label>
-                                            <input type="text" class="form-control" name="name" ng-model="currentNews.name" placeholder="Tên khóa học:" required />
+                                            <input type="text" class="form-control" name="name" ng-model="currentProject.name" placeholder="Tên khóa học:" required />
                                             <div ng-messages="editNewsForm.name.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
@@ -116,7 +116,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="order" ng-model="currentNews.order" placeholder="Vị trí:" required min="1" />
+                                            <input type="number" class="form-control" name="order" ng-model="currentProject.order" placeholder="Vị trí:" required min="1" />
                                             <div ng-messages="editNewsForm.order.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
@@ -126,13 +126,13 @@
 
                                 <div class="form-group">
                                     <label for="keyword">Keyword: </label>
-                                    <textarea class="form-control" name="keyword" ng-model="currentNews.keyword" placeholder="Keywork (SEO):" required></textarea>
+                                    <textarea class="form-control" name="keyword" ng-model="currentProject.keyword" placeholder="Keywork (SEO):" required></textarea>
                                     <div ng-messages="editNewsForm.keyword.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description: </label>
-                                    <textarea class="form-control" name="description" ng-model="currentNews.description" placeholder="Description (SEO):" required></textarea>
+                                    <textarea class="form-control" name="description" ng-model="currentProject.description" placeholder="Description (SEO):" required></textarea>
                                     <div ng-messages="editNewsForm.description.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
@@ -141,7 +141,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="name">Hình đại diện trang chủ: </label>
-                                        <img src="{{currentNews.homeBannerImageUrl}}" alt="" class="img-responsive" />
+                                        <img src="{{currentProject.homeBannerImageUrl}}" alt="" class="img-responsive" />
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="name">Hình đại diện trang chi tiết: </label>
-                                        <img src="{{currentNews.subBannerImageUrl}}" alt="" class="img-responsive" />
+                                        <img src="{{currentProject.subBannerImageUrl}}" alt="" class="img-responsive" />
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -170,24 +170,24 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="bannerImageIntro">Nội dung intro trang chủ: </label>
-                                    <textarea id="bannerImageIntro" required name="bannerImageIntro" ng-model="currentNews.bannerImageIntro" class="textarea" placeholder="Nội dung Intro của ảnh đại diện Trang chủ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <textarea id="bannerImageIntro" required name="bannerImageIntro" ng-model="currentProject.bannerImageIntro" class="textarea" placeholder="Nội dung Intro của ảnh đại diện Trang chủ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="contentIntro">Nội dung intro trang chi tiết: </label>
-                                    <textarea id="contentIntro" required name="contentIntro" ng-model="currentNews.contentIntro" class="textarea" placeholder="Nội dung Intro của trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <textarea id="contentIntro" required name="contentIntro" ng-model="currentProject.contentIntro" class="textarea" placeholder="Nội dung Intro của trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="contentLeft">Nội dung chi tiết (trái): </label>
-                                <textarea id="contentLeft" name="contentLeft" ng-model="currentNews.contentLeft" class="textarea" placeholder="Nội dung bên trái trang chi tiết (nếu bỏ trống phần này, phần nội dung bên phải sẽ hiển thị)" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                <textarea id="contentLeft" name="contentLeft" ng-model="currentProject.contentLeft" class="textarea" placeholder="Nội dung bên trái trang chi tiết (nếu bỏ trống phần này, phần nội dung bên phải sẽ hiển thị)" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label for="contentRight">Nội dung chi tiết (phải): </label>
-                                <textarea id="contentRight" name="contentRight" ng-model="currentNews.contentRight" class="textarea" placeholder="Nội dung bên phải trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                <textarea id="contentRight" name="contentRight" ng-model="currentProject.contentRight" class="textarea" placeholder="Nội dung bên phải trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
                         </div>
 
@@ -197,12 +197,12 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-6 pull-right">
                             <div class="col-xs-3 pull-right">
-                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentNews = null">
+                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentProject = null">
                                     Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
                                 </button>
                             </div>
                             <div class="col-xs-5 pull-right">
-                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentNews)"
+                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentProject)"
                                         ng-disabled="editNewsForm.name.$error.required
                                                     ||  editNewsForm.keyword.$error.required
                                                     ||  editNewsForm.description.$error.required

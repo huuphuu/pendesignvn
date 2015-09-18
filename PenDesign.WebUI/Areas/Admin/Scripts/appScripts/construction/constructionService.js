@@ -1,35 +1,35 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .factory("newsService", ['toaster', '$resource', function (toaster, $resource) {
-        var newsService = {};
+    .factory("constructionService", ['toaster', '$resource', function (toaster, $resource) {
+        var constructionService = {};
 
-        var newsResource = $resource('/admin/api/news/:Id', { Id: '@Id' }, {
+        var constructionResource = $resource('/admin/api/construction/:Id', { Id: '@Id' }, {
             'update': { method: 'PUT' }
         });
 
-        videoService.getAllVideos = function () {
-            return videoResource.query();
+        constructionService.getAllConstruction = function () {
+            return constructionResource.query();
         }
 
-        //newsService.getAllNews = function (id) {
-        //    return newsResource.query({}, { 'Id': id });
+        //constructionService.getAllNews = function (id) {
+        //    return constructionResource.query({}, { 'Id': id });
         //}
 
-        //newsService.getNewsById = function (news) {
-        //    return newsResource.query({}, { 'Id': news.id });
+        //constructionService.getNewsById = function (news) {
+        //    return constructionResource.query({}, { 'Id': news.id });
         //}
 
-        newsService.addNewNews = function (news) {
-            return newsResource.save(news);
+        constructionService.addNewConstruction = function (construction) {
+            return constructionResource.save(construction);
         }
 
-        newsService.deleteNews = function (news) {
-            return newsResource.delete({ 'Id': news.id });
+        constructionService.deleteConstruction = function (construction) {
+            return constructionResource.delete({ 'Id': construction.id });
         }
 
-        newsService.updateNews = function (news) {
-            return newsResource.update({ 'Id': news.id }, news);
+        constructionService.updateConstruction = function (construction) {
+            return constructionResource.update({ 'Id': construction.id }, construction);
         }
-        return newsService;
+        return constructionService;
     }])

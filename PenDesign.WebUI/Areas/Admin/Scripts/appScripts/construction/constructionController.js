@@ -1,54 +1,41 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("newsController", function ($rootScope, $scope, toaster, newsService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
+    .controller("constructionController", function ($rootScope, $scope, toaster, constructionService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
 
-        $scope.newsCategoryId = $stateParams.newsCategoryId;
-        var categoryName = "";
-        if ($scope.newsCategoryId == 1)
-            categoryName = "Dịch vụ";
-        if ($scope.newsCategoryId == 2)
-            categoryName = "Sự kiện";
-        if ($scope.newsCategoryId == 3)
-            categoryName = "Kiến thức";
-        if ($scope.newsCategoryId == 4)
-            categoryName = "Đối tác";
-        $scope.categoryName = categoryName;
-
-
-        $scope.allNews = {};
-        $scope.getAllNews = function () {
+        $scope.allConstructions = {};
+        $scope.getallConstructions = function () {
             $rootScope.showModal = true;
-            return newsService.getAllNews($scope.newsCategoryId).$promise.then(
+            return constructionService.getallConstructions().$promise.then(
             function (data) {
                 $rootScope.showModal = false;
-                $scope.allNews = data;
+                $scope.allConstructions = data;
             }, function (response) {
                 $rootScope.showModal = true;
                 //toaster.pop('error', "Lỗi!", response.data);
             });
         }
-        $scope.getAllNews();
+        $scope.getallConstructions();
 
-        $scope.addNewNews = function (news) {
+        $scope.addNewConstruction = function (construction) {
             $rootScope.showModal = true;
             if ($scope.HomeBannerImageUrl != "")
-                news.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
+                construction.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
             if ($scope.SubBannerImageUrl != "")
-                news.SubBannerImageUrl = $scope.SubBannerImageUrl;
+                construction.SubBannerImageUrl = $scope.SubBannerImageUrl;
 
-            news.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            news.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            news.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            news.contentRight = CKEDITOR.instances.contentRight.getData();
-            news.newsCategoryId = $scope.newsCategoryId;
+            construction.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
+            construction.contentIntro = CKEDITOR.instances.contentIntro.getData();
+            construction.contentLeft = CKEDITOR.instances.contentLeft.getData();
+            construction.contentRight = CKEDITOR.instances.contentRight.getData();
+            construction.newsCategoryId = $scope.newsCategoryId;
 
-            newsService.addNewNews(news).$promise.then(
+            constructionService.addNewConstruction(construction).$promise.then(
                 function (response) {
                     $rootScope.showModal = false;
-                    toaster.pop('success', "Thành công!", "Đã thêm bài viết " + news.name + " - " + response.message);
-                    $scope.getAllNews();
-                    $location.path("/controlPanel/news-list/" + $scope.newsCategoryId);
+                    toaster.pop('success', "Thành công!", "Đã thêm bài viết " + construction.name + " - " + response.message);
+                    $scope.getallConstructions();
+                    $location.path("/controlPanel/construction-list");
                 }
                 , function (response) {
                     $rootScope.showModal = false;
@@ -56,13 +43,13 @@ angular.module("adminApp")
                 })
         };
 
-        $scope.getNews = function (index) {
-            $scope.currentNews = $scope.allNews[index];
-            CKEDITOR.instances.bannerImageIntro.setData($scope.currentNews.bannerImageIntro);
-            CKEDITOR.instances.contentIntro.setData($scope.currentNews.contentIntro);
-            CKEDITOR.instances.contentLeft.setData($scope.currentNews.contentLeft);
-            CKEDITOR.instances.contentRight.setData($scope.currentNews.contentRight);
-            $('html,body').animate({ scrollTop: $('.editNews').offset().top });
+        $scope.getConstruction = function (index) {
+            $scope.currentConstruction = $scope.allConstructions[index];
+            CKEDITOR.instances.bannerImageIntro.setData($scope.currentConstruction.bannerImageIntro);
+            CKEDITOR.instances.contentIntro.setData($scope.currentConstruction.contentIntro);
+            CKEDITOR.instances.contentLeft.setData($scope.currentConstruction.contentLeft);
+            CKEDITOR.instances.contentRight.setData($scope.currentConstruction.contentRight);
+            $('html,body').animate({ scrollTop: $('.editConstruction').offset().top });
         }
 
         $scope.deleteNews = function (news) {
@@ -72,12 +59,12 @@ angular.module("adminApp")
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return newsService.deleteNews(news).$promise.then(
+                return constructionService.deleteNews(news).$promise.then(
                 function (response) {
-                    $scope.currentNews = null;
+                    $scope.currentConstruction = null;
                     $rootScope.showModal = false;
                     toaster.pop('success', "Thành công!", "Đã xóa bài viết " + news.name + " - " + response.message);
-                    $scope.allNews.splice($scope.allNews.indexOf(news), 1);
+                    $scope.allConstructions.splice($scope.allConstructions.indexOf(news), 1);
                 }, function (response) {
                     $rootScope.showModal = false;
                     toaster.pop('error', "Lỗi!", response.data);
@@ -101,11 +88,11 @@ angular.module("adminApp")
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return newsService.updateNews(news).$promise.then(
+                return constructionService.updateNews(news).$promise.then(
                 function (response) {
-                    $scope.getAllNews();
+                    $scope.getallConstructions();
                     $rootScope.showModal = false;
-                    $scope.currentNews = null;
+                    $scope.currentConstruction = null;
                     CKEDITOR.instances.bannerImageIntro.setData('');
                     CKEDITOR.instances.contentIntro.setData('');
                     CKEDITOR.instances.contentLeft.setData('');
@@ -120,7 +107,7 @@ angular.module("adminApp")
         }
 
         //DataTable
-        $scope.$watch('allNews', function (newVal, oldVal) {
+        $scope.$watch('allConstructions', function (newVal, oldVal) {
             if (newVal && newVal != null) {
                 $scope.dtOptions = DTOptionsBuilder.newOptions()
                                    .withPaginationType('full_numbers')

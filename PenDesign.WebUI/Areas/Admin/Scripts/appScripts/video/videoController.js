@@ -1,14 +1,15 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("newsController", function ($rootScope, $scope, toaster, videoService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
+    .controller("videoController", function ($rootScope, $scope, toaster, videoService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
 
+        $scope.allVideos = {};
         $scope.getAllVideos = function () {
             $rootScope.showModal = true;
             return videoService.getAllVideos().$promise.then(
             function (data) {
                 $rootScope.showModal = false;
-                $scope.allNews = data;
+                $scope.allVideos = data;
             }, function (response) {
                 $rootScope.showModal = true;
                 //toaster.pop('error', "Lỗi!", response.data);
@@ -42,13 +43,13 @@ angular.module("adminApp")
                 })
         };
 
-        $scope.getNews = function (index) {
-            $scope.currentVideo = $scope.allNews[index];
+        $scope.getVideo = function (index) {
+            $scope.currentVideo = $scope.allVideos[index];
             CKEDITOR.instances.bannerImageIntro.setData($scope.currentVideo.bannerImageIntro);
             CKEDITOR.instances.contentIntro.setData($scope.currentVideo.contentIntro);
             CKEDITOR.instances.contentLeft.setData($scope.currentVideo.contentLeft);
             CKEDITOR.instances.contentRight.setData($scope.currentVideo.contentRight);
-            $('html,body').animate({ scrollTop: $('.editNews').offset().top });
+            $('html,body').animate({ scrollTop: $('.editVideo').offset().top });
         }
 
         $scope.deleteVideo = function (news) {
@@ -63,7 +64,7 @@ angular.module("adminApp")
                     $scope.currentVideo = null;
                     $rootScope.showModal = false;
                     toaster.pop('success', "Thành công!", "Đã xóa bài viết " + news.name + " - " + response.message);
-                    $scope.allNews.splice($scope.allNews.indexOf(news), 1);
+                    $scope.allVideos.splice($scope.allVideos.indexOf(news), 1);
                 }, function (response) {
                     $rootScope.showModal = false;
                     toaster.pop('error', "Lỗi!", response.data);
@@ -71,23 +72,23 @@ angular.module("adminApp")
             }, function () { })
         };
 
-        $scope.updateNews = function (news) {
+        $scope.updateVideo = function (video) {
 
             if ($scope.HomeBannerImageUrl != "")
-                news.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
+                video.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
             if ($scope.SubBannerImageUrl != "")
-                news.SubBannerImageUrl = $scope.SubBannerImageUrl;
-            news.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            news.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            news.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            news.contentRight = CKEDITOR.instances.contentRight.getData();
+                video.SubBannerImageUrl = $scope.SubBannerImageUrl;
+            video.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
+            video.contentIntro = CKEDITOR.instances.contentIntro.getData();
+            video.contentLeft = CKEDITOR.instances.contentLeft.getData();
+            video.contentRight = CKEDITOR.instances.contentRight.getData();
 
-            var bodyMessage = "Bạn muốn cập nhật bài viết: " + news.name + " ?";
+            var bodyMessage = "Bạn muốn cập nhật bài viết: " + video.name + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return videoService.updateNews(news).$promise.then(
+                return videoService.updateVideo(video).$promise.then(
                 function (response) {
                     $scope.getAllVideos();
                     $rootScope.showModal = false;
@@ -96,7 +97,7 @@ angular.module("adminApp")
                     CKEDITOR.instances.contentIntro.setData('');
                     CKEDITOR.instances.contentLeft.setData('');
                     CKEDITOR.instances.contentRight.setData('');
-                    toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + news.name + " - " + response.message);
+                    toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + video.name + " - " + response.message);
                     $('html,body').animate({ scrollTop: 0 });
                 }, function (response) {
                     $rootScope.showModal = false;

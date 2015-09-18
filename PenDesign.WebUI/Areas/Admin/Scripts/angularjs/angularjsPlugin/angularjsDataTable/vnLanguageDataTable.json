@@ -1,0 +1,23 @@
+﻿{
+    "sEmptyTable": "Chưa có dữ liệu.....",
+    "sInfo": "Đang xem _START_ tới _END_ của tổng cộng _TOTAL_ dòng",
+    "sInfoEmpty": "Đang xem 0 tới 0 of 0 dòng",
+    "sInfoFiltered": "(Đã lọc từ _MAX_ dòng)",
+    "sInfoPostFix": "",
+    "sInfoThousands": ",",
+    "sLengthMenu": "Xem _MENU_ dòng",
+    "sLoadingRecords": "Đang tải...",
+    "sProcessing": "Đang xử lý...",
+    "sSearch": "Tìm kiếm:",
+    "sZeroRecords": "Không có dữ liệu nào",
+    "oPaginate": {
+        "sFirst": "Đầu",
+        "sLast": "Cuối",
+        "sNext": "Tới",
+        "sPrevious": "Về"
+    },
+    "oAria": {
+        "sSortAscending": ": activate to sort column ascending",
+        "sSortDescending": ": activate to sort column descending"
+    }
+}

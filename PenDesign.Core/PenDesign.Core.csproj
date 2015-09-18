@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E115FCF0-705C-4CD2-B04C-EAC0280BDF43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PenDesign.Core</RootNamespace>
+    <AssemblyName>PenDesign.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\PenDesign.WebUI\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\PenDesign.WebUI\bin\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\PenDesign.WebUI\bin\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\PenDesign.WebUI\bin\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interface\Data\IRepository.cs" />
+    <Compile Include="Interface\Data\IUnitOfWork.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IAdminMenuService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IBannerMappingService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IBannerService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IConfigService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IContactService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IControlMappingService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IControlService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IGroupControlService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\ILanguageService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsCategoryMappingService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsCategoryService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsDraftService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsMappingService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\INewsService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IProjectImageMappingService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IProjectImageService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IProjectMappingService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IProjectService.cs" />
+    <Compile Include="Interface\Service\IService.cs" />
+    <Compile Include="Model\AdminMenu.cs" />
+    <Compile Include="Model\ApplicationRole.cs" />
+    <Compile Include="Model\Banner.cs" />
+    <Compile Include="Model\BannerMapping.cs" />
+    <Compile Include="Model\BaseClass\EditableEntity.cs" />
+    <Compile Include="Model\Config.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Control.cs" />
+    <Compile Include="Model\ControlMapping.cs" />
+    <Compile Include="Model\GroupControl.cs" />
+    <Compile Include="Model\IdentityModels.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Language.cs" />
+    <Compile Include="Model\News.cs" />
+    <Compile Include="Model\NewsCategory.cs" />
+    <Compile Include="Model\NewsCategoryMapping.cs" />
+    <Compile Include="Model\NewsDraft.cs" />
+    <Compile Include="Model\NewsMapping.cs" />
+    <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectImage.cs" />
+    <Compile Include="Model\ProjectImageMapping.cs" />
+    <Compile Include="Model\ProjectMapping.cs" />
+    <Compile Include="Model\RolePermission.cs" />
+    <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AdminMenuViewModel.cs" />
+    <Compile Include="ViewModel\BannerViewModel\BannerVM.cs" />
+    <Compile Include="ViewModel\EmailVM.cs" />
+    <Compile Include="ViewModel\ManagerUserViewModel.cs" />
+    <Compile Include="ViewModel\UserInfoViewModel.cs" />
+    <Compile Include="ViewModel\UserNotificationViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PenDesign.Common\PenDesign.Common.csproj">
+      <Project>{35a8d363-39ca-4958-a067-6d820d35592a}</Project>
+      <Name>PenDesign.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

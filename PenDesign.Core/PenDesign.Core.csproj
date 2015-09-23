@@ -104,6 +104,7 @@
     <Compile Include="Interface\Service\BasicServiceInterface\INewsDraftService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\INewsMappingService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\INewsService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IOtherPageSEOService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IProjectImageMappingService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IProjectImageService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IProjectMappingService.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Model\NewsCategoryMapping.cs" />
     <Compile Include="Model\NewsDraft.cs" />
     <Compile Include="Model\NewsMapping.cs" />
+    <Compile Include="Model\OtherPagesSeo.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\ProjectImage.cs" />
     <Compile Include="Model\ProjectImageMapping.cs" />

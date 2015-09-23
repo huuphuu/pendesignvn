@@ -55,6 +55,8 @@ namespace PenDesign.Data
 
 
         public DbSet<Config> Configs { get; set; }
+        public DbSet<OtherPageSEO> OtherPageSeos { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

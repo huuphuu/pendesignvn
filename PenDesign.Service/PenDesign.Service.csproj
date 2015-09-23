@@ -54,6 +54,7 @@
     <Compile Include="Base\NewsDraftService.cs" />
     <Compile Include="Base\NewsMappingService.cs" />
     <Compile Include="Base\NewsService.cs" />
+    <Compile Include="Base\OtherPageSEOService.cs" />
     <Compile Include="Base\ProjectImageMappingService.cs" />
     <Compile Include="Base\ProjectImageService.cs" />
     <Compile Include="Base\ProjectMappingService.cs" />

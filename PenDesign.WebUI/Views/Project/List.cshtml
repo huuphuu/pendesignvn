@@ -1,5 +1,5 @@
-﻿@*@using PenDesign.Common.HelperMethod
-@model IEnumerable<PenDesign.Core.Model.Project>
+﻿@using PenDesign.Common.HelperMethod
+@model PenDesign.WebUI.Models.ProjectVM
 
 @{
     ViewBag.Title = "Dự án";
@@ -22,10 +22,10 @@
         </div>
         <div class="clear cl1"></div>
         <div class="serv">
-            @if (Model != null)
+            @if (Model.Project != null && Model.Project.Count() > 0)
             {
                 var i = 1;
-                foreach (var item in Model)
+                foreach (var item in Model.Project)
                 {
                     <div class="grid_4">
                         @{
@@ -66,9 +66,17 @@
             }
 
         </div>
+        <div class="clear cl1"></div>
+        @Html.Paging(new PagingOptions(Model.PagingItems.TotalPages))
     </div>
-    @Html.Paging(new PagingOptions(ViewBag.pagingProducts))
-</div>*@
+</div>
+
+
+
+
+
+
+
 
 
 

@@ -15,15 +15,15 @@ namespace PenDesign.WebUI
 
             routes.MapRoute(
                 name: "Video",
-                url: "video/",
-                defaults: new { controller = "Video", action = "Index" },
+                url: "video-clip/",
+                defaults: new { controller = "Video", action = "List" },
                 namespaces: new[] { "PenDesign.WebUI.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Project",
                 url: "du-an/",
-                defaults: new { controller = "Project", action = "Index" },
+                defaults: new { controller = "Project", action = "List" },
                 namespaces: new[] { "PenDesign.WebUI.Controllers" }
             );
 

@@ -1,0 +1,48 @@
+﻿/*
+    paging
+*/
+.pager {
+    width: 100%;
+}
+
+    .pager form {
+        text-align: center;
+    }
+
+    .pager a {
+        padding: 6px 12px;
+        margin-right: 5px;
+        background: #e97d25;
+        color: white;
+        transition: all .1s ease-in-out;
+    }
+
+        .pager a:hover {
+            background: #FBCA3E;
+        }
+
+        .pager a.selected {
+            cursor: default;
+            background: #ECE9E3;
+            color: #e97d25;
+            font-weight: bold;
+        }
+
+    .pager input[type=text] {
+        padding: 7px 2px 5px 2px;
+        margin-top: -6px;
+    }
+
+    .pager input[type=submit] {
+        background: #e97d25;
+        color: white;
+        padding: 9px 2px 7px 2px;
+        margin-top: -6px;
+        border: none;
+        margin-left: 5px;
+    }
+
+        .pager input[type=submit]:hover {
+            background: #FBCA3E;
+            cursor: pointer;
+        }

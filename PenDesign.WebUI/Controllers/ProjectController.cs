@@ -1,17 +1,52 @@
-﻿using System;
+﻿using PenDesign.Core.Interface.Service.BasicServiceInterface;
+using PenDesign.Core.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PenDesign.WebUI.Models;
 
 namespace PenDesign.WebUI.Controllers
 {
     public class ProjectController : Controller
     {
+        private IProjectService _projectService;
+        private IProjectMappingService _projectMappingService;
+
+        private IProjectImageService _projectImageService;
+        private IProjectImageMappingService _projectImageMappingService;
+
+        public int ItemPerPage { get; set; }
+
+
+        public ProjectController(IProjectService projectService, IProjectMappingService projectMappingService,
+                                 IProjectImageService projectImageService, IProjectImageMappingService projectImageMappingService)
+        {
+            this._projectService = projectService;
+            this._projectMappingService = projectMappingService;
+
+            this._projectImageService = projectImageService;
+            this._projectImageMappingService = projectImageMappingService;
+
+            ItemPerPage = 6;
+        }
+
         // GET: Project
         public ActionResult Index()
         {
             return View();
         }
+
+        public ActionResult List(int page = 1)
+        {
+            var ProjectVM = new ProjectVM();
+            ProjectVM.PagingItems = _projectService.Page(p => p.Status == 0 && p.Type == 1, p => p.ZOrder, page, ItemPerPage, true);
+            ProjectVM.Project =  ProjectVM.PagingItems.Entities;
+            return View(ProjectVM);
+        }
+
+
     }
 }

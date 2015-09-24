@@ -146,11 +146,8 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
                 banner.Status = 0;
 
-                //using (var db = new DBContext())
-                //{
-                //    db.Entry(banner).State = System.Data.Entity.EntityState.Modified;
-                //    db.SaveChanges();
-                //}
+                _bannerService.Update(banner);
+
                 var responseMessage = new { message = "Chỉnh sửa thành công!" };
                 return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
             }

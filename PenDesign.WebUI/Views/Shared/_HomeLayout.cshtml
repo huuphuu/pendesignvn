@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/Content/css/component.css" />
     <link rel="stylesheet" type="text/css" href="/Content/css/tooltipster.css" />
     <link rel="stylesheet" href="/Content/css/style.css">
-
+    <link href="~/Content/main.css" rel="stylesheet" />
 
 
     <!--[if lt IE 9]>
@@ -27,8 +27,15 @@
     <![endif]-->
     @RenderSection("CssHeader", required:false)
 
+
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="/Scripts/PenDesign/jquery-migrate-1.2.1.js"></script>
+    @RenderSection("ScriptsHeader", required: false)
+
+
 
 </head>
 
@@ -70,8 +77,6 @@
 
 
     <!--------------------------------------------------------------------------------------------------------------------------------->
-    @Scripts.Render("~/bundles/jquery")
-    <script src="/Scripts/PenDesign/jquery-migrate-1.2.1.js"></script>
     <script src="/Scripts/PenDesign/script.js"></script>
     <script src="/Scripts/PenDesign/superfish.js"></script>
     <script src="/Scripts/PenDesign/jquery.ui.totop.js"></script>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PenDesign.Core.Interface.Service.BasicServiceInterface;
+using PenDesign.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,37 @@ namespace PenDesign.WebUI.Controllers
 {
     public class VideoController : Controller
     {
+        private IProjectService _projectService;
+        private IProjectMappingService _projectMappingService;
+        private IProjectImageService _projectImageService;
+        private IProjectImageMappingService _projectImageMappingService;
+        public int ItemPerPage { get; set; }
+
+        public VideoController(IProjectService projectService, IProjectMappingService projectMappingService,
+                                 IProjectImageService projectImageService, IProjectImageMappingService projectImageMappingService)
+        {
+            this._projectService = projectService;
+            this._projectMappingService = projectMappingService;
+
+            this._projectImageService = projectImageService;
+            this._projectImageMappingService = projectImageMappingService;
+
+            ItemPerPage = 6;
+        }
         // GET: Video
         public ActionResult Index()
         {
             return View();
         }
+
+        public ActionResult List(int page = 1)
+        {
+            var VideoVM = new VideoVM();
+            VideoVM.PagingItems = _projectImageService.Page(p => p.Status == 0 && p.Type == 2, p => p.ZOrder, page, ItemPerPage, true);
+            VideoVM.ProjectImages = VideoVM.PagingItems.Entities;
+            return View(VideoVM);
+        }
+
+
     }
 }

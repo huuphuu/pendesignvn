@@ -1,0 +1,129 @@
+﻿@using PenDesign.Common.HelperMethod
+@model PenDesign.WebUI.Models.VideoVM
+
+@{
+    ViewBag.Title = "Video Clip";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@section ScriptsHeader{
+
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+    <script src="~/Content/colorbox/jquery.colorbox-min.js"></script>
+}
+
+<div class="content">
+    <div class="container_12">
+        <div class="breadcrumb">
+            <a href="/" title="Trang chủ">Trang chủ</a> / Video
+        </div>
+        <div class="grid_12">
+            <h2>Video</h2>
+        </div>
+        <div class="clear cl1"></div>
+        <div class="gallery">
+            @if (Model.ProjectImages != null && Model.ProjectImages.Count() > 0)
+            {
+                var i = 1;
+                foreach (var image in Model.PagingItems.Entities)
+                {
+                    var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == 129).SingleOrDefault().Name;
+                    <div class="grid_4">
+                        <a class="gal group-@i" href="@image.ResourceUrl" title="@imageName">
+                            <img src="@image.Thumbnail" class="img-responsive" alt="@imageName"/>
+                        </a>
+                    </div>
+                    if (i > 1 && i % 3 == 0)
+                    {
+                        <div class="clear"></div>
+                    }
+                    var content = "$('.group-" + i + "' ).colorbox({rel: 'group-" + i + "', iframe: true, width: '60%',height: '80%'});";
+                    <script>
+                        @Html.Raw(content)
+                    </script>
+                    i++;
+                }
+
+
+
+            }
+
+        </div>
+        <div class="clear cl1"></div>
+        @Html.Paging(new PagingOptions(Model.PagingItems.TotalPages))
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@{
+        ViewBag.Title = "Video";
+        Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    }
+    @section ScriptsFooter{
+
+        <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
+        <script src="~/Content/colorbox/jquery.colorbox-min.js"></script>
+        <script>
+            $(".video.group1").colorbox({
+                rel: 'group1',
+                iframe: true,
+                width: "60%",
+                height: "80%"
+            });
+            $(".video.group2").colorbox({
+                rel: 'group2',
+                iframe: true,
+                width: "80%",
+                height: "80%"
+            });
+
+            var videoList = $('.video')
+            $.each(videoList, function (key, value) {
+                console.log("key:", key, "vaulue:", value);
+            })
+        </script>
+    }
+
+    <div class="content">
+        <div class="container_12">
+            <div class="breadcrumb">
+                <a href="/" title="Trang chủ">Trang chủ</a> / Video
+            </div>
+            <div class="grid_12">
+                <h2>Video</h2>
+            </div>
+            <div class="clear"></div>
+            <div class="gallery">
+                <div class="grid_4">
+                    <a class="popup-youtube gal video group1" href="https://www.youtube.com/embed/0UL1qogQyEQ" title="Video Clip title">
+                        <img src="/Content/images/page3_img1.jpg" class="img-responsive" alt="Video 1" />
+                    </a>
+                    <a class="video group1 hidden" href="~/Content/images/big2.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                    <a class="video group1 hidden" href="~/Content/images/big3.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                    <a class="video group1 hidden" href="~/Content/images/big4.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                </div>
+
+                <div class="grid_4">
+                    <a class="popup-youtube gal video group2" href="~/Content/images/big5.jpg" title="Me and my grandfather on the Ohoopee.">
+                        <img src="/Content/images/page3_img1.jpg" class="img-responsive" alt="Video 1" />
+                    </a>
+                    <a class="video group2 hidden" href="~/Content/images/big6.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                    <a class="video group2 hidden" href="~/Content/images/feat10.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                    <a class="video group2 hidden" href="~/Content/images/feat11.jpg" title="Me and my grandfather on the Ohoopee."></a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+

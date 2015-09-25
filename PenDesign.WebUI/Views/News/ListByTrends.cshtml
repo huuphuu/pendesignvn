@@ -1,0 +1,52 @@
+﻿@using PenDesign.Common.HelperMethod
+
+@model PenDesign.WebUI.Models.NewsVM
+@{
+    ViewBag.Title = ViewBag.newsCategoryName;
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container_12">
+        <div class="breadcrumb">
+            <a href="/" title="Trang chủ">Trang chủ</a> / @ViewBag.newsCategoryName
+        </div>
+        <div class="grid_9">
+            @if (Model != null && Model.News.Count() > 0)
+            {
+                foreach (var item in Model.News)
+                {
+                    var title = item.NewsMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Title;
+                    var intro = item.NewsMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Intro;
+                    var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id ;
+                    <div class="blog">
+                        <img src="@item.Thumbnail" alt="@title" class="img_inner fleft">
+                        <div class="extra_wrapper">
+                            <div class="text1">
+                                <a href="@detailUrl">@title</a>
+                            </div>
+                            @intro
+                            <div class="alright">
+                                <a href="@detailUrl" class="btn">Xem thêm</a>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                }
+                <div class="clear cl1"></div>
+                @Html.Paging(new PagingOptions(Model.PagingItems.TotalPages))
+            }
+            else
+            {
+                <p>Trang này không tồn tại</p>
+            }
+
+        </div>
+
+        <div class="grid_3">
+            @{Html.RenderAction("_SidebarNews", "News", new { newsCategoryId = 1 });}
+            @{Html.RenderAction("_SidebarNews", "News", new { newsCategoryId = 2 });}
+        </div>
+    </div>
+</div>

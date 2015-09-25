@@ -17,9 +17,9 @@
         <div class="breadcrumb">
             <a href="/" title="Trang chủ">Trang chủ</a> / Video
         </div>
-        <div class="grid_12">
+        @*<div class="grid_12">
             <h2>Video</h2>
-        </div>
+        </div>*@
         <div class="clear cl1"></div>
         <div class="gallery">
             @if (Model.ProjectImages != null && Model.ProjectImages.Count() > 0)
@@ -27,7 +27,7 @@
                 var i = 1;
                 foreach (var image in Model.PagingItems.Entities)
                 {
-                    var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == 129).SingleOrDefault().Name;
+                    var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Name;
                     <div class="grid_4">
                         <a class="gal group-@i" href="@image.ResourceUrl" title="@imageName">
                             <img src="@image.Thumbnail" class="img-responsive" alt="@imageName"/>

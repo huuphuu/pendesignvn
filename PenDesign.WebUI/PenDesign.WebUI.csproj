@@ -212,9 +212,11 @@
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Authencation\CustomAuthorize.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConstructionController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Extensions\AreaRegistrationContextExtensions.cs" />
@@ -223,7 +225,9 @@
     </Compile>
     <Compile Include="Helper\MenuSelected.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ConstructionVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewsVM.cs" />
     <Compile Include="Models\ProjectVM.cs" />
     <Compile Include="Models\VideoVM.cs" />
     <Compile Include="NinjectConfig\NinjectDependencyScope.cs" />
@@ -2136,6 +2140,15 @@
     <Content Include="Views\Shared\_Footer_Construction.cshtml" />
     <Content Include="Views\Project\List.cshtml" />
     <Content Include="Views\Video\List.cshtml" />
+    <Content Include="Views\Construction\List.cshtml" />
+    <Content Include="Views\Shared\_SidebarNews.cshtml" />
+    <Content Include="Views\News\ListByTrends.cshtml" />
+    <Content Include="Views\News\Detail.cshtml" />
+    <Content Include="Views\Construction\Detail.cshtml" />
+    <Content Include="Views\News\ListByCustomers.cshtml" />
+    <Content Include="Views\Shared\_SidebarSocial.cshtml" />
+    <Content Include="Views\Shared\_FooterSocial.cshtml" />
+    <Content Include="Views\Shared\_Slogan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

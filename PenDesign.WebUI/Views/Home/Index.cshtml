@@ -26,7 +26,7 @@
     <div class="container_12">
         <div class="grid_12">
             <div class="center pd-t-85">
-                @Html.Raw(ViewBag.slogan)
+                @{Html.RenderAction("_Slogan", "Home");}
             </div>
         </div>
     </div>

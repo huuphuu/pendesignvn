@@ -100,14 +100,15 @@ h3 {
     }
 
 h4 {
-    padding-top: 28px;
+    /*padding-top: 28px;*/
     font-size: 20px;
     line-height: 50px;
-    margin-bottom: 14px;
+    /*margin-bottom: 14px;*/
 }
 
     h4.head1 {
-        padding-top: 120px;
+        /*padding-top: 120px;*/
+        margin-top: -18px;
     }
 
 ul.list + h4 {
@@ -188,7 +189,9 @@ a.btn:hover, button.btn:hover {
 
 
 .img_inner {
-    max-width: 100%;
+    /*max-width: 100%;*/
+    max-width: 300px;
+    max-height: 178px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
@@ -297,7 +300,7 @@ header {
     font-size: 20px;
     line-height: 24px;
     font-weight: 300;
-    margin: 10px 0 ;
+    margin: 10px 0;
 }
 
 .clear.cl1 {
@@ -321,54 +324,59 @@ header {
         height: 43px;
     }
 
-.blog .text1 {
-    margin-bottom: 17px;
+.blog {
+    border-bottom: 1px dotted #e97d25;
 }
 
-.blog a.btn {
-    position: relative;
-    top: 1px;
-    margin-bottom: 2px;
-    margin-right: 45px;
-}
-
-.blog .clear {
-    height: 42px;
-}
-
-.blog table {
-    border-top: 1px solid #d9d9d9;
-    width: 100%;
-    line-height: 40px;
-}
-
-    .blog table tr {
-        border-bottom: 1px solid #d9d9d9;
+    .blog .text1 {
+        margin-bottom: 17px;
     }
 
-    .blog table .fa {
-        font-size: 20px;
-        color: #E89149;
-        min-width: 24px;
-        margin-right: 27px;
+    .blog a.btn {
+        position: relative;
+        top: 1px;
+        margin-bottom: 2px;
+        margin-right: 45px;
+    }
+
+    .blog .clear {
+        height: 42px;
+    }
+
+    .blog table {
+        border-top: 1px solid #d9d9d9;
+        width: 100%;
         line-height: 40px;
     }
 
-    .blog table td + td .fa {
-        margin-right: 5px;
-    }
+        .blog table tr {
+            border-bottom: 1px solid #d9d9d9;
+        }
 
-    .blog table td:first-child {
-        width: 238px;
-    }
+        .blog table .fa {
+            font-size: 20px;
+            color: #E89149;
+            min-width: 24px;
+            margin-right: 27px;
+            line-height: 40px;
+        }
 
-    .blog table td + td + td {
-        text-align: right;
-    }
+        .blog table td + td .fa {
+            margin-right: 5px;
+        }
 
-.blog + .blog {
-    padding-top: 84px;
-}
+        .blog table td:first-child {
+            width: 238px;
+        }
+
+        .blog table td + td + td {
+            text-align: right;
+        }
+
+    .blog + .blog {
+        padding-top: 10px;
+        margin-top: 28px;
+    }
 
 a.gal {
     display: block;
@@ -477,10 +485,9 @@ footer {
 }
 
 .socials {
-    margin-bottom: 40px;
     font-size: 0;
     line-height: 0;
-    padding-top: 43px;
+    padding-top: 23px;
 }
 
     .socials a > span {
@@ -786,6 +793,20 @@ footer {
     }
 }
 
+@media all and (max-width: 768px) {
+    .sidebarSocial {
+        display: none;
+    }
+
+    .footerSocial {
+        display: block !important;
+    }
+}
+
+.footerSocial {
+        display: none;
+    }
+
 .sidebarSocial {
     position: fixed;
     top: 25%;
@@ -808,9 +829,23 @@ footer {
 }
 
 .breadcrumb {
-    margin: 20px 10px;
     font-size: 16px;
+    background: #E97D25;
+    padding: 10px 20px;
+    color: white;
+    margin: 30px 0;
 }
+
+    .breadcrumb a:hover {
+        color: #FBCA3E;
+    }
+
 .pd-t-85 {
     padding-top: 85px;
+}
+
+.news-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
 }

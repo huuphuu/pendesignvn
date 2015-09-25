@@ -17,9 +17,9 @@
         <div class="breadcrumb">
             <a href="/" title="Trang chủ">Trang chủ</a> / Dự án
         </div>
-        <div class="grid_12">
+        @*<div class="grid_12">
             <h2>Dự án</h2>
-        </div>
+        </div>*@
         <div class="clear cl1"></div>
         <div class="serv">
             @if (Model.Project != null && Model.Project.Count() > 0)
@@ -32,7 +32,7 @@
                             var firstImage = item.ProjectImages.First();
                             foreach (var image in item.ProjectImages)
                             {
-                                var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == 129).SingleOrDefault().Name;
+                                var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Name;
                                 if (image.Equals(firstImage))
                                 {
                                     <a class="gal group-@i" href="@image.ResourceUrl" title="@imageName">

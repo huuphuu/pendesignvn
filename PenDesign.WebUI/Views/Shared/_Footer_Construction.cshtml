@@ -4,17 +4,18 @@
 @if (Model != null)
 {
     <div class="grid_3">
-        <h4>Công Trình Tiêu Biểu</h4>
+        <h4><a href="/cong-trinh-thuc-te">Công Trình Thực Tế</a></h4>
         <ul class="list">
-            @foreach (var item in Model)
+            @foreach (var news in Model)
             {
-                foreach (var construction in item)
+                foreach (var item in news)
                 {
-                    <li><a href="#">@construction.Title</a></li>
+                    var detailUrl = "/cong-trinh-thuc-te/" + XString.ToAscii(item.Title) + "-" + item.NewsId;
+                    <li><a href="@detailUrl">@item.Title</a></li>
                 }
             }
             
         </ul>
-        <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
+        <div class="alright"><a href="/cong-trinh-thuc-te" class="btn">Xem thêm</a></div>
     </div>
 }

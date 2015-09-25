@@ -9,7 +9,7 @@
                 <ul class="tt-grid tt-effect-stackback tt-effect-delay">
                     @foreach (var item in Model.OrderBy(m => m.ZOrder).Take(6))
                     {
-                        <li><a href="/Project/1"><img src="@item.Thumbnail" alt="@item.Name"></a></li>
+                        <li><a href="/cong-trinh-thuc-te/@XString.ToAscii(item.Name)-@item.Id" title="@item.Name"><img src="@item.Thumbnail" alt="@item.Name"></a></li>
                     }
                 </ul>
                 <nav>
@@ -33,7 +33,7 @@
             </section>
             <div class="clear"></div>
             <div class="alright">
-                <a href="#" class="btn">Xem thêm</a>
+                <a href="/cong-trinh-thuc-te"  title="Công trình thực tế" class="btn">Xem thêm</a>
             </div>
         </div>
     </div>
@@ -59,11 +59,11 @@
                     {
                         if (item.Equals(lastModel))
                         {
-                            page += "'<a href=\"#\"><img src=\"" + item.Thumbnail + "\" alt=\"" + item.Name + "\"></a>'";
+                            page += "'<a href=\"/cong-trinh-thuc-te/" + XString.ToAscii(item.Name) + "-" + item.Id + "\"><img src=\"" + item.Thumbnail + "\" alt=\"" + item.Name + "\" title=\"" + item.Name + "\"></a>'";
                         }
                         else
                         {
-                            page += "'<a href=\"#\"><img src=\"" + item.Thumbnail + "\" alt=\"" + item.Name + "\"></a>',";
+                            page += "'<a href=\"/cong-trinh-thuc-te/" + XString.ToAscii(item.Name) + "-" + item.Id + "\"><img src=\"" + item.Thumbnail + "\" alt=\"" + item.Name + "\" title=\"" + item.Name + "\"></a>',";
                         }
                         
                     }

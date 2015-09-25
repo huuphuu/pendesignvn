@@ -53,7 +53,6 @@ namespace PenDesign.WebUI.Controllers
         public PartialViewResult _Banner()
         {
             var bannerModel = _bannerService.GetMany(b => b.Status == 0)
-                                            //.Include(b => b.BannerMappings)
                                             .Select(m => m.BannerMappings.Where(bm => bm.LanguageId == 129));
 
             return PartialView("_Banner", bannerModel);
@@ -62,6 +61,17 @@ namespace PenDesign.WebUI.Controllers
         // ---------------------------------------------------
         // HomeLayout
         // ---------------------------------------------------
+
+        [ChildActionOnly]
+        public PartialViewResult _Socials(string type)
+        {
+            if(type == "Sidebar")
+                return PartialView("_SidebarSocial");
+            else if(type == "Footer") 
+                return PartialView("_FooterSocial");
+
+            return PartialView();
+        }
 
         [ChildActionOnly]
         public PartialViewResult _Footer()
@@ -101,9 +111,14 @@ namespace PenDesign.WebUI.Controllers
         [ChildActionOnly]
         public PartialViewResult _Footer_News(int newsCategoryId)
         {
-            ViewBag.newsCategoryName = _newsCategoryService.Get(n => n.Id == newsCategoryId)
+            var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId)
                                                             .NewsCategoryMappings
-                                                            .Single(nm => nm.LanguageId == 129).Title;
+                                                            .SingleOrDefault(nm => nm.LanguageId == 129);
+            if (newsCategoryModel == null) return PartialView();
+
+            ViewBag.newsCategoryName = newsCategoryModel.Title;
+            ViewBag.newsCategoryId = newsCategoryId;
+
             var newsModel = _newsService.GetMany(n => n.NewsCategoryId == newsCategoryId && n.Status == 0)
                                             .Select(n => n.NewsMappings.Where(nm => nm.LanguageId == 129)).Take(6);
             return PartialView("_Footer_News",newsModel);

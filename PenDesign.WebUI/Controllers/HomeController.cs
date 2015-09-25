@@ -45,8 +45,14 @@ namespace PenDesign.WebUI.Controllers
         public ActionResult Index()
         {
             ViewBag.logo = configModel.LogoUrl;
-            ViewBag.slogan = configModel.Slogan;
+            
             return View();
+        }
+
+        public PartialViewResult _Slogan()
+        {
+            ViewBag.slogan = configModel.Slogan;
+            return PartialView("_Slogan");
         }
 
         [ChildActionOnly]

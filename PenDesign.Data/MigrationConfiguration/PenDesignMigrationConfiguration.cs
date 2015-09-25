@@ -233,7 +233,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 1, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 1 - News - Intro", Detail = "Dự Án 1 - News - Detail", MetaData = "Dự Án 1 - News - MetaData",
+                                        Intro = "Dự Án 1 - News - Intro", Detail = "Dự Án 1 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 1 - News ", Keyword = "Dự án 1 - News Keyword", Description = "Dự án 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -241,7 +241,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 1, LanguageId = 29, Status = 0,
-                                        Intro = "Project 1 - News - Intro", Detail = "Project 1 - News - Detail", MetaData = "Project 1 - News - MetaData",
+                                        Intro = "Project 1 - News - Intro", Detail = "Project 1 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 1 - News", Keyword = "Project 1 - News Keyword", Description = "Project 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -255,7 +255,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 1, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 1", Keyword = "Dự Án 1 Keyword", Description = "Dự án 1 Description", MetaData = "",
+                                Title = "Tên Dự Án 1", Keyword = "Dự Án 1 Keyword", Description = "Dự án 1 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 1 - Intro", Detail = "Dự Án 1 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -263,7 +263,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 1, LanguageId = 29, Status = 0,
-                                Title = "Project Name 1", Keyword = "Project 1 Keyword", Description = "Project 1 Description", MetaData = "",
+                                Title = "Project Name 1", Keyword = "Project 1 Keyword", Description = "Project 1 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 1 - Intro", Detail = "Project 1 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -306,14 +306,14 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new ProjectImageMapping()
                                     {
                                         ProjectImageId = 2, LanguageId = 129, Status = 0,
-                                        Name = "Tên ảnh 2-  Dự Án 2", Description = "Dự án 2 - ảnh 2 Description",
+                                        Name = "Tên ảnh 2-  Dự Án 1", Description = "Dự án 1 - ảnh 2 Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now  
                                     },
                                     new ProjectImageMapping()
                                     {
                                         ProjectImageId = 2, LanguageId = 29, Status = 0,
-                                        Name = "Project Name 2 - image 2", Description = "Project 2 - image 2 Description",
+                                        Name = "Project Name 1 - image 2", Description = "Project 1 - image 2 Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now 
                                     }
@@ -330,14 +330,14 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new ProjectImageMapping()
                                     {
                                         ProjectImageId = 3, LanguageId = 129, Status = 0,
-                                        Name = "Tên ảnh 3-  Dự Án 3", Description = "Dự án 3 - ảnh 3 Description",
+                                        Name = "Tên ảnh 3-  Dự Án 1", Description = "Dự án 1 - ảnh 3 Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now  
                                     },
                                     new ProjectImageMapping()
                                     {
                                         ProjectImageId = 3, LanguageId = 29, Status = 0,
-                                        Name = "Project Name 3 - image 3", Description = "Project 3 - image 3 Description",
+                                        Name = "Project Name 1 - image 3", Description = "Project 1 - image 3 Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now 
                                     }
@@ -362,7 +362,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 2, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 2 - News - Intro", Detail = "Dự Án 2 - News - Detail", MetaData = "Dự Án 2 - News - MetaData",
+                                        Intro = "Dự Án 2 - News - Intro", Detail = "Dự Án 2 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 2 - News ", Keyword = "Dự án 2 - News Keyword", Description = "Dự án 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -370,7 +370,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 1, LanguageId = 29, Status = 0,
-                                        Intro = "Project 2 - News - Intro", Detail = "Project 2- News - Detail", MetaData = "Project 2 - News - MetaData",
+                                        Intro = "Project 2 - News - Intro", Detail = "Project 2- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 2 - News", Keyword = "Project 2 - News Keyword", Description = "Project 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -383,7 +383,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 2, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 2", Keyword = "Dự Án 2 Keyword", Description = "Dự án 2 Description", MetaData = "",
+                                Title = "Tên Dự Án 2", Keyword = "Dự Án 2 Keyword", Description = "Dự án 2 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 2 - Intro", Detail = "Dự Án 2 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -391,7 +391,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 2, LanguageId = 29, Status = 0,
-                                Title = "Project Name 2", Keyword = "Project 2 Keyword", Description = "Project 2 Description", MetaData = "",
+                                Title = "Project Name 2", Keyword = "Project 2 Keyword", Description = "Project 2 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 2 - Intro", Detail = "Project 2 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -490,7 +490,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 3, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 3 - News - Intro", Detail = "Dự Án 3 - News - Detail", MetaData = "Dự Án 3 - News - MetaData",
+                                        Intro = "Dự Án 3 - News - Intro", Detail = "Dự Án 3 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 3 - News ", Keyword = "Dự án 3 - News Keyword", Description = "Dự án 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -498,7 +498,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 3, LanguageId = 29, Status = 0,
-                                        Intro = "Project 3 - News - Intro", Detail = "Project 3- News - Detail", MetaData = "Project 3 - News - MetaData",
+                                        Intro = "Project 3 - News - Intro", Detail = "Project 3- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 3 - News", Keyword = "Project 3 - News Keyword", Description = "Project 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -511,7 +511,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 3, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 3", Keyword = "Dự Án 3 Keyword", Description = "Dự án 3 Description", MetaData = "",
+                                Title = "Tên Dự Án 3", Keyword = "Dự Án 3 Keyword", Description = "Dự án 3 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 3 - Intro", Detail = "Dự Án 3 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -519,7 +519,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 3, LanguageId = 29, Status = 0,
-                                Title = "Project Name 3", Keyword = "Project 3 Keyword", Description = "Project 3 Description", MetaData = "",
+                                Title = "Project Name 3", Keyword = "Project 3 Keyword", Description = "Project 3 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 3 - Intro", Detail = "Project 3 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -618,7 +618,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 4, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 4 - News - Intro", Detail = "Dự Án 4 - News - Detail", MetaData = "Dự Án 4 - News - MetaData",
+                                        Intro = "Dự Án 4 - News - Intro", Detail = "Dự Án 4 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 4 - News ", Keyword = "Dự án 4 - News Keyword", Description = "Dự án 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -626,7 +626,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 4, LanguageId = 29, Status = 0,
-                                        Intro = "Project 4 - News - Intro", Detail = "Project 4- News - Detail", MetaData = "Project 4 - News - MetaData",
+                                        Intro = "Project 4 - News - Intro", Detail = "Project 4- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 4 - News", Keyword = "Project 4 - News Keyword", Description = "Project 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -639,7 +639,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 4, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 4", Keyword = "Dự Án 4 Keyword", Description = "Dự án 4 Description", MetaData = "",
+                                Title = "Tên Dự Án 4", Keyword = "Dự Án 4 Keyword", Description = "Dự án 4 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 4 - Intro", Detail = "Dự Án 4 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -647,7 +647,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 4, LanguageId = 29, Status = 0,
-                                Title = "Project Name 4", Keyword = "Project 4 Keyword", Description = "Project 4 Description", MetaData = "",
+                                Title = "Project Name 4", Keyword = "Project 4 Keyword", Description = "Project 4 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 4 - Intro", Detail = "Project 4 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -746,7 +746,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 5, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 5 - News - Intro", Detail = "Dự Án 5 - News - Detail", MetaData = "Dự Án 5 - News - MetaData",
+                                        Intro = "Dự Án 5 - News - Intro", Detail = "Dự Án 5 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 5 - News ", Keyword = "Dự án 5 - News Keyword", Description = "Dự án 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -754,7 +754,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 5, LanguageId = 29, Status = 0,
-                                        Intro = "Project 5 - News - Intro", Detail = "Project 5 - News - Detail", MetaData = "Project 5 - News - MetaData",
+                                        Intro = "Project 5 - News - Intro", Detail = "Project 5 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 5 - News", Keyword = "Project 5 - News Keyword", Description = "Project 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -767,7 +767,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 5, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 5", Keyword = "Dự Án 5 Keyword", Description = "Dự án 5 Description", MetaData = "",
+                                Title = "Tên Dự Án 5", Keyword = "Dự Án 5 Keyword", Description = "Dự án 5 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 5 - Intro", Detail = "Dự Án 5 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -775,7 +775,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 5, LanguageId = 29, Status = 0,
-                                Title = "Project Name 5", Keyword = "Project 5 Keyword", Description = "Project 5 Description", MetaData = "",
+                                Title = "Project Name 5", Keyword = "Project 5 Keyword", Description = "Project 5 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 5 - Intro", Detail = "Project 5 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -874,7 +874,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 6, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 6 - News - Intro", Detail = "Dự Án 6 - News - Detail", MetaData = "Dự Án 6 - News - MetaData",
+                                        Intro = "Dự Án 6 - News - Intro", Detail = "Dự Án 6 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 6 - News ", Keyword = "Dự án 6 - News Keyword", Description = "Dự án 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -882,7 +882,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 6, LanguageId = 29, Status = 0,
-                                        Intro = "Project 6 - News - Intro", Detail = "Project 6- News - Detail", MetaData = "Project 6 - News - MetaData",
+                                        Intro = "Project 6 - News - Intro", Detail = "Project 6- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 6 - News", Keyword = "Project 6 - News Keyword", Description = "Project 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -895,7 +895,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 6, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 6", Keyword = "Dự Án 6 Keyword", Description = "Dự án 6 Description", MetaData = "",
+                                Title = "Tên Dự Án 6", Keyword = "Dự Án 6 Keyword", Description = "Dự án 6 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 6 - Intro", Detail = "Dự Án 6 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -903,7 +903,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 6, LanguageId = 29, Status = 0,
-                                Title = "Project Name 6", Keyword = "Project 6 Keyword", Description = "Project 6 Description", MetaData = "",
+                                Title = "Project Name 6", Keyword = "Project 6 Keyword", Description = "Project 6 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 6 - Intro", Detail = "Project 6 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1002,7 +1002,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 7, LanguageId = 129, Status = 0,
-                                        Intro = "Dự án 7 - News - Intro", Detail = "Dự án 7 - News - Detail", MetaData = "Dự án 7 - News - MetaData",
+                                        Intro = "Dự án 7 - News - Intro", Detail = "Dự án 7 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự án 7 - News ", Keyword = "Dự án 7 - News Keyword", Description = "Dự án 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1010,7 +1010,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 7, LanguageId = 29, Status = 0,
-                                        Intro = "Project 7 - News - Intro", Detail = "Project 7- News - Detail", MetaData = "Project 7 - News - MetaData",
+                                        Intro = "Project 7 - News - Intro", Detail = "Project 7- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 7 - News", Keyword = "Project 7 - News Keyword", Description = "Project 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1023,7 +1023,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 7, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 7", Keyword = "Dự Án 7 Keyword", Description = "Dự án 7 Description", MetaData = "",
+                                Title = "Tên Dự Án 7", Keyword = "Dự Án 7 Keyword", Description = "Dự án 7 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 7 - Intro", Detail = "Dự Án 7 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1031,7 +1031,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 7, LanguageId = 29, Status = 0,
-                                Title = "Project Name 7", Keyword = "Project 7 Keyword", Description = "Project 7 Description", MetaData = "",
+                                Title = "Project Name 7", Keyword = "Project 7 Keyword", Description = "Project 7 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 7 - Intro", Detail = "Project 7 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1130,7 +1130,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 8, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 8 - News - Intro", Detail = "Dự Án 8 - News - Detail", MetaData = "Dự Án 8 - News - MetaData",
+                                        Intro = "Dự Án 8 - News - Intro", Detail = "Dự Án 8 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 8 - News ", Keyword = "Dự Án 8 - News Keyword", Description = "Dự Án 8 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1138,7 +1138,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 8, LanguageId = 29, Status = 0,
-                                        Intro = "Project 8 - News - Intro", Detail = "Project 8- News - Detail", MetaData = "Project 8 - News - MetaData",
+                                        Intro = "Project 8 - News - Intro", Detail = "Project 8- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 8 - News", Keyword = "Project 8 - News Keyword", Description = "Project 8 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1151,7 +1151,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 8, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 8", Keyword = "Dự Án 8 Keyword", Description = "Dự án 8 Description", MetaData = "",
+                                Title = "Tên Dự Án 8", Keyword = "Dự Án 8 Keyword", Description = "Dự án 8 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 8 - Intro", Detail = "Dự Án 8 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1159,7 +1159,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 8, LanguageId = 29, Status = 0,
-                                Title = "Project Name 8", Keyword = "Project 8 Keyword", Description = "Project 8 Description", MetaData = "",
+                                Title = "Project Name 8", Keyword = "Project 8 Keyword", Description = "Project 8 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 8 - Intro", Detail = "Project 8 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1258,7 +1258,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 9, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 9 - News - Intro", Detail = "Dự Án 9 - News - Detail", MetaData = "Dự Án 9 - News - MetaData",
+                                        Intro = "Dự Án 9 - News - Intro", Detail = "Dự Án 9 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 9 - News ", Keyword = "Dự Án 9 - News Keyword", Description = "Dự Án 9 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1266,7 +1266,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 9, LanguageId = 29, Status = 0,
-                                        Intro = "Project 9 - News - Intro", Detail = "Project 9- News - Detail", MetaData = "Project 9 - News - MetaData",
+                                        Intro = "Project 9 - News - Intro", Detail = "Project 9- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 9 - News", Keyword = "Project 9 - News Keyword", Description = "Project 9 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1279,7 +1279,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 9, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 9", Keyword = "Dự Án 9 Keyword", Description = "Dự án 9 Description", MetaData = "",
+                                Title = "Tên Dự Án 9", Keyword = "Dự Án 9 Keyword", Description = "Dự án 9 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 9 - Intro", Detail = "Dự Án 9 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1287,7 +1287,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 9, LanguageId = 29, Status = 0,
-                                Title = "Project Name 9", Keyword = "Project 9 Keyword", Description = "Project 9 Description", MetaData = "",
+                                Title = "Project Name 9", Keyword = "Project 9 Keyword", Description = "Project 9 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 9 - Intro", Detail = "Project 9 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1386,7 +1386,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 10, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 10 - News - Intro", Detail = "Dự Án 10 - News - Detail", MetaData = "Dự Án 10 - News - MetaData",
+                                        Intro = "Dự Án 10 - News - Intro", Detail = "Dự Án 10 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 10 - News ", Keyword = "Dự Án 10 - News Keyword", Description = "Dự Án 10 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1394,7 +1394,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 10, LanguageId = 29, Status = 0,
-                                        Intro = "Project 10 - News - Intro", Detail = "Project 10- News - Detail", MetaData = "Project 10 - News - MetaData",
+                                        Intro = "Project 10 - News - Intro", Detail = "Project 10- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 10 - News", Keyword = "Project 10 - News Keyword", Description = "Project 10 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1407,7 +1407,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 10, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 10", Keyword = "Dự Án 10 Keyword", Description = "Dự án 10 Description", MetaData = "",
+                                Title = "Tên Dự Án 10", Keyword = "Dự Án 10 Keyword", Description = "Dự án 10 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 10 - Intro", Detail = "Dự Án 10 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1415,7 +1415,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 10, LanguageId = 29, Status = 0,
-                                Title = "Project Name 10", Keyword = "Project 10 Keyword", Description = "Project 10 Description", MetaData = "",
+                                Title = "Project Name 10", Keyword = "Project 10 Keyword", Description = "Project 10 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 10 - Intro", Detail = "Project 10 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1514,7 +1514,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 11, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 11 - News - Intro", Detail = "Dự Án 11 - News - Detail", MetaData = "Dự Án 11 - News - MetaData",
+                                        Intro = "Dự Án 11 - News - Intro", Detail = "Dự Án 11 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 11 - News ", Keyword = "Dự Án 11 - News Keyword", Description = "Dự Án 11 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1522,7 +1522,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 11, LanguageId = 29, Status = 0,
-                                        Intro = "Project 11 - News - Intro", Detail = "Project 11- News - Detail", MetaData = "Project 11 - News - MetaData",
+                                        Intro = "Project 11 - News - Intro", Detail = "Project 11- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 11 - News", Keyword = "Project 11 - News Keyword", Description = "Project 11 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1535,7 +1535,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 11, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 11", Keyword = "Dự Án 11 Keyword", Description = "Dự án 11 Description", MetaData = "",
+                                Title = "Tên Dự Án 11", Keyword = "Dự Án 11 Keyword", Description = "Dự án 11 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 11 - Intro", Detail = "Dự Án 11 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1543,7 +1543,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 11, LanguageId = 29, Status = 0,
-                                Title = "Project Name 11", Keyword = "Project 11 Keyword", Description = "Project 11 Description", MetaData = "",
+                                Title = "Project Name 11", Keyword = "Project 11 Keyword", Description = "Project 11 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 11 - Intro", Detail = "Project 11 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1663,7 +1663,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 12, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 12", Keyword = "Dự Án 12 Keyword", Description = "Dự án 12 Description", MetaData = "",
+                                Title = "Tên Dự Án 12", Keyword = "Dự Án 12 Keyword", Description = "Dự án 12 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 12 - Intro", Detail = "Dự Án 12 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1671,7 +1671,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 12, LanguageId = 29, Status = 0,
-                                Title = "Project Name 12", Keyword = "Project 12 Keyword", Description = "Project 12 Description", MetaData = "",
+                                Title = "Project Name 12", Keyword = "Project 12 Keyword", Description = "Project 12 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 12 - Intro", Detail = "Project 12 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1770,7 +1770,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 13, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 13 - News - Intro", Detail = "Dự Án 13 - News - Detail", MetaData = "Dự Án 13 - News - MetaData",
+                                        Intro = "Dự Án 13 - News - Intro", Detail = "Dự Án 13 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 13 - News ", Keyword = "Dự Án 13 - News Keyword", Description = "Dự Án 13 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1778,7 +1778,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 13, LanguageId = 29, Status = 0,
-                                        Intro = "Project 13 - News - Intro", Detail = "Project 13- News - Detail", MetaData = "Project 13 - News - MetaData",
+                                        Intro = "Project 13 - News - Intro", Detail = "Project 13- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 13 - News", Keyword = "Project 13 - News Keyword", Description = "Project 13 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1791,7 +1791,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 13, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 13", Keyword = "Dự Án 13 Keyword", Description = "Dự án 13 Description", MetaData = "",
+                                Title = "Tên Dự Án 13", Keyword = "Dự Án 13 Keyword", Description = "Dự án 13 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 13 - Intro", Detail = "Dự Án 13 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1799,7 +1799,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 13, LanguageId = 29, Status = 0,
-                                Title = "Project Name 13", Keyword = "Project 13 Keyword", Description = "Project 13 Description", MetaData = "",
+                                Title = "Project Name 13", Keyword = "Project 13 Keyword", Description = "Project 13 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 13 - Intro", Detail = "Project 13 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1898,7 +1898,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 14, LanguageId = 129, Status = 0,
-                                        Intro = "Dự Án 14 - News - Intro", Detail = "Dự Án 14 - News - Detail", MetaData = "Dự Án 14 - News - MetaData",
+                                        Intro = "Dự Án 14 - News - Intro", Detail = "Dự Án 14 - News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Dự Án 14 - News ", Keyword = "Dự Án 14 - News Keyword", Description = "Dự Án 14 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1906,7 +1906,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 14, LanguageId = 29, Status = 0,
-                                        Intro = "Project 14 - News - Intro", Detail = "Project 14- News - Detail", MetaData = "Project 14 - News - MetaData",
+                                        Intro = "Project 14 - News - Intro", Detail = "Project 14- News - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Project 14 - News", Keyword = "Project 14 - News Keyword", Description = "Project 14 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1919,7 +1919,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 14, LanguageId = 129, Status = 0,
-                                Title = "Tên Dự Án 14", Keyword = "Dự Án 14 Keyword", Description = "Dự án 14 Description", MetaData = "",
+                                Title = "Tên Dự Án 14", Keyword = "Dự Án 14 Keyword", Description = "Dự án 14 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Dự Án 14 - Intro", Detail = "Dự Án 14 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -1927,7 +1927,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 14, LanguageId = 29, Status = 0,
-                                Title = "Project Name 14", Keyword = "Project 14 Keyword", Description = "Project 14 Description", MetaData = "",
+                                Title = "Project Name 14", Keyword = "Project 14 Keyword", Description = "Project 14 Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 14 - Intro", Detail = "Project 14 Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2011,7 +2011,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     },
                     // project 15
                     new Project() { 
-                        Name = "Project 15 - Video Clip", Type = 1, Status = 0, ZOrder = 15,
+                        Name = "Project 15 - Video Clip", Type = 2, Status = 0, ZOrder = 15,
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         ProjectMappings = new List<ProjectMapping>()
@@ -2019,7 +2019,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 15, LanguageId = 129, Status = 0,
-                                Title = "Project 15 - Video Clip", Keyword = "Project 15 - Video Clip Keyword", Description = "Project 15 - Video Clip Description", MetaData = "",
+                                Title = "Project 15 - Video Clip", Keyword = "Project 15 - Video Clip Keyword", Description = "Project 15 - Video Clip Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 15 - Video Clip - Intro", Detail = "Project 15 - Video Clip Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2027,7 +2027,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 15, LanguageId = 29, Status = 0,
-                                Title = "Project 15 - Video Clip", Keyword = "Project 15 - Video Clip Keyword", Description = "Project 15 - Video Clip Description", MetaData = "",
+                                Title = "Project 15 - Video Clip", Keyword = "Project 15 - Video Clip Keyword", Description = "Project 15 - Video Clip Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 15 - Video Clip - Intro", Detail = "Project 15 - Video Clip Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2215,7 +2215,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 16, LanguageId = 129, Status = 0,
-                                Title = "Project 16 - Công trình thực tế", Keyword = "Project 16 - Công trình thực tế Keyword", Description = "Project 16 - Công trình thực tế Description", MetaData = "",
+                                Title = "Project 16 - Công trình thực tế", Keyword = "Project 16 - Công trình thực tế Keyword", Description = "Project 16 - Công trình thực tế Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 16 - Công trình thực tế - Intro", Detail = "Project 16 - Công trình thực tế Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2223,7 +2223,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectMapping()
                             {
                                 ProjectId = 16, LanguageId = 29, Status = 0,
-                                Title = "Project 16 - Công trình thực tế", Keyword = "Project 16 - Công trình thực tế Keyword", Description = "Project 16 - Công trình thực tế Description", MetaData = "",
+                                Title = "Project 16 - Công trình thực tế", Keyword = "Project 16 - Công trình thực tế Keyword", Description = "Project 16 - Công trình thực tế Description", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Intro = "Project 16 - Công trình thực tế - Intro", Detail = "Project 16 - Công trình thực tế Detail",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2233,7 +2233,7 @@ namespace PenDesign.Data.MigrationConfiguration
                         {
                             new News()
                             {
-                                Name = "Công trình thực tế 1 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 1 - News", Status = 0, ZOrder = 1,  NewsCategoryId = null,  ListTagId = "",
                                 Thumbnail = "/Content/images/feat1.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2242,7 +2242,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 16, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 1 - News - Intro", Detail = "Công trình thực tế 1 - News - Detail" + detail, MetaData = "Công trình thực tế 1 - News - MetaData",
+                                        Intro = "Công trình thực tế 1 - News - Intro", Detail = "Công trình thực tế 1 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 1 - News ", Keyword = "Công trình thực tế 1 - News Keyword", Description = "Công trình thực tế 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2250,7 +2250,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 16, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 1 - News - Intro", Detail = "Construction 1- News - Detail" + detail, MetaData = "Construction 1 - News - MetaData",
+                                        Intro = "Construction 1 - News - Intro", Detail = "Construction 1- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 1 - News", Keyword = "Construction 1 - News Keyword", Description = "Construction 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2259,7 +2259,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 2 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 2 - News", Status = 0, ZOrder = 2,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat2.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2268,7 +2268,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 17, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 2 - News - Intro", Detail = "Công trình thực tế 2 - News - Detail" + detail, MetaData = "Công trình thực tế 2 - News - MetaData",
+                                        Intro = "Công trình thực tế 2 - News - Intro", Detail = "Công trình thực tế 2 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 2 - News ", Keyword = "Công trình thực tế 2 - News Keyword", Description = "Công trình thực tế 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2276,7 +2276,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 17, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 2 - News - Intro", Detail = "Construction 2- News - Detail" + detail, MetaData = "Construction 2 - News - MetaData",
+                                        Intro = "Construction 2 - News - Intro", Detail = "Construction 2- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 2 - News", Keyword = "Construction 2 - News Keyword", Description = "Construction 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2285,7 +2285,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 3 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 3 - News", Status = 0, ZOrder = 3,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat3.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2294,7 +2294,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 18, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 3 - News - Intro", Detail = "Công trình thực tế 3 - News - Detail" + detail, MetaData = "Công trình thực tế 3 - News - MetaData",
+                                        Intro = "Công trình thực tế 3 - News - Intro", Detail = "Công trình thực tế 3 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 3 - News ", Keyword = "Công trình thực tế 3 - News Keyword", Description = "Công trình thực tế 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2302,7 +2302,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 18, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 3 - News - Intro", Detail = "Construction 3- News - Detail" + detail, MetaData = "Construction 3 - News - MetaData",
+                                        Intro = "Construction 3 - News - Intro", Detail = "Construction 3- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 3 - News", Keyword = "Construction 3 - News Keyword", Description = "Construction 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2311,7 +2311,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 4 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 4 - News", Status = 0, ZOrder = 4,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat4.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2320,7 +2320,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 19, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 4 - News - Intro", Detail = "Công trình thực tế 4 - News - Detail" + detail, MetaData = "Công trình thực tế 4 - News - MetaData",
+                                        Intro = "Công trình thực tế 4 - News - Intro", Detail = "Công trình thực tế 4 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 4 - News ", Keyword = "Công trình thực tế 4 - News Keyword", Description = "Công trình thực tế 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2328,7 +2328,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 19, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 4 - News - Intro", Detail = "Construction 4- News - Detail" + detail, MetaData = "Construction 4 - News - MetaData",
+                                        Intro = "Construction 4 - News - Intro", Detail = "Construction 4- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 4 - News", Keyword = "Construction 4 - News Keyword", Description = "Construction 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2337,7 +2337,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 5 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 5 - News", Status = 0, ZOrder = 5,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat5.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2346,7 +2346,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 20, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 5 - News - Intro", Detail = "Công trình thực tế 5 - News - Detail" + detail, MetaData = "Công trình thực tế 5 - News - MetaData",
+                                        Intro = "Công trình thực tế 5 - News - Intro", Detail = "Công trình thực tế 5 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 5 - News ", Keyword = "Công trình thực tế 5 - News Keyword", Description = "Công trình thực tế 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2354,7 +2354,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 20, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 5 - News - Intro", Detail = "Construction 5- News - Detail" + detail, MetaData = "Construction 5 - News - MetaData",
+                                        Intro = "Construction 5 - News - Intro", Detail = "Construction 5- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 5 - News", Keyword = "Construction 5 - News Keyword", Description = "Construction 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2363,7 +2363,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 6 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 6 - News", Status = 0, ZOrder = 6,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat6.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2372,7 +2372,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 21, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 6 - News - Intro", Detail = "Công trình thực tế 6 - News - Detail" + detail, MetaData = "Công trình thực tế 6 - News - MetaData",
+                                        Intro = "Công trình thực tế 6 - News - Intro", Detail = "Công trình thực tế 6 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 6 - News ", Keyword = "Công trình thực tế 6 - News Keyword", Description = "Công trình thực tế 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2380,7 +2380,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 21, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 6 - News - Intro", Detail = "Construction 6- News - Detail" + detail, MetaData = "Construction 6 - News - MetaData",
+                                        Intro = "Construction 6 - News - Intro", Detail = "Construction 6- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 6 - News", Keyword = "Construction 6 - News Keyword", Description = "Construction 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2389,7 +2389,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 7 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 7 - News", Status = 0, ZOrder = 7,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat7.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2398,7 +2398,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 22, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 7 - News - Intro", Detail = "Công trình thực tế 7 - News - Detail" + detail, MetaData = "Công trình thực tế 7 - News - MetaData",
+                                        Intro = "Công trình thực tế 7 - News - Intro", Detail = "Công trình thực tế 7 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 7 - News ", Keyword = "Công trình thực tế 7 - News Keyword", Description = "Công trình thực tế 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2406,7 +2406,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 22, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 7 - News - Intro", Detail = "Construction 7- News - Detail" + detail, MetaData = "Construction 7 - News - MetaData",
+                                        Intro = "Construction 7 - News - Intro", Detail = "Construction 7- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 7 - News", Keyword = "Construction 7 - News Keyword", Description = "Construction 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2415,7 +2415,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 8 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 8 - News", Status = 0, ZOrder = 8,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat8.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2424,7 +2424,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 23, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 8 - News - Intro", Detail = "Công trình thực tế 8 - News - Detail" + detail, MetaData = "Công trình thực tế 8 - News - MetaData",
+                                        Intro = "Công trình thực tế 8 - News - Intro", Detail = "Công trình thực tế 8 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 8 - News ", Keyword = "Công trình thực tế 8 - News Keyword", Description = "Công trình thực tế 8 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2432,7 +2432,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 23, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 8 - News - Intro", Detail = "Construction 8- News - Detail" + detail, MetaData = "Construction 8 - News - MetaData",
+                                        Intro = "Construction 8 - News - Intro", Detail = "Construction 8- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 8 - News", Keyword = "Construction 8 - News Keyword", Description = "Construction 8 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2441,7 +2441,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 9 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 9 - News", Status = 0, ZOrder = 9,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat9.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2450,7 +2450,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 24, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 9 - News - Intro", Detail = "Công trình thực tế 9 - News - Detail" + detail, MetaData = "Công trình thực tế 9 - News - MetaData",
+                                        Intro = "Công trình thực tế 9 - News - Intro", Detail = "Công trình thực tế 9 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 9 - News ", Keyword = "Công trình thực tế 9 - News Keyword", Description = "Công trình thực tế 9 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2458,7 +2458,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 24, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 9 - News - Intro", Detail = "Construction 9- News - Detail" + detail, MetaData = "Construction 9 - News - MetaData",
+                                        Intro = "Construction 9 - News - Intro", Detail = "Construction 9- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 9 - News", Keyword = "Construction 9 - News Keyword", Description = "Construction 9 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2467,7 +2467,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 10 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 10 - News", Status = 0, ZOrder = 10,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat10.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2476,7 +2476,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 25, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 10 - News - Intro", Detail = "Công trình thực tế 10 - News - Detail" + detail, MetaData = "Công trình thực tế 10 - News - MetaData",
+                                        Intro = "Công trình thực tế 10 - News - Intro", Detail = "Công trình thực tế 10 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 10 - News ", Keyword = "Công trình thực tế 10 - News Keyword", Description = "Công trình thực tế 10 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2484,7 +2484,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 25, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 10 - News - Intro", Detail = "Construction 10- News - Detail" + detail, MetaData = "Construction 10 - News - MetaData",
+                                        Intro = "Construction 10 - News - Intro", Detail = "Construction 10- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 10 - News", Keyword = "Construction 10 - News Keyword", Description = "Construction 10 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2493,7 +2493,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 11 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 11 - News", Status = 0, ZOrder = 11,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat11.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2502,7 +2502,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 26, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 11 - News - Intro", Detail = "Công trình thực tế 11 - News - Detail" + detail, MetaData = "Công trình thực tế 11 - News - MetaData",
+                                        Intro = "Công trình thực tế 11 - News - Intro", Detail = "Công trình thực tế 11 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 11 - News ", Keyword = "Công trình thực tế 11 - News Keyword", Description = "Công trình thực tế 11 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2510,7 +2510,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 26, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 11 - News - Intro", Detail = "Construction 11- News - Detail" + detail, MetaData = "Construction 11 - News - MetaData",
+                                        Intro = "Construction 11 - News - Intro", Detail = "Construction 11- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 11 - News", Keyword = "Construction 11 - News Keyword", Description = "Construction 11 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2519,7 +2519,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 12 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 12 - News", Status = 0, ZOrder = 12,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat12.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2528,7 +2528,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 27, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 12 - News - Intro", Detail = "Công trình thực tế 12 - News - Detail" + detail, MetaData = "Công trình thực tế 12 - News - MetaData",
+                                        Intro = "Công trình thực tế 12 - News - Intro", Detail = "Công trình thực tế 12 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 12 - News ", Keyword = "Công trình thực tế 12 - News Keyword", Description = "Công trình thực tế 12 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2536,7 +2536,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 27, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 12 - News - Intro", Detail = "Construction 12- News - Detail" + detail, MetaData = "Construction 12 - News - MetaData",
+                                        Intro = "Construction 12 - News - Intro", Detail = "Construction 12- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 12 - News", Keyword = "Construction 12 - News Keyword", Description = "Construction 12 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2545,7 +2545,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                Name = "Công trình thực tế 13 - News", Status = 0,  NewsCategoryId = null,  ListTagId = "", 
+                                Name = "Công trình thực tế 13 - News", Status = 0, ZOrder = 13,  NewsCategoryId = null,  ListTagId = "", 
                                 Thumbnail = "/Content/images/feat12.jpg", 
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2554,7 +2554,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 28, LanguageId = 129, Status = 0,
-                                        Intro = "Công trình thực tế 13 - News - Intro", Detail = "Công trình thực tế 13 - News - Detail" + detail, MetaData = "Công trình thực tế 13 - News - MetaData",
+                                        Intro = "Công trình thực tế 13 - News - Intro", Detail = "Công trình thực tế 13 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Công trình thực tế 13 - News ", Keyword = "Công trình thực tế 13 - News Keyword", Description = "Công trình thực tế 13 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2562,7 +2562,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 28, LanguageId = 29, Status = 0,
-                                        Intro = "Construction 13 - News - Intro", Detail = "Construction 13- News - Detail" + detail, MetaData = "Construction 13 - News - MetaData",
+                                        Intro = "Construction 13 - News - Intro", Detail = "Construction 13- News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Construction 13 - News", Keyword = "Construction 13 - News Keyword", Description = "Construction 13 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2766,7 +2766,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new NewsCategoryMapping()
                             {
                                 NewsCategoryId = 1, LanguageId = 129, Status = 0,
-                                Intro = "Xu Hướng 1 - NewsCategory - Intro", Detail = "Xu Hướng 1 - NewsCategory - Detail", MetaData = "Xu Hướng 1 - NewsCategory - MetaData",
+                                Intro = "Xu Hướng 1 - NewsCategory - Intro", Detail = "Xu Hướng 1 - NewsCategory - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Title = "Xu Hướng", Keyword = "Xu Hướng 1 - NewsCategory Keyword", Description = "Xu Hướng 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2774,7 +2774,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new NewsCategoryMapping()
                             {
                                 NewsCategoryId = 1, LanguageId = 29, Status = 0,
-                                Intro = "Trend 1 - NewsCategory - Intro", Detail = "Trend 1 - NewsCategory - Detail", MetaData = "Trend 1 - NewsCategory - MetaData",
+                                Intro = "Trend 1 - NewsCategory - Intro", Detail = "Trend 1 - NewsCategory - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
                                 Title = "Trend 1", Keyword = "Trend 1 - NewsCategory Keyword", Description = "Trend 1 - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2785,6 +2785,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 1, Name = "Xu Hướng 1", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat1.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2792,7 +2793,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 29, LanguageId = 129, Status = 0,
-                                        Intro = "Xu Hướng 1 - News - Intro", Detail = "Xu Hướng 1 - News - Detail" + detail, MetaData = "Xu Hướng 1 - News - MetaData",
+                                        Intro = "Xu Hướng 1 - News - Intro", Detail = "Xu Hướng 1 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Xu Hướng 1 - News ", Keyword = "Xu Hướng 1 - News Keyword", Description = "Xu Hướng 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2800,7 +2801,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 29, LanguageId = 29, Status = 0,
-                                        Intro = "Trend 1 - News - Intro", Detail = "Trend 1 - News - Detail" + detail, MetaData = "Trend 1 - News - MetaData",
+                                        Intro = "Trend 1 - News - Intro", Detail = "Trend 1 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Trend 1 - News", Keyword = "Trend 1 - News Keyword", Description = "Trend 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2810,6 +2811,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 1, Name = "Xu Hướng 2", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat2.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2817,7 +2819,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 30, LanguageId = 129, Status = 0,
-                                        Intro = "Xu Hướng 2 - News - Intro", Detail = "Xu Hướng 2 - News - Detail" + detail, MetaData = "Xu Hướng 2 - News - MetaData",
+                                        Intro = "Xu Hướng 2 - News - Intro", Detail = "Xu Hướng 2 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Xu Hướng 2 - News ", Keyword = "Xu Hướng 2 - News Keyword", Description = "Xu Hướng 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2825,7 +2827,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 30, LanguageId = 29, Status = 0,
-                                        Intro = "Trend 2 - News - Intro", Detail = "Trend 2 - News - Detail" + detail, MetaData = "Trend 2 - News - MetaData",
+                                        Intro = "Trend 2 - News - Intro", Detail = "Trend 2 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Trend 2 - News", Keyword = "Trend 2 - News Keyword", Description = "Trend 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2835,6 +2837,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 1, Name = "Xu hướng 3", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2842,7 +2845,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 31, LanguageId = 129, Status = 0,
-                                        Intro = "Xu hướng 3 - News - Intro", Detail = "Xu hướng 3 - News - Detail" + detail, MetaData = "Xu hướng 3 - News - MetaData",
+                                        Intro = "Xu hướng 3 - News - Intro", Detail = "Xu hướng 3 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Xu hướng 3 - News ", Keyword = "Xu hướng 3 - News Keyword", Description = "Xu hướng 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2850,7 +2853,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 31, LanguageId = 29, Status = 0,
-                                        Intro = "Trend 3 - News - Intro", Detail = "Trend 3 - News - Detail" + detail, MetaData = "Trend 3 - News - MetaData",
+                                        Intro = "Trend 3 - News - Intro", Detail = "Trend 3 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Trend 3 - News", Keyword = "Trend 3 - News Keyword", Description = "Trend 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2860,6 +2863,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 1, Name = "Xu hướng 4", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat4.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2867,7 +2871,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 32, LanguageId = 129, Status = 0,
-                                        Intro = "Xu hướng 4 - News - Intro", Detail = "Xu hướng 4 - News - Detail" + detail, MetaData = "Xu hướng 4 - News - MetaData",
+                                        Intro = "Xu hướng 4 - News - Intro", Detail = "Xu hướng 4 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Xu hướng 4 - News ", Keyword = "Xu hướng 4 - News Keyword", Description = "Xu hướng 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2875,7 +2879,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 32, LanguageId = 29, Status = 0,
-                                        Intro = "Trend 4 - News - Intro", Detail = "Trend 4 - News - Detail" + detail, MetaData = "Trend 4 - News - MetaData",
+                                        Intro = "Trend 4 - News - Intro", Detail = "Trend 4 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Trend 4 - News", Keyword = "Trend 4 - News Keyword", Description = "Trend 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2885,6 +2889,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 1, Name = "Xu hướng 5", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat5.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2892,7 +2897,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 33, LanguageId = 129, Status = 0,
-                                        Intro = "Xu hướng 5 - News - Intro", Detail = "Xu hướng 5 - News - Detail" + detail, MetaData = "Xu hướng 5 - News - MetaData",
+                                        Intro = "Xu hướng 5 - News - Intro", Detail = "Xu hướng 5 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Xu hướng 5 - News ", Keyword = "Xu hướng 5 - News Keyword", Description = "Xu hướng 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2900,7 +2905,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 33, LanguageId = 29, Status = 0,
-                                        Intro = "Trend 5 - News - Intro", Detail = "Trend 5 - News - Detail" + detail, MetaData = "Trend 5 - News - MetaData",
+                                        Intro = "Trend 5 - News - Intro", Detail = "Trend 5 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Trend 5 - News", Keyword = "Trend 5 - News Keyword", Description = "Trend 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2910,6 +2915,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 1, Name = "Xu hướng 6", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat6.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2917,7 +2923,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 34, LanguageId = 129, Status = 0,
-                                        Intro = "Xu hướng 6 - News - Intro", Detail = "Xu hướng 6 - News - Detail" + detail, MetaData = "Xu hướng 6 - News - MetaData",
+                                        Intro = "Xu hướng 6 - News - Intro", Detail = "Xu hướng 6 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Xu hướng 6 - News ", Keyword = "Xu hướng 6 - News Keyword", Description = "Xu hướng 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2925,7 +2931,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 34, LanguageId = 29, Status = 0,
-                                        Intro = "Trend 6 - News - Intro", Detail = "Trend 6 - News - Detail" + detail, MetaData = "Trend 6 - News - MetaData",
+                                        Intro = "Trend 6 - News - Intro", Detail = "Trend 6 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Trend 6 - News", Keyword = "Trend 6 - News Keyword", Description = "Trend 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2935,6 +2941,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 1, Name = "Xu hướng 7", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat7.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2942,7 +2949,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 35, LanguageId = 129, Status = 0,
-                                        Intro = "Xu hướng 7 - News - Intro", Detail = "Xu hướng 7 - News - Detail" + detail, MetaData = "Xu hướng 7 - News - MetaData",
+                                        Intro = "Xu hướng 7 - News - Intro", Detail = "Xu hướng 7 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Xu hướng 7 - News ", Keyword = "Xu hướng 7 - News Keyword", Description = "Xu hướng 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2950,7 +2957,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 35, LanguageId = 29, Status = 0,
-                                        Intro = "Trend 7 - News - Intro", Detail = "Trend 7 - News - Detail" + detail, MetaData = "Trend 7 - News - MetaData",
+                                        Intro = "Trend 7 - News - Intro", Detail = "Trend 7 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Trend 7 - News", Keyword = "Trend 7 - News Keyword", Description = "Trend 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -2968,16 +2975,16 @@ namespace PenDesign.Data.MigrationConfiguration
                             new NewsCategoryMapping()
                             {
                                 NewsCategoryId = 2, LanguageId = 129, Status = 0,
-                                Intro = "Khách Hàng 1 - NewsCategory - Intro", Detail = "Khách Hàng 1 - NewsCategory - Detail", MetaData = "Khách Hàng 1 - NewsCategory - MetaData",
-                                Title = "Khách Hàng 1", Keyword = "Khách Hàng 1 - NewsCategory Keyword", Description = "Khách Hàng 1 - NewsCategory Description",
+                                Intro = "Khách Hàng - NewsCategory - Intro", Detail = "Khách Hàng - NewsCategory - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
+                                Title = "Khách Hàng", Keyword = "Khách Hàng - NewsCategory Keyword", Description = "Khách Hàng - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             },
                             new NewsCategoryMapping()
                             {
                                 NewsCategoryId = 2, LanguageId = 29, Status = 0,
-                                Intro = "Customers 1 - NewsCategory - Intro", Detail = "Customers 1 - NewsCategory - Detail", MetaData = "Customers 1 - NewsCategory - MetaData",
-                                Title = "Customers 1", Keyword = "Customers 1 - NewsCategory Keyword", Description = "Customers 1 - NewsCategory Description",
+                                Intro = "Customers - NewsCategory - Intro", Detail = "Customers - NewsCategory - Detail", MetaData = "<meta name='author' content='thanhit.net'>",
+                                Title = "Customers", Keyword = "Customers - NewsCategory Keyword", Description = "Customers - NewsCategory Description",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now
                             }
@@ -2987,6 +2994,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 2, Name = "Khách Hàng 1", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat1.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -2994,7 +3002,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 36, LanguageId = 129, Status = 0,
-                                        Intro = "Khách Hàng 1 - News - Intro", Detail = "Khách Hàng 1 - News - Detail" + detail, MetaData = "Khách Hàng 1 - News - MetaData",
+                                        Intro = "Khách Hàng 1 - News - Intro", Detail = "Khách Hàng 1 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Khách Hàng 1 - News ", Keyword = "Khách Hàng 1 - News Keyword", Description = "Khách Hàng 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3002,7 +3010,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 36, LanguageId = 29, Status = 0,
-                                        Intro = "Customers 1 - News - Intro", Detail = "Customers 1 - News - Detail" + detail, MetaData = "Customers 1 - News - MetaData",
+                                        Intro = "Customers 1 - News - Intro", Detail = "Customers 1 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Customers 1 - News", Keyword = "Customers 1 - News Keyword", Description = "Customers 1 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3012,6 +3020,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 2, Name = "Khách Hàng 2", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat2.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -3019,7 +3028,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 37, LanguageId = 129, Status = 0,
-                                        Intro = "Khách Hàng 2 - News - Intro", Detail = "Khách Hàng 2 - News - Detail" + detail, MetaData = "Khách Hàng 2 - News - MetaData",
+                                        Intro = "Khách Hàng 2 - News - Intro", Detail = "Khách Hàng 2 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Khách Hàng 2 - News ", Keyword = "Khách Hàng 2 - News Keyword", Description = "Khách Hàng 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3027,7 +3036,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 37, LanguageId = 29, Status = 0,
-                                        Intro = "Customers 2 - News - Intro", Detail = "Customers 2 - News - Detail" + detail, MetaData = "Customers 2 - News - MetaData",
+                                        Intro = "Customers 2 - News - Intro", Detail = "Customers 2 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Customers 2 - News", Keyword = "Customers 2 - News Keyword", Description = "Customers 2 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3037,6 +3046,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 2, Name = "Khách Hàng 3", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -3044,7 +3054,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 38, LanguageId = 129, Status = 0,
-                                        Intro = "Khách Hàng 3 - News - Intro", Detail = "Khách Hàng 3 - News - Detail" + detail, MetaData = "Khách Hàng 3 - News - MetaData",
+                                        Intro = "Khách Hàng 3 - News - Intro", Detail = "Khách Hàng 3 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Khách Hàng 3 - News ", Keyword = "Khách Hàng 3 - News Keyword", Description = "Khách Hàng 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3052,7 +3062,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 38, LanguageId = 29, Status = 0,
-                                        Intro = "Customers 3 - News - Intro", Detail = "Customers 3 - News - Detail" + detail, MetaData = "Customers 3 - News - MetaData",
+                                        Intro = "Customers 3 - News - Intro", Detail = "Customers 3 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Customers 3 - News", Keyword = "Customers 3 - News Keyword", Description = "Customers 3 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3062,6 +3072,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 2, Name = "Khách Hàng 4", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat4.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -3069,7 +3080,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 39, LanguageId = 129, Status = 0,
-                                        Intro = "Khách Hàng 4 - News - Intro", Detail = "Khách Hàng 4 - News - Detail" + detail, MetaData = "Khách Hàng 4 - News - MetaData",
+                                        Intro = "Khách Hàng 4 - News - Intro", Detail = "Khách Hàng 4 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Khách Hàng 4 - News ", Keyword = "Khách Hàng 4 - News Keyword", Description = "Khách Hàng 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3077,7 +3088,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 39, LanguageId = 29, Status = 0,
-                                        Intro = "Customers 4 - News - Intro", Detail = "Customers 4 - News - Detail" + detail, MetaData = "Customers 4 - News - MetaData",
+                                        Intro = "Customers 4 - News - Intro", Detail = "Customers 4 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Customers 4 - News", Keyword = "Customers 4 - News Keyword", Description = "Customers 4 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3087,6 +3098,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 2, Name = "Khách Hàng 5", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat5.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -3094,7 +3106,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 40, LanguageId = 129, Status = 0,
-                                        Intro = "Khách Hàng 5 - News - Intro", Detail = "Khách Hàng 5 - News - Detail" + detail, MetaData = "Khách Hàng 5 - News - MetaData",
+                                        Intro = "Khách Hàng 5 - News - Intro", Detail = "Khách Hàng 5 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Khách Hàng 5 - News ", Keyword = "Khách Hàng 5 - News Keyword", Description = "Khách Hàng 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3102,7 +3114,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 40, LanguageId = 29, Status = 0,
-                                        Intro = "Customers 5 - News - Intro", Detail = "Customers 5 - News - Detail" + detail, MetaData = "Customers 5 - News - MetaData",
+                                        Intro = "Customers 5 - News - Intro", Detail = "Customers 5 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Customers 5 - News", Keyword = "Customers 5 - News Keyword", Description = "Customers 5 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3112,6 +3124,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 2, Name = "Khách Hàng 6", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat6.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -3119,7 +3132,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 41, LanguageId = 129, Status = 0,
-                                        Intro = "Khách Hàng 6 - News - Intro", Detail = "Khách Hàng 6 - News - Detail" + detail, MetaData = "Khách Hàng 6 - News - MetaData",
+                                        Intro = "Khách Hàng 6 - News - Intro", Detail = "Khách Hàng 6 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Khách Hàng 6 - News ", Keyword = "Khách Hàng 6 - News Keyword", Description = "Khách Hàng 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3127,7 +3140,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 41, LanguageId = 29, Status = 0,
-                                        Intro = "Customers 6 - News - Intro", Detail = "Customers 6 - News - Detail" + detail, MetaData = "Customers 6 - News - MetaData",
+                                        Intro = "Customers 6 - News - Intro", Detail = "Customers 6 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Customers 6 - News", Keyword = "Customers 6 - News Keyword", Description = "Customers 6 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3137,6 +3150,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new News()
                             {
                                 NewsCategoryId = 2, Name = "Khách Hàng 7", Status = 0, ListTagId = "",  
+                                Thumbnail = "/Content/images/feat7.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 NewsMappings = new List<NewsMapping>()
@@ -3144,7 +3158,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 42, LanguageId = 129, Status = 0,
-                                        Intro = "Khách Hàng 7 - News - Intro", Detail = "Khách Hàng 7 - News - Detail" + detail, MetaData = "Khách Hàng 7 - News - MetaData",
+                                        Intro = "Khách Hàng 7 - News - Intro", Detail = "Khách Hàng 7 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Khách Hàng 7 - News ", Keyword = "Khách Hàng 7 - News Keyword", Description = "Khách Hàng 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3152,7 +3166,7 @@ namespace PenDesign.Data.MigrationConfiguration
                                     new NewsMapping()
                                     {
                                         NewsId = 42, LanguageId = 29, Status = 0,
-                                        Intro = "Customers 7 - News - Intro", Detail = "Customers 7 - News - Detail" + detail, MetaData = "Customers 7 - News - MetaData",
+                                        Intro = "Customers 7 - News - Intro", Detail = "Customers 7 - News - Detail" + detail, MetaData = "<meta name='author' content='thanhit.net'>",
                                         Title = "Customers 7 - News", Keyword = "Customers 7 - News Keyword", Description = "Customers 7 - News Description",
                                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                                         ModifiedById = userId, ModifiedDateTime = DateTime.Now
@@ -3193,9 +3207,6 @@ namespace PenDesign.Data.MigrationConfiguration
 
             var slogan = "<h2>Welcome!</h2>";
             slogan += "Our company offers you the best design solutions to make your home interior unique and stylish";
-            slogan += "<div class='alright'>";
-            slogan += "<a href='#' class='btn'>Xem thêm</a>";
-            slogan += "</div>";
 
 
             var footerContent = "Địa chỉ: 141 Gò Ô Môi, Phường Phú Thuận, Quận 7, TP.HCM";
@@ -3398,6 +3409,68 @@ namespace PenDesign.Data.MigrationConfiguration
                 };
 
                 adminMenuList.ForEach(m => context.AdminMenus.AddOrUpdate(p => p.Name, m));
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    var msg = ex.Message;
+                }
+            }
+            #endregion
+
+            #region OtherPageSEO
+            if (context.OtherPageSeos.Count() == 0)
+            {
+                var otherPageSEOList = new List<OtherPageSEO>()
+                {
+                    new OtherPageSEO()
+                    {
+                        Page = "HomePage",
+                        Keyword = "Homepage keyword",
+                        Description = "Homepage Description",
+                        MetaData = "Homepage MetaData"
+                    },
+                    new OtherPageSEO()
+                    {
+                        Page = "About",
+                        Keyword = "About keyword",
+                        Description = "About Description",
+                        MetaData = "About MetaData"
+                    },
+                    new OtherPageSEO()
+                    {
+                        Page = "Contact",
+                        Keyword = "Contact keyword",
+                        Description = "Contact Description",
+                        MetaData = "Contact MetaData"
+                    },
+                    new OtherPageSEO()
+                    {
+                        Page = "Project",
+                        Keyword = "Project keyword",
+                        Description = "Project Description",
+                        MetaData = "Project MetaData"
+                    },
+                    new OtherPageSEO()
+                    {
+                        Page = "Construction",
+                        Keyword = "Construction keyword",
+                        Description = "Construction Description",
+                        MetaData = "Construction MetaData"
+                    },
+                    new OtherPageSEO()
+                    {
+                        Page = "Video",
+                        Keyword = "Video keyword",
+                        Description = "Video Description",
+                        MetaData = "Video MetaData"
+                    }
+                };
+
+                otherPageSEOList.ForEach(m => context.OtherPageSeos.AddOrUpdate(p => p.Id, m));
 
                 try
                 {

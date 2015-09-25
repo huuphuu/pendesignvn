@@ -60,21 +60,23 @@ angular.module("adminApp")
             var query = $scope.gridInfo.searchQuery;
             $scope.gridInfo.tableInstance.search(query).draw();
         };
-        if ($state.current.url != "/add-banner")
-            $scope.gridInfo.getGridData();
+
 
         $scope.getAllBanners = function () {
             $rootScope.showModal = true;
             return bannerService.getAllBanners().$promise.then(
             function (data) {
+                $scope.bannerList = eval(angular.toJson(data));
+                $scope.gridInfo.display($scope.bannerList);
                 $rootScope.showModal = false;
-                $scope.bannerList = data;
             }, function (response) {
                 $rootScope.showModal = false;
                 toaster.pop('error', "Lỗi!", response.data);
             });
         }
-        $scope.getAllBanners();
+        //  $scope.getAllBanners();
+        if ($state.current.url != "/add-banner")
+            $scope.getAllBanners();
 
         $scope.addNewBanner = function (banner) {
             $rootScope.showModal = true;
@@ -132,9 +134,10 @@ angular.module("adminApp")
                 $rootScope.showModal = true;
                 return bannerService.updateBanner(banner).$promise.then(
                function (response) {
-                   $scope.getAllBanners();
+                  $scope.getAllBanners();
                    $rootScope.showModal = false;
                    $scope.currentBanner = null;
+                 //  angular.extend(dst, src);
                    toaster.pop('success', "Thành công!", "Đã cập nhật Banner " + banner.name + " - " + response.message);
                    $('html,body').animate({ scrollTop: 0 });
                }, function (response) {

@@ -1,7 +1,11 @@
 ﻿@{
     ViewBag.Title = "Giới Thiệu";
 }
-
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
+}
 
 
 <div class="content">

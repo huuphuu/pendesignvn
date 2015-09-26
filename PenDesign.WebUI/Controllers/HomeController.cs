@@ -22,10 +22,12 @@ namespace PenDesign.WebUI.Controllers
         private INewsService _newsService;
         private IQueryable<Core.Model.Project> _projectService;
         private INewsCategoryService _newsCategoryService;
+        private IOtherPageSEOService _otherPageSeoService;
 
         public HomeController(IConfigService configService, IBannerService bannerService, 
                                 IBannerMappingService bannerMappingService, IGroupControlService groupControlService, IControlService controlService,
-                            IProjectService projectService, INewsService newsService, INewsCategoryService newsCategoryService)
+                            IProjectService projectService, INewsService newsService, INewsCategoryService newsCategoryService,
+                            IOtherPageSEOService otherPageSeoService)
         {
             this._configService = configService;
             this._bannerService = bannerService;
@@ -36,7 +38,7 @@ namespace PenDesign.WebUI.Controllers
             this._projectService = projectService.GetAll();
             this._newsService = newsService;
             this._newsCategoryService = newsCategoryService;
-
+            this._otherPageSeoService = otherPageSeoService;
         }
 
         // ---------------------------------------------------
@@ -45,7 +47,13 @@ namespace PenDesign.WebUI.Controllers
         public ActionResult Index()
         {
             ViewBag.logo = configModel.LogoUrl;
-            
+            ViewBag.companyName = configModel.CompanyName;
+
+            var homepageSEOModel = _otherPageSeoService.Get(o => o.Page == "HomePage");
+            ViewBag.Keyword = homepageSEOModel.Keyword;
+            ViewBag.Description = homepageSEOModel.Description;
+            ViewBag.MetaData = homepageSEOModel.MetaData;
+
             return View();
         }
 
@@ -71,10 +79,12 @@ namespace PenDesign.WebUI.Controllers
         [ChildActionOnly]
         public PartialViewResult _Socials(string type)
         {
+            var socialsModel = configModel;
+
             if(type == "Sidebar")
-                return PartialView("_SidebarSocial");
-            else if(type == "Footer") 
-                return PartialView("_FooterSocial");
+                return PartialView("_SidebarSocial", socialsModel);
+            else if(type == "Footer")
+                return PartialView("_FooterSocial", socialsModel);
 
             return PartialView();
         }
@@ -140,6 +150,10 @@ namespace PenDesign.WebUI.Controllers
         }
         public ActionResult About()
         {
+            var homepageSEOModel = _otherPageSeoService.Get(o => o.Page == "About");
+            ViewBag.Keyword = homepageSEOModel.Keyword;
+            ViewBag.Description = homepageSEOModel.Description;
+            ViewBag.MetaData = homepageSEOModel.MetaData;
             return View();
         }
 
@@ -155,6 +169,11 @@ namespace PenDesign.WebUI.Controllers
 
         public ActionResult Contact()
         {
+            var homepageSEOModel = _otherPageSeoService.Get(o => o.Page == "Contact");
+            ViewBag.Keyword = homepageSEOModel.Keyword;
+            ViewBag.Description = homepageSEOModel.Description;
+            ViewBag.MetaData = homepageSEOModel.MetaData;
+
             ViewBag.contactForm = configModel.ContactForm;
             ViewBag.googleMap = configModel.GoogleMap;
             return View();

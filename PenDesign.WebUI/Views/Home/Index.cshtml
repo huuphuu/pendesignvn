@@ -2,6 +2,12 @@
     ViewBag.Title = "Trang chủ";
 }
 
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
+}
+
 @section ScriptsFooter{
     <!--banner script-->
     <script src="/Scripts/PenDesign/camera.js"></script>
@@ -44,8 +50,8 @@
         @{ Html.RenderAction("_Footer_Video", "Home");}
 
         <!--xu huong-->
-        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 1 });} 
-        
+        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 1 });}
+
 
         <!--Khach hang-->
         @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 2 });}
@@ -53,7 +59,7 @@
 
         <!--cong trinh tieu bieu-->
         @{ Html.RenderAction("_Footer_Construction", "Home");}
-        
+
     </div>
 </div>
 <!--==============================footer=================================-->

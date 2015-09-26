@@ -20,11 +20,13 @@ namespace PenDesign.WebUI.Controllers
         private INewsMappingService _newsMappingService;
 
         private int ItemPerPage;
+        private IOtherPageSEOService _otherPageSeoService;
 
 
         public ConstructionController(IProjectService projectService, IProjectMappingService projectMappingService,
                                  IProjectImageService projectImageService, IProjectImageMappingService projectImageMappingService,
-                                    INewsService newsService, INewsMappingService newsMappingService )
+                                    INewsService newsService, INewsMappingService newsMappingService,
+                                    IOtherPageSEOService otherPageSeoService)
         {
             this._projectService = projectService;
             this._projectMappingService = projectMappingService;
@@ -34,6 +36,8 @@ namespace PenDesign.WebUI.Controllers
 
             this._newsService = newsService;
             this._newsMappingService = newsMappingService;
+
+            this._otherPageSeoService = otherPageSeoService;
 
             ItemPerPage = 6;
         }
@@ -45,6 +49,11 @@ namespace PenDesign.WebUI.Controllers
 
         public ActionResult List(int page = 1)
         {
+            var otherPageSEOModel = _otherPageSeoService.Get(o => o.Page == "Construction");
+            ViewBag.Keyword = otherPageSEOModel.Keyword;
+            ViewBag.Description = otherPageSEOModel.Description;
+            ViewBag.MetaData = otherPageSEOModel.MetaData;
+
             var ConstructionVM = new ConstructionVM();
             ConstructionVM.PagingItems = _newsService.Page(n => n.ProjectId == 16 && n.Status == 0, n => n.ZOrder, page, ItemPerPage, true);
             ConstructionVM.News = ConstructionVM.PagingItems.Entities;

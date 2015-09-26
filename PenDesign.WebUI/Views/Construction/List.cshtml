@@ -6,6 +6,12 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
+}
+
 <div class="content">
     <div class="container_12">
         <div class="breadcrumb">

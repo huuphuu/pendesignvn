@@ -6,6 +6,12 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
+}
+
 <div class="content">
     <div class="container_12">
         <div class="breadcrumb">
@@ -18,7 +24,7 @@
                 {
                     var title = item.NewsMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Title;
                     var intro = item.NewsMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Intro;
-                    var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id ;
+                    var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id;
                     <div class="blog">
                         <img src="@item.Thumbnail" alt="@title" class="img_inner fleft">
                         <div class="extra_wrapper">

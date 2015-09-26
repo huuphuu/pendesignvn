@@ -14,16 +14,20 @@ namespace PenDesign.WebUI.Controllers
         private IProjectMappingService _projectMappingService;
         private IProjectImageService _projectImageService;
         private IProjectImageMappingService _projectImageMappingService;
+        private IOtherPageSEOService _otherPageSeoService;
         public int ItemPerPage { get; set; }
 
         public VideoController(IProjectService projectService, IProjectMappingService projectMappingService,
-                                 IProjectImageService projectImageService, IProjectImageMappingService projectImageMappingService)
+                                 IProjectImageService projectImageService, IProjectImageMappingService projectImageMappingService,
+                                IOtherPageSEOService otherPageSeoService)
         {
             this._projectService = projectService;
             this._projectMappingService = projectMappingService;
 
             this._projectImageService = projectImageService;
             this._projectImageMappingService = projectImageMappingService;
+
+            this._otherPageSeoService = otherPageSeoService;
 
             ItemPerPage = 6;
         }
@@ -35,6 +39,11 @@ namespace PenDesign.WebUI.Controllers
 
         public ActionResult List(int page = 1)
         {
+            var otherPageSEOModel = _otherPageSeoService.Get(o => o.Page == "Video");
+            ViewBag.Keyword = otherPageSEOModel.Keyword;
+            ViewBag.Description = otherPageSEOModel.Description;
+            ViewBag.MetaData = otherPageSEOModel.MetaData;
+
             var VideoVM = new VideoVM();
             VideoVM.PagingItems = _projectImageService.Page(p => p.Status == 0 && p.Type == 2, p => p.ZOrder, page, ItemPerPage, true);
             VideoVM.ProjectImages = VideoVM.PagingItems.Entities;

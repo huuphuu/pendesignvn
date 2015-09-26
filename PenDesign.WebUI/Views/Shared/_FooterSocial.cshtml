@@ -1,15 +1,42 @@
-﻿
+﻿@model PenDesign.Core.Model.Config
 <div class="footerSocial socials">
-    <section id="facebook">
-        <a href="https://www.facebook.com/anhlee19" target="_blank"><span id="fackbook" class="tooltip">f</span></a>
-    </section>
-    <section id="twitter">
-        <a href="https://www.facebook.com/anhlee19" target="_blank"><span id="twitter-default" class="tooltip">t</span></a>
-    </section>
-    <section id="google">
-        <a href="https://www.facebook.com/anhlee19" target="_blank"><span id="google-default" class="tooltip">g<span>+</span></span></a>
-    </section>
-    <section id="rss">
-        <a href="https://www.facebook.com/anhlee19" target="_blank"><span id="rss-default" class="tooltip">d</span></a>
-    </section>
+    @if (Model.FacebookSocial != null && Model.FacebookSocial != "")
+    {
+        <section id="facebook">
+            <a href="https://www.facebook.com/anhlee19" target="_blank">
+                @*<span id="fackbook" class="tooltip" title="Link us on Facebook">f</span>*@
+                <img src="~/Content/icons/fb.png" title="facebook PenPeDesign" />
+            </a>
+        </section>
+    }
+
+    @if (Model.TwitterSocial != null && Model.TwitterSocial != "")
+    {
+        <section id="twitter">
+            <a href="https://www.facebook.com/anhlee19" target="_blank">
+                @*<span id="twitter-default" class="tooltip" title="Follow us on Twitter">t</span>*@
+                <img src="~/Content/icons/twitter.png" title="twitter PenPeDesign" />
+            </a>
+        </section>
+    }
+    @if (Model.GoogleSocial != null && Model.GoogleSocial != "")
+    {
+        <section id="google">
+            <a href="https://www.facebook.com/anhlee19" target="_blank">
+                @*<span id="google-default" class="tooltip" title="Follow us on Google Plus">g<span>+</span></span>*@
+                <img src="~/Content/icons/googlePlus.png" title="google plus PenPeDesign" />
+            </a>
+        </section>
+    }
+
+    @if (Model.Youtube != null && Model.Youtube != "")
+    {
+        <section id="google">
+            <a href="https://www.facebook.com/anhlee19" target="_blank">
+                @*<span id="google-default" class="tooltip" title="Follow us on Google Plus">Y<span></span></span>*@
+                <img src="~/Content/icons/youtube.png" title="youtube PenPeDesign" />
+            </a>
+        </section>
+    }
+
 </div>

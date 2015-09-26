@@ -34,8 +34,13 @@ namespace PenDesign.WebUI.Controllers
             if (newsCategoryId == null)
                 return View();
 
-            var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId);
-            ViewBag.newsCategoryName = newsCategoryModel.NewsCategoryMappings.SingleOrDefault(n => n.LanguageId == 129).Title;
+            var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId)
+                                                        .NewsCategoryMappings
+                                                        .SingleOrDefault(n => n.LanguageId == 129);
+            ViewBag.newsCategoryName = newsCategoryModel.Title;
+            ViewBag.Keyword = newsCategoryModel.Keyword;
+            ViewBag.Description = newsCategoryModel.Description;
+            ViewBag.MetaData = newsCategoryModel.MetaData;
 
             var NewsVM = new NewsVM();
             NewsVM.PagingItems = _newsService.Page(n => n.NewsCategoryId == newsCategoryId && n.Status == 0, n => n.ZOrder, page, ItemPerPage, true);
@@ -48,8 +53,13 @@ namespace PenDesign.WebUI.Controllers
             if (newsCategoryId == null)
                 return View();
 
-            var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId);
-            ViewBag.newsCategoryName = newsCategoryModel.NewsCategoryMappings.SingleOrDefault(n => n.LanguageId == 129).Title;
+            var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId)
+                                                        .NewsCategoryMappings
+                                                        .SingleOrDefault(n => n.LanguageId == 129);
+            ViewBag.newsCategoryName = newsCategoryModel.Title;
+            ViewBag.Keyword = newsCategoryModel.Keyword;
+            ViewBag.Description = newsCategoryModel.Description;
+            ViewBag.MetaData = newsCategoryModel.MetaData;
 
             var NewsVM = new NewsVM();
             NewsVM.PagingItems = _newsService.Page(n => n.NewsCategoryId == newsCategoryId && n.Status == 0, n => n.ZOrder, page, ItemPerPage, true);

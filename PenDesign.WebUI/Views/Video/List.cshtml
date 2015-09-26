@@ -6,6 +6,12 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
+}
+
 @section ScriptsHeader{
 
     <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />

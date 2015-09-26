@@ -2,6 +2,12 @@
     ViewBag.Title = "Contact";
 }
 
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
+}
+
 @section CssHeader{
     <link rel="stylesheet" href="/Content/css/form.css">
 }

@@ -56,6 +56,17 @@ namespace PenDesign.WebUI.Controllers
             return View(ProjectVM);
         }
 
+        public ActionResult Detail(int id)
+        {
+            var projectModel = _projectService.Get(p => p.Id == id);
+            if(projectModel == null)  return View();
+
+            ViewBag.projectName = projectModel.ProjectMappings.SingleOrDefault(pm => pm.LanguageId == 129 && pm.Status == 0).Title;
+
+            var newsModel = projectModel.News.SingleOrDefault(n => n.ProjectId == id).NewsMappings.Where(nm => nm.LanguageId == 129).SingleOrDefault();
+
+            return View(newsModel);
+        }
 
     }
 }

@@ -71,6 +71,12 @@ namespace PenDesign.WebUI
                 defaults: new { controller = "Project", action = "List" },
                 namespaces: new[] { "PenDesign.WebUI.Controllers" }
             );
+            routes.MapRoute(
+                name: "Project - news",
+                url: "du-an/{NewsName}-{id}",
+                defaults: new { controller = "Project", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "PenDesign.WebUI.Controllers" }
+            );
 
 
             routes.MapRoute(

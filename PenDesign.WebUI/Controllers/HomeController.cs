@@ -154,6 +154,8 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.Keyword = homepageSEOModel.Keyword;
             ViewBag.Description = homepageSEOModel.Description;
             ViewBag.MetaData = homepageSEOModel.MetaData;
+
+            ViewBag.About = _configService.GetAll().FirstOrDefault().About;
             return View();
         }
 

@@ -1,0 +1,39 @@
+﻿@using PenDesign.Common.HelperMethod
+@model PenDesign.Core.Model.NewsMapping
+
+@{
+    ViewBag.Title = ViewBag.projectName;
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@section SEO{
+    <meta name="keywords" content="@Model.Keyword">
+    <meta name="description" content="@Model.Description">
+    @Html.Raw(Model.MetaData)
+}
+
+<div class="content">
+    <div class="container_12">
+        <div class="breadcrumb">
+            <a href="/" title="Trang chủ">Trang chủ</a> / <a href="/du-an" title="Dự án">Dự án</a> / @ViewBag.projectName
+        </div>
+        <div class="grid_9">
+            @if (Model != null)
+            {
+                <h1 class="news-title">@ViewBag.projectName</h1>
+                @Html.Raw(Model.Description)
+            }
+            else
+            {
+                <p>Bài viết không tồn tại hoặc đã bị xóa!</p>
+            }
+        </div>
+
+        <div class="grid_3">
+            @{Html.RenderAction("_SidebarNews", "News", new { newsCategoryId = 1 });}
+            @{Html.RenderAction("_SidebarNews", "News", new { newsCategoryId = 2 });}
+        </div>
+    </div>
+</div>
+
+

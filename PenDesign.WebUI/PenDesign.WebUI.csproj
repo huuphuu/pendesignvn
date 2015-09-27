@@ -2149,6 +2149,7 @@
     <Content Include="Views\Shared\_SidebarSocial.cshtml" />
     <Content Include="Views\Shared\_FooterSocial.cshtml" />
     <Content Include="Views\Shared\_Slogan.cshtml" />
+    <Content Include="Views\Project\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

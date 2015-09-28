@@ -1,4 +1,5 @@
-﻿@Html.Raw(ViewBag.slogan)
+﻿@using PenDesign.Common.Utils
+@Html.Raw( StringTools.TrimString(ViewBag.slogan, 120))
 <div class='alright'>
     <a href='/gioi-thieu' class='btn' title="Giới thiệu">Xem thêm</a>
 </div>

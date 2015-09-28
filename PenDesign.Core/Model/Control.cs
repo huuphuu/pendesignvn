@@ -17,7 +17,7 @@ namespace PenDesign.Core.Model
         public int Parent { get; set; }
         public string MenuController { get; set; }
         public string MenuAction { get; set; }
-        public string MenuId { get; set; }
+        public int MenuId { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
         public int ZOrder { get; set; }

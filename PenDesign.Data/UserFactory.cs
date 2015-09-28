@@ -43,16 +43,5 @@ namespace PenDesign.Data
         {
             return _userManager.FindByName(name).Id;
         }
-
-        //public string GetUserName()
-        //{
-        //    var userName = User.Identity.Name;
-        //    return userName;
-        //}
-
-        //public IDataContext GetCurrentContext()
-        //{
-        //    return _dataContext;
-        //}
     }
 }

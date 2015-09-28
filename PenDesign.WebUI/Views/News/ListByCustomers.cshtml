@@ -20,10 +20,11 @@
         <div class="grid_9">
             @if (Model != null && Model.News.Count() > 0)
             {
+                var languageId = int.Parse(PenDesign.Common.Utils.Cookies.ReadCookie("PenDesign:Language", "129"));
                 foreach (var item in Model.News)
                 {
-                    var title = item.NewsMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Title;
-                    var intro = item.NewsMappings.Where(m => m.LanguageId == 129 && m.Status == 0).SingleOrDefault().Intro;
+                    var title = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == 0).SingleOrDefault().Title;
+                    var intro = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == 0).SingleOrDefault().Intro;
                     var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id;
                     <div class="blog">
                         <img src="@item.Thumbnail" alt="@title" class="img_inner fleft">

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PenDesign.WebUI.Models;
+using PenDesign.Common.Utils;
+using PenDesign.WebUI.Infrastructure;
 
 namespace PenDesign.WebUI.Controllers
 {
@@ -18,6 +20,7 @@ namespace PenDesign.WebUI.Controllers
         private IProjectImageService _projectImageService;
         private IProjectImageMappingService _projectImageMappingService;
         private IOtherPageSEOService _otherPageSeoService;
+        private int LanguageId;
 
         public int ItemPerPage { get; set; }
 
@@ -34,7 +37,9 @@ namespace PenDesign.WebUI.Controllers
 
             this._otherPageSeoService = otherPageSeoService;
 
-            ItemPerPage = 6;
+            this.LanguageId = int.Parse(Cookies.ReadCookie("PenDesign:Language", "129"));
+
+            ItemPerPage = AppSettings.ItemsPerPage;
         }
 
         // GET: Project
@@ -61,9 +66,9 @@ namespace PenDesign.WebUI.Controllers
             var projectModel = _projectService.Get(p => p.Id == id);
             if(projectModel == null)  return View();
 
-            ViewBag.projectName = projectModel.ProjectMappings.SingleOrDefault(pm => pm.LanguageId == 129 && pm.Status == 0).Title;
+            ViewBag.projectName = projectModel.ProjectMappings.SingleOrDefault(pm => pm.LanguageId == LanguageId && pm.Status == 0).Title;
 
-            var newsModel = projectModel.News.SingleOrDefault(n => n.ProjectId == id).NewsMappings.Where(nm => nm.LanguageId == 129).SingleOrDefault();
+            var newsModel = projectModel.News.SingleOrDefault(n => n.ProjectId == id).NewsMappings.Where(nm => nm.LanguageId == LanguageId).SingleOrDefault();
 
             return View(newsModel);
         }

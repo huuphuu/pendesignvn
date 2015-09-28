@@ -1,4 +1,6 @@
-﻿using PenDesign.Core.Interface.Service.BasicServiceInterface;
+﻿using PenDesign.Common.Utils;
+using PenDesign.Core.Interface.Service.BasicServiceInterface;
+using PenDesign.WebUI.Infrastructure;
 using PenDesign.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace PenDesign.WebUI.Controllers
         private IProjectImageService _projectImageService;
         private IProjectImageMappingService _projectImageMappingService;
         private IOtherPageSEOService _otherPageSeoService;
+        private int LanguageId;
         public int ItemPerPage { get; set; }
 
         public VideoController(IProjectService projectService, IProjectMappingService projectMappingService,
@@ -29,7 +32,9 @@ namespace PenDesign.WebUI.Controllers
 
             this._otherPageSeoService = otherPageSeoService;
 
-            ItemPerPage = 6;
+            this.LanguageId = int.Parse(Cookies.ReadCookie("PenDesign:Language", "129"));
+
+            ItemPerPage = AppSettings.ItemsPerPage;
         }
         // GET: Video
         public ActionResult Index()

@@ -10,6 +10,7 @@ using PenDesign.WebUI.Authencation;
 using FooService;
 using System.Web.Http.WebHost;
 using System.Web.SessionState;
+using System.IO;
 
 namespace PenDesign.WebUI
 {
@@ -27,6 +28,37 @@ namespace PenDesign.WebUI
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
             GlobalConfiguration.Configuration.Formatters.Insert(0, new RootFormatter());
+
+
+            var path = Server.MapPath("~/Resources/Visitors.txt");
+            Application["Visitors"] = int.Parse(File.ReadAllText(path));
+        }
+
+        protected void Session_Start()
+        {
+            Application.Lock();
+            Application["Visitors"] = (int)Application["Visitors"] + 1;
+
+            var path = Server.MapPath("~/Resources/Visitors.txt");
+            File.WriteAllText(path, Application["Visitors"].ToString());
+            Application.UnLock();
+        }
+
+        protected void Application_BeginRequest()
+        {
+            string LanguageId = "129";
+
+            if (Request.Cookies["PenDesign:Language"] == null)
+            {
+                var ckiLanguage = new HttpCookie("PenDesign:Language", LanguageId);
+                ckiLanguage.Value = LanguageId;
+                ckiLanguage.Expires = DateTime.Now.AddMonths(1);
+                Response.Cookies.Add(ckiLanguage);
+            }
+            else if (Request.Cookies["PenDesign:Language"] != null)
+            {
+                LanguageId = Request.Cookies["PenDesign:Language"].Value;
+            }
         }
 
         protected void Application_PostAuthorizeRequest()

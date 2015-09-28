@@ -68,6 +68,7 @@
     <Compile Include="Paging\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AnonymousTypeTools.cs" />
+    <Compile Include="Utils\Cookies.cs" />
     <Compile Include="Utils\MimeTypes.cs" />
     <Compile Include="Utils\RootFormatter.cs" />
     <Compile Include="Utils\Security.cs" />

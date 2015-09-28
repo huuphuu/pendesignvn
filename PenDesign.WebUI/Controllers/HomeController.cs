@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PenDesign.Common.Utils;
 
 
 namespace PenDesign.WebUI.Controllers
@@ -18,13 +19,14 @@ namespace PenDesign.WebUI.Controllers
         private readonly Core.Model.Config configModel;
         private IGroupControlService _groupControlService;
         private IControlService _controlService;
-        
+
         private INewsService _newsService;
         private IQueryable<Core.Model.Project> _projectService;
         private INewsCategoryService _newsCategoryService;
         private IOtherPageSEOService _otherPageSeoService;
+        private int LanguageId;
 
-        public HomeController(IConfigService configService, IBannerService bannerService, 
+        public HomeController(IConfigService configService, IBannerService bannerService,
                                 IBannerMappingService bannerMappingService, IGroupControlService groupControlService, IControlService controlService,
                             IProjectService projectService, INewsService newsService, INewsCategoryService newsCategoryService,
                             IOtherPageSEOService otherPageSeoService)
@@ -39,6 +41,8 @@ namespace PenDesign.WebUI.Controllers
             this._newsService = newsService;
             this._newsCategoryService = newsCategoryService;
             this._otherPageSeoService = otherPageSeoService;
+
+            this.LanguageId = int.Parse(Cookies.ReadCookie("PenDesign:Language", "129"));
         }
 
         // ---------------------------------------------------
@@ -57,6 +61,7 @@ namespace PenDesign.WebUI.Controllers
             return View();
         }
 
+        [ChildActionOnly]
         public PartialViewResult _Slogan()
         {
             ViewBag.slogan = configModel.Slogan;
@@ -67,7 +72,7 @@ namespace PenDesign.WebUI.Controllers
         public PartialViewResult _Banner()
         {
             var bannerModel = _bannerService.GetMany(b => b.Status == 0)
-                                            .Select(m => m.BannerMappings.Where(bm => bm.LanguageId == 129));
+                                            .Select(m => m.BannerMappings.Where(bm => bm.LanguageId == LanguageId));
 
             return PartialView("_Banner", bannerModel);
         }
@@ -81,9 +86,9 @@ namespace PenDesign.WebUI.Controllers
         {
             var socialsModel = configModel;
 
-            if(type == "Sidebar")
+            if (type == "Sidebar")
                 return PartialView("_SidebarSocial", socialsModel);
-            else if(type == "Footer")
+            else if (type == "Footer")
                 return PartialView("_FooterSocial", socialsModel);
 
             return PartialView();
@@ -102,8 +107,8 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.logo = configModel.LogoUrl;
             ViewBag.companyName = configModel.CompanyName;
             var menuModel = _controlService.GetMany(c => c.GroupControl.Type == "Menu" && c.Status == 0)
-                                            //.Include(c => c.ControlMappings)
-                                            .Select(c => c.ControlMappings.Where(cm => cm.LanguageId == 129));
+                //.Include(c => c.ControlMappings)
+                                            .Select(c => c.ControlMappings.Where(cm => cm.LanguageId == LanguageId));
             return PartialView("_Header", menuModel);
         }
 
@@ -129,24 +134,24 @@ namespace PenDesign.WebUI.Controllers
         {
             var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId)
                                                             .NewsCategoryMappings
-                                                            .SingleOrDefault(nm => nm.LanguageId == 129);
+                                                            .SingleOrDefault(nm => nm.LanguageId == LanguageId);
             if (newsCategoryModel == null) return PartialView();
 
             ViewBag.newsCategoryName = newsCategoryModel.Title;
             ViewBag.newsCategoryId = newsCategoryId;
 
             var newsModel = _newsService.GetMany(n => n.NewsCategoryId == newsCategoryId && n.Status == 0)
-                                            .Select(n => n.NewsMappings.Where(nm => nm.LanguageId == 129)).Take(6);
-            return PartialView("_Footer_News",newsModel);
+                                            .Select(n => n.NewsMappings.Where(nm => nm.LanguageId == LanguageId)).Take(6);
+            return PartialView("_Footer_News", newsModel);
         }
 
         [ChildActionOnly]
         public PartialViewResult _Footer_Construction()
         {
             var constructionModel = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == 0)
-                                                .Select(m => m.NewsMappings.Where(nm => nm.LanguageId == 129 && nm.Status == 0))
+                                                .Select(m => m.NewsMappings.Where(nm => nm.LanguageId == LanguageId && nm.Status == 0))
                                                 .Take(6);
-            return PartialView("_Footer_Construction",constructionModel);
+            return PartialView("_Footer_Construction", constructionModel);
         }
         public ActionResult About()
         {

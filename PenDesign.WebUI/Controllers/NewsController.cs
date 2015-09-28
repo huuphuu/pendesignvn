@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.WebUI.Models;
+using PenDesign.Common.Utils;
+using PenDesign.WebUI.Infrastructure;
 
 namespace PenDesign.WebUI.Controllers
 {
@@ -13,6 +15,7 @@ namespace PenDesign.WebUI.Controllers
         private INewsCategoryService _newsCategoryService;
         private INewsService _newsService;
         private int ItemPerPage;
+        private int LanguageId;
 
         public NewsController(INewsCategoryService newsCategoryService, INewsService newsService
             )
@@ -20,7 +23,9 @@ namespace PenDesign.WebUI.Controllers
             this._newsCategoryService = newsCategoryService;
             this._newsService = newsService;
 
-            ItemPerPage = 6;
+            this.LanguageId = int.Parse(Cookies.ReadCookie("PenDesign:Language", "129"));
+
+            ItemPerPage = AppSettings.ItemsPerPage;
         }
 
         // GET: News
@@ -36,7 +41,7 @@ namespace PenDesign.WebUI.Controllers
 
             var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId)
                                                         .NewsCategoryMappings
-                                                        .SingleOrDefault(n => n.LanguageId == 129);
+                                                        .SingleOrDefault(n => n.LanguageId == LanguageId);
             ViewBag.newsCategoryName = newsCategoryModel.Title;
             ViewBag.Keyword = newsCategoryModel.Keyword;
             ViewBag.Description = newsCategoryModel.Description;
@@ -55,7 +60,7 @@ namespace PenDesign.WebUI.Controllers
 
             var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId)
                                                         .NewsCategoryMappings
-                                                        .SingleOrDefault(n => n.LanguageId == 129);
+                                                        .SingleOrDefault(n => n.LanguageId == LanguageId);
             ViewBag.newsCategoryName = newsCategoryModel.Title;
             ViewBag.Keyword = newsCategoryModel.Keyword;
             ViewBag.Description = newsCategoryModel.Description;
@@ -72,7 +77,7 @@ namespace PenDesign.WebUI.Controllers
             var newsCategoryModel = _newsService.Get(n => n.Id == id)
                                                 .NewsCategory
                                                 .NewsCategoryMappings
-                                                .Where(nc => nc.LanguageId == 129)
+                                                .Where(nc => nc.LanguageId == LanguageId)
                                                 .SingleOrDefault();
 
             if (newsCategoryModel == null) return View();
@@ -81,7 +86,7 @@ namespace PenDesign.WebUI.Controllers
 
             var newsModel = _newsService.Get(n => n.Id == id && n.Status == 0)
                                         .NewsMappings
-                                        .SingleOrDefault(nm => nm.LanguageId == 129 && nm.Status == 0);
+                                        .SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == 0);
 
             return View(newsModel);
         }
@@ -92,7 +97,7 @@ namespace PenDesign.WebUI.Controllers
             var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId && n.Status == 0);
             if (newsCategoryModel == null) return PartialView();
 
-            ViewBag.newsCategoryName = newsCategoryModel.NewsCategoryMappings.SingleOrDefault(nm => nm.LanguageId == 129 && nm.Status == 0)
+            ViewBag.newsCategoryName = newsCategoryModel.NewsCategoryMappings.SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == 0)
                                                                               .Title;
             ViewBag.newsCategoryId = newsCategoryModel.Id;
 

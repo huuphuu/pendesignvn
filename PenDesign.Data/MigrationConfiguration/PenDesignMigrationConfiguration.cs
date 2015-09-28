@@ -2603,7 +2603,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new Control()
                             {
                                 GroupControlId = 1, Name = "Trang chủ", Url = "/", Parent = 0, Image = "", Description = "", ZOrder = 1, Status = 0,
-                                MenuController = "Home", MenuAction = "Index", MenuId = "",
+                                MenuController = "Home", MenuAction = "Index", MenuId = 0,
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ControlMappings = new List<ControlMapping>()
@@ -2625,7 +2625,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new Control()
                             {
                                 GroupControlId = 1, Name = "Giới thiệu", Url = "/gioi-thieu", Parent = 0, Image = "", Description = "", ZOrder = 2, Status = 0,
-                                MenuController = "Home", MenuAction = "About", MenuId = "",
+                                MenuController = "Home", MenuAction = "About", MenuId = 0,
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                  ControlMappings = new List<ControlMapping>()
@@ -2647,7 +2647,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new Control()
                             {
                                 GroupControlId = 1, Name = "Dự án", Url = "/du-an", Parent = 0, Image = "", Description = "", ZOrder = 3, Status = 0,
-                                MenuController = "Project", MenuAction = "Index, Detail", MenuId = "",
+                                MenuController = "Project", MenuAction = "Index, Detail, List", MenuId = 0,
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                  ControlMappings = new List<ControlMapping>()
@@ -2669,7 +2669,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new Control()
                             {
                                 GroupControlId = 1, Name = "Video", Url = "/video-clip", Parent = 0, Image = "", Description = "", ZOrder = 4, Status = 0,
-                                MenuController = "Video", MenuAction = "Index", MenuId = "",
+                                MenuController = "Video", MenuAction = "Index, List", MenuId = 0,
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                  ControlMappings = new List<ControlMapping>()
@@ -2691,7 +2691,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new Control()
                             {
                                 GroupControlId = 1, Name = "Công trình thực tế", Url = "/cong-trinh-thuc-te", Parent = 0, Image = "", Description = "", ZOrder = 5, Status = 0,
-                                MenuController = "Construction", MenuAction = "Index, Detail", MenuId = "",
+                                MenuController = "Construction", MenuAction = "Index, Detail, List", MenuId = 0,
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                  ControlMappings = new List<ControlMapping>()
@@ -2713,7 +2713,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new Control()
                             {
                                 GroupControlId = 1, Name = "Liên hệ", Url = "/lien-he", Parent = 0, Image = "", Description = "", ZOrder = 6, Status = 0,
-                                MenuController = "Home", MenuAction = "Contact", MenuId = "",
+                                MenuController = "Home", MenuAction = "Contact", MenuId = 0,
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                  ControlMappings = new List<ControlMapping>()
@@ -3431,42 +3431,42 @@ namespace PenDesign.Data.MigrationConfiguration
                         Page = "HomePage",
                         Keyword = "Homepage keyword",
                         Description = "Homepage Description",
-                        MetaData = "Homepage MetaData"
+                        MetaData = "<meta name='author' content='thanhit.net'>"
                     },
                     new OtherPageSEO()
                     {
                         Page = "About",
                         Keyword = "About keyword",
                         Description = "About Description",
-                        MetaData = "About MetaData"
+                        MetaData = "<meta name='author' content='thanhit.net'>"
                     },
                     new OtherPageSEO()
                     {
                         Page = "Contact",
                         Keyword = "Contact keyword",
                         Description = "Contact Description",
-                        MetaData = "Contact MetaData"
+                        MetaData = "<meta name='author' content='thanhit.net'>"
                     },
                     new OtherPageSEO()
                     {
                         Page = "Project",
                         Keyword = "Project keyword",
                         Description = "Project Description",
-                        MetaData = "Project MetaData"
+                        MetaData = "<meta name='author' content='thanhit.net'>"
                     },
                     new OtherPageSEO()
                     {
                         Page = "Construction",
                         Keyword = "Construction keyword",
                         Description = "Construction Description",
-                        MetaData = "Construction MetaData"
+                        MetaData = "<meta name='author' content='thanhit.net'>"
                     },
                     new OtherPageSEO()
                     {
                         Page = "Video",
                         Keyword = "Video keyword",
                         Description = "Video Description",
-                        MetaData = "Video MetaData"
+                        MetaData = "<meta name='author' content='thanhit.net'>"
                     }
                 };
 

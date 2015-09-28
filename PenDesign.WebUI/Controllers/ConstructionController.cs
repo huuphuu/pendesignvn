@@ -1,10 +1,12 @@
-﻿using PenDesign.Core.Interface.Service.BasicServiceInterface;
+﻿using PenDesign.Common.Utils;
+using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PenDesign.WebUI.Infrastructure;
 
 namespace PenDesign.WebUI.Controllers
 {
@@ -21,6 +23,7 @@ namespace PenDesign.WebUI.Controllers
 
         private int ItemPerPage;
         private IOtherPageSEOService _otherPageSeoService;
+        private int LanguageId;
 
 
         public ConstructionController(IProjectService projectService, IProjectMappingService projectMappingService,
@@ -39,7 +42,9 @@ namespace PenDesign.WebUI.Controllers
 
             this._otherPageSeoService = otherPageSeoService;
 
-            ItemPerPage = 6;
+            ItemPerPage = AppSettings.ItemsPerPage;
+
+            LanguageId = int.Parse(Cookies.ReadCookie("PenDesign:Language", "129"));
         }
         // GET: Construction
         public ActionResult Index()
@@ -64,7 +69,7 @@ namespace PenDesign.WebUI.Controllers
         {
             var newsModel = _newsService.Get(n => n.Id == id && n.Status == 0)
                                         .NewsMappings
-                                        .SingleOrDefault(nm => nm.LanguageId == 129 && nm.Status == 0);
+                                        .SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == 0);
 
             return View(newsModel);
         }

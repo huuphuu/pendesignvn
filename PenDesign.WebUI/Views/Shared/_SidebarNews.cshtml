@@ -2,11 +2,12 @@
 
 @if (Model != null)
 {
+    var languageId = int.Parse(PenDesign.Common.Utils.Cookies.ReadCookie("PenDesign:Language", "129"));
     <h4 class="head1"><a href="/@XString.ToAscii(ViewBag.newsCategoryName)">@ViewBag.newsCategoryName</a></h4>
     <ul class="list mb0">
         @foreach (var item in Model)
         {
-            var title = item.NewsMappings.Where(n => n.LanguageId == 129 && n.Status == 0).SingleOrDefault().Title;
+            var title = item.NewsMappings.Where(n => n.LanguageId == languageId && n.Status == 0).SingleOrDefault().Title;
             var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id;
             if (title != null && title.Length > 0)
             {

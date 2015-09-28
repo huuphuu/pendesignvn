@@ -1,20 +1,23 @@
-﻿@model PenDesign.Core.Model.ProjectImage
+﻿@using PenDesign.Common.Utils
+@model PenDesign.Core.Model.ProjectImage
 
 
 @if (Model != null)
 {
+    var languageId = int.Parse(Cookies.ReadCookie("PenDesign:Language", "129"));
+
     <link href="/Content/colorbox/colorbox.css" rel="stylesheet" />
     <script src="/Content/colorbox/jquery.colorbox-min.js"></script>
     <div class="grid_3">
         <h4><a href="/video-clip" title="Video Clip"> Video Clip</a></h4>
         @{
-            var imageName = Model.ProjectImageMappings.Single(m => m.LanguageId == 129).Name;
+            var imageName = Model.ProjectImageMappings.Single(m => m.LanguageId == languageId).Name;
         }
         <a class="group" href="@Model.ResourceUrl" title="@imageName" style="width: 90%;">
             <img src="@Model.Thumbnail" alt="@imageName" style="width: 90%;" />
         </a>
         <div style="margin-top: 12px;">
-            @Html.Raw(Model.ProjectImageMappings.Single(m => m.LanguageId == 129).Description)
+            @Html.Raw(Model.ProjectImageMappings.Single(m => m.LanguageId == languageId).Description)
         </div>
 
         <div class="alright">

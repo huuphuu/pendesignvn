@@ -15,6 +15,8 @@ namespace PenDesign.Core.Model
         public int LanguageId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string MediaUrl { get; set; }
+        public string MediaThumbUrl { get; set; }
 
         public virtual Banner Banner { get; set; }
     }

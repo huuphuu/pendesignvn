@@ -224,6 +224,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\MenuSelected.cs" />
+    <Compile Include="Infrastructure\AppSettings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConstructionVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -1955,6 +1956,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resources\Visitors.txt" />
     <Content Include="Scripts\angularjs\angular-animate.min.js" />
     <Content Include="Scripts\angularjs\angular-messages.min.js" />
     <Content Include="Scripts\angularjs\angular-recaptcha.js" />
@@ -2126,8 +2128,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Construction.cshtml" />
-    <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\Shared\_Banner.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_ContactForm.cshtml" />

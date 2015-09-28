@@ -1,4 +1,5 @@
-﻿@model System.Data.Entity.Infrastructure.DbQuery<IEnumerable<PenDesign.Core.Model.ControlMapping>>
+﻿@using PenDesign.Common.HelperMethod
+@model System.Data.Entity.Infrastructure.DbQuery<IEnumerable<PenDesign.Core.Model.ControlMapping>>
 
 
 <header>
@@ -17,7 +18,9 @@
                             {
                                 foreach (var item in menu)
                                 {
-                                    <li><a href="@item.Control.Url">@item.Text</a></li>
+                                    <li class="@Html.IsSelected(actions: item.Control.MenuAction, controllers: item.Control.MenuController, newsCategoryId: item.Control.MenuId)">
+                                        <a href="@item.Control.Url">@item.Text</a>
+                                    </li>
                                 }
                             }
                         </ul>

@@ -11,13 +11,13 @@
     <div class="grid_3">
         <h4><a href="/video-clip" title="Video Clip"> Video Clip</a></h4>
         @{
-            var imageName = Model.ProjectImageMappings.Single(m => m.LanguageId == languageId).Name;
+            var imageName = Model.ProjectImageMappings.Single(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).Name;
         }
         <a class="group" href="@Model.ResourceUrl" title="@imageName" style="width: 90%;">
             <img src="@Model.Thumbnail" alt="@imageName" style="width: 90%;" />
         </a>
         <div style="margin-top: 12px;">
-            @Html.Raw(Model.ProjectImageMappings.Single(m => m.LanguageId == languageId).Description)
+            @Html.Raw(Model.ProjectImageMappings.Single(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).Description)
         </div>
 
         <div class="alright">

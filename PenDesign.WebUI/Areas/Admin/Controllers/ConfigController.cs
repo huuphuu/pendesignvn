@@ -47,7 +47,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 else
                     config.LogoUrl = "/Content/images/No_image_available.png";
 
-                _configService.Add(config);
+                _configService.Update(config);
 
                 return Request.CreateResponse(HttpStatusCode.OK);
 

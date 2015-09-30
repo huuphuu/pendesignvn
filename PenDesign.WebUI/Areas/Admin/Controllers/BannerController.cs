@@ -5,6 +5,7 @@ using PenDesign.Core.Model;
 using PenDesign.Core.Models;
 using PenDesign.Core.ViewModel.BannerViewModel;
 using PenDesign.Data;
+using PenDesign.WebUI.Areas.Admin.Models;
 using PenDesign.WebUI.Authencation;
 using System;
 using System.Collections.Generic;
@@ -35,30 +36,43 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         }
 
         // GET: api/Banner
-        public IQueryable<BannerVM> Get()
+        //public IQueryable<BannerVM> Get()
+        public IQueryable<adminBannerVM> Get()
         {
             try
             {
 
                 var bannerList = new List<BannerVM>();
-                var model = _bannerService.Entities.Where(b => b.Status == 0)
-                                            .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),
-                                                b => b.Id,
-                                                bm => bm.BannerId,
-                                                (b, bm) => new BannerVM()
-                                                {
-                                                    Id = b.Id,
-                                                    LanguageId = bm.LanguageId,
-                                                    Name = b.Name,
-                                                    Type = b.Type,
-                                                    Position = b.Position,
-                                                    MediaType = b.MediaType,
-                                                    MediaUrl = b.MediaUrl,
-                                                    LinkUrl = b.LinkUrl,
-                                                    ZOrder = b.ZOrder
-                                                }).AsQueryable();
+                //var model = _bannerService.Entities.Where(b => b.Status == 0 || b.Status == 1)
+                //                            .Join(_bannerMappingService.Entities,
+                //                                b => b.Id,
+                //                                bm => bm.BannerId,
+                //                                (b, bm) => new BannerVM()
+                //                                {
+                //                                    Id = b.Id,
+                //                                    LanguageId = bm.LanguageId,
+                //                                    Name = b.Name,
+                //                                    Type = b.Type,
+                //                                    Position = b.Position,
+                //                                    MediaType = b.MediaType,
+                //                                    MediaUrl = b.MediaUrl,
+                //                                    LinkUrl = b.LinkUrl,
+                //                                    ZOrder = b.ZOrder
+                //                                }).AsQueryable();
+                var adminBannerVM = new List<adminBannerVM>();
 
-                return model;
+                var bannerModel = _bannerService.GetMany(b => (b.Status == true || b.Status == false) && b.Deleted == false).AsQueryable();
+                foreach (var bm in bannerModel)
+                {
+                    var model = new adminBannerVM()
+                    {
+                        Banners = bm,
+                        EditedUser = _userFactory.GetUserNameById(bm.ModifiedById)
+                    };
+                    adminBannerVM.Add(model);
+                }
+
+                return adminBannerVM.AsQueryable();
             }
             catch (Exception)
             {
@@ -80,7 +94,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
                 banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + mediaUrlName;
 
-                banner.Status = 0; // 0 hien, 1 an, 2 xoa database
+                banner.Status = true; // 0 hien, 1 an, 2 xoa database
                 banner.CreatedById = _userId;
                 banner.CreatedDateTime = DateTime.Now;
                 banner.ModifiedById = _userId;
@@ -93,14 +107,14 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 {
                     new BannerMapping()
                             {
-                                BannerId = justAddedBannerId, LanguageId = 129, Status = 0,
+                                BannerId = justAddedBannerId, LanguageId = 129, Status = true,
                                 Name = banner.Name, Description = "",
                                 CreatedById = _userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = _userId, ModifiedDateTime = DateTime.Now
                             },
                             new BannerMapping()
                             {
-                                BannerId = justAddedBannerId, LanguageId = 29, Status = 0,
+                                BannerId = justAddedBannerId, LanguageId = 29, Status = true,
                                 Name = banner.Name + "-en", Description = "",
                                 CreatedById = _userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = _userId, ModifiedDateTime = DateTime.Now
@@ -144,7 +158,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 else
                     banner.MediaUrl = "/Content/images/No_image_available.png";
 
-                banner.Status = 0;
+                banner.Status = true;
 
                 _bannerService.Update(banner);
 

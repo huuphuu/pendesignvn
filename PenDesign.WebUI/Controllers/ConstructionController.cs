@@ -60,16 +60,16 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.MetaData = otherPageSEOModel.MetaData;
 
             var ConstructionVM = new ConstructionVM();
-            ConstructionVM.PagingItems = _newsService.Page(n => n.ProjectId == 16 && n.Status == 0, n => n.ZOrder, page, ItemPerPage, true);
+            ConstructionVM.PagingItems = _newsService.Page(n => n.ProjectId == 16 && n.Status == true && n.Deleted == false, n => n.ZOrder, page, ItemPerPage, true);
             ConstructionVM.News = ConstructionVM.PagingItems.Entities;
             return View(ConstructionVM);
         }
 
         public ActionResult Detail(int id)
         {
-            var newsModel = _newsService.Get(n => n.Id == id && n.Status == 0)
+            var newsModel = _newsService.Get(n => n.Id == id && n.Status == true && n.Deleted == false)
                                         .NewsMappings
-                                        .SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == 0);
+                                        .SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == true && nm.Deleted == false);
 
             return View(newsModel);
         }

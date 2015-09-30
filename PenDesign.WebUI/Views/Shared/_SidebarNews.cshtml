@@ -7,7 +7,7 @@
     <ul class="list mb0">
         @foreach (var item in Model)
         {
-            var title = item.NewsMappings.Where(n => n.LanguageId == languageId && n.Status == 0).SingleOrDefault().Title;
+            var title = item.NewsMappings.Where(n => n.LanguageId == languageId && n.Status == true && n.Deleted == false).SingleOrDefault().Title;
             var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id;
             if (title != null && title.Length > 0)
             {

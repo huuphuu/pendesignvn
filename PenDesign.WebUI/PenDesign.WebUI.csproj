@@ -210,6 +210,7 @@
     <Compile Include="Areas\Admin\Controllers\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Admin\Models\adminBannerVM.cs" />
     <Compile Include="Authencation\CustomAuthorize.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConstructionController.cs" />
@@ -256,6 +257,10 @@
     <Content Include="Areas\Admin\Content\Images\icons\boxed-bg.jpg" />
     <Content Include="Areas\Admin\Content\Images\icons\boxed-bg.png" />
     <Content Include="Areas\Admin\Content\Images\icons\default-50x50.gif" />
+    <Content Include="Areas\Admin\Content\Images\icons\flags\China.png" />
+    <Content Include="Areas\Admin\Content\Images\icons\flags\England.png" />
+    <Content Include="Areas\Admin\Content\Images\icons\flags\usa.png" />
+    <Content Include="Areas\Admin\Content\Images\icons\flags\VietNam.png" />
     <Content Include="Areas\Admin\Content\Images\icons\icons.png" />
     <Content Include="Areas\Admin\Content\Images\icons\photo1.png" />
     <Content Include="Areas\Admin\Content\Images\icons\photo2.png" />
@@ -874,7 +879,6 @@
     <Content Include="Areas\Admin\Templates\Views\Account\login.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Banner\addBanner.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Banner\banner.list.view.html" />
-    <Content Include="Areas\Admin\Templates\Views\Banner\banner.list.view2.html" />
     <Content Include="Areas\Admin\Templates\Views\Configs\configs.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Construction\addConstruction.view.html" />
     <Content Include="Areas\Admin\Templates\Views\Construction\construction.list.view.html" />
@@ -2153,7 +2157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Scripts\angularjs\angularjsPlugin\angularjsDataTable\plugins\colreorder\" />
     <Folder Include="Areas\Admin\Scripts\angularjs\angularjsPlugin\angularjsDataTable\plugins\columnfilter\" />
     <Folder Include="Areas\Admin\Scripts\angularjs\angularjsPlugin\angularjsDataTable\plugins\fixedcolumns\" />

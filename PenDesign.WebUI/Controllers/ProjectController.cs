@@ -56,7 +56,7 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.MetaData = otherPageSEOModel.MetaData;
 
             var ProjectVM = new ProjectVM();
-            ProjectVM.PagingItems = _projectService.Page(p => p.Status == 0 && p.Type == 1, p => p.ZOrder, page, ItemPerPage, true);
+            ProjectVM.PagingItems = _projectService.Page(p => p.Status == true && p.Deleted == false && p.Type == 1, p => p.ZOrder, page, ItemPerPage, true);
             ProjectVM.Project =  ProjectVM.PagingItems.Entities;
             return View(ProjectVM);
         }
@@ -66,7 +66,7 @@ namespace PenDesign.WebUI.Controllers
             var projectModel = _projectService.Get(p => p.Id == id);
             if(projectModel == null)  return View();
 
-            ViewBag.projectName = projectModel.ProjectMappings.SingleOrDefault(pm => pm.LanguageId == LanguageId && pm.Status == 0).Title;
+            ViewBag.projectName = projectModel.ProjectMappings.SingleOrDefault(pm => pm.LanguageId == LanguageId && pm.Status == true && pm.Deleted == false).Title;
 
             var newsModel = projectModel.News.SingleOrDefault(n => n.ProjectId == id).NewsMappings.Where(nm => nm.LanguageId == LanguageId).SingleOrDefault();
 

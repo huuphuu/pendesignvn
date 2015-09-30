@@ -42,7 +42,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var model = _projectImageService.GetMany(pi => pi.Type == 2 && pi.Status == 0 );
+                var model = _projectImageService.GetMany(pi => pi.Type == 2 && pi.Deleted == false );
                 //var bannerList = new List<BannerVM>();
                 //var model = _bannerService.Entities.Where(b => b.Status == 0)
                 //                            .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),

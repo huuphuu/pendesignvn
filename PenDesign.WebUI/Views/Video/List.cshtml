@@ -34,7 +34,7 @@
                 var i = 1;
                 foreach (var image in Model.PagingItems.Entities)
                 {
-                    var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == languageId && m.Status == 0).SingleOrDefault().Name;
+                    var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Name;
                     <div class="grid_4">
                         <a class="gal group-@i" href="@image.ResourceUrl" title="@imageName">
                             <img src="@image.Thumbnail" class="img-responsive" alt="@imageName"/>

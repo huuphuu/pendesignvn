@@ -17,7 +17,6 @@ angular.module("adminApp")
                 CKEDITOR.instances.about.setData($scope.config.about);
                 CKEDITOR.instances.footerContent.setData($scope.config.footerContent);
                 CKEDITOR.instances.contactForm.setData($scope.config.contactForm);
-                //CKEDITOR.instances.registerForm.setData($scope.config.registerForm);
                 CKEDITOR.instances.emailSignature.setData($scope.config.emailSignature);
 
             }, function (response) {
@@ -38,7 +37,6 @@ angular.module("adminApp")
             config.about = CKEDITOR.instances.about.getData();
             config.footerContent = CKEDITOR.instances.footerContent.getData();
             config.contactForm = CKEDITOR.instances.contactForm.getData();
-            config.registerForm = CKEDITOR.instances.registerForm.getData();
             config.emailSignature = CKEDITOR.instances.emailSignature.getData();
 
 

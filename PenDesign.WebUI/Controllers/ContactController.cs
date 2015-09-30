@@ -69,7 +69,7 @@ namespace PenDesign.WebUI.Controllers
 
                     if (ModelState.IsValid)
                     {
-                        contactModel.Status = 0;
+                        contactModel.Status = true;
                         _contactService.Add(contactModel);
 
                         var responseMessage = new { message = "Đã gửi tin thành công" };

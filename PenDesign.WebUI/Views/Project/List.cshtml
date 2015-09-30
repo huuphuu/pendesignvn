@@ -41,7 +41,7 @@
                             var firstImage = item.ProjectImages.First();
                             foreach (var image in item.ProjectImages)
                             {
-                                var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == languageId && m.Status == 0).SingleOrDefault().Name;
+                                var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Name;
                                 if (image.Equals(firstImage))
                                 {
                                     <a class="gal group-@i" href="@image.ResourceUrl" title="@imageName">

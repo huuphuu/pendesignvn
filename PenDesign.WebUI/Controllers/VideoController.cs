@@ -50,7 +50,7 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.MetaData = otherPageSEOModel.MetaData;
 
             var VideoVM = new VideoVM();
-            VideoVM.PagingItems = _projectImageService.Page(p => p.Status == 0 && p.Type == 2, p => p.ZOrder, page, ItemPerPage, true);
+            VideoVM.PagingItems = _projectImageService.Page(p => p.Status == true && p.Deleted == false && p.Type == 2, p => p.ZOrder, page, ItemPerPage, true);
             VideoVM.ProjectImages = VideoVM.PagingItems.Entities;
             return View(VideoVM);
         }

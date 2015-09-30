@@ -48,7 +48,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var model = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == 0);
+                var model = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == true && n.Deleted == false);
                 //var bannerList = new List<BannerVM>();
                 //var model = _bannerService.Entities.Where(b => b.Status == 0)
                 //                            .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),

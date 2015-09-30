@@ -48,7 +48,7 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.MetaData = newsCategoryModel.MetaData;
 
             var NewsVM = new NewsVM();
-            NewsVM.PagingItems = _newsService.Page(n => n.NewsCategoryId == newsCategoryId && n.Status == 0, n => n.ZOrder, page, ItemPerPage, true);
+            NewsVM.PagingItems = _newsService.Page(n => n.NewsCategoryId == newsCategoryId && n.Status == true && n.Deleted == false, n => n.ZOrder, page, ItemPerPage, true);
             NewsVM.News = NewsVM.PagingItems.Entities;
             return View(NewsVM);
         }
@@ -67,7 +67,7 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.MetaData = newsCategoryModel.MetaData;
 
             var NewsVM = new NewsVM();
-            NewsVM.PagingItems = _newsService.Page(n => n.NewsCategoryId == newsCategoryId && n.Status == 0, n => n.ZOrder, page, ItemPerPage, true);
+            NewsVM.PagingItems = _newsService.Page(n => n.NewsCategoryId == newsCategoryId && n.Status == true && n.Deleted == false, n => n.ZOrder, page, ItemPerPage, true);
             NewsVM.News = NewsVM.PagingItems.Entities;
             return View(NewsVM);
         }
@@ -84,9 +84,9 @@ namespace PenDesign.WebUI.Controllers
 
             ViewBag.newsCategoryName = newsCategoryModel.Title.Trim();
 
-            var newsModel = _newsService.Get(n => n.Id == id && n.Status == 0)
+            var newsModel = _newsService.Get(n => n.Id == id && n.Status == true && n.Deleted == false)
                                         .NewsMappings
-                                        .SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == 0);
+                                        .SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == true && nm.Deleted == false);
 
             return View(newsModel);
         }
@@ -94,14 +94,14 @@ namespace PenDesign.WebUI.Controllers
         [ChildActionOnly]
         public PartialViewResult _SidebarNews(int newsCategoryId)
         {
-            var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId && n.Status == 0);
+            var newsCategoryModel = _newsCategoryService.Get(n => n.Id == newsCategoryId && n.Status == true && n.Deleted == false);
             if (newsCategoryModel == null) return PartialView();
 
-            ViewBag.newsCategoryName = newsCategoryModel.NewsCategoryMappings.SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == 0)
+            ViewBag.newsCategoryName = newsCategoryModel.NewsCategoryMappings.SingleOrDefault(nm => nm.LanguageId == LanguageId && nm.Status == true && nm.Deleted == false)
                                                                               .Title;
             ViewBag.newsCategoryId = newsCategoryModel.Id;
 
-            var newsCategory = _newsService.GetMany(n => n.NewsCategoryId == newsCategoryId && n.Status == 0)
+            var newsCategory = _newsService.GetMany(n => n.NewsCategoryId == newsCategoryId && n.Status == true && n.Deleted == false)
                                             .OrderBy(n => n.ZOrder)
                                             .Take(6);
 

@@ -71,7 +71,7 @@ namespace PenDesign.WebUI.Controllers
         [ChildActionOnly]
         public PartialViewResult _Banner()
         {
-            var bannerModel = _bannerService.GetMany(b => b.Status == 0)
+            var bannerModel = _bannerService.GetMany(b => b.Status == true && b.Deleted == false)
                                             .Select(m => m.BannerMappings.Where(bm => bm.LanguageId == LanguageId));
 
             return PartialView("_Banner", bannerModel);
@@ -106,7 +106,7 @@ namespace PenDesign.WebUI.Controllers
         {
             ViewBag.logo = configModel.LogoUrl;
             ViewBag.companyName = configModel.CompanyName;
-            var menuModel = _controlService.GetMany(c => c.GroupControl.Type == "Menu" && c.Status == 0)
+            var menuModel = _controlService.GetMany(c => c.GroupControl.Type == "Menu" && c.Status == true && c.Deleted == false)
                 //.Include(c => c.ControlMappings)
                                             .Select(c => c.ControlMappings.Where(cm => cm.LanguageId == LanguageId));
             return PartialView("_Header", menuModel);
@@ -115,7 +115,7 @@ namespace PenDesign.WebUI.Controllers
         [ChildActionOnly]
         public PartialViewResult _Construction()
         {
-            var constructionModel = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == 0).Take(24);
+            var constructionModel = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == true && n.Deleted == false).Take(24);
             return PartialView("_Construction", constructionModel);
         }
 
@@ -123,7 +123,7 @@ namespace PenDesign.WebUI.Controllers
         public PartialViewResult _Footer_Video()
         {
             var videoModel = _projectService.Where(p => p.Id == 15).SingleOrDefault()
-                                                                    .ProjectImages.Where(n => n.Status == 0)
+                                                                    .ProjectImages.Where(n => n.Status == true && n.Deleted == false)
                                                                     .OrderBy(n => n.ZOrder)
                                                                     .First();
             return PartialView("_Footer_Video", videoModel);
@@ -140,7 +140,7 @@ namespace PenDesign.WebUI.Controllers
             ViewBag.newsCategoryName = newsCategoryModel.Title;
             ViewBag.newsCategoryId = newsCategoryId;
 
-            var newsModel = _newsService.GetMany(n => n.NewsCategoryId == newsCategoryId && n.Status == 0)
+            var newsModel = _newsService.GetMany(n => n.NewsCategoryId == newsCategoryId && n.Status == true && n.Deleted == false)
                                             .Select(n => n.NewsMappings.Where(nm => nm.LanguageId == LanguageId)).Take(6);
             return PartialView("_Footer_News", newsModel);
         }
@@ -148,8 +148,8 @@ namespace PenDesign.WebUI.Controllers
         [ChildActionOnly]
         public PartialViewResult _Footer_Construction()
         {
-            var constructionModel = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == 0)
-                                                .Select(m => m.NewsMappings.Where(nm => nm.LanguageId == LanguageId && nm.Status == 0))
+            var constructionModel = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == true && n.Deleted == false)
+                                                .Select(m => m.NewsMappings.Where(nm => nm.LanguageId == LanguageId && nm.Status == true && nm.Deleted == false))
                                                 .Take(6);
             return PartialView("_Footer_Construction", constructionModel);
         }

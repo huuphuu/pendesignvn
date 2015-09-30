@@ -5,7 +5,8 @@ namespace PenDesign.Core.Model.BaseClass
 {
     public abstract class EditableEntity
     {
-        public int Status { get; set; }
+        public bool Status { get; set; }
+        public bool Deleted { get; set; }
         public string CreatedById { get; set; }
         public Nullable<DateTime> CreatedDateTime { get; set; }
 

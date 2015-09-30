@@ -17,7 +17,6 @@ namespace PenDesign.Core.Model
         public string Type { get; set; }
         public int Parent { get; set; }
         public int ZOrder { get; set; }
-        public int Status { get; set; }
 
         public virtual ICollection<Control> Controls { get; set; }
     }

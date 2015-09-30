@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using PenDesign.Core.Model.BaseClass;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace PenDesign.Core.Model
 {
@@ -18,6 +20,8 @@ namespace PenDesign.Core.Model
         public string MediaUrl { get; set; }
         public string MediaThumbUrl { get; set; }
 
+        [IgnoreDataMember]
+        [JsonIgnore]
         public virtual Banner Banner { get; set; }
     }
 }

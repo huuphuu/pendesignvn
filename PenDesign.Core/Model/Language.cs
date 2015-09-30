@@ -16,7 +16,6 @@ namespace PenDesign.Core.Model
         public string Image { get; set; }
         public string Text { get; set; }
         public string NaturalText { get; set; }
-        public bool Status { get; set; }
         public int ZOrder { get; set; }
 
     }

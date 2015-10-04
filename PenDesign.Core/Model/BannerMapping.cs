@@ -19,6 +19,7 @@ namespace PenDesign.Core.Model
         public string Description { get; set; }
         public string MediaUrl { get; set; }
         public string MediaThumbUrl { get; set; }
+        public string LinkUrl { get; set; }
 
         [IgnoreDataMember]
         [JsonIgnore]

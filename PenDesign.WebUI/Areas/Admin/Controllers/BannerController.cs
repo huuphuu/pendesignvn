@@ -86,13 +86,13 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var mediaUrlName = banner.MediaUrl;
-                if (banner.MediaUrl != null)
-                    banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
-                else
-                    banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
+                //var mediaUrlName = banner.MediaUrl;
+                //if (banner.MediaUrl != null)
+                //    banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
+                //else
+                //    banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
 
-                banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + mediaUrlName;
+                //banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + mediaUrlName;
 
                 banner.Status = true; // 0 hien, 1 an, 2 xoa database
                 banner.CreatedById = _userId;
@@ -141,24 +141,24 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                if (banner.MediaUrl.ToString() != "")
-                {
-                    if (banner.MediaUrl.ToString().Contains("/Content"))
-                        banner.MediaUrl = banner.MediaUrl;
-                    else
-                    {
-                        if (WebTools.CreateThumbnail(banner.MediaUrl, "/Content/UploadFiles/images/images/", 78, 56, true, null))
-                        {
-                            banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + banner.MediaUrl;
-                            banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
-                        }
-                    }
+                //if (banner.MediaUrl.ToString() != "")
+                //{
+                //    if (banner.MediaUrl.ToString().Contains("/Content"))
+                //        banner.MediaUrl = banner.MediaUrl;
+                //    else
+                //    {
+                //        if (WebTools.CreateThumbnail(banner.MediaUrl, "/Content/UploadFiles/images/images/", 78, 56, true, null))
+                //        {
+                //            banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + banner.MediaUrl;
+                //            banner.MediaUrl = "/Content/UploadFiles/images/images/" + banner.MediaUrl;
+                //        }
+                //    }
 
-                }
-                else
-                    banner.MediaUrl = "/Content/images/No_image_available.png";
+                //}
+                //else
+                //    banner.MediaUrl = "/Content/images/No_image_available.png";
 
-                banner.Status = true;
+                //banner.Status = true;
 
                 _bannerService.Update(banner);
 

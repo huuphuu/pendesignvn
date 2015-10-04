@@ -29,8 +29,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tên</th>
-                                <th>Hình ảnh</th>
-                                <th>Liên kết</th>
+                                <!--<th>Hình ảnh</th>
+                                <th>Liên kết</th>-->
                                 <th>Thứ tự</th>
                                 <th>Ngôn ngữ khác</th>
                                 <th>Ngưởi cập nhật</th>
@@ -39,18 +39,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="banner in bannerList track by $index | orderBy:'zOrder'" ng-init="parentIndex = $index">
+                            <tr ng-repeat="banner in bannerList track by $index | orderBy:'banner.banners.zOrder'" ng-init="parentIndex = $index">
                                 <td>{{$index + 1}}</td>
                                 <td>{{banner.banners.name}}</td>
-                                <td>
-                                    <img ng-src="{{banner.banners.mediaThumbUrl}}" alt="" class="img-responsive" style="max-width: 30px;" /> 
+                                <!--<td>
+                                    <img ng-src="{{banner.banners.mediaThumbUrl}}" alt="" class="img-responsive" style="max-width: 30px;" />
                                 </td>
                                 <td>
                                     {{banner.banners.linkUrl}}
-                                </td>
+                                </td>-->
                                 <td>
                                     <input type="number" ng-model="banner.banners.zOrder" class="form-control max-width-60"
-                                           ng-readonly="orderReadonlyIndex != parentIndex || orderReadonlyIndex == -1" 
+                                           ng-readonly="orderReadonlyIndex != parentIndex || orderReadonlyIndex == -1"
                                            min="1" maxlength="3" />
                                     <a class="btn btn-warning btn-xs"
                                        ng-show="orderReadonlyIndex != parentIndex"
@@ -59,7 +59,7 @@
                                     </a>
                                     <a class="btn btn-success btn-xs"
                                        ng-show="orderReadonlyIndex == parentIndex"
-                                       ng-click="updateZorder($index, banner.banners.zOrder)">
+                                       ng-click="updateZorder($index)">
                                         <i class="fa fa-check-square-o"></i>
                                     </a>
                                 </td>
@@ -80,14 +80,14 @@
                                 <td>{{banner.editedUser}}</td>
                                 <td>
                                     <label>
-                                        <input type="checkbox" name="status" ng-model="banner.banners.status" />
+                                        <input type="checkbox" name="status" ng-model="banner.banners.status" ng-change="updateZorder($index)"  />
                                         <span ng-show="banner.banners.status">&nbsp;Hiển thị</span>
                                         <span ng-show="!banner.banners.status">&nbsp;Ẩn</span>
                                     </label>
                                 </td>
                                 <td>
-                                    <a class="btn btn-xs btn-warning" title="Sửa Banner" ng-click="getBanner($index, defaultLanguageId)"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-xs btn-danger" title="Xóa Banner" ng-click="deleteBanner(banner)"><i class="fa fa-times"></i></a>
+                                    <a class="btn btn-xs btn-warning" title="Sửa Banner" ng-click="getBanner(parentIndex, defaultLanguageId)"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" title="Xóa Banner" ng-click="deleteBanner(parentIndex, banner.banners)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -95,8 +95,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tên</th>
-                                <th>Hình ảnh</th>
-                                <th>Liên kết</th>
+                                <!--<th>Hình ảnh</th>
+                                <th>Liên kết</th>-->
                                 <th>Thứ tự</th>
                                 <th>Ngôn ngữ</th>
                                 <th>Ngưởi cập nhật</th>
@@ -142,7 +142,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="name">Tên: </label>
                                             <input type="text" class="form-control" name="name" ng-model="currentBannerLanguage.name" placeholder="Tên Banner:" required />
@@ -153,11 +153,25 @@
                                     <!--<div class="col-md-4">
                                         <div class="form-group">
                                             <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="zOrder" ng-model="currentBannerLanguage.zOrder" placeholder="Vị trí:" required min="1" />
+                                            <input type="number" class="form-control" name="zOrder" ng-model="currentBannerLanguage.zOrder" placeholder="Vị trí:" required min="1"/>
                                             <div ng-messages="editBannerForm.order.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>-->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="linkUrl">Link trỏ đến:</label>
+                                            <input type="text" class="form-control" ng-model="currentBannerLanguage.linkUrl" name="linkUrl" placeholder="ex: /lien-he" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="name">Nội dung Banner: </label>
+                                            <input type="text" class="form-control" name="description" ng-model="currentBannerLanguage.description" placeholder="Nội dung Banner:" />
+                                            <div ng-messages="editBannerForm.description.$error"
+                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -175,14 +189,14 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <!--<div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="linkUrl">Link trỏ đến:</label>
                                                     <input type="text" class="form-control" ng-model="currentBannerLanguage.linkUrl" name="linkUrl" placeholder="ex: /lien-he" />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +212,7 @@
                                 </button>
                             </div>
                             <div class="col-md-5 pull-right">
-                                <button class="pull-right btn btn-success" id="updateBanner" ng-click="updateBanner(currentBannerLanguage)"
+                                <button class="pull-right btn btn-success" id="updateBannerLanguage" ng-click="updateBannerLanguage(currentBannerLanguage)"
                                         ng-disabled="editBannerForm.name.$error.required
                                                     ||  editBannerForm.keyword.$error.required
                                                     ||  editBannerForm.description.$error.required
@@ -207,7 +221,7 @@
                                 </button>
                             </div>
                             <div class="hide">
-                                <button id="#uploadBanner"></button>
+                                <button id="uploadBanner"></button>
                             </div>
                         </div>
                     </div>

@@ -159,13 +159,13 @@
 		)
 	}
 		
-	if(opts.navigation==true){
-		fakeHover.append(
-			'<div class="camera_prev"><span></span></div>'
-			).append(
-			'<div class="camera_next"><span></span></div>'
-			);
-	}
+	//if(opts.navigation==true){
+	//	fakeHover.append(
+	//		'<div class="camera_prev"><span></span></div>'
+	//		).append(
+	//		'<div class="camera_next"><span></span></div>'
+	//		);
+	//}
 		
 	if(opts.thumbnails==true){
 		wrap.append(
@@ -206,8 +206,8 @@
 		content = $('.camera_target_content',wrap),
 		pieContainer = $('.camera_pie',wrap),
 		barContainer = $('.camera_bar',wrap),
-		prevNav = $('.camera_prev',wrap),
-		nextNav = $('.camera_next',wrap),
+		//prevNav = $('.camera_prev',wrap),
+		//nextNav = $('.camera_next',wrap),
 		commands = $('.camera_commands',wrap),
 		pagination = $('.camera_pag',wrap),
 		thumbs = $('.camera_thumbs_cont',wrap);	
@@ -269,7 +269,26 @@
 	});
 	
 	var amountSlide = allImg.length;
+    //chinh sua neu 1 image thi stop slide 
+	if (amountSlide <= 1) {
+	    opts.autoAdvance = false;
+	    opts.mobileAutoAdvance = false;
+	    opts.navigation = false;
+	    opts.pagination = false;
+	    opts.playPause = false;
+	    opts.thumbnails = false;
+	}
+	if (opts.navigation == true) {
+	    fakeHover.append(
+			'<div class="camera_prev"><span></span></div>'
+			).append(
+			'<div class="camera_next"><span></span></div>'
+		);
+	}
 
+	var prevNav = $('.camera_prev', wrap),
+                nextNav = $('.camera_next', wrap);
+    //end
 	$(content).append('<div class="cameraContents" />');
 	var loopMove;
 	for (loopMove=0;loopMove<amountSlide;loopMove++)

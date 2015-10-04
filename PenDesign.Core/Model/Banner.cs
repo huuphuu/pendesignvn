@@ -16,18 +16,18 @@ namespace PenDesign.Core.Model
         public int Id { get; set; }
         [DataMember]
         public string Name { get; set; }
-        [DataMember]
-        public int Type { get; set; }
+        //[DataMember]
+        //public int Type { get; set; }
         [DataMember]
         public int Position { get; set; }
         [DataMember]
         public int MediaType { get; set; }
-        [DataMember]
-        public string MediaUrl { get; set; }
-        [DataMember]
-        public string MediaThumbUrl { get; set; }
-        [DataMember]
-        public string LinkUrl { get; set; }
+        //[DataMember]
+        //public string MediaUrl { get; set; }
+        //[DataMember]
+        //public string MediaThumbUrl { get; set; }
+        //[DataMember]
+        //public string LinkUrl { get; set; }
         [DataMember]
         public int ZOrder { get; set; }
 

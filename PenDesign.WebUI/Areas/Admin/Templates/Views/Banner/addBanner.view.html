@@ -40,9 +40,17 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="zOrder" ng-model="currentBanner.zOrder" placeholder="Vị trí:" required min="1" />
+                                            <label for="zOrder">Vị trí: </label>
+                                            <input type="number" class="form-control" name="zOrder" ng-model="currentBanner.zOrder" placeholder="Vị trí:" required min="1"/>
                                             <div ng-messages="editBannerForm.zOrder.$error"
+                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="zOrder">Nội dung Banner: </label>
+                                            <input type="text" class="form-control" name="description" ng-model="currentBanner.description" placeholder="Nội dung Banner:" />
+                                            <div ng-messages="editBannerForm.description.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>
@@ -105,6 +113,9 @@
                                     ">
                                     Thêm Banner&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                 </button>
+                            </div>
+                            <div class="hide">
+                                <button id="uploadBanner"></button>
                             </div>
                         </div>
                     </div>

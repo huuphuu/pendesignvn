@@ -90,13 +90,29 @@ angular.module("adminApp")
             $scope.orderReadonlyIndex = index;
         }
 
-        $scope.updateZorder = function (index, zOrder) {
+        $scope.updateZorder = function (index) { //zOrder
             var currentBanner = $scope.bannerList[index];
-            currentBanner.zOrder = zOrder;
+            //currentBanner.banners.zOrder = zOrder;
+            console.log("currentBanner",currentBanner);
+            var bodyMessage = "Bạn muốn cập nhật: " + currentBanner.banners.name + " ?";
+            var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
-            $scope.orderReadonlyIndex = -1;
+            dlg.result.then(function (btn) {
+                $rootScope.showModal = true;
 
-            toaster.pop('success', "Thành công!", "Đã thay đổi thứ tự của Banner " + banner.name + " - " + response.message);
+                return bannerService.updateBanner(currentBanner.banners).$promise.then(
+                   function (response) {
+                       $scope.getAllBanners();
+                       $scope.orderReadonlyIndex = -1;
+                       $rootScope.showModal = false;
+                       toaster.pop('success', "Thành công!", "Đã cập nhật Banner " + currentBanner.banners.name + " - " + response.message);
+                       $('html,body').animate({ scrollTop: 0 });
+                   }, function (response) {
+                       $rootScope.showModal = false;
+                       $scope.orderReadonlyIndex = -1;
+                       toaster.pop('error', "Lỗi!", response.data);
+                   })
+            }, function () { })
         }
 
         $scope.addNewBanner = function (banner) {
@@ -129,7 +145,7 @@ angular.module("adminApp")
             $('html,body').animate({ scrollTop: $('.currentBannerLanguage').offset().top });
         }
 
-        $scope.deleteBanner = function (banner) {
+        $scope.deleteBanner = function (index,banner) {
 
             var bodyMessage = "Bạn muốn xóa banner: " + banner.name + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
@@ -139,10 +155,10 @@ angular.module("adminApp")
 
                 return bannerService.deleteBanner(banner).$promise.then(
                     function (response) {
-                        $scope.currentNews = null;
                         $rootScope.showModal = false;
                         toaster.pop('success', "Thành công!", "Đã xóa Banner " + banner.name + " - " + response.message);
-                        $scope.bannerList.splice($scope.bannerList.indexOf(banner), 1);
+                        //$scope.bannerList.splice($scope.bannerList.indexOf(banner), 1);
+                        $scope.bannerList.splice(index, 1);
                     }, function (response) {
                         $rootScope.showModal = false;
                         toaster.pop('error', "Lỗi!", response.data);
@@ -150,8 +166,8 @@ angular.module("adminApp")
             }, function () { })
         };
 
-        $scope.updateBanner = function (banner) {
-
+        $scope.updateBannerLanguage = function (banner) {
+            $('#uploadBanner').trigger('click');
             var languageName = "";
             if (banner.languageId == 29)
                 languageName = "Tiếng Anh";
@@ -162,7 +178,6 @@ angular.module("adminApp")
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
-                $('#updateBanner').trigger('click');
                 $rootScope.showModal = true;
 
                 if ($scope.mediaUrl != "")

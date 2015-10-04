@@ -94,9 +94,7 @@
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="Interface\IDatabaseFactory.cs" />
     <Compile Include="Interface\IDataContext.cs" />
-    <Compile Include="MigrationConfiguration\PenDesignMigrationConfiguration.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="MigrationConfiguration\PenDesignMigrationConfiguration.cs" />
     <Compile Include="PenDesignDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />

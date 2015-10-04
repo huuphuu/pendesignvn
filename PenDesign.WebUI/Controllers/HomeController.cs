@@ -71,8 +71,13 @@ namespace PenDesign.WebUI.Controllers
         [ChildActionOnly]
         public PartialViewResult _Banner()
         {
-            var bannerModel = _bannerService.GetMany(b => b.Status == true && b.Deleted == false)
-                                            .Select(m => m.BannerMappings.Where(bm => bm.LanguageId == LanguageId));
+            var bannerModelTemp = _bannerService.GetMany(b => b.Status == true && b.Deleted == false)
+                                                .OrderBy(b => b.ZOrder).AsQueryable();
+
+            if (bannerModelTemp.Count() == 0) return PartialView("_Banner");
+
+            var bannerModel = bannerModelTemp
+                                .Select(m => m.BannerMappings.Where(bm => bm.LanguageId == LanguageId));
 
             return PartialView("_Banner", bannerModel);
         }

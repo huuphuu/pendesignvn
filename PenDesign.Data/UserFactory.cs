@@ -43,5 +43,10 @@ namespace PenDesign.Data
         {
             return _userManager.FindByName(name).Id;
         }
+
+        public string GetUserNameById(string id)
+        {
+            return _userManager.FindById(id).UserName;
+        }
     }
 }

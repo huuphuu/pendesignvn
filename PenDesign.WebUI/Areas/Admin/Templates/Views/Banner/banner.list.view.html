@@ -127,7 +127,7 @@
                     <i class="fa fa-plus-circle"></i>
                     <h3 class="box-title">
                         CHỈNH SỬA BANNER: <b>{{currentBannerLanguage.name}}</b>
-                        <span ng-if="currentBannerLanguage.languageId == 129">(Tiếng Việt)</span>
+                        <span ng-if="currentBannerLanguage.languageId == 129">(Tiếng Việt - ngôn ngữ mặc định)</span>
                         <span ng-if="currentBannerLanguage.languageId == 29">(English)</span>
                     </h3>
                     <!-- tools box -->
@@ -142,7 +142,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Tên: </label>
                                             <input type="text" class="form-control" name="name" ng-model="currentBannerLanguage.name" placeholder="Tên Banner:" required />
@@ -150,14 +150,14 @@
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <!--<div class="col-md-4">
                                         <div class="form-group">
                                             <label for="order">Vị trí: </label>
                                             <input type="number" class="form-control" name="zOrder" ng-model="currentBannerLanguage.zOrder" placeholder="Vị trí:" required min="1" />
                                             <div ng-messages="editBannerForm.order.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -202,10 +202,12 @@
                                         ng-disabled="editBannerForm.name.$error.required
                                                     ||  editBannerForm.keyword.$error.required
                                                     ||  editBannerForm.description.$error.required
-                                                    || editBannerForm.order.$error.required ||  editBannerForm.order.$error.min
                                     ">
                                     Cập nhật Banner&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                 </button>
+                            </div>
+                            <div class="hide">
+                                <button id="#uploadBanner"></button>
                             </div>
                         </div>
                     </div>

@@ -47,7 +47,7 @@ namespace PenDesign.Data
         {
             get
             {
-                return AllowDeletedItem ? DbSet : DbSet.Where(p => p.Status != 2);
+                return AllowDeletedItem ? DbSet : DbSet.Where(p => p.Deleted == false);
             }
         }
 
@@ -67,7 +67,7 @@ namespace PenDesign.Data
             if (result == null) return null;
             if (AllowDeletedItem) return result;
 
-            return result.Status == 2 ? null : result;
+            return result.Deleted == true ? null : result;
         }
 
         public T GetById(int? id)
@@ -96,7 +96,7 @@ namespace PenDesign.Data
         public void Delete(T entity)
         {
             if (entity == null) throw new NullReferenceException("Delete");
-            entity.Status = 2;
+            entity.Deleted = true;
             entity.ModifiedDateTime = DateTime.Now;
             Update(entity);
         }

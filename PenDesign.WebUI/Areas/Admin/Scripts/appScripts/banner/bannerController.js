@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("bannerController", function ($rootScope, $scope, toaster, bannerService, checkFileNameService,
+    .controller("bannerController", function ($rootScope, $scope, toaster, bannerService, bannerMappingService, checkFileNameService,
                                                 $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs, $state) {
 
 
@@ -74,7 +74,7 @@ angular.module("adminApp")
             return bannerService.getAllBanners().$promise.then(
             function (data) {
                 $scope.bannerList = eval(angular.toJson(data));
-                $scope.gridInfo.display($scope.bannerList);
+                //$scope.gridInfo.display($scope.bannerList);
                 $rootScope.showModal = false;
             }, function (response) {
                 $rootScope.showModal = false;
@@ -93,7 +93,7 @@ angular.module("adminApp")
         $scope.updateZorder = function (index, zOrder) {
             var currentBanner = $scope.bannerList[index];
             currentBanner.zOrder = zOrder;
-           
+
             $scope.orderReadonlyIndex = -1;
 
             toaster.pop('success', "Thành công!", "Đã thay đổi thứ tự của Banner " + banner.name + " - " + response.message);
@@ -152,26 +152,34 @@ angular.module("adminApp")
 
         $scope.updateBanner = function (banner) {
 
-            if ($scope.mediaUrl != "")
-                banner.mediaUrl = $scope.mediaUrl;
+            var languageName = "";
+            if (banner.languageId == 29)
+                languageName = "Tiếng Anh";
+            else
+                languageName = "Tiếng Việt";
 
-            var bodyMessage = "Bạn muốn cập nhật banner: " + banner.name + " ?";
+            var bodyMessage = "Bạn muốn cập nhật banner: " + banner.name + " (" + languageName + ") ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
+                $('#updateBanner').trigger('click');
                 $rootScope.showModal = true;
-                return bannerService.updateBanner(banner).$promise.then(
-               function (response) {
-                  $scope.getAllBanners();
-                   $rootScope.showModal = false;
-                   $scope.currentBanner = null;
-                 //  angular.extend(dst, src);
-                   toaster.pop('success', "Thành công!", "Đã cập nhật Banner " + banner.name + " - " + response.message);
-                   $('html,body').animate({ scrollTop: 0 });
-               }, function (response) {
-                   $rootScope.showModal = false;
-                   toaster.pop('error', "Lỗi!", response.data);
-               })
+
+                if ($scope.mediaUrl != "")
+                    banner.mediaUrl = $scope.mediaUrl;
+
+                return bannerMappingService.updateBanner(banner).$promise.then(
+                   function (response) {
+                       $scope.getAllBanners();
+                       $rootScope.showModal = false;
+                       $scope.currentBannerLanguage = null;
+                       //  angular.extend(dst, src);
+                       toaster.pop('success', "Thành công!", "Đã cập nhật Banner " + banner.name + " - " + response.message);
+                       $('html,body').animate({ scrollTop: 0 });
+                   }, function (response) {
+                       $rootScope.showModal = false;
+                       toaster.pop('error', "Lỗi!", response.data);
+                   })
             }, function () { })
         }
 
@@ -211,7 +219,10 @@ angular.module("adminApp")
                 'addRemoveLinks': true,
                 init: function () {
                     var dz = this;
-                    $("#addNewBanner, #updateBanner").click(function () {
+                    //$("#addNewBanner, #updateBanner").click(function () {
+                    //    dz.processQueue();
+                    //});
+                    $("#uploadBanner").click(function () {
                         dz.processQueue();
                     });
 
@@ -225,7 +236,7 @@ angular.module("adminApp")
                             },
                             function () {
                                 $scope.mediaUrl = dz.files[0].name;
-                                toaster.pop("warning", "Lỗi", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
+                                toaster.pop("warning", "Lưu ý!", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
                             }
                         )
                     });

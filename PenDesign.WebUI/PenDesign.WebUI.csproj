@@ -201,6 +201,7 @@
     <Compile Include="Areas\Admin\Controllers\BannerController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Admin\Controllers\BannerMappingController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConfigController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConstructionController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmailController.cs" />
@@ -346,6 +347,7 @@
     <Content Include="Areas\Admin\Scripts\appScripts\account\accountService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\account\loginApp.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\app.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\banner\bannerMappingService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\construction\constructionController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\construction\constructionService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\banner\bannerController.js" />

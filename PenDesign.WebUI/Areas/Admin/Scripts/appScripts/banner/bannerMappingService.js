@@ -1,27 +1,27 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .factory("bannerService", ['toaster', '$resource', function (toaster, $resource) {
-        var bannerService = {};
+    .factory("bannerMappingService", ['toaster', '$resource', function (toaster, $resource) {
+        var bannerMappingService = {};
 
-        var bannerResource = $resource('/admin/api/banner/:Id', { Id: '@Id' }, {
+        var bannerMappingResource = $resource('/admin/api/bannerMapping/:Id', { Id: '@Id' }, {
             'update': { method: 'PUT' }
         });
 
-        bannerService.getAllBanners = function (id) {
-            return bannerResource.query({}, { 'Id': id });
-        }
+//        bannerMappingService.getAllBanners = function (id) {
+//            return bannerMappingResource.query({}, { 'Id': id });
+//        }
+//
+//        bannerMappingService.addNewBanner = function (banner) {
+//            return bannerMappingResource.save(banner);
+//        }
+//
+//        bannerMappingService.deleteBanner = function (banner) {
+//            return bannerMappingResource.delete({ 'Id': banner.id });
+//        }
 
-        bannerService.addNewBanner = function (banner) {
-            return bannerResource.save(banner);
+        bannerMappingService.updateBanner = function (banner) {
+            return bannerMappingResource.update({ 'Id': banner.id }, banner);
         }
-
-        bannerService.deleteBanner = function (banner) {
-            return bannerResource.delete({ 'Id': banner.id });
-        }
-
-        bannerService.updateBanner = function (banner) {
-            return bannerResource.update({ 'Id': banner.id }, banner);
-        }
-        return bannerService;
+        return bannerMappingService;
     }])

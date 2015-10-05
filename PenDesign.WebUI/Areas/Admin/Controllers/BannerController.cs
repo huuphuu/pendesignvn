@@ -3,7 +3,6 @@ using PenDesign.Core.Interface.Data;
 using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Model;
 using PenDesign.Core.Models;
-using PenDesign.Core.ViewModel.BannerViewModel;
 using PenDesign.Data;
 using PenDesign.WebUI.Areas.Admin.Models;
 using PenDesign.WebUI.Authencation;
@@ -37,12 +36,12 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
         // GET: api/Banner
         //public IQueryable<BannerVM> Get()
-        public IQueryable<adminBannerVM> Get()
+        public IQueryable<AdminBannerVM> Get()
         {
             try
             {
 
-                var bannerList = new List<BannerVM>();
+                //var bannerList = new List<BannerVM>();
                 //var model = _bannerService.Entities.Where(b => b.Status == 0 || b.Status == 1)
                 //                            .Join(_bannerMappingService.Entities,
                 //                                b => b.Id,
@@ -59,12 +58,12 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 //                                    LinkUrl = b.LinkUrl,
                 //                                    ZOrder = b.ZOrder
                 //                                }).AsQueryable();
-                var adminBannerVM = new List<adminBannerVM>();
+                var adminBannerVM = new List<AdminBannerVM>();
 
-                var bannerModel = _bannerService.GetMany(b => (b.Status == true || b.Status == false) && b.Deleted == false).AsQueryable();
+                var bannerModel = _bannerService.GetMany(b => b.Deleted == false).AsQueryable();
                 foreach (var bm in bannerModel)
                 {
-                    var model = new adminBannerVM()
+                    var model = new AdminBannerVM()
                     {
                         Banners = bm,
                         EditedUser = _userFactory.GetUserNameById(bm.ModifiedById)
@@ -82,7 +81,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
 
         // POST: api/Banner
-        public HttpResponseMessage Post([FromBody] Banner banner)
+        public HttpResponseMessage Post([FromBody] AdminBannerVMInput AdminBannerVMInput)
         {
             try
             {
@@ -94,13 +93,23 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
                 //banner.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + mediaUrlName;
 
-                banner.Status = true; // 0 hien, 1 an, 2 xoa database
+                var mediaUrl = "/Content/UploadFiles/images/images/" + AdminBannerVMInput.MediaUrl;
+                var mediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + AdminBannerVMInput.MediaUrl;
+                var linkUrl = AdminBannerVMInput.LinkUrl;
+                var description = AdminBannerVMInput.Description;
+                var zOrder = AdminBannerVMInput.ZOrder;
+                var bannerName = AdminBannerVMInput.Name;
+
+                var banner = new Banner();
+                banner.Name = bannerName;
+                banner.ZOrder = zOrder;
+                banner.Status = true;
+                banner.Deleted = false;
                 banner.CreatedById = _userId;
-                banner.CreatedDateTime = DateTime.Now;
                 banner.ModifiedById = _userId;
-                banner.ModifiedDateTime = DateTime.Now;
 
                 _bannerService.Add(banner);
+
 
                 var justAddedBannerId = _bannerService.Entities.Max(b => b.Id);
                 var bannerMappingsModels = new List<BannerMapping>()
@@ -108,16 +117,16 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                     new BannerMapping()
                             {
                                 BannerId = justAddedBannerId, LanguageId = 129, Status = true,
-                                Name = banner.Name, Description = "",
-                                CreatedById = _userId, CreatedDateTime = DateTime.Now,
-                                ModifiedById = _userId, ModifiedDateTime = DateTime.Now
+                                Name = banner.Name, Description = description, Deleted = false,
+                                MediaUrl = mediaUrl, MediaThumbUrl = mediaThumbUrl, LinkUrl = linkUrl,
+                                CreatedById = _userId, ModifiedById = _userId,
                             },
                             new BannerMapping()
                             {
                                 BannerId = justAddedBannerId, LanguageId = 29, Status = true,
-                                Name = banner.Name + "-en", Description = "",
-                                CreatedById = _userId, CreatedDateTime = DateTime.Now,
-                                ModifiedById = _userId, ModifiedDateTime = DateTime.Now
+                                Name = "", Description = "", Deleted = false,
+                                MediaUrl = mediaUrl, MediaThumbUrl = mediaThumbUrl, LinkUrl = linkUrl,
+                                CreatedById = _userId, ModifiedById = _userId
                             }
                 };
                 foreach (var bm in bannerMappingsModels)

@@ -90,10 +90,8 @@ angular.module("adminApp")
             $scope.orderReadonlyIndex = index;
         }
 
-        $scope.updateZorder = function (index) { //zOrder
+        $scope.updateZorder = function (index) { 
             var currentBanner = $scope.bannerList[index];
-            //currentBanner.banners.zOrder = zOrder;
-            console.log("currentBanner",currentBanner);
             var bodyMessage = "Bạn muốn cập nhật: " + currentBanner.banners.name + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
@@ -116,7 +114,10 @@ angular.module("adminApp")
         }
 
         $scope.addNewBanner = function (banner) {
+
             $rootScope.showModal = true;
+            $('#uploadBanner').trigger('click');
+
             if ($scope.mediaUrl != "")
                 banner.mediaUrl = $scope.mediaUrl;
 
@@ -156,6 +157,7 @@ angular.module("adminApp")
                 return bannerService.deleteBanner(banner).$promise.then(
                     function (response) {
                         $rootScope.showModal = false;
+                        $scope.currentBannerLanguage = null;
                         toaster.pop('success', "Thành công!", "Đã xóa Banner " + banner.name + " - " + response.message);
                         //$scope.bannerList.splice($scope.bannerList.indexOf(banner), 1);
                         $scope.bannerList.splice(index, 1);
@@ -238,6 +240,7 @@ angular.module("adminApp")
                     //    dz.processQueue();
                     //});
                     $("#uploadBanner").click(function () {
+                        alert("dadada");
                         dz.processQueue();
                     });
 

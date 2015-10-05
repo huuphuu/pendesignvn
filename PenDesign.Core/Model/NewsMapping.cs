@@ -17,6 +17,7 @@ namespace PenDesign.Core.Model
         public string Title { get; set; }
         public string Intro { get; set; }
         public string Detail { get; set; }
+        public string ThumbUrl { get; set; }
         public string MetaData { get; set; }
         public string Keyword { get; set; }
         public string Description { get; set; }

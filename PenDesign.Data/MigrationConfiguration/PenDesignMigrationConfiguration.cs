@@ -101,8 +101,8 @@ namespace PenDesign.Data.MigrationConfiguration
                 {
                     //Main menu
                     new Banner() { 
-                        Type = 1, Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 1,
-                        Name = "Banner 1", MediaUrl = "/Content/images/slide.jpg", MediaThumbUrl = "/Content/images/thumb.png",
+                        Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 1, // Type = 1, 
+                        Name = "Banner 1", //MediaUrl = "/Content/images/slide.jpg", MediaThumbUrl = "/Content/images/thumb.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -126,8 +126,8 @@ namespace PenDesign.Data.MigrationConfiguration
                         }
                     },
                     new Banner() { 
-                        Type = 1, Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 2,
-                        Name = "Banner 2", MediaUrl = "/Content/images/slide1.jpg", MediaThumbUrl = "/Content/images/thumb1.png",
+                        Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 2, //Type = 1,
+                        Name = "Banner 2", // MediaUrl = "/Content/images/slide1.jpg", MediaThumbUrl = "/Content/images/thumb1.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -151,8 +151,8 @@ namespace PenDesign.Data.MigrationConfiguration
                         }
                     },
                     new Banner() { 
-                        Type = 1, Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 3,
-                        Name = "Banner 3", MediaUrl = "/Content/images/slide2.jpg", MediaThumbUrl = "/Content/images/thumb2.png",
+                        Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 3, //Type = 1, 
+                        Name = "Banner 3", // MediaUrl = "/Content/images/slide2.jpg", MediaThumbUrl = "/Content/images/thumb2.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -176,8 +176,8 @@ namespace PenDesign.Data.MigrationConfiguration
                         }
                     },
                     new Banner() { 
-                        Type = 1, Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 4,
-                        Name = "Banner 4", MediaUrl = "/Content/images/slide3.jpg", MediaThumbUrl = "/Content/images/thumb3.png",
+                        Position = 1, MediaType = 1, Status = true, Deleted = false, ZOrder = 4, //Type = 1, 
+                        Name = "Banner 4",  //MediaUrl = "/Content/images/slide3.jpg", MediaThumbUrl = "/Content/images/thumb3.png",
                         CreatedById = userId, CreatedDateTime = DateTime.Now,
                         ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                         BannerMappings = new List<BannerMapping>()
@@ -2792,7 +2792,7 @@ namespace PenDesign.Data.MigrationConfiguration
                         {
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Xu Hướng 1", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 1, Name = "Xu Hướng 1", Status = true, Deleted = false, ListTagId = "",  ZOrder = 1,
                                 Thumbnail = "/Content/images/feat1.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2818,7 +2818,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Xu Hướng 2", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 1, Name = "Xu Hướng 2", Status = true, Deleted = false, ListTagId = "",   ZOrder = 2,
                                 Thumbnail = "/Content/images/feat2.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2844,7 +2844,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Xu hướng 3", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 1, Name = "Xu hướng 3", Status = true, Deleted = false, ListTagId = "",  ZOrder = 3,
                                 Thumbnail = "/Content/images/feat3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2870,7 +2870,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Xu hướng 4", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 1, Name = "Xu hướng 4", Status = true, Deleted = false, ListTagId = "", ZOrder = 4,  
                                 Thumbnail = "/Content/images/feat4.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2896,7 +2896,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Xu hướng 5", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 1, Name = "Xu hướng 5", Status = true, Deleted = false, ListTagId = "", ZOrder = 5,  
                                 Thumbnail = "/Content/images/feat5.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2922,7 +2922,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Xu hướng 6", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 1, Name = "Xu hướng 6", Status = true, Deleted = false, ListTagId = "", ZOrder = 6,  
                                 Thumbnail = "/Content/images/feat6.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -2948,7 +2948,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 1, Name = "Xu hướng 7", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 1, Name = "Xu hướng 7", Status = true, Deleted = false, ListTagId = "", ZOrder = 7,  
                                 Thumbnail = "/Content/images/feat7.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3001,7 +3001,7 @@ namespace PenDesign.Data.MigrationConfiguration
                         {
                             new News()
                             {
-                                NewsCategoryId = 2, Name = "Khách Hàng 1", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 1", Status = true, Deleted = false, ListTagId = "", ZOrder = 1,  
                                 Thumbnail = "/Content/images/feat1.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3027,7 +3027,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 2, Name = "Khách Hàng 2", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 2", Status = true, Deleted = false, ListTagId = "", ZOrder = 2,  
                                 Thumbnail = "/Content/images/feat2.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3053,7 +3053,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 2, Name = "Khách Hàng 3", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 3", Status = true, Deleted = false, ListTagId = "", ZOrder = 3,  
                                 Thumbnail = "/Content/images/feat3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3079,7 +3079,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 2, Name = "Khách Hàng 4", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 4", Status = true, Deleted = false, ListTagId = "", ZOrder = 4, 
                                 Thumbnail = "/Content/images/feat4.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3105,7 +3105,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 2, Name = "Khách Hàng 5", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 5", Status = true, Deleted = false, ListTagId = "", ZOrder = 5,  
                                 Thumbnail = "/Content/images/feat5.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3131,7 +3131,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 2, Name = "Khách Hàng 6", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 6", Status = true, Deleted = false, ListTagId = "", ZOrder = 6,  
                                 Thumbnail = "/Content/images/feat6.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3157,7 +3157,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             },
                             new News()
                             {
-                                NewsCategoryId = 2, Name = "Khách Hàng 7", Status = true, Deleted = false, ListTagId = "",  
+                                NewsCategoryId = 2, Name = "Khách Hàng 7", Status = true, Deleted = false, ListTagId = "", ZOrder = 7,  
                                 Thumbnail = "/Content/images/feat7.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
@@ -3285,7 +3285,12 @@ namespace PenDesign.Data.MigrationConfiguration
                         IsAdmin = true
                     },
                     new AdminMenu() { 
-                        Name = "Tin tức", Url = "#", CssIcon =  "fa fa-rocket", LabelCss =  "fa fa-angle-left", 
+                        Name = "Xu hướng", Url = "#", CssIcon =  "fa fa-rocket", LabelCss =  "fa fa-angle-left", 
+                        Type = "", Parent = 0, Order = 5, Available = true,
+                        IsAdmin = true
+                    },
+                    new AdminMenu() { 
+                        Name = "Khách hàng", Url = "#", CssIcon =  "fa fa-rocket", LabelCss =  "fa fa-angle-left", 
                         Type = "", Parent = 0, Order = 6, Available = true,
                         IsAdmin = true
                     },
@@ -3349,17 +3354,28 @@ namespace PenDesign.Data.MigrationConfiguration
                         Type = "", Parent = 3, Order = 2, Available = true,
                         IsAdmin = true
                     },
+
+                    new AdminMenu() { 
+                        Name = "Thêm bài mới", Url = "controlPanel.addNews({newsCategoryId: 2})", CssIcon = "fa fa-plus-circle", LabelCss = "", 
+                        Type = "", Parent = 4, Order = 1, Available = true,
+                        IsAdmin = true
+                    },
+                    new AdminMenu() { 
+                        Name = "Danh sách Bài viết", Url = "controlPanel.newsList({newsCategoryId: 2})", CssIcon = "fa fa-list-ol", LabelCss = "", 
+                        Type = "", Parent = 4, Order = 2, Available = true,
+                        IsAdmin = true
+                    },
                     //--------------
                     //SubMenu Du An
                     //--------------
                     new AdminMenu() { 
                         Name = "Thêm Dự án mới", Url = "controlPanel.addProject", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 4, Order = 1, Available = true,
+                        Type = "", Parent = 5, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
                         Name = "Danh sách Dự án", Url = "controlPanel.projectList", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 4, Order = 2, Available = true,
+                        Type = "", Parent = 5, Order = 2, Available = true,
                         IsAdmin = true
                     },
                     //--------------
@@ -3367,12 +3383,12 @@ namespace PenDesign.Data.MigrationConfiguration
                     //--------------
                     new AdminMenu() { 
                         Name = "Thêm Công trình thực tế mới", Url = "controlPanel.addConstruction", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 5, Order = 1, Available = true,
+                        Type = "", Parent = 6, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
                         Name = "Danh sách Công trình thực tế", Url = "controlPanel.constructionList", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 5, Order = 2, Available = true,
+                        Type = "", Parent = 6, Order = 2, Available = true,
                         IsAdmin = true
                     },
                     //--------------
@@ -3380,12 +3396,12 @@ namespace PenDesign.Data.MigrationConfiguration
                     //--------------
                     new AdminMenu() { 
                         Name = "Thêm video mới", Url = "controlPanel.addVideo", CssIcon = "fa fa-plus-circle", LabelCss = "", 
-                        Type = "", Parent = 6, Order = 1, Available = true,
+                        Type = "", Parent = 7, Order = 1, Available = true,
                         IsAdmin = true
                     },
                     new AdminMenu() { 
                         Name = "Danh sách Video", Url = "controlPanel.videoList", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 6, Order = 2, Available = true,
+                        Type = "", Parent = 7, Order = 2, Available = true,
                         IsAdmin = true
                     },
                     //--------------
@@ -3398,7 +3414,7 @@ namespace PenDesign.Data.MigrationConfiguration
                     //},
                     new AdminMenu() { 
                         Name = "Email liên hệ", Url = "controlPanel.contactEmail", CssIcon = "fa fa-list-ol", LabelCss = "", 
-                        Type = "", Parent = 7, Order = 2, Available = true,
+                        Type = "", Parent = 8, Order = 2, Available = true,
                         IsAdmin = true
                     }
                     //--------------

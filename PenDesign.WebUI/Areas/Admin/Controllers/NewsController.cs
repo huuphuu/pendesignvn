@@ -2,6 +2,7 @@
 using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Model;
 using PenDesign.Data;
+using PenDesign.WebUI.Areas.Admin.Models;
 using PenDesign.WebUI.Authencation;
 using System;
 using System.Collections.Generic;
@@ -31,31 +32,25 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
             this._userId = _userFactory.GetUserId(User.Identity.Name);
         }
 
-        // GET: api/Banner
-        public IQueryable<News> Get()
+        // GET: api/News
+        public IQueryable<AdminNewsVM> Get(int id)
         {
             try
             {
-                var model = _newsService.GetAll();
-                //var bannerList = new List<BannerVM>();
-                //var model = _bannerService.Entities.Where(b => b.Status == 0)
-                //                            .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),
-                //                                b => b.Id,
-                //                                bm => bm.BannerId,
-                //                                (b, bm) => new BannerVM()
-                //                                {
-                //                                    Id = b.Id,
-                //                                    LanguageId = bm.LanguageId,
-                //                                    Name = b.Name,
-                //                                    Type = b.Type,
-                //                                    Position = b.Position,
-                //                                    MediaType = b.MediaType,
-                //                                    MediaUrl = b.MediaUrl,
-                //                                    LinkUrl = b.LinkUrl,
-                //                                    ZOrder = b.ZOrder
-                //                                }).AsQueryable();
+                var adminNewsVM = new List<AdminNewsVM>();
 
-                return model;
+                var newsModel = _newsService.GetMany(n => n.NewsCategoryId == id && n.Deleted == false).AsQueryable();
+                foreach (var bm in newsModel)
+                {
+                    var model = new AdminNewsVM()
+                    {
+                        Newses = bm,
+                        EditedUser = _userFactory.GetUserNameById(bm.ModifiedById)
+                    };
+                    adminNewsVM.Add(model);
+                }
+
+                return adminNewsVM.AsQueryable();
             }
             catch (Exception)
             {
@@ -64,7 +59,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         }
 
 
-        // POST: api/Banner
+        // POST: api/News
         public HttpResponseMessage Post([FromBody] News news)
         {
             try
@@ -119,7 +114,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
             }
         }
 
-        // PUT: api/Banner/5
+        // PUT: api/News/5
         public HttpResponseMessage Put([FromBody] News news)
         {
             try

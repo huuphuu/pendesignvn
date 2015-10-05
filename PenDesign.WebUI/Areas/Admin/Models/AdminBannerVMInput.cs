@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using PenDesign.Core.Model;
 
-namespace PenDesign.WebUI.Models
+namespace PenDesign.WebUI.Areas.Admin.Models
 {
     public class AdminBannerVMInput: Banner
     {

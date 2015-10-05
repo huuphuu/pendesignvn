@@ -6,7 +6,7 @@ using PenDesign.Core.Model;
 
 namespace PenDesign.WebUI.Areas.Admin.Models
 {
-    public class adminBannerVM
+    public class AdminBannerVM
     {
         public Banner Banners { get; set; }
         public string EditedUser  { get; set; }

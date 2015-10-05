@@ -207,11 +207,14 @@
     <Compile Include="Areas\Admin\Controllers\EmailController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsMappingController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
-    <Compile Include="Areas\Admin\Models\adminBannerVM.cs" />
+    <Compile Include="Areas\Admin\Models\AdminBannerVM.cs" />
+    <Compile Include="Areas\Admin\Models\AdminBannerVMInput.cs" />
+    <Compile Include="Areas\Admin\Models\AdminNewsVM.cs" />
     <Compile Include="Authencation\CustomAuthorize.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConstructionController.cs" />
@@ -228,7 +231,6 @@
     <Compile Include="Helper\MenuSelected.cs" />
     <Compile Include="Infrastructure\AppSettings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BannerVM.cs" />
     <Compile Include="Models\ConstructionVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsVM.cs" />
@@ -360,6 +362,7 @@
     <Content Include="Areas\Admin\Scripts\appScripts\email\emailController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\email\emailService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\indexApp.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\news\newsMappingService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectController.js" />

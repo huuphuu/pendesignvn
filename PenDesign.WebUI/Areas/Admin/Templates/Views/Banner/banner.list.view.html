@@ -49,9 +49,10 @@
                                     {{banner.banners.linkUrl}}
                                 </td>-->
                                 <td>
+                                    <span class="hide">{{banner.banners.zOrder}}</span>
                                     <input type="number" ng-model="banner.banners.zOrder" class="form-control max-width-60"
                                            ng-readonly="orderReadonlyIndex != parentIndex || orderReadonlyIndex == -1"
-                                           min="1" maxlength="3" />
+                                           min="1" maxlength="3"/>
                                     <a class="btn btn-warning btn-xs"
                                        ng-show="orderReadonlyIndex != parentIndex"
                                        ng-click="editZorder($index)">

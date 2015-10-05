@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>&nbsp;</label>
+                                        <!--<label>&nbsp;</label>-->
                                         <!--<div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -82,14 +82,14 @@
                                                 </div>
                                             </div>
                                         </div>-->
-                                        <div class="row">
+                                        <!--<div class="row">-->
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="linkUrl">Link trỏ đến:</label>
                                                     <input type="text" class="form-control" ng-model="currentBanner.linkUrl" name="linkUrl" placeholder="ex: /lien-he"/>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <!--</div>-->
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +107,6 @@
                             <div class="col-md-5 pull-right">
                                 <button class="pull-right btn btn-success" id="addNewBanner" ng-click="addNewBanner(currentBanner)"
                                         ng-disabled="editBannerForm.name.$error.required
-                                                    ||  editBannerForm.keyword.$error.required
-                                                    ||  editBannerForm.description.$error.required
                                                     || editBannerForm.zOrder.$error.required ||  editBannerForm.zOrder.$error.min
                                     ">
                                     Thêm Banner&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>

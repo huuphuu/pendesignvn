@@ -23,56 +23,129 @@
                     </div><!-- /. tools -->
                 </div>
                 <div class="box-body">
-                    <table datatable="ng" id="newsTable" class="table table-bordered table-hover"
+                    <table datatable="ng" id="bannerTable" class="table table-bordered table-hover"
                            dt-options="dtOptions" dt-column-defs="dtColumnDefs">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tên bài viết</th>
-                                <th>Ngày tạo</th>
-                                <th>Ngày cập nhật</th>
-                                <th>Người cập nhật</th>
-                                <th>Tình trạng</th>
-                                <th>Vị trí</th>
-                                <th>Chỉnh sửa</th>
+                                <th>Tên</th>
+                                <th>Thứ tự</th>
+                                <th>Ngôn ngữ khác</th>
+                                <th>Ngưởi cập nhật</th>
+                                <th>Hiển thị</th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="news in allNews | orderBy:'order'">
+                            <tr ng-repeat="news in allNews track by $index | orderBy:'news.newses.zOrder'" ng-init="parentIndex = $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{news.name}}</td>
-                                <td>{{news.createTime | date: dateTimeFormat }}</td>
-                                <td>{{news.editDeleteTime | date: dateTimeFormat}}</td>
-                                <td>{{news.editDeleteBy}}</td>
+                                <td>{{news.newses.name}}</td>
+                                <td>
+                                    <span class="hide">{{news.newses.zOrder}}</span>
+                                    <input type="number" ng-model="news.newses.zOrder" class="form-control max-width-60"
+                                           ng-readonly="orderReadonlyIndex != parentIndex || orderReadonlyIndex == -1"
+                                           min="1" maxlength="3" />
+                                    <a class="btn btn-warning btn-xs"
+                                       ng-show="orderReadonlyIndex != parentIndex"
+                                       ng-click="editZorder($index)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-success btn-xs"
+                                       ng-show="orderReadonlyIndex == parentIndex"
+                                       ng-click="updateZorder($index)">
+                                        <i class="fa fa-check-square-o"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a ng-repeat="newsMapping in news.newses.newsMappings"
+                                       ng-click="getBanner(parentIndex, newsMapping.languageId)" style="margin-right: 10px;"
+                                       ng-if="newsMapping.languageId != 129"
+                                       title="Click để chỉnh sửa nội dung cho ngôn ngữ này">
+                                        <span ng-if="newsMapping.languageId == 129">
+                                            <img src="/Areas/Admin/Content/Images/icons/flags/VietNam.png" />
+                                        </span>
+                                        <span ng-if="newsMapping.languageId == 29">
+                                            <img src="/Areas/Admin/Content/Images/icons/flags/usa.png" />
+                                        </span>
+                                    </a>&nbsp;
+                                    <span ng-if="news.newses.bannerMappings.length <= 1">Không có</span>
+                                </td>
+                                <td>{{news.editedUser}}</td>
                                 <td>
                                     <label>
-                                        <input type="checkbox" name="status" ng-model="news.available" />
-                                        <span ng-show="news.available">&nbsp;Hiển thị</span>
-                                        <span ng-show="!news.available">&nbsp;Ẩn</span>
+                                        <input type="checkbox" name="status" ng-model="news.newses.status" ng-change="updateZorder($index)" />
+                                        <span ng-show="news.newses.status">&nbsp;Hiển thị</span>
+                                        <span ng-show="!news.newses.status">&nbsp;Ẩn</span>
                                     </label>
                                 </td>
                                 <td>
-                                    {{news.order}}
-                                </td>
-                                <td>
-                                    <a class="btn btn-xs btn-warning" title="Chỉnh sửa" ng-click="getNews($index)"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteNews(news)"><i class="fa fa-times"></i></a>
+                                    <a class="btn btn-xs btn-warning" title="Sửa Banner" ng-click="getBanner(parentIndex, defaultLanguageId)"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" title="Xóa Banner" ng-click="deleteBanner(parentIndex, news.newses)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Tên bài viết</th>
-                                <th>Ngày tạo</th>
-                                <th>Ngày cập nhật</th>
-                                <th>Người cập nhật</th>
-                                <th>Tình trạng</th>
-                                <th>Vị trí</th>
-                                <th>Chỉnh sửa</th>
+                                <th>Tên</th>
+                                <th>Thứ tự</th>
+                                <th>Ngôn ngữ</th>
+                                <th>Ngưởi cập nhật</th>
+                                <th>Hiển thị</th>
+                                <th>Thao tác</th>
                             </tr>
                         </tfoot>
                     </table>
+                    <!--<table datatable="ng" id="newsTable" class="table table-bordered table-hover"
+                               dt-options="dtOptions" dt-column-defs="dtColumnDefs">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tên bài viết</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Người cập nhật</th>
+                            <th>Tình trạng</th>
+                            <th>Vị trí</th>
+                            <th>Chỉnh sửa</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="news in allNews | orderBy:'order'">
+                            <td>{{$index + 1}}</td>
+                            <td>{{news.name}}</td>
+                            <td>{{news.createTime | date: dateTimeFormat }}</td>
+                            <td>{{news.editDeleteTime | date: dateTimeFormat}}</td>
+                            <td>{{news.editDeleteBy}}</td>
+                            <td>
+                                <label>
+                                    <input type="checkbox" name="status" ng-model="news.available"/>
+                                    <span ng-show="news.available">&nbsp;Hiển thị</span>
+                                    <span ng-show="!news.available">&nbsp;Ẩn</span>
+                                </label>
+                            </td>
+                            <td>
+                                {{news.order}}
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-warning" title="Chỉnh sửa" ng-click="getNews($index)"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteNews(news)"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Tên bài viết</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Người cập nhật</th>
+                            <th>Tình trạng</th>
+                            <th>Vị trí</th>
+                            <th>Chỉnh sửa</th>
+                        </tr>
+                        </tfoot>
+                    </table>-->
                 </div>
                 <div class="box-footer clearfix">
                     <div class="row">
@@ -105,22 +178,22 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Tên: </label>
-                                            <input type="text" class="form-control" name="name" ng-model="currentNews.name" placeholder="Tên khóa học:" required/>
+                                            <input type="text" class="form-control" name="name" ng-model="currentNews.name" placeholder="Tên khóa học:" required />
                                             <div ng-messages="editNewsForm.name.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <!--<div class="col-md-4">
                                         <div class="form-group">
                                             <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="order" ng-model="currentNews.order" placeholder="Vị trí:" required min="1"/>
+                                            <input type="number" class="form-control" name="order" ng-model="currentNews.order" placeholder="Vị trí:" required min="1" />
                                             <div ng-messages="editNewsForm.order.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
 
 
@@ -139,11 +212,11 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="name">Hình đại diện trang chủ: </label>
-                                        <img src="{{currentNews.homeBannerImageUrl}}" alt="" class="img-responsive"/>
+                                    <div class="col-md-6">
+                                        <label for="name">Ảnh đại diện: </label>
+                                        <img src="{{currentNews.homeBannerImageUrl}}" alt="" class="img-responsive" />
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div>
                                                 <button dropzone="dropzoneConfigHome" class="dropzone">
@@ -152,42 +225,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="name">Hình đại diện trang chi tiết: </label>
-                                        <img src="{{currentNews.subBannerImageUrl}}" alt="" class="img-responsive"/>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div>
-                                                <button dropzone="dropzoneConfigSub" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chi tiết)<br /></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="bannerImageIntro">Nội dung intro trang chủ: </label>
-                                    <textarea id="bannerImageIntro" required name="bannerImageIntro" ng-model="currentNews.bannerImageIntro" class="textarea" placeholder="Nội dung Intro của ảnh đại diện Trang chủ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <label for="bannerImageIntro">Nội dung: </label>
+                                    <textarea id="description" required name="description" ng-model="currentNews.description" class="textarea" placeholder="Nội dung trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="contentIntro">Nội dung intro trang chi tiết: </label>
-                                    <textarea id="contentIntro" required name="contentIntro" ng-model="currentNews.contentIntro" class="textarea" placeholder="Nội dung Intro của trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="contentLeft">Nội dung chi tiết (trái): </label>
-                                <textarea id="contentLeft" name="contentLeft" ng-model="currentNews.contentLeft" class="textarea" placeholder="Nội dung bên trái trang chi tiết (nếu bỏ trống phần này, phần nội dung bên phải sẽ hiển thị)" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="contentRight">Nội dung chi tiết (phải): </label>
-                                <textarea id="contentRight" name="contentRight" ng-model="currentNews.contentRight" class="textarea" placeholder="Nội dung bên phải trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
                         </div>
 
@@ -211,6 +255,9 @@
                                     Cập nhật bài viết&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                 </button>
                             </div>
+                            <div class="hide">
+                                <button id="uploadBanner"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -220,32 +267,11 @@
 
 <script type="text/javascript">
     //CKEditor & ckfinder Noi dung bannerImageIntro
-    var editor1 = CKEDITOR.instances['bannerImageIntro'];
+    var editor1 = CKEDITOR.instances['description'];
     if (editor1) { editor1.destroy(true); }
-    CKEDITOR.replace('bannerImageIntro', {
+    CKEDITOR.replace('description', {
         enterMode: CKEDITOR.ENTER_BR,
         customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung Intro Homepage
-    var editor2 = CKEDITOR.instances['contentIntro'];
-    if (editor2) { editor2.destroy(true); }
-    CKEDITOR.replace('contentIntro', {
-        enterMode: CKEDITOR.ENTER_BR,
-        customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung course
-    var editor3 = CKEDITOR.instances['contentLeft'];
-    if (editor3) { editor3.destroy(true); }
-    CKEDITOR.replace('contentLeft', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
-    var editor4 = CKEDITOR.instances['contentRight'];
-    if (editor4) { editor4.destroy(true); }
-    CKEDITOR.replace('contentRight', {
-        enterMode: CKEDITOR.ENTER_BR
     });
 
     CKFinder.setupCKEditor(null, "/ckfinder/");

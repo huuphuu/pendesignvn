@@ -25,9 +25,11 @@
                 {
                     var title = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Title;
                     var intro = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Intro;
+                    var thumbUrl = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().ThumbUrl;
                     var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id ;
+                    
                     <div class="blog">
-                        <img src="@item.Thumbnail" alt="@title" class="img_inner fleft">
+                        <img src="@thumbUrl" alt="@title" class="img_inner fleft">
                         <div class="extra_wrapper">
                             <div class="text1">
                                 <a href="@detailUrl">@title</a>

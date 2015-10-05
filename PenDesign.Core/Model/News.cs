@@ -24,8 +24,8 @@ namespace PenDesign.Core.Model
         public int? ProjectId { get; set; }
         [DataMember]
         public string Name { get; set; }
-        [DataMember]
-        public string Thumbnail { get; set; }
+        //[DataMember]
+        //public string Thumbnail { get; set; }
         [DataMember]
         public int? ZOrder { get; set; }
         [DataMember]

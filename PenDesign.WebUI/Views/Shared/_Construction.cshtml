@@ -2,6 +2,8 @@
 
 @if (Model != null)
 {
+    var languageId = int.Parse(PenDesign.Common.Utils.Cookies.ReadCookie("PenDesign:Language", "129"));
+    
     <div class="container_12">
         <div class="grid_12 center">
             <h3>Công Trình Thực Tế</h3>
@@ -9,7 +11,10 @@
                 <ul class="tt-grid tt-effect-stackback tt-effect-delay">
                     @foreach (var item in Model.OrderBy(m => m.ZOrder).Take(6))
                     {
-                        <li><a href="/cong-trinh-thuc-te/@XString.ToAscii(item.Name)-@item.Id" title="@item.Name"><img src="@item.Thumbnail" alt="@item.Name"></a></li>
+                        var title = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Title;
+                        var thumbUrl = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().ThumbUrl;
+                        
+                        <li><a href="/cong-trinh-thuc-te/@XString.ToAscii(title)-@item.Id" title="@title"><img src="@thumbUrl" alt="@title"></a></li>
                     }
                 </ul>
                 <nav>
@@ -57,13 +62,16 @@
                     var lastModel = currentPageModels.Last();
                     foreach (var item in currentPageModels)
                     {
+                        var title = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Title;
+                        var thumbUrl = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().ThumbUrl;
+                        
                         if (item.Equals(lastModel))
                         {
-                            page += "'<a href=\"/cong-trinh-thuc-te/" + XString.ToAscii(item.Name) + "-" + item.Id + "\"><img src=\"" + item.Thumbnail + "\" alt=\"" + item.Name + "\" title=\"" + item.Name + "\"></a>'";
+                            page += "'<a href=\"/cong-trinh-thuc-te/" + XString.ToAscii(title) + "-" + item.Id + "\"><img src=\"" + thumbUrl + "\" alt=\"" + title + "\" title=\"" + title + "\"></a>'";
                         }
                         else
                         {
-                            page += "'<a href=\"/cong-trinh-thuc-te/" + XString.ToAscii(item.Name) + "-" + item.Id + "\"><img src=\"" + item.Thumbnail + "\" alt=\"" + item.Name + "\" title=\"" + item.Name + "\"></a>',";
+                            page += "'<a href=\"/cong-trinh-thuc-te/" + XString.ToAscii(title) + "-" + item.Id + "\"><img src=\"" + thumbUrl + "\" alt=\"" + title + "\" title=\"" + title + "\"></a>',";
                         }
                         
                     }

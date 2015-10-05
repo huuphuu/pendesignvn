@@ -58,7 +58,7 @@
                                 </td>
                                 <td>
                                     <a ng-repeat="newsMapping in news.newses.newsMappings"
-                                       ng-click="getBanner(parentIndex, newsMapping.languageId)" style="margin-right: 10px;"
+                                       ng-click="getNews(parentIndex, newsMapping.languageId)" style="margin-right: 10px;"
                                        ng-if="newsMapping.languageId != 129"
                                        title="Click để chỉnh sửa nội dung cho ngôn ngữ này">
                                         <span ng-if="newsMapping.languageId == 129">
@@ -79,8 +79,8 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <a class="btn btn-xs btn-warning" title="Sửa Banner" ng-click="getBanner(parentIndex, defaultLanguageId)"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-xs btn-danger" title="Xóa Banner" ng-click="deleteBanner(parentIndex, news.newses)"><i class="fa fa-times"></i></a>
+                                    <a class="btn btn-xs btn-warning" title="Sửa Banner" ng-click="getNews(parentIndex, defaultLanguageId)"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" title="Xóa Banner" ng-click="deleteNews(parentIndex, news.newses)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -96,56 +96,6 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <!--<table datatable="ng" id="newsTable" class="table table-bordered table-hover"
-                               dt-options="dtOptions" dt-column-defs="dtColumnDefs">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Tên bài viết</th>
-                            <th>Ngày tạo</th>
-                            <th>Ngày cập nhật</th>
-                            <th>Người cập nhật</th>
-                            <th>Tình trạng</th>
-                            <th>Vị trí</th>
-                            <th>Chỉnh sửa</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="news in allNews | orderBy:'order'">
-                            <td>{{$index + 1}}</td>
-                            <td>{{news.name}}</td>
-                            <td>{{news.createTime | date: dateTimeFormat }}</td>
-                            <td>{{news.editDeleteTime | date: dateTimeFormat}}</td>
-                            <td>{{news.editDeleteBy}}</td>
-                            <td>
-                                <label>
-                                    <input type="checkbox" name="status" ng-model="news.available"/>
-                                    <span ng-show="news.available">&nbsp;Hiển thị</span>
-                                    <span ng-show="!news.available">&nbsp;Ẩn</span>
-                                </label>
-                            </td>
-                            <td>
-                                {{news.order}}
-                            </td>
-                            <td>
-                                <a class="btn btn-xs btn-warning" title="Chỉnh sửa" ng-click="getNews($index)"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteNews(news)"><i class="fa fa-times"></i></a>
-                            </td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Tên bài viết</th>
-                            <th>Ngày tạo</th>
-                            <th>Ngày cập nhật</th>
-                            <th>Người cập nhật</th>
-                            <th>Tình trạng</th>
-                            <th>Vị trí</th>
-                            <th>Chỉnh sửa</th>
-                        </tr>
-                        </tfoot>
-                    </table>-->
                 </div>
                 <div class="box-footer clearfix">
                     <div class="row">
@@ -159,18 +109,18 @@
         </div>
     </div>
     <!--chinh sua khoa hoc-->
-    <div class="editNews"></div>
-    <div class="row" ng-show="currentNews">
+    <div class="currentNewsLanguage"></div>
+    <div class="row" ng-show="currentNewsLanguage">
         <div class="col-xs-12">
             <div class="box box-info">
                 <div class="box-header">
                     <i class="fa fa-plus-circle"></i>
-                    <h3 class="box-title">CHỈNH SỬA BÀI VIẾT: <b>{{currentNews.name}}</b></h3>
+                    <h3 class="box-title">CHỈNH SỬA BÀI VIẾT: <b>{{currentNewsLanguage.name}}</b></h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
                         <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
                         <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
-                        <button class="btn btn-info btn-sm" ng-click="currentNews = null" title="Tắt"><i class="fa fa-times"></i></button>
+                        <button class="btn btn-info btn-sm" ng-click="currentNewsLanguage = null" title="Tắt"><i class="fa fa-times"></i></button>
                     </div><!-- /. tools -->
                 </div>
                 <div class="box-body">
@@ -181,15 +131,15 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Tên: </label>
-                                            <input type="text" class="form-control" name="name" ng-model="currentNews.name" placeholder="Tên khóa học:" required />
-                                            <div ng-messages="editNewsForm.name.$error"
+                                            <input type="text" class="form-control" name="title" ng-model="currentNewsLanguage.title" placeholder="Tên bài viết:" required />
+                                            <div ng-messages="editNewsForm.title.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>
                                     <!--<div class="col-md-4">
                                         <div class="form-group">
                                             <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="order" ng-model="currentNews.order" placeholder="Vị trí:" required min="1" />
+                                            <input type="number" class="form-control" name="order" ng-model="currentNewsLanguage.order" placeholder="Vị trí:" required min="1" />
                                             <div ng-messages="editNewsForm.order.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
@@ -199,13 +149,13 @@
 
                                 <div class="form-group">
                                     <label for="keyword">Keyword: </label>
-                                    <textarea class="form-control" name="keyword" ng-model="currentNews.keyword" placeholder="Keywork (SEO):" required></textarea>
+                                    <textarea class="form-control" name="keyword" ng-model="currentNewsLanguage.keyword" placeholder="Keywork (SEO):" required></textarea>
                                     <div ng-messages="editNewsForm.keyword.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description: </label>
-                                    <textarea class="form-control" name="description" ng-model="currentNews.description" placeholder="Description (SEO):" required></textarea>
+                                    <textarea class="form-control" name="description" ng-model="currentNewsLanguage.description" placeholder="Description (SEO):" required></textarea>
                                     <div ng-messages="editNewsForm.description.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
@@ -214,7 +164,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="name">Ảnh đại diện: </label>
-                                        <img src="{{currentNews.homeBannerImageUrl}}" alt="" class="img-responsive" />
+                                        <img src="{{currentNewsLanguage.thumbUrl}}" alt="" class="img-responsive" />
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -230,7 +180,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="bannerImageIntro">Nội dung: </label>
-                                    <textarea id="description" required name="description" ng-model="currentNews.description" class="textarea" placeholder="Nội dung trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <textarea id="description" required name="description" ng-model="currentNewsLanguage.description" class="textarea" placeholder="Nội dung trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -241,12 +191,12 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-6 pull-right">
                             <div class="col-xs-3 pull-right">
-                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentNews = null">
+                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentNewsLanguage = null">
                                     Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
                                 </button>
                             </div>
                             <div class="col-xs-5 pull-right">
-                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentNews)"
+                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentNewsLanguage)"
                                         ng-disabled="editNewsForm.name.$error.required
                                                     ||  editNewsForm.keyword.$error.required
                                                     ||  editNewsForm.description.$error.required

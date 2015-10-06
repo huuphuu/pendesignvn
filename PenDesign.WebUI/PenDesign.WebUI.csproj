@@ -368,6 +368,8 @@
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsMappingService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsService.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\projectImageService.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\projectNewsService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\video\videoController.js" />

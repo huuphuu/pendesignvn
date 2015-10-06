@@ -1,8 +1,10 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("projectController", function ($rootScope, $scope, toaster, projectService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs, $state) {
+    .controller("projectController", function ($rootScope, $scope, toaster, projectService, projectNewsService, projectImageService, checkFileNameService, $sce,
+                                            $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs, $state) {
 
+        $scope.allProjects = {};
         $scope.getAllProjects = function () {
             $rootScope.showModal = true;
             return projectService.getAllProjects().$promise.then(
@@ -17,18 +19,47 @@ angular.module("adminApp")
         if ($state.current.url == "/project-list")
             $scope.getAllProjects();
 
+
+        $scope.defaultLanguageId = 129;
+        $scope.orderReadonlyIndex = -1;
+
+        //update zorder
+        $scope.editZorder = function (index) {
+            $scope.orderReadonlyIndex = index;
+        }
+
+        $scope.updateZorder = function (index) {
+            var currentProject = $scope.allProjects[index];
+            var bodyMessage = "Bạn muốn cập nhật: " + currentProject.projects.name + " ?";
+            var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
+
+            dlg.result.then(function (btn) {
+                $rootScope.showModal = true;
+
+                return projectService.updateProject(currentProject.projects).$promise.then(
+                   function (response) {
+                       $scope.getAllProjects();
+                       $scope.orderReadonlyIndex = -1;
+                       $rootScope.showModal = false;
+                       toaster.pop('success', "Thành công!", "Đã cập nhật dự án " + currentProject.projects.name + " - " + response.message);
+                       $('html,body').animate({ scrollTop: 0 });
+                   }, function (response) {
+                       $rootScope.showModal = false;
+                       $scope.orderReadonlyIndex = -1;
+                       toaster.pop('error', "Lỗi!", response.data);
+                   })
+            }, function () { $scope.orderReadonlyIndex = -1; })
+        }
+
+
         $scope.addNewProject = function (project) {
             $rootScope.showModal = true;
-            if ($scope.HomeBannerImageUrl != "")
-                project.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
-            if ($scope.SubBannerImageUrl != "")
-                project.SubBannerImageUrl = $scope.SubBannerImageUrl;
+            $('#uploadBanner').trigger('click');
 
-            project.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            project.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            project.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            project.contentRight = CKEDITOR.instances.contentRight.getData();
-            project.newsCategoryId = $scope.newsCategoryId;
+            if ($scope.resourceUrl != "")
+                project.resourceUrl = $scope.resourceUrl;
+
+            project.detail = CKEDITOR.instances.detail.getData();
 
             projectService.addNewProject(project).$promise.then(
                 function (response) {
@@ -43,16 +74,35 @@ angular.module("adminApp")
                 })
         };
 
-        $scope.getProject = function (index) {
-            $scope.currentProject = $scope.allProjects[index];
-            CKEDITOR.instances.bannerImageIntro.setData($scope.currentProject.bannerImageIntro);
-            CKEDITOR.instances.contentIntro.setData($scope.currentProject.contentIntro);
-            CKEDITOR.instances.contentLeft.setData($scope.currentProject.contentLeft);
-            CKEDITOR.instances.contentRight.setData($scope.currentProject.contentRight);
-            $('html,body').animate({ scrollTop: $('.editProject').offset().top });
+
+        $scope.getProject = function (index, languageId) {
+            var currentProject = {};
+
+            currentProject.news = $scope.allProjects[index].projects.news[0];
+            for (var i = 0; i < currentProject.news.newsMappings.length; i++) {
+                if (currentProject.news.newsMappings[i].languageId == languageId)
+                    currentProject.news.newsMappings = currentProject.news.newsMappings[i];
+            }
+
+            currentProject.projectImages = $scope.allProjects[index].projects.projectImages;
+            var tempProjectImages = [];
+            for (var j = 0; j < currentProject.projectImages.length; j++) {
+                for (var i = 0; i < currentProject.projectImages[j].projectImageMappings.length; i++) {
+                    if (currentProject.projectImages[j].projectImageMappings[i].languageId == languageId)
+                        tempProjectImages.push(currentProject.projectImages[j].projectImageMappings[i]);
+                }
+            }
+            currentProject.projectImages = tempProjectImages;
+
+            $scope.currentProjectLanguage = currentProject;
+
+            console.log('$scope.currentProjectLanguage', $scope.currentProjectLanguage);
+            CKEDITOR.instances.detail.setData($scope.currentProjectLanguage.news.newsMappings.detail);
+            $('html,body').animate({ scrollTop: $('.currentProjectLanguage').offset().top });
         }
 
-        $scope.deleteProject = function (project) {
+
+        $scope.deleteProject = function (index, project) {
 
             var bodyMessage = "Bạn muốn xóa dự án: " + project.name + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
@@ -61,10 +111,10 @@ angular.module("adminApp")
                 $rootScope.showModal = true;
                 return projectService.deleteProject(project).$promise.then(
                 function (response) {
-                    $scope.currentNews = null;
+                    $scope.currentProjectLanguage = null;
                     $rootScope.showModal = false;
-                    toaster.pop('success', "Thành công!", "Đã xóa bài viết " + project.name + " - " + response.message);
-                    $scope.allProjects.splice($scope.allProjects.indexOf(project), 1);
+                    toaster.pop('success', "Thành công!", "Đã xóa dự án " + project.name + " - " + response.message);
+                    $scope.allProjects.splice(index, 1);
                 }, function (response) {
                     $rootScope.showModal = false;
                     toaster.pop('error', "Lỗi!", response.data);
@@ -72,32 +122,32 @@ angular.module("adminApp")
             }, function () { })
         };
 
-        $scope.updateProject = function (project) {
+        $scope.updateProjectLanguage = function (project) {
 
-            if ($scope.HomeBannerImageUrl != "")
-                project.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
-            if ($scope.SubBannerImageUrl != "")
-                project.SubBannerImageUrl = $scope.SubBannerImageUrl;
-            project.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            project.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            project.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            project.contentRight = CKEDITOR.instances.contentRight.getData();
+            $('#uploadBanner').trigger('click');
+            var languageName = "";
+            if (news.languageId == 29)
+                languageName = "Tiếng Anh";
+            else
+                languageName = "Tiếng Việt";
 
-            var bodyMessage = "Bạn muốn cập nhật bài viết: " + project.name + " ?";
+            if ($scope.resourceUrl != "")
+                project.resourceUrl = $scope.resourceUrl;
+
+            project.detail = CKEDITOR.instances.detail.getData();
+
+            var bodyMessage = "Bạn muốn cập nhật dự án: " + project.name + " (" + languageName + ") ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return projectService.updateProject(project).$promise.then(
+                return projectNewsService.updateProject(project).$promise.then(
                 function (response) {
                     $scope.getAllProjects();
                     $rootScope.showModal = false;
-                    $scope.currentProject = null;
-                    CKEDITOR.instances.bannerImageIntro.setData('');
-                    CKEDITOR.instances.contentIntro.setData('');
-                    CKEDITOR.instances.contentLeft.setData('');
-                    CKEDITOR.instances.contentRight.setData('');
-                    toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + project.name + " - " + response.message);
+                    $scope.currentProjectLanguage = null;
+                    CKEDITOR.instances.detail.setData('');
+                    toaster.pop('success', "Thành công!", "Đã cập nhật dự án " + project.name + " - " + response.message);
                     $('html,body').animate({ scrollTop: 0 });
                 }, function (response) {
                     $rootScope.showModal = false;
@@ -107,34 +157,31 @@ angular.module("adminApp")
         }
 
         //DataTable
-        $scope.$watch('allNews', function (newVal, oldVal) {
-            if (newVal && newVal != null) {
-                $scope.dtOptions = DTOptionsBuilder.newOptions()
-                                   .withPaginationType('full_numbers')
-                                   .withOption('responsive', true)
-                                   .withDisplayLength(10)
-                                   .withLanguageSource('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/vnLanguageDataTable.json')
-                                   .withTableTools('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/copy_csv_xls_pdf.swf')
-                                   .withTableToolsButtons([
-                                       'copy',
-                                       'print', {
-                                           'sExtends': 'collection',
-                                           'sButtonText': 'Save',
-                                           'aButtons': ['csv', 'xls', 'pdf']
-                                       }
-                                   ]);
-
-                $scope.dtColumnDefs = [
-                    DTColumnDefBuilder.newColumnDef(0),
-                    //DTColumnDefBuilder.newColumnDef(1).notVisible(),
-                    DTColumnDefBuilder.newColumnDef(6).notSortable()
-                ];
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+        .withPaginationType('full_numbers')
+        .withOption('responsive', true)
+        .withDisplayLength(10)
+        .withLanguageSource('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/vnLanguageDataTable.json')
+        .withTableTools('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/copy_csv_xls_pdf.swf')
+        .withTableToolsButtons([
+            'copy',
+            'print', {
+                'sExtends': 'collection',
+                'sButtonText': 'Save',
+                'aButtons': ['csv', 'xls', 'pdf']
             }
-        })
+        ]);
+
+        $scope.dtColumnDefs = [
+            DTColumnDefBuilder.newColumnDef(0),
+            //DTColumnDefBuilder.newColumnDef(1).notVisible(),
+            DTColumnDefBuilder.newColumnDef(6).notSortable()
+        ];
+
+
 
         // Uploader Plugin Code
-        $scope.HomeBannerImageUrl = "";
-        $scope.SubBannerImageUrl = "";
+        $scope.mediaUrl = "";
         $scope.dropzoneConfigHome = {
             'options': { // passed into the Dropzone constructor
                 'url': '/admin/api/upload',
@@ -144,7 +191,11 @@ angular.module("adminApp")
                 'addRemoveLinks': true,
                 init: function () {
                     var dz = this;
-                    $("#addNews").click(function () {
+                    //$("#addNewBanner, #updateBanner").click(function () {
+                    //    dz.processQueue();
+                    //});
+                    $("#uploadBanner").click(function () {
+                        alert("dadada");
                         dz.processQueue();
                     });
 
@@ -154,11 +205,11 @@ angular.module("adminApp")
                         }
                         checkFileNameService.checkFileName(this.files[0].name).then(
                             function () {
-                                $scope.HomeBannerImageUrl = dz.files[0].name;
+                                $scope.thumbUrl = dz.files[0].name;
                             },
                             function () {
-                                $scope.HomeBannerImageUrl = dz.files[0].name;
-                                toaster.pop("warning", "Lỗi", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
+                                $scope.thumbUrl = dz.files[0].name;
+                                toaster.pop("warning", "Lưu ý!", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
                             }
                         )
                     });
@@ -176,45 +227,4 @@ angular.module("adminApp")
                 }
             }
         };
-
-        $scope.dropzoneConfigSub = {
-            'options': { // passed into the Dropzone constructor
-                'url': '/admin/api/upload',
-                'acceptedFiles': "image/*",
-                'maxFiles': 1,
-                'autoProcessQueue': false,
-                'addRemoveLinks': true,
-                init: function () {
-                    var dz = this;
-                    $("#addNews").click(function () {
-                        dz.processQueue();
-                    });
-                    this.on("addedfile", function () {
-                        if (this.files[1] != null) {
-                            this.removeFile(this.files[0]);
-                        }
-                        checkFileNameService.checkFileName(this.files[0].name).then(
-                            function () {
-                                $scope.SubBannerImageUrl = dz.files[0].name;
-                            },
-                            function () {
-                                $scope.SubBannerImageUrl = dz.files[0].name;
-                                toaster.pop("warning", "Lỗi", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
-                            }
-                        )
-                    });
-                }
-            },
-            'eventHandlers': {
-                'sending': function (file, xhr, formData) {
-
-                },
-                'success': function (file, response) {
-                    if (this.files[0] != null) {
-                        this.removeFile(this.files[0]);
-                    }
-                }
-            }
-        };
-
     })

@@ -39,10 +39,10 @@
                         <tbody>
                             <tr ng-repeat="project in allProjects track by $index | orderBy:'news.newses.zOrder'" ng-init="parentIndex = $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{news.newses.name}}</td>
+                                <td>{{project.projects.name}}</td>
                                 <td>
-                                    <span class="hide">{{news.newses.zOrder}}</span>
-                                    <input type="number" ng-model="news.newses.zOrder" class="form-control max-width-60"
+                                    <span class="hide">{{project.projects.zOrder}}</span>
+                                    <input type="number" ng-model="project.projects.zOrder" class="form-control max-width-60"
                                            ng-readonly="orderReadonlyIndex != parentIndex || orderReadonlyIndex == -1"
                                            min="1" maxlength="3" />
                                     <a class="btn btn-warning btn-xs"
@@ -57,30 +57,30 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a ng-repeat="newsMapping in news.newses.newsMappings"
-                                       ng-click="getNews(parentIndex, newsMapping.languageId)" style="margin-right: 10px;"
-                                       ng-if="newsMapping.languageId != 129"
+                                    <a ng-repeat="projectMapping in project.projects.projectMappings"
+                                       ng-click="getProject(parentIndex, projectMapping.languageId)" style="margin-right: 10px;"
+                                       ng-if="projectMapping.languageId != 129"
                                        title="Click để chỉnh sửa nội dung cho ngôn ngữ này">
-                                        <span ng-if="newsMapping.languageId == 129">
+                                        <span ng-if="projectMapping.languageId == 129">
                                             <img src="/Areas/Admin/Content/Images/icons/flags/VietNam.png" />
                                         </span>
-                                        <span ng-if="newsMapping.languageId == 29">
+                                        <span ng-if="projectMapping.languageId == 29">
                                             <img src="/Areas/Admin/Content/Images/icons/flags/usa.png" />
                                         </span>
                                     </a>&nbsp;
-                                    <span ng-if="news.newses.bannerMappings.length <= 1">Không có</span>
+                                    <span ng-if="project.projects.projectMappings.length <= 1">Không có</span>
                                 </td>
-                                <td>{{news.editedUser}}</td>
+                                <td>{{project.editedUser}}</td>
                                 <td>
                                     <label>
-                                        <input type="checkbox" name="status" ng-model="news.newses.status" ng-change="updateZorder($index)" />
-                                        <span ng-show="news.newses.status">&nbsp;Hiển thị</span>
-                                        <span ng-show="!news.newses.status">&nbsp;Ẩn</span>
+                                        <input type="checkbox" name="status" ng-model="project.projects.status" ng-change="updateZorder($index)" />
+                                        <span ng-show="project.projects.status">&nbsp;Hiển thị</span>
+                                        <span ng-show="!project.projects.status">&nbsp;Ẩn</span>
                                     </label>
                                 </td>
                                 <td>
-                                    <a class="btn btn-xs btn-warning" title="Sửa Banner" ng-click="getNews(parentIndex, defaultLanguageId)"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-xs btn-danger" title="Xóa Banner" ng-click="deleteNews(parentIndex, news.newses)"><i class="fa fa-times"></i></a>
+                                    <a class="btn btn-xs btn-warning" title="Sửa" ng-click="getProject(parentIndex, defaultLanguageId)"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteProject(parentIndex, project.projects)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -109,38 +109,41 @@
         </div>
     </div>
     <!--chinh sua khoa hoc-->
-    <div class="editProject"></div>
-    <div class="row" ng-show="currentProject">
+    <div class="currentProjectLanguage"></div>
+    <div class="row" ng-show="currentProjectLanguage">
         <div class="col-xs-12">
             <div class="box box-info">
                 <div class="box-header">
                     <i class="fa fa-plus-circle"></i>
-                    <h3 class="box-title">CHỈNH SỬA DỰ ÁN: <b>{{currentProject.name}}</b></h3>
+                    <h3 class="box-title">
+                        CHỈNH SỬA DỰ ÁN: <b>{{currentProjectLanguage.name}}</b>
+                        <span ng-if="currentProjectLanguage.languageId == 129">(Tiếng Việt - ngôn ngữ mặc định)</span>
+                        <span ng-if="currentProjectLanguage.languageId == 29">(English)</span>
+                    </h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
                         <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
-                        <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
-                        <button class="btn btn-info btn-sm" ng-click="currentProject = null" title="Tắt"><i class="fa fa-times"></i></button>
+                        <button class="btn btn-info btn-sm" ng-click="currentProjectLanguage = null" title="Tắt"><i class="fa fa-times"></i></button>
                     </div><!-- /. tools -->
                 </div>
                 <div class="box-body">
-                    <form id="editNewsForm" name="editNewsForm" method="post" novalidate>
+                    <form id="editProjectForm" name="editProjectForm" method="post" novalidate>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="name">Tên: </label>
-                                            <input type="text" class="form-control" name="name" ng-model="currentProject.name" placeholder="Tên khóa học:" required />
-                                            <div ng-messages="editNewsForm.name.$error"
+                                            <input type="text" class="form-control" name="name" ng-model="currentProjectLanguage.name" placeholder="Tên khóa học:" required />
+                                            <div ng-messages="editProjectForm.name.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="order" ng-model="currentProject.order" placeholder="Vị trí:" required min="1" />
-                                            <div ng-messages="editNewsForm.order.$error"
+                                            <input type="number" class="form-control" name="order" ng-model="currentProjectLanguage.order" placeholder="Vị trí:" required min="1" />
+                                            <div ng-messages="editProjectForm.order.$error"
                                                  ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                         </div>
                                     </div>
@@ -149,14 +152,14 @@
 
                                 <div class="form-group">
                                     <label for="keyword">Keyword: </label>
-                                    <textarea class="form-control" name="keyword" ng-model="currentProject.keyword" placeholder="Keywork (SEO):" required></textarea>
-                                    <div ng-messages="editNewsForm.keyword.$error"
+                                    <textarea class="form-control" name="keyword" ng-model="currentProjectLanguage.keyword" placeholder="Keywork (SEO):" required></textarea>
+                                    <div ng-messages="editProjectForm.keyword.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description: </label>
-                                    <textarea class="form-control" name="description" ng-model="currentProject.description" placeholder="Description (SEO):" required></textarea>
-                                    <div ng-messages="editNewsForm.description.$error"
+                                    <textarea class="form-control" name="description" ng-model="currentProjectLanguage.description" placeholder="Description (SEO):" required></textarea>
+                                    <div ng-messages="editProjectForm.description.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
                             </div>
@@ -164,9 +167,9 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="name">Hình đại diện trang chủ: </label>
-                                        <img src="{{currentProject.homeBannerImageUrl}}" alt="" class="img-responsive" />
+                                        <img src="{{currentProjectLanguage.homeBannerImageUrl}}" alt="" class="img-responsive" />
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-9">
                                         <div class="form-group">
                                             <div>
                                                 <button dropzone="dropzoneConfigHome" class="dropzone">
@@ -175,61 +178,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="name">Hình đại diện trang chi tiết: </label>
-                                        <img src="{{currentProject.subBannerImageUrl}}" alt="" class="img-responsive" />
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div>
-                                                <button dropzone="dropzoneConfigSub" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chi tiết)<br /></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="bannerImageIntro">Nội dung intro trang chủ: </label>
-                                    <textarea id="bannerImageIntro" required name="bannerImageIntro" ng-model="currentProject.bannerImageIntro" class="textarea" placeholder="Nội dung Intro của ảnh đại diện Trang chủ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="contentIntro">Nội dung intro trang chi tiết: </label>
-                                    <textarea id="contentIntro" required name="contentIntro" ng-model="currentProject.contentIntro" class="textarea" placeholder="Nội dung Intro của trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <label for="contentIntro">Nội dung trang chi tiết: </label>
+                                    <textarea id="detail" name="detail" ng-model="currentProjectLanguage.detail" class="textarea" placeholder="Nội dung trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="contentLeft">Nội dung chi tiết (trái): </label>
-                                <textarea id="contentLeft" name="contentLeft" ng-model="currentProject.contentLeft" class="textarea" placeholder="Nội dung bên trái trang chi tiết (nếu bỏ trống phần này, phần nội dung bên phải sẽ hiển thị)" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="contentRight">Nội dung chi tiết (phải): </label>
-                                <textarea id="contentRight" name="contentRight" ng-model="currentProject.contentRight" class="textarea" placeholder="Nội dung bên phải trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                        </div>
-
                     </form>
                 </div>
                 <div class="box-footer clearfix">
                     <div class="row">
                         <div class="col-xs-12 col-md-6 pull-right">
                             <div class="col-xs-3 pull-right">
-                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentProject = null">
+                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentProjectLanguage = null">
                                     Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
                                 </button>
                             </div>
                             <div class="col-xs-5 pull-right">
-                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentProject)"
-                                        ng-disabled="editNewsForm.name.$error.required
-                                                    ||  editNewsForm.keyword.$error.required
-                                                    ||  editNewsForm.description.$error.required
-                                                    || editNewsForm.order.$error.required ||  editNewsForm.order.$error.min
+                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentProjectLanguage)"
+                                        ng-disabled="editProjectForm.name.$error.required
+                                                    ||  editProjectForm.keyword.$error.required
+                                                    ||  editProjectForm.description.$error.required
+                                                    || editProjectForm.order.$error.required ||  editProjectForm.order.$error.min
                                     ">
                                     Cập nhật bài viết&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                 </button>
@@ -243,34 +216,12 @@
 
 <script type="text/javascript">
     //CKEditor & ckfinder Noi dung bannerImageIntro
-    var editor1 = CKEDITOR.instances['bannerImageIntro'];
+    var editor1 = CKEDITOR.instances['detail'];
     if (editor1) { editor1.destroy(true); }
-    CKEDITOR.replace('bannerImageIntro', {
+    CKEDITOR.replace('detail', {
         enterMode: CKEDITOR.ENTER_BR,
         customConfig: '/ckeditor/config.js'
     });
-
-    //CKEditor & ckfinder Noi dung Intro Homepage
-    var editor2 = CKEDITOR.instances['contentIntro'];
-    if (editor2) { editor2.destroy(true); }
-    CKEDITOR.replace('contentIntro', {
-        enterMode: CKEDITOR.ENTER_BR,
-        customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung course
-    var editor3 = CKEDITOR.instances['contentLeft'];
-    if (editor3) { editor3.destroy(true); }
-    CKEDITOR.replace('contentLeft', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
-    var editor4 = CKEDITOR.instances['contentRight'];
-    if (editor4) { editor4.destroy(true); }
-    CKEDITOR.replace('contentRight', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
     CKFinder.setupCKEditor(null, "/ckfinder/");
 
     //Toggle button

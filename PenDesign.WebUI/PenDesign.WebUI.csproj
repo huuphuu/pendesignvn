@@ -215,6 +215,7 @@
     <Compile Include="Areas\Admin\Models\AdminBannerVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminBannerVMInput.cs" />
     <Compile Include="Areas\Admin\Models\AdminNewsVM.cs" />
+    <Compile Include="Areas\Admin\Models\AdminNewsVMInput.cs" />
     <Compile Include="Authencation\CustomAuthorize.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConstructionController.cs" />

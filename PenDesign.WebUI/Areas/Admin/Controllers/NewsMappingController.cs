@@ -34,7 +34,6 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                         newsMappingModel.ThumbUrl = newsMappingModel.ThumbUrl;
                     else
                     {
-                        newsMappingModel.ThumbUrl = "/Content/UploadFiles/images/images/thumb_" + newsMappingModel.ThumbUrl;
                         newsMappingModel.ThumbUrl = "/Content/UploadFiles/images/images/" + newsMappingModel.ThumbUrl;
                     }
 
@@ -43,6 +42,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                     newsMappingModel.ThumbUrl = "/Content/images/No_image_available.png";
 
                 newsMappingModel.Status = true;
+                newsMappingModel.ModifiedDateTime = DateTime.Now;
                 newsMappingModel.ModifiedById = _userId;
 
                 _newsMappingService.Update(newsMappingModel);

@@ -48,6 +48,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                     bannerMappingModel.MediaUrl = "/Content/images/No_image_available.png";
 
                 bannerMappingModel.Status = true;
+                bannerMappingModel.ModifiedDateTime = DateTime.Now;
                 bannerMappingModel.ModifiedById = _userId;
 
                 _bannerMappingService.Update(bannerMappingModel);

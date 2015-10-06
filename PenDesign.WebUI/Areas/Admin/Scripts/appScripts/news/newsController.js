@@ -45,19 +45,19 @@ angular.module("adminApp")
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
 
-                return bannerService.updateBanner(currentNews.newses).$promise.then(
+                return newsService.updateNews(currentNews.newses).$promise.then(
                    function (response) {
                        $scope.getAllNews();
                        $scope.orderReadonlyIndex = -1;
                        $rootScope.showModal = false;
-                       toaster.pop('success', "Thành công!", "Đã cập nhật Banner " + currentNews.newses.name + " - " + response.message);
+                       toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + currentNews.newses.name + " - " + response.message);
                        $('html,body').animate({ scrollTop: 0 });
                    }, function (response) {
                        $rootScope.showModal = false;
                        $scope.orderReadonlyIndex = -1;
                        toaster.pop('error', "Lỗi!", response.data);
                    })
-            }, function () { })
+            }, function () { $scope.orderReadonlyIndex = -1; })
         }
 
 
@@ -69,7 +69,7 @@ angular.module("adminApp")
             if ($scope.thumbUrl != "")
                 news.thumbUrl = $scope.thumbUrl;
 
-            news.description = CKEDITOR.instances.description.getData();
+            news.detail = CKEDITOR.instances.detail.getData();
             news.newsCategoryId = $scope.newsCategoryId;
 
             newsService.addNewNews(news).$promise.then(
@@ -92,6 +92,7 @@ angular.module("adminApp")
                 if (currentNews[i].languageId == languageId)
                     $scope.currentNewsLanguage = currentNews[i];
             }
+            CKEDITOR.instances.description.setData($scope.currentNewsLanguage.description);
             $('html,body').animate({ scrollTop: $('.currentNewsLanguage').offset().top });
         }
 
@@ -138,7 +139,6 @@ angular.module("adminApp")
                        $scope.getAllNews();
                        $rootScope.showModal = false;
                        $scope.currentNewsLanguage = null;
-                       //  angular.extend(dst, src);
                        toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + news.name + " - " + response.message);
                        $('html,body').animate({ scrollTop: 0 });
                    }, function (response) {

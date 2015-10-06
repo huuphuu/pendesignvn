@@ -100,9 +100,11 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 var zOrder = AdminBannerVMInput.ZOrder;
                 var bannerName = AdminBannerVMInput.Name;
 
+                var maxOrder = _bannerService.Entities.Where(b => b.Deleted == false).Max(b => b.ZOrder);
+
                 var banner = new Banner();
                 banner.Name = bannerName;
-                banner.ZOrder = zOrder;
+                banner.ZOrder = maxOrder + 1;
                 banner.Status = true;
                 banner.Deleted = false;
                 banner.CreatedById = _userId;

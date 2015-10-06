@@ -110,7 +110,7 @@ angular.module("adminApp")
                        $scope.orderReadonlyIndex = -1;
                        toaster.pop('error', "Lỗi!", response.data);
                    })
-            }, function () { })
+            }, function () { $scope.orderReadonlyIndex = -1; })
         }
 
         $scope.addNewBanner = function (banner) {

@@ -2,7 +2,7 @@
 @model PenDesign.Core.Model.NewsMapping
 
 @{
-    ViewBag.Title = ViewBag.projectName + " | Dự án";
+    ViewBag.Title = Model.Title + " | Dự án";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
@@ -15,13 +15,13 @@
 <div class="content">
     <div class="container_12">
         <div class="breadcrumb">
-            <a href="/" title="Trang chủ">Trang chủ</a> / <a href="/du-an" title="Dự án">Dự án</a> / @ViewBag.projectName
+            <a href="/" title="Trang chủ">Trang chủ</a> / <a href="/du-an" title="Dự án">Dự án</a> / @Model.Title
         </div>
         <div class="grid_9">
             @if (Model != null)
             {
-                <h1 class="news-title">@ViewBag.projectName</h1>
-                @Html.Raw(Model.Description)
+                <h1 class="news-title">@Model.Title</h1>
+                @Html.Raw(Model.Detail)
             }
             else
             {

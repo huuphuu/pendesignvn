@@ -36,7 +36,10 @@
                 {
                     <div class="grid_4">
                         @{
-                    var title = item.ProjectMappings.SingleOrDefault(pm => pm.LanguageId == languageId).Title;
+                            var projectNews = item.News.SingleOrDefault().NewsMappings.SingleOrDefault(nm => nm.LanguageId == languageId);
+                            var title = projectNews.Title;
+                            var intro = projectNews.Intro;
+                            
                             var detailUrl = "/du-an/" + XString.ToAscii(title) + "-" + item.Id;
                             var firstImage = item.ProjectImages.First();
                             foreach (var image in item.ProjectImages)
@@ -55,9 +58,9 @@
                             }
                         }
                         <div class="text1">
-                            <a href="@detailUrl">@item.ProjectMappings.Where(m => m.LanguageId == languageId).SingleOrDefault().Title</a>
+                            <a href="@detailUrl">@title</a>
                         </div>
-                        @Html.Raw(item.ProjectMappings.Where(m => m.LanguageId == languageId).SingleOrDefault().Intro)
+                        @Html.Raw(intro)
                         <div class="alright">
                             <a href="@detailUrl" class="btn">Xem thêm</a>
                         </div>

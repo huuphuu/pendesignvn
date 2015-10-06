@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("projectController", function ($rootScope, $scope, toaster, projectService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs) {
+    .controller("projectController", function ($rootScope, $scope, toaster, projectService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs, $state) {
 
         $scope.getAllProjects = function () {
             $rootScope.showModal = true;
@@ -11,10 +11,11 @@ angular.module("adminApp")
                 $scope.allProjects = data;
             }, function (response) {
                 $rootScope.showModal = true;
-                //toaster.pop('error', "Lỗi!", response.data);
+                toaster.pop('error', "Lỗi!", response.data);
             });
         }
-        $scope.getAllProjects();
+        if ($state.current.url == "/project-list")
+            $scope.getAllProjects();
 
         $scope.addNewProject = function (project) {
             $rootScope.showModal = true;

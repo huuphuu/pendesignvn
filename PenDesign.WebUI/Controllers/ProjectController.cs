@@ -66,9 +66,14 @@ namespace PenDesign.WebUI.Controllers
             var projectModel = _projectService.Get(p => p.Id == id);
             if(projectModel == null)  return View();
 
-            ViewBag.projectName = projectModel.ProjectMappings.SingleOrDefault(pm => pm.LanguageId == LanguageId && pm.Status == true && pm.Deleted == false).Title;
+            //ViewBag.projectName = projectModel.ProjectMappings
+            //                                    .SingleOrDefault(pm => pm.LanguageId == LanguageId && pm.Status == true && pm.Deleted == false)
+            //                                    .Title;
 
-            var newsModel = projectModel.News.SingleOrDefault(n => n.ProjectId == id).NewsMappings.Where(nm => nm.LanguageId == LanguageId).SingleOrDefault();
+            var newsModel = projectModel.News
+                                        .SingleOrDefault(n => n.ProjectId == id)
+                                        .NewsMappings.Where(nm => nm.LanguageId == LanguageId)
+                                        .SingleOrDefault();
 
             return View(newsModel);
         }

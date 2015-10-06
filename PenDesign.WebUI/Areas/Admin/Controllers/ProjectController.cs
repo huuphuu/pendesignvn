@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PenDesign.WebUI.Areas.Admin.Models;
 
 namespace PenDesign.WebUI.Areas.Admin.Controllers
 {
@@ -31,30 +32,24 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         }
 
         // GET: api/Banner
-        public IQueryable<Project> Get()
+        public IQueryable<AdminProjectVM> Get()
         {
             try
             {
-                var model = _projectService.GetAll();
-                //var bannerList = new List<BannerVM>();
-                //var model = _bannerService.Entities.Where(b => b.Status == 0)
-                //                            .Join(_bannerMappingService.Entities.Where(m => m.LanguageId == 129),
-                //                                b => b.Id,
-                //                                bm => bm.BannerId,
-                //                                (b, bm) => new BannerVM()
-                //                                {
-                //                                    Id = b.Id,
-                //                                    LanguageId = bm.LanguageId,
-                //                                    Name = b.Name,
-                //                                    Type = b.Type,
-                //                                    Position = b.Position,
-                //                                    MediaType = b.MediaType,
-                //                                    MediaUrl = b.MediaUrl,
-                //                                    LinkUrl = b.LinkUrl,
-                //                                    ZOrder = b.ZOrder
-                //                                }).AsQueryable();
+                var adminProjectVM = new List<AdminProjectVM>();
 
-                return model;
+                var projectModel = _projectService.GetMany(n => n.Type == 1 && n.Deleted == false).AsQueryable();
+                foreach (var bm in projectModel)
+                {
+                    var model = new AdminProjectVM()
+                    {
+                        Projects = bm,
+                        EditedUser = _userFactory.GetUserNameById(bm.ModifiedById)
+                    };
+                    adminProjectVM.Add(model);
+                }
+
+                return adminProjectVM.AsQueryable();
             }
             catch (Exception)
             {
@@ -64,47 +59,54 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
 
         // POST: api/Banner
-        public HttpResponseMessage Post([FromBody] News news)
+        public HttpResponseMessage Post([FromBody] AdminProjectVMInput AdminProjectVMInput)
         {
             try
             {
-                //var mediaUrlName = news.MediaUrl;
-                //if (news.MediaUrl != null)
-                //    news.MediaUrl = "/Content/UploadFiles/images/images/" + news.MediaUrl;
-                //else
-                //    news.MediaUrl = "/Content/UploadFiles/images/images/" + news.MediaUrl;
+                //var thumbUrl = "/Content/UploadFiles/images/images/" + AdminNewsVMInput.ThumbUrl;
+                //var newsName = AdminNewsVMInput.Name;
+                //var intro = AdminNewsVMInput.Intro;
+                //var keyword = AdminNewsVMInput.Keyword;
+                //var description = AdminNewsVMInput.Description;
+                //var metaData = AdminNewsVMInput.MetaData;
+                //var zOrder = AdminNewsVMInput.ZOrder;
+                //var detail = AdminNewsVMInput.Detail;
+                //var newsCategoryId = AdminNewsVMInput.NewsCategoryId;
 
-                //news.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + mediaUrlName;
+                //var maxOrder = _newsService.Entities.Where(n => n.NewsCategoryId == newsCategoryId).Max(b => b.ZOrder);
 
-                //news.Status = 0; // 0 hien, 1 an, 2 xoa database
+                //var news = new News();
+                //news.NewsCategoryId = newsCategoryId;
+                //news.Name = newsName;
+                //news.ZOrder = maxOrder + 1;
+                //news.Status = true;
+                //news.Deleted = false;
                 //news.CreatedById = _userId;
-                //news.CreatedDateTime = DateTime.Now;
                 //news.ModifiedById = _userId;
-                //news.ModifiedDateTime = DateTime.Now;
-
                 //_newsService.Add(news);
 
-                //var justAddedBannerId = _newsService.Entities.Max(b => b.Id);
-                //var bannerMappingsModels = new List<BannerMapping>()
+
+                //var justAddedNewsId = _newsService.Entities.Max(b => b.Id);
+                //var newsMappingsModels = new List<NewsMapping>()
                 //{
-                //    new BannerMapping()
-                //            {
-                //                BannerId = justAddedBannerId, LanguageId = 129, Status = 0,
-                //                Name = news.Name, Description = "",
-                //                CreatedById = _userId, CreatedDateTime = DateTime.Now,
-                //                ModifiedById = _userId, ModifiedDateTime = DateTime.Now
-                //            },
-                //            new BannerMapping()
-                //            {
-                //                BannerId = justAddedBannerId, LanguageId = 29, Status = 0,
-                //                Name = news.Name + "-en", Description = "",
-                //                CreatedById = _userId, CreatedDateTime = DateTime.Now,
-                //                ModifiedById = _userId, ModifiedDateTime = DateTime.Now
-                //            }
+                //    new NewsMapping()
+                //    {
+                //        NewsId = justAddedNewsId, LanguageId = 129, Status = true, Deleted = false,
+                //        Title = news.Name, Intro = intro, Keyword = keyword, Description = description, MetaData = metaData,
+                //        ThumbUrl = thumbUrl, Detail = detail, 
+                //        CreatedById = _userId, ModifiedById = _userId,
+                //    },
+                //    new NewsMapping()
+                //    {
+                //        NewsId = justAddedNewsId, LanguageId = 29, Status = true,
+                //        Title = "", Intro = "", Keyword = "", Description = "", Deleted = false,
+                //        ThumbUrl = thumbUrl, Detail = "", MetaData = "",
+                //        CreatedById = _userId, ModifiedById = _userId
+                //    }
                 //};
-                //foreach (var bm in bannerMappingsModels)
+                //foreach (var nm in newsMappingsModels)
                 //{
-                //    _newsMappingService.Add(bm);
+                //    _newsMappingService.Add(nm);
                 //}
 
                 var responseMessage = new { message = "Thêm thành công!" };
@@ -119,29 +121,11 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         }
 
         // PUT: api/Banner/5
-        public HttpResponseMessage Put([FromBody] News news)
+        public HttpResponseMessage Put([FromBody] Project project)
         {
             try
             {
-                //if (news.MediaUrl.ToString() != "")
-                //{
-                //    if (news.MediaUrl.ToString().Contains("/Content"))
-                //        news.MediaUrl = news.MediaUrl;
-                //    else
-                //    {
-                //        if (WebTools.CreateThumbnail(news.MediaUrl, "/Content/UploadFiles/images/images/", 78, 56, true, null))
-                //        {
-                //            news.MediaThumbUrl = "/Content/UploadFiles/images/images/thumb_" + news.MediaUrl;
-                //            news.MediaUrl = "/Content/UploadFiles/images/images/" + news.MediaUrl;
-                //        }
-                //    }
-
-                //}
-                //else
-                //    news.MediaUrl = "/Content/images/No_image_available.png";
-
-                //news.Status = 0;
-                //_newsService.Update(news);
+                _projectService.Update(project);
                 var responseMessage = new { message = "Chỉnh sửa thành công!" };
                 return Request.CreateResponse(HttpStatusCode.OK, responseMessage);
             }
@@ -158,9 +142,9 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                //var banner = _newsService.GetById(id);
-                //_newsMappingService.Delete(bm => bm.BannerId == banner.Id);
-                //_newService.Delete(banner);
+                var project = _projectService.GetById(id);
+                _projectMappingService.Delete(pm => pm.ProjectId == project.Id);
+                _projectService.Delete(project);
 
                 var responseMessage = new { message = "Xóa thành công!" };
                 return Request.CreateResponse(HttpStatusCode.OK, responseMessage);

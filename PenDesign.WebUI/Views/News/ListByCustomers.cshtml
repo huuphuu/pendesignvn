@@ -23,9 +23,10 @@
                 var languageId = int.Parse(PenDesign.Common.Utils.Cookies.ReadCookie("PenDesign:Language", "129"));
                 foreach (var item in Model.News)
                 {
-                    var title = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Title;
-                    var intro = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Intro;
-                    var thumbUrl = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().ThumbUrl;
+                    var newsMapping = item.NewsMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault();
+                    var title = newsMapping.Title;
+                    var intro = newsMapping.Intro;
+                    var thumbUrl = newsMapping.ThumbUrl;
                     var detailUrl = "/" + XString.ToAscii(ViewBag.newsCategoryName) + "/" + XString.ToAscii(title) + "-" + item.Id;
                     
                     <div class="blog">

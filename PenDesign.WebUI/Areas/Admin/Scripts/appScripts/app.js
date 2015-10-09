@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var app = angular.module('adminApp', ['ui.bootstrap', 'dialogs.main', 'toaster', 'angularMoment', 'ui.router', 'angularFileUpload', 'ngCookies', 'ngResource', 'ngMessages', 'datatables', 'datatables.tabletools']);
+var app = angular.module('adminApp', ['as.sortable','todo','ui.bootstrap', 'dialogs.main', 'toaster', 'angularMoment', 'ui.router', 'angularFileUpload', 'ngCookies', 'ngResource', 'ngMessages', 'datatables', 'datatables.tabletools']);
 
 //ui.router
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {

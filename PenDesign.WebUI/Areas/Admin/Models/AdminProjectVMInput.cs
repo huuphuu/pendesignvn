@@ -8,6 +8,13 @@ namespace PenDesign.WebUI.Areas.Admin.Models
 {
     public class AdminProjectVMInput: Project
     {
-
+        public AdminProjectNewsVMInput News;
     }
+
+    public class AdminProjectNewsVMInput : News
+    {
+        public NewsMapping currentNewsMappings;
+    }
+
+
 }

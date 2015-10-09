@@ -108,7 +108,7 @@
             </div>
         </div>
     </div>
-    <!--chinh sua khoa hoc-->
+    <!--chinh sua khoa hoc--><div class="clearfix"></div>
     <div class="currentProjectLanguage"></div>
     <div class="row" ng-show="currentProjectLanguage">
         <div class="col-xs-12">
@@ -116,9 +116,9 @@
                 <div class="box-header">
                     <i class="fa fa-plus-circle"></i>
                     <h3 class="box-title">
-                        CHỈNH SỬA DỰ ÁN: <b>{{currentProjectLanguage.name}}</b>
-                        <span ng-if="currentProjectLanguage.languageId == 129">(Tiếng Việt - ngôn ngữ mặc định)</span>
-                        <span ng-if="currentProjectLanguage.languageId == 29">(English)</span>
+                        CHỈNH SỬA DỰ ÁN: <b>{{currentProjectLanguage.news[0].currentNewsMappings.title}}</b>
+                        <span ng-if="currentProjectLanguage.news[0].currentNewsMappings.languageId == 129">(Tiếng Việt - ngôn ngữ mặc định)</span>
+                        <span ng-if="currentProjectLanguage.news[0].currentNewsMappings.languageId == 29">(English)</span>
                     </h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
@@ -126,68 +126,113 @@
                         <button class="btn btn-info btn-sm" ng-click="currentProjectLanguage = null" title="Tắt"><i class="fa fa-times"></i></button>
                     </div><!-- /. tools -->
                 </div>
+
                 <div class="box-body">
-                    <form id="editProjectForm" name="editProjectForm" method="post" novalidate>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label for="name">Tên: </label>
-                                            <input type="text" class="form-control" name="name" ng-model="currentProjectLanguage.name" placeholder="Tên khóa học:" required />
-                                            <div ng-messages="editProjectForm.name.$error"
-                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="order" ng-model="currentProjectLanguage.order" placeholder="Vị trí:" required min="1" />
-                                            <div ng-messages="editProjectForm.order.$error"
-                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Nội dung</a></li>
+                            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Hình ảnh</a></li>
+                            <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                        </ul>
 
+                        <form id="editProjectForm" name="editProjectForm" method="post" novalidate>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <div class="row">
+                                        <div class="col-md-12">
 
-                                <div class="form-group">
-                                    <label for="keyword">Keyword: </label>
-                                    <textarea class="form-control" name="keyword" ng-model="currentProjectLanguage.keyword" placeholder="Keywork (SEO):" required></textarea>
-                                    <div ng-messages="editProjectForm.keyword.$error"
-                                         ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="description">Description: </label>
-                                    <textarea class="form-control" name="description" ng-model="currentProjectLanguage.description" placeholder="Description (SEO):" required></textarea>
-                                    <div ng-messages="editProjectForm.description.$error"
-                                         ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="name">Hình đại diện trang chủ: </label>
-                                        <img src="{{currentProjectLanguage.homeBannerImageUrl}}" alt="" class="img-responsive" />
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <div>
-                                                <button dropzone="dropzoneConfigHome" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chủ)<br /></span>
-                                                </button>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="name">Tên: </label>
+                                                    <input type="text" class="form-control" name="title" ng-model="currentProjectLanguage.news[0].currentNewsMappings.title" placeholder="Tên dự án:" required />
+                                                    <div ng-messages="editProjectForm.title.$error"
+                                                         ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="keyword">Nội dung Intro: </label>
+                                                    <textarea class="form-control" name="intro" ng-model="currentProjectLanguage.news[0].currentNewsMappings.intro" placeholder="Nội dung Intro:"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="keyword">Keyword (SEO): </label>
+                                                    <textarea class="form-control" name="keyword" ng-model="currentProjectLanguage.news[0].currentNewsMappings.keyword" placeholder="Keywork (SEO):"></textarea>
+                                                    <div ng-messages="editProjectForm.keyword.$error"
+                                                         ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="description">Description (SEO): </label>
+                                                    <textarea class="form-control" name="description" ng-model="currentProjectLanguage.news[0].currentNewsMappings.description" placeholder="Description (SEO):"></textarea>
+                                                    <div ng-messages="editProjectForm.description.$error"
+                                                         ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="description">MetaData (SEO): </label>
+                                                    <textarea class="form-control" name="metaData" ng-model="currentProjectLanguage.news[0].currentNewsMappings.metaData" placeholder="MetaData (SEO) - (Chỉ thay đổi nếu bạn biết chắc chắn mình đang làm gì) : "></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-md-12">
+                                            <div class="row form-group">
+                                                <div class="col-md-6">
+                                                    <label for="name">Ảnh đại diện: </label>
+                                                    <img src="{{currentProjectLanguage.projectImages[0].resourceUrl}}" alt="" class="img-responsive"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="name">&nbsp;</label>
+                                                    <div class="form-group">
+                                                        <div>
+                                                            <button dropzone="dropzoneConfigHome" class="dropzone">
+                                                                <span class="dz-message">Chọn ảnh đại diện Dự án<br /></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="detail">Nội dung chi tiết: </label>
+                                                    <textarea id="detail" required name="detail" ng-model="currentProjectLanguage.news[0].currentNewsMappings.detail" class="textarea" placeholder="Nội dung chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="contentIntro">Nội dung trang chi tiết: </label>
-                                    <textarea id="detail" name="detail" ng-model="currentProjectLanguage.detail" class="textarea" placeholder="Nội dung trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+
+                                <div class="tab-pane" id="tab_2">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="sortable-container">
+                                                <div class="sortable-row" as-sortable="sortableOptions" ng-model="currentProjectLanguage.projectImages">
+                                                    <div class="col-md-4" ng-repeat="projectImage in currentProjectLanguage.projectImages" as-sortable-item>
+                                                        <div as-sortable-item-handle>
+                                                            <img ng-src="{{projectImage.thumbnail}}" alt="" class="img-responsive" />
+                                                            <div class="col-md-12">
+                                                                <edit-in-place value="projectImage.currentProjectImageMappings.description"></edit-in-place>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </form>
+                            </div><!-- /.tab-content -->
+                        </form>
+
+                    </div>
+
                 </div>
                 <div class="box-footer clearfix">
                     <div class="row">

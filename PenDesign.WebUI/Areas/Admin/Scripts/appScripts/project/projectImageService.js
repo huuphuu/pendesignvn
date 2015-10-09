@@ -4,7 +4,7 @@ angular.module("adminApp")
     .factory("projectImageService", ['toaster', '$resource', function (toaster, $resource) {
         var projectImageService = {};
 
-        var projectImageResource = $resource('/admin/api/projectNews/:Id', { Id: '@Id' }, {
+        var projectImageResource = $resource('/admin/api/projectImage/:Id', { Id: '@Id' }, {
             'update': { method: 'PUT' }
         });
 

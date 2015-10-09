@@ -92,7 +92,7 @@ angular.module("adminApp")
                 if (currentNews[i].languageId == languageId)
                     $scope.currentNewsLanguage = currentNews[i];
             }
-            CKEDITOR.instances.description.setData($scope.currentNewsLanguage.description);
+            CKEDITOR.instances.detail.setData($scope.currentNewsLanguage.detail);
             $('html,body').animate({ scrollTop: $('.currentNewsLanguage').offset().top });
         }
 

@@ -3,7 +3,7 @@
     @if (Model.FacebookSocial != null && Model.FacebookSocial != "")
     {
         <section id="facebook">
-            <a href="https://www.facebook.com/anhlee19" target="_blank">
+            <a href="@Model.FacebookSocial" target="_blank">
                 @*<span id="fackbook" class="tooltip" title="Link us on Facebook">f</span>*@
                 <img src="~/Content/icons/fb.png" title="facebook PenPeDesign" />
             </a>
@@ -13,7 +13,7 @@
     @if (Model.TwitterSocial != null && Model.TwitterSocial != "")
     {
         <section id="twitter">
-            <a href="https://www.facebook.com/anhlee19" target="_blank">
+            <a href="@Model.TwitterSocial" target="_blank">
                 @*<span id="twitter-default" class="tooltip" title="Follow us on Twitter">t</span>*@
                 <img src="~/Content/icons/twitter.png" title="twitter PenPeDesign" />
             </a>
@@ -22,7 +22,7 @@
     @if (Model.GoogleSocial != null && Model.GoogleSocial != "")
     {
         <section id="google">
-            <a href="https://www.facebook.com/anhlee19" target="_blank">
+            <a href="@Model.GoogleSocial" target="_blank">
                 @*<span id="google-default" class="tooltip" title="Follow us on Google Plus">g<span>+</span></span>*@
                 <img src="~/Content/icons/googlePlus.png" title="google plus PenPeDesign" />
             </a>
@@ -32,7 +32,7 @@
     @if (Model.Youtube != null && Model.Youtube != "")
     {
         <section id="google">
-            <a href="https://www.facebook.com/anhlee19" target="_blank">
+            <a href="@Model.Youtube" target="_blank">
                 @*<span id="google-default" class="tooltip" title="Follow us on Google Plus">Y<span></span></span>*@
                 <img src="~/Content/icons/youtube.png" title="youtube PenPeDesign" />
             </a>

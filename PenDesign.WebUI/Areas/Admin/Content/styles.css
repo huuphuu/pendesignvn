@@ -115,3 +115,34 @@ html *, .alert, .panel-group .panel, Button,
     padding-top: 1px;
     padding-bottom: 1px;
 }
+
+
+
+.as-sortable-item,
+.as-sortable-placeholder {
+    display: inline-block;
+    /*width: 124px;
+    height: 110px;*/
+    float: left;
+}
+
+/*.sortable-row:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}*/
+
+#sortable-container {
+    display: inline-block;
+}
+.as-sortable-item, .as-sortable-placeholder {
+    margin: 0 !important;
+}
+#sortable-container {
+    display: block !important;
+}
+.as-sortable-item {
+    border: 0 !important;
+}

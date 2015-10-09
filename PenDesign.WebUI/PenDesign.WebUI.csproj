@@ -209,6 +209,8 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsMappingController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectImageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectNewsMappingController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
@@ -368,10 +370,18 @@
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsMappingService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsService.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\angular-local-storage.min.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\angular.editInPlace.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\angular.ngEnter.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\app.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\common.css" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\jquery-ui.min.css" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\jquery.ui.touch-punch.min.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectImageService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectNewsService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectService.js" />
+    <Content Include="Areas\Admin\Scripts\appScripts\project\sortable.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\video\videoController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\video\videoService.js" />
     <Content Include="Areas\Admin\Scripts\jquery\jquery-1.10.2.min.js" />

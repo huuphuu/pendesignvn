@@ -77,27 +77,29 @@ angular.module("adminApp")
 
         $scope.getProject = function (index, languageId) {
             var currentProject = {};
-
-            currentProject.news = $scope.allProjects[index].projects.news[0];
-            for (var i = 0; i < currentProject.news.newsMappings.length; i++) {
-                if (currentProject.news.newsMappings[i].languageId == languageId)
-                    currentProject.news.newsMappings = currentProject.news.newsMappings[i];
+            //project news
+            currentProject = angular.copy($scope.allProjects[index].projects);
+            console.log("currentProject", currentProject);
+            for (var i = 0; i < currentProject.news[0].newsMappings.length; i++) {
+                if (currentProject.news[0].newsMappings[i].languageId == languageId)
+                    currentProject.news[0].currentNewsMappings = currentProject.news[0].newsMappings[i];
             }
-
-            currentProject.projectImages = $scope.allProjects[index].projects.projectImages;
-            var tempProjectImages = [];
-            for (var j = 0; j < currentProject.projectImages.length; j++) {
-                for (var i = 0; i < currentProject.projectImages[j].projectImageMappings.length; i++) {
-                    if (currentProject.projectImages[j].projectImageMappings[i].languageId == languageId)
-                        tempProjectImages.push(currentProject.projectImages[j].projectImageMappings[i]);
+            //project images
+            currentProject.projectImages = angular.copy($scope.allProjects[index].projects.projectImages);
+            for (var i = 0; i < currentProject.projectImages.length; i++) {
+                for (var j = 0; j < currentProject.projectImages[i].projectImageMappings.length; j++) {
+                    if (currentProject.projectImages[i].projectImageMappings[j].languageId == languageId) {
+                        currentProject.projectImages[i].currentProjectImageMappings = currentProject.projectImages[i].projectImageMappings[j];
+                    }
                 }
             }
-            currentProject.projectImages = tempProjectImages;
 
             $scope.currentProjectLanguage = currentProject;
+            $scope.currentLanguageId = languageId;
 
             console.log('$scope.currentProjectLanguage', $scope.currentProjectLanguage);
-            CKEDITOR.instances.detail.setData($scope.currentProjectLanguage.news.newsMappings.detail);
+
+            CKEDITOR.instances.detail.setData($scope.currentProjectLanguage.news[0].currentNewsMappings.detail);
             $('html,body').animate({ scrollTop: $('.currentProjectLanguage').offset().top });
         }
 
@@ -155,6 +157,26 @@ angular.module("adminApp")
                 })
             }, function () { })
         }
+
+        //Sortable & inline editing
+        var i;
+        $scope.itemsList = {
+            items1: [],
+            items2: []
+        };
+
+        for (i = 0; i <= 5; i += 1) {
+            $scope.itemsList.items1.push({ 'Id': i, 'Label': 'Item ' + i });
+        }
+
+        $scope.sortableOptions = {
+            containment: '#sortable-container',
+            //restrict move across columns. move only within column.
+            accept: function (sourceItemHandleScope, destSortableScope) {
+                return sourceItemHandleScope.itemScope.sortableScope.$id === destSortableScope.$id;
+            }
+        };
+
 
         //DataTable
         $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -228,3 +250,43 @@ angular.module("adminApp")
             }
         };
     })
+.directive('editInPlace', function () {
+    return {
+        restrict: 'E',
+        scope: { value: '=' },
+        template: '<div class="form-group">' +
+                        '<span class="todoName" ng-dblclick="edit()" ng-bind="value"></span>' +
+                        '<input class="todoField form-control" ng-model="value"></input>' +
+                    '</div>',
+        link: function ($scope, element, attrs) {
+            // Let's get a reference to the input element, as we'll want to reference it.
+            var inputElement = angular.element(element.children()[1]);
+
+            // This directive should have a set class so we can style it.
+            element.addClass('edit-in-place');
+
+            // Initially, we're not editing.
+            $scope.editing = false;
+
+            // ng-dblclick handler to activate edit-in-place
+            $scope.edit = function () {
+                $scope.editing = true;
+
+                // We control display through a class on the directive itself. See the CSS.
+                element.addClass('active');
+
+                // And we must focus the element.
+                // `angular.element()` provides a chainable array, like jQuery so to access a native DOM function,
+                // we have to reference the first element in the array.
+                inputElement.focus();
+            };
+
+            // When we leave the input, we're done editing.
+            inputElement.on("blur", function () {
+                $scope.editing = false;
+                element.removeClass('active');
+            });
+
+        }
+    };
+})

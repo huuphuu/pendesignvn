@@ -362,7 +362,7 @@ angular.module('adminApp')
             var config, dropzone;
 
             config = scope[attrs.dropzone];
-
+            console.log("scope dropzone", scope);
             // create a Dropzone for the element with the given options
             dropzone = new Dropzone(element[0], config.options);
 

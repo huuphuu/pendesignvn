@@ -181,23 +181,23 @@
                                             </div>
                                         </div>
                                         <!--<div class="col-md-12">
-                                            <div class="row form-group">
-                                                <div class="col-md-6">
-                                                    <label for="name">Ảnh đại diện: </label>
-                                                    <img src="{{currentProjectLanguage.projectImages[0].resourceUrl}}" alt="" class="img-responsive"/>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="name">&nbsp;</label>
-                                                    <div class="form-group">
-                                                        <div>
-                                                            <button dropzone="dropzoneConfigHome" class="dropzone">
-                                                                <span class="dz-message">Chọn ảnh đại diện Dự án<br /></span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>-->
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="name">Ảnh đại diện: </label>
+                                <img src="{{currentProjectLanguage.projectImages[0].resourceUrl}}" alt="" class="img-responsive"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="name">&nbsp;</label>
+                                <div class="form-group">
+                                    <div>
+                                        <button dropzone="dropzoneConfigHome" class="dropzone">
+                                            <span class="dz-message">Chọn ảnh đại diện Dự án<br /></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
                                         <div class="col-md-12">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -214,9 +214,10 @@
                                         <div class="col-md-12">
                                             <div id="sortable-container">
                                                 <div class="sortable-row" as-sortable="sortableOptions" ng-model="currentProjectLanguage.projectImages">
-                                                    <div class="col-md-4" ng-repeat="projectImage in currentProjectLanguage.projectImages" as-sortable-item>
+                                                    <div class="col-md-4 text-center" ng-repeat="projectImage in currentProjectLanguage.projectImages" as-sortable-item>
                                                         <div as-sortable-item-handle>
-                                                            <img ng-src="{{projectImage.thumbnail}}" alt="" class="img-responsive" />
+                                                            <!--<img upload-file-edit-in-place ng-src="{{projectImage.thumbnail}}" alt="" class="img-responsive display-inline-block" />-->
+                                                            <upload-file-edit-in-place value="projectImage.thumbnail" dropzone-image="dropzoneProjectImage"></upload-file-edit-in-place>
                                                             <div class="col-md-12">
                                                                 <edit-in-place value="projectImage.currentProjectImageMappings.description"></edit-in-place>
                                                             </div>

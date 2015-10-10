@@ -74,8 +74,12 @@ angular.module("adminApp")
                 })
         };
 
+        $scope.currentGettingIndex = null;
+        $scope.currentGettingLanguage = null;
 
         $scope.getProject = function (index, languageId) {
+            $scope.currentGettingIndex = index;
+            $scope.currentGettingLanguage = languageId;
             var currentProject = {};
             //project news
             currentProject = angular.copy($scope.allProjects[index].projects);
@@ -203,7 +207,7 @@ angular.module("adminApp")
 
 
         // Uploader Plugin Code
-        $scope.mediaUrl = "";
+        $scope.thumbUrl = "";
         $scope.dropzoneConfigHome = {
             'options': { // passed into the Dropzone constructor
                 'url': '/admin/api/upload',
@@ -249,19 +253,101 @@ angular.module("adminApp")
                 }
             }
         };
+
+
+        $scope.uploadingFile = true;
+        $scope.dropzoneProjectImage = {
+            'options': { // passed into the Dropzone constructor
+                'url': '/admin/api/upload',
+                'acceptedFiles': "image/*",
+                'maxFiles': 1,
+                'autoProcessQueue': false,
+                'addRemoveLinks': true,
+                init: function () {
+                    var dz = this;
+                    //$("#addNewBanner, #updateBanner").click(function () {
+                    //    dz.processQueue();
+                    //});
+                    //$("#uploadBanner").click(function () {
+                    //    alert("dadada");
+                    //    dz.processQueue();
+                    //});
+
+                    this.on("addedfile", function () {
+                        checkFileNameService.checkFileName(this.files[0].name).then(
+                            function () {
+                                $scope.resourceUrl = dz.files[0].name;
+                                var bodyMessage = "Bạn muốn upload và thay đổi ảnh này ?";
+                                var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
+                                dlg.result.then(function (btn) {
+                                    $rootScope.showModal = true;
+                                    dz.processQueue();
+                                    $scope.uploadingFile = false;
+
+
+                                    //return projectNewsService.updateProject(project).$promise.then(
+                                    //function (response) {
+                                    //    dz.processQueue();
+                                    //    $scope.getAllProjects();
+                                    //    $scope.getProject($scope.currentGettingIndex, $scope.currentGettingLanguage);
+                                    //    $scope.uploadingFile = false;
+                                    //    toaster.pop('success', "Thành công!", "Đã cập nhật hình ảnh " + dz.files[0].name + " - " + response.message);
+                                    //    $('html,body').animate({ scrollTop: 0 });
+                                    //}, function (response) {
+                                    //    $rootScope.showModal = false;
+                                    //    toaster.pop('error', "Lỗi!", response.message);
+                                    //})
+                                }, function () {
+                                    alert("no");
+                                    if (dz.files[0] != null) {
+                                        dz.removeFile(dz.files[0]);
+                                    }
+                                })
+                            },
+                            function () {
+                                $scope.resourceUrl = dz.files[0].name;
+                                if (dz.files[0] != null) {
+                                    dz.removeFile(dz.files[0]);
+                                }
+                                toaster.pop("warning", "Lưu ý!", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
+                            }
+                        )
+                        
+
+                        if (this.files[1] != null) {
+                            this.removeFile(this.files[0]);
+                        }
+                    });
+
+
+                }
+            },
+            'eventHandlers': {
+                'sending': function (file, xhr, formData) {
+                },
+                'success': function (file, response) {
+                    if (this.files[0] != null) {
+                        this.removeFile(this.files[0]);
+                    }
+                    $scope.uploadedFile = true;
+                    $rootScope.showModal = false;
+                }
+            }
+        };
     })
 .directive('editInPlace', function () {
     return {
         restrict: 'E',
-        scope: { value: '=' },
-        template: '<div class="form-group">' +
+        scope: { value: '='},
+        template: '<div class="form-group text-center" style="margin-top:20px;">' +
                         '<span class="todoName" ng-dblclick="edit()" ng-bind="value"></span>' +
                         '<input class="todoField form-control" ng-model="value"></input>' +
                     '</div>',
         link: function ($scope, element, attrs) {
             // Let's get a reference to the input element, as we'll want to reference it.
-            var inputElement = angular.element(element.children()[1]);
-
+            //var inputElement = angular.element(element.children()[1]);
+            var inputElement = angular.element(element.find('.todoField'));
+            //console.log("element.children() ---", inputElement);
             // This directive should have a set class so we can style it.
             element.addClass('edit-in-place');
 
@@ -286,7 +372,75 @@ angular.module("adminApp")
                 $scope.editing = false;
                 element.removeClass('active');
             });
+            inputElement.on('keyup', function (e) {
+                if (e.which == 13) {
+                    $scope.editing = false;
+                    element.removeClass('active');
+                    e.preventDefault();
+                }
+            });
+
 
         }
     };
+})
+.directive('uploadFileEditInPlace', function () {
+    return {
+        restrict: 'E',
+        scope: { value: '=', dropzoneImage: '='},
+        template: '<div class="row form-group">' +
+                    '<div class="col-md-12 text-center">' +
+                        '<img ng-src="{{value}}" ng-dblclick="edit()" alt="" class="img-responsive display-inline-block upload-file-edit-in-place" />' +
+                        '<button dropzone="dropzoneImage" class="dropzone">' +
+                            '<span class="dz-message">Chọn ảnh Dự án<br /></span> ' +
+                        '</button> ' +
+                        '<a class="btn btn-danger btn-xs cancel" ng-click="cancel()" style="margin-top:20px" title="Hủy">Hủy</a>' +
+                    '</div>' +
+                '</div>',
+        link: function ($scope, element, attrs) {
+
+            // Let's get a reference to the input element, as we'll want to reference it.
+            //var inputElement = angular.element(element.children()[1]);
+            var inputElement = angular.element(element.find('.dropzone'));
+            var cancelElement = angular.element(element.find('.cancel'));
+            //console.log("element.children() ---", inputElement);
+            // This directive should have a set class so we can style it.
+            element.addClass('upload-file-edit-in-place');
+
+            $scope.cancel = function() {
+                $scope.editing = false;
+                element.removeClass('active');
+            }
+
+            // Initially, we're not editing.
+            $scope.editing = false;
+
+            // ng-dblclick handler to activate edit-in-place
+            $scope.edit = function () {
+                $scope.editing = true;
+
+                // We control display through a class on the directive itself. See the CSS.
+                element.addClass('active');
+                cancelElement.addClass('active');
+
+                // And we must focus the element.
+                // `angular.element()` provides a chainable array, like jQuery so to access a native DOM function,
+                // we have to reference the first element in the array.
+                inputElement.focus();
+            };
+
+            // When we leave the input, we're done editing.
+            //inputElement.on("blur", function () {
+            //    $scope.editing = false;
+            //    element.removeClass('active');
+            //});
+            inputElement.on('keyup', function (e) {
+                if (e.which == 13) {
+                    $scope.editing = false;
+                    element.removeClass('active');
+                    e.preventDefault();
+                }
+            });
+        }
+    }
 })

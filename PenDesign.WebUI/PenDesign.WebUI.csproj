@@ -370,13 +370,8 @@
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsMappingService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsController.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\news\newsService.js" />
-    <Content Include="Areas\Admin\Scripts\appScripts\project\angular-local-storage.min.js" />
-    <Content Include="Areas\Admin\Scripts\appScripts\project\angular.editInPlace.js" />
-    <Content Include="Areas\Admin\Scripts\appScripts\project\angular.ngEnter.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\app.js" />
-    <Content Include="Areas\Admin\Scripts\appScripts\project\common.css" />
-    <Content Include="Areas\Admin\Scripts\appScripts\project\jquery-ui.min.css" />
-    <Content Include="Areas\Admin\Scripts\appScripts\project\jquery.ui.touch-punch.min.js" />
+    <Content Include="Areas\Admin\Content\editInPlace.css" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectImageService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectNewsService.js" />
     <Content Include="Areas\Admin\Scripts\appScripts\project\projectController.js" />

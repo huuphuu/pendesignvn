@@ -142,7 +142,11 @@ html *, .alert, .panel-group .panel, Button,
 }
 #sortable-container {
     display: block !important;
+    margin: 20px 0;
 }
 .as-sortable-item {
     border: 0 !important;
+}
+.display-inline-block {
+    display: inline-block;
 }

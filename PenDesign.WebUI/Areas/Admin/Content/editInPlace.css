@@ -61,6 +61,16 @@
   display: inline-block;
 }
 
+.upload-file-edit-in-place.active img {
+  display: none;
+}
+.upload-file-edit-in-place .dropzone, .upload-file-edit-in-place .cancel {
+  display: none;
+}
+.upload-file-edit-in-place.active .dropzone, .upload-file-edit-in-place.active .cancel {
+  display: inline-block;
+}
+
 .list-unstyled {
     position: relative;
 }

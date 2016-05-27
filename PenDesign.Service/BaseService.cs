@@ -76,6 +76,13 @@ namespace PenDesign.Service
             UnitOfWork.Commit();
         }
 
+
+        public void DeletePersistent(Expression<Func<T, bool>> where)
+        {
+            Repository.DeletePersistent(where);
+            UnitOfWork.Commit();
+        }
+
         public IQueryable<T> GetMany(Expression<Func<T, bool>> where, int? maxHints = null)
         {
             return Repository.GetMany(where, maxHints);

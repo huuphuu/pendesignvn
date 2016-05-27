@@ -3,14 +3,15 @@
 'use strict';
 
 angular.module('adminApp')
-    .config(function ($httpProvider) {
+    .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-    })
+    }])
 //-------------------------------------------------------------------------------------------------------------------------------------
 // Controller 
 //-------------------------------------------------------------------------------------------------------------------------------------
-    .controller('BodyController', function ($rootScope, $scope, toaster, accountService, $http, $interval) {
+    .controller('BodyController', ['$rootScope', '$scope', 'toaster', 'accountService', '$http', '$interval',
+                                    function ($rootScope, $scope, toaster, accountService, $http, $interval) {
         $scope.navigation = $adminCMS.data.navigation;
         //$scope.sidebarNavigation = $adminCMS.data.navigation.sidebarNav;
         $scope.dateTimeFormat = 'dd-MM-yyyy HH:mm:ss';
@@ -65,9 +66,10 @@ angular.module('adminApp')
         }
         $scope.getAdminMenu();
 
-    })
+    }])
 
-    .controller('uploadController', function ($scope, FileUploader, toaster) {
+    .controller('uploadController', ['$scope', 'FileUploader', 'toaster',
+                                        function ($scope, FileUploader, toaster) {
         //angular file upload module
 
         var uploader = $scope.uploader = new FileUploader({
@@ -200,13 +202,13 @@ angular.module('adminApp')
             //console.info('onCompleteAll');
         };
 
-        console.info('uploader', uploader);
-    })
+//        console.info('uploader', uploader);
+    }])
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 //Service 
 //-------------------------------------------------------------------------------------------------------------------------------------
-    .factory('checkFileNameService', function ($q, $http) {
+    .factory('checkFileNameService', ['$q', '$http', function ($q, $http) {
         var checkFileNameService = {};
         checkFileNameService.checkFileName = function (fileName) {
             var deferred = $q.defer();
@@ -220,12 +222,13 @@ angular.module('adminApp')
             return deferred.promise;
         };
         return checkFileNameService;
-    })
+    }])
 
 //Filter ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Directive /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    .directive('headerNavbarDropdown', function ($timeout, accountService, dialogs, $window, $rootScope, toaster) {
+// Directive /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    .directive('headerNavbarDropdown', ['$timeout', 'accountService', 'dialogs', '$window', '$rootScope', 'toaster',
+                                        function ($timeout, accountService, dialogs, $window, $rootScope, toaster) {
         return {
             restrict: 'EA',
             replace: true,
@@ -241,7 +244,7 @@ angular.module('adminApp')
                     }
                 }, 100);
             },
-            controller: function ($scope, $element, $attrs) {
+            controller: ['$scope', '$element', '$attrs', 'accountService', function ($scope, $element, $attrs, accountService) {
                 $scope.signOut = function () {
                     accountService.logOff().then(
                         function (data) {
@@ -303,8 +306,8 @@ angular.module('adminApp')
                 }
 
             }
-        };
-    })
+        ]};
+    }])
     .directive('headerNavbarMenu', function () {
         return {
             restrict: 'EA',
@@ -333,7 +336,7 @@ angular.module('adminApp')
             }
         };
     })
-    .directive('navigationMultipleMenu', function ($compile) {
+    .directive('navigationMultipleMenu',['$compile', function ($compile) {
         return {
             restrict: 'EA',
             replace: true,
@@ -355,14 +358,14 @@ angular.module('adminApp')
             }
 
         };
-    })
+    }])
 
     .directive('dropzone', function () {
         return function (scope, element, attrs) {
             var config, dropzone;
 
             config = scope[attrs.dropzone];
-            console.log("scope dropzone", scope);
+
             // create a Dropzone for the element with the given options
             dropzone = new Dropzone(element[0], config.options);
 

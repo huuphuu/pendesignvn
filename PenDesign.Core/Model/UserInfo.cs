@@ -7,17 +7,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
+using PenDesign.Core.Model.BaseClass;
 
 namespace PenDesign.Core.Model
 {
     [DataContract(IsReference = true)]
-    public class UserInfo
+    public class UserInfo: EditableEntity
     {
         //[Key]
         //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         [Key]
         [DataMember]
-        public int UserInfoId { get; set; }
+//        public int UserInfoId { get; set; }
+        public string AspNetUser_Id { get; set; }
 
         [DataMember]
         public string Email { get; set; }
@@ -44,6 +46,6 @@ namespace PenDesign.Core.Model
         //[ForeignKey("AspNetUserId")]
         [Required]
         [DataMember]
-        public ApplicationUser AspNetUser { get; set; }
+        public virtual ApplicationUser AspNetUser { get; set; }
     }
 }

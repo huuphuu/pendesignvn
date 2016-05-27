@@ -2,75 +2,105 @@
     ViewBag.Title = "Contact";
 }
 
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
+}
+
 @section CssHeader{
     <link rel="stylesheet" href="/Content/css/form.css">
 }
 
 @section ScriptsFooter{
     <script src="~/Scripts/PenDesign/TMForm.js"></script>
+
+    <link href="~/Content/metroUI/metro-icons.css" rel="stylesheet" />
+    <link href="~/Scripts/angularjs/toaster.min.css" rel="stylesheet" />
+
+    @Scripts.Render("~/bundles/angularjs")
+    <script src='//www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' async defer></script>
+
+
+
+
 }
-<div class="content">
+<div class="content" ng-app="registerApp" ng-controller="formController">
+    <toaster-container toaster-options="{'close-button': true, 'position-class': 'toast-bottom-right'}"></toaster-container>
+    <div class="modalContentOverlay"
+         ng-class="{'show': showModal,
+                    'hide': !showModal}">
+        <div class="modalContentWrapper">
+            <span class="mif-spinner4 mif-ani-spin mif-4x modalContentOverlayIcon"></span>
+            <span id="closeModal" class="mif-cross mif-2x CloseContentOverlayIcon" ng-click="showModal=false"></span>
+        </div>
+    </div>
     <div class="container_12">
+        <div class="breadcrumb">
+            <a href="/" title="Trang chủ">Trang chủ</a> / Liên hệ
+        </div>
         <div class="grid_12">
-            <h2>Contacts</h2>
+            @*<h2>Liên Hệ</h2>*@
             <div class="map">
                 <figure class=" ">
-                    <iframe src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Brooklyn,+New+York,+NY,+United+States&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=61.282355,146.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Brooklyn,+Kings,+New+York&amp;ll=40.649974,-73.950005&amp;spn=0.01628,0.025663&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+                    @Html.Raw(ViewBag.googleMap)
                 </figure>
 
             </div>
         </div>
         <div class="clear"></div>
-        <div class="grid_3">
-            <h3 class="head1">Find Us</h3>
-            <p>You can always get 24/7 support for all <span class="col1"><a href="#" rel="nofollow">premium website templates</a></span> from <br>TemplateMonster. Free themes go without it. </p>
-            <p><span class="col1"><a href="#" rel="nofollow">TemplateTuning</a></span> will help you with any questions regarding customization of the chosen themes.</p>
-            <p>
-                The Company Name Inc. <br>
-                8901 Marmora Road, <br>
-                Glasgow, D04 89GR.
-            </p>
-            Freephone:+1 800 559 6580 <br>
-            Telephone:+1 800 603 6035<br>
-            FAX:+1 800 889 9898<br>
-            E-mail: <a href="#" class="col1">mail@thanhit.net</a>
+        <div class="grid_5">
+            @Html.Raw(ViewBag.contactForm)
         </div>
-        <div class="grid_9">
-            <h3 class="head1">Contact Form</h3>
-            <form id="form">
+        <div class="grid_7">
+            <h3 class="head1">Liên Hệ</h3>
+            <form id="form" name="form" ng-submit="sendContact(contact)">
 
                 <div class="success_wrapper">
                     <div class="success-message">Contact form submitted</div>
                 </div>
                 <label class="name">
-                    <input type="text" placeholder="Name:"/>
+                    <input type="text" placeholder="Name:" ng-model="contact.name" name="name" required />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid name.</span>
                 </label>
 
                 <label class="email">
-                    <input type="text" placeholder="E-mail:"/>
+                    <input type="text" placeholder="E-mail:" ng-model="contact.email" name="email" />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid email.</span>
                 </label>
                 <label class="phone">
-                    <input type="text" placeholder="Phone:"/>
+                    <input type="text" placeholder="Phone:" ng-model="contact.phone" name="phone" />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid phone.</span>
                 </label>
                 <label class="message">
-                    <textarea placeholder="Message:"></textarea>
+                    <textarea placeholder="Message:" ng-model="contact.description" name="description"></textarea>
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*The message is too short.</span>
                 </label>
+
                 <div>
+                    <div vc-recaptcha
+                         theme="'light'"
+                         key="'6Lc1uw4TAAAAAF1kpJ8cBR6bG1XdIVyALs_HRXZy'"
+                         on-create="setWidgetId(widgetId)"
+                         on-success="setResponse(response)"
+                         on-expire="cbExpiration()"></div>
                     <div class="clear"></div>
                     <div class="btns">
-                        <a href="#" data-type="reset" class="btn">Clear</a>
-                        <a href="#" data-type="submit" class="btn">Send</a>
+                        <button type="reset" class="btn">Clear</button>
+                        <button type="button" class="btn" ng-click="sendContact(contact)"
+                                ng-disabled="response == null || contactForm.name.$error.required
+                           ">
+                            Send
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+

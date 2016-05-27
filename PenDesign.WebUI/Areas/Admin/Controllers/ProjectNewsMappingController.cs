@@ -27,18 +27,18 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                if (newsMappingModel.ThumbUrl.ToString() != "")
-                {
-                    if (newsMappingModel.ThumbUrl.ToString().Contains("/Content"))
-                        newsMappingModel.ThumbUrl = newsMappingModel.ThumbUrl;
-                    else
-                    {
-                        newsMappingModel.ThumbUrl = "/Content/UploadFiles/images/images/" + newsMappingModel.ThumbUrl;
-                    }
+                //if (newsMappingModel.ThumbUrl.ToString() != "")
+                //{
+                //    if (newsMappingModel.ThumbUrl.ToString().Contains("/Content"))
+                //        newsMappingModel.ThumbUrl = newsMappingModel.ThumbUrl;
+                //    else
+                //    {
+                //        newsMappingModel.ThumbUrl = "/Content/UploadFiles/images/images/" + newsMappingModel.ThumbUrl;
+                //    }
 
-                }
-                else
-                    newsMappingModel.ThumbUrl = "/Content/images/No_image_available.png";
+                //}
+                //else
+                //    newsMappingModel.ThumbUrl = "/Content/images/No_image_available.png";
 
                 newsMappingModel.Status = true;
                 newsMappingModel.ModifiedDateTime = DateTime.Now;

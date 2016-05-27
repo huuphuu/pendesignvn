@@ -40,7 +40,7 @@ angular.module("adminApp")
 
         accountService.deleteUser = function (user) {
             var deferred = $q.defer();
-            $http.post('api/userAccount/DeleteUser',user)
+            $http.post('api/userAccount/DeleteUser', user)
                 .success(function () {
                     deferred.resolve();
                 })
@@ -49,6 +49,17 @@ angular.module("adminApp")
                 })
             return deferred.promise;
         }
+//        accountService.deleteUser = function (user) {
+//            var deferred = $q.defer();
+//            $http.post('/account/delete', user)
+//                .success(function () {
+//                    deferred.resolve();
+//                })
+//                .error(function () {
+//                    deferred.reject();
+//                })
+//            return deferred.promise;
+//        }
 
         accountService.register = function (user) {
             var deferred = $q.defer();

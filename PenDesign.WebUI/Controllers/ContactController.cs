@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PenDesign.Common.Utils;
 using PenDesign.Core.Interface.Service.BasicServiceInterface;
 using PenDesign.Core.Model;
 using System;
@@ -14,10 +15,12 @@ namespace PenDesign.WebUI.Controllers
     public class ContactController : ApiController
     {
         private IContactService _contactService;
+        private IConfigService _configService;
 
-        public ContactController(IContactService contactService)
+        public ContactController(IContactService contactService, IConfigService configService)
         {
             this._contactService = contactService;
+            this._configService = configService;
         }
         [HttpPost]
         [Route("api/contact/EmailRegister")]
@@ -25,7 +28,7 @@ namespace PenDesign.WebUI.Controllers
         {
             try
             {
-                const string secret = "6LcL-AoTAAAAAIAm2S9gWNuVujkNijGG4cheyk2d"; //Secrect key: 6LcL-AoTAAAAAIAm2S9gWNuVujkNijGG4cheyk2d  Sitekey:6LcL-AoTAAAAAObVhV2B5hllIV2lHGknd-prcN9y
+                const string secret = "6Lc1uw4TAAAAAMz5gjeKyy8NkpAl_TdwhZ0Sf3D0"; //Secrect key: 6Lc1uw4TAAAAAMz5gjeKyy8NkpAl_TdwhZ0Sf3D0  Sitekey:6Lc1uw4TAAAAAF1kpJ8cBR6bG1XdIVyALs_HRXZy
                 var client = new WebClient();
                 var reply = client.DownloadString(
                     string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret,
@@ -71,6 +74,26 @@ namespace PenDesign.WebUI.Controllers
                     {
                         contactModel.Status = true;
                         _contactService.Add(contactModel);
+
+                        var justAddedContactEmail = _contactService.Entities.OrderByDescending(b => b.Id).FirstOrDefault();
+
+                        var configService = _configService.GetAll().FirstOrDefault();
+                        var companyName = configService.CompanyName;
+                        var sendingEmail = configService.Email;
+                        var emailPassword = configService.EmailPassword;
+                        var emailPort = configService.EmailPort;
+                        var emailSignature = configService.EmailSignature;
+                        var emailFrom = companyName + "<" + sendingEmail + ">";
+                        var CCEmail = configService.CCEmail;
+
+                        var emailBody = "Có 1 tin nhắn mới từ Websie! <br />";
+                        emailBody += "Họ tên: " + justAddedContactEmail.Name + "<br />";
+                        emailBody += "Email: " + justAddedContactEmail.Email + "<br />";
+                        emailBody += "Điện thoại: " + justAddedContactEmail.Phone + "<br />";
+                        emailBody += "Nội dung: " + justAddedContactEmail.Description + "<br />";
+                        emailBody = emailBody + "<br /><br />" + emailSignature + "<br /><img src=\"cid:Pic1\">";
+
+                        XMail.Send(sendingEmail, emailPassword, emailPort, emailFrom, CCEmail, "", "", "Tin nhắn mới từ Websie!", emailBody, "");
 
                         var responseMessage = new { message = "Đã gửi tin thành công" };
                         return Request.CreateResponse(HttpStatusCode.OK, responseMessage);

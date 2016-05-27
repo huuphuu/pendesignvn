@@ -1,7 +1,9 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("newsController", function ($rootScope, $scope, toaster, newsService, newsMappingService, checkFileNameService, $sce,
+    .controller("newsController", ['$rootScope', '$scope', 'toaster', 'newsService', 'newsMappingService', 'checkFileNameService', '$sce',
+                                            '$location', 'DTOptionsBuilder', 'DTColumnDefBuilder', '$stateParams', 'dialogs', '$state',
+                                            function ($rootScope, $scope, toaster, newsService, newsMappingService, checkFileNameService, $sce,
                                             $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs, $state) {
 
         $scope.newsCategoryId = $stateParams.newsCategoryId;
@@ -108,7 +110,7 @@ angular.module("adminApp")
                     function (response) {
                         $rootScope.showModal = false;
                         $scope.currentNewsLanguage = null;
-                        toaster.pop('success', "Thành công!", "Đã xóa Banner " + news.name + " - " + response.message);
+                        toaster.pop('success', "Thành công!", "Đã xóa bài viết " + news.name + " - " + response.message);
                         $scope.allNews.splice(index, 1);
                     }, function (response) {
                         $rootScope.showModal = false;
@@ -125,7 +127,8 @@ angular.module("adminApp")
             else
                 languageName = "Tiếng Việt";
 
-            var bodyMessage = "Bạn muốn cập nhật bài viết: " + news.name + " (" + languageName + ") ?";
+
+            var bodyMessage = "Bạn muốn cập nhật bài viết: " + news.title + " (" + languageName + ") ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
@@ -133,13 +136,19 @@ angular.module("adminApp")
 
                 if ($scope.thumbUrl != "")
                     news.thumbUrl = $scope.thumbUrl;
+                else
+                    news.thumbUrl = news.thumbUrl;
 
+
+                news.detail = CKEDITOR.instances.detail.getData();
+
+               
                 return newsMappingService.updateNews(news).$promise.then(
                    function (response) {
                        $scope.getAllNews();
                        $rootScope.showModal = false;
                        $scope.currentNewsLanguage = null;
-                       toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + news.name + " - " + response.message);
+                       toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + news.title + " - " + response.message);
                        $('html,body').animate({ scrollTop: 0 });
                    }, function (response) {
                        $rootScope.showModal = false;
@@ -168,18 +177,20 @@ angular.module("adminApp")
         $scope.dtColumnDefs = [
             DTColumnDefBuilder.newColumnDef(0),
             //DTColumnDefBuilder.newColumnDef(1).notVisible(),
-            DTColumnDefBuilder.newColumnDef(6).notSortable()
+            //DTColumnDefBuilder.newColumnDef(6).notSortable()
+            DTColumnDefBuilder.newColumnDef(5).notSortable()
         ];
 
 
 
         // Uploader Plugin Code
-        $scope.mediaUrl = "";
+        $scope.thumbUrl = "";
         $scope.dropzoneConfigHome = {
             'options': { // passed into the Dropzone constructor
                 'url': '/admin/api/upload',
                 'acceptedFiles': "image/*",
                 'maxFiles': 1,
+                'maxFilesize': 10000,
                 'autoProcessQueue': false,
                 'addRemoveLinks': true,
                 init: function () {
@@ -188,7 +199,6 @@ angular.module("adminApp")
                     //    dz.processQueue();
                     //});
                     $("#uploadBanner").click(function () {
-                        alert("dadada");
                         dz.processQueue();
                     });
 
@@ -206,7 +216,10 @@ angular.module("adminApp")
                             }
                         )
                     });
-
+                    this.on("error", function (file, message) {
+                        toaster.pop("error", "Lỗi", "Vui lòng chọn ảnh có dung lượng dưới 1 Mb!")
+                        this.removeFile(file);
+                    });
 
                 }
             },
@@ -220,4 +233,4 @@ angular.module("adminApp")
                 }
             }
         };
-    })
+    }])

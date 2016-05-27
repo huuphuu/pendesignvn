@@ -17,6 +17,7 @@ namespace PenDesign.Core.Model
         public string EmailPassword { get; set; }
         public int EmailPort { get; set; }
         public string EmailSignature { get; set; }
+        public string CCEmail { get; set; }
 
         public string GoogleAnalytics { get; set; }
         public string Address { get; set; }

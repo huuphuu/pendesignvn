@@ -117,7 +117,7 @@ namespace PenDesign.WebUI.Controllers
             return PartialView("_Header", menuModel);
         }
 
-        [ChildActionOnly]
+//        [ChildActionOnly]
         public PartialViewResult _Construction()
         {
             var constructionModel = _newsService.GetMany(n => n.ProjectId == 16 && n.Status == true && n.Deleted == false).Take(24);

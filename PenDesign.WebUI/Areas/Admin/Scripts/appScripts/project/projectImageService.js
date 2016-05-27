@@ -8,9 +8,17 @@ angular.module("adminApp")
             'update': { method: 'PUT' }
         });
 
-
-        projectImageService.updateImage = function (news) {
-            return projectImageResource.update({ 'Id': news.id }, news);
+        projectImageService.addNewProjectImage = function (projectImage) {
+            return projectImageResource.save(projectImage);
         }
+
+        projectImageService.updateProjectImage = function (projectImage) {
+            return projectImageResource.update({ 'Id': projectImage.id }, projectImage);
+        }
+
+        projectImageService.deleteProjectImage = function (projectImage) {
+            return projectImageResource.delete({ 'Id': projectImage.id });
+        }
+
         return projectImageService;
     }])

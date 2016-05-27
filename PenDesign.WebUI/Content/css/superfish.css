@@ -26,7 +26,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	display: block;
 	position: relative;
 	float: left;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 50px;
 
 }
@@ -57,7 +57,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 
 
 .sf-menu>li>a{
-	background: url(../images/menu_hover.png) 0 -100px repeat-x;
+	background: url(/Content/images/menu_hover.png) 0 -100px repeat-x;
 	text-align: center;
 	color: #e97d25;
 	display: block;

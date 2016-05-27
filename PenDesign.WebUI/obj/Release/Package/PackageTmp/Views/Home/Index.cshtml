@@ -1,8 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Trang chhủ";
+    ViewBag.Title = "Trang chủ";
+}
+
+@section SEO{
+    <meta name="keywords" content="@ViewBag.Keyword">
+    <meta name="description" content="@ViewBag.Description">
+    @Html.Raw(ViewBag.MetaData)
 }
 
 @section ScriptsFooter{
+    <!--banner script-->
     <script src="/Scripts/PenDesign/camera.js"></script>
     <script>
         jQuery('#camera_wrap').camera({
@@ -18,122 +25,41 @@
     </script>
 }
 
-<div class="container_12">
-    <div class="grid_12">
-        <div class="slider_wrapper ">
-            <div class="camera_wrap" id="camera_wrap">
-                <div data-thumb="/Content/images/thumb.png" data-src="/Content/images/slide.jpg">
-                    <div class="caption fadeFromBottom">
-                        Clever interior projects for your home
-                    </div>
-                </div>
-                <div data-thumb="/Content/images/thumb1.jpg" data-src="/Content/images/slide1.jpg">
-                    <div class="caption fadeFromBottom">
-                        Home improvement ideas for you
-                    </div>
-                </div>
-                <div data-thumb="/Content/images/thumb2.png" data-src="/Content/images/slide2.jpg">
-                    <div class="caption fadeFromBottom">
-                        Premium design tips
-                    </div>
-                </div>
-                <div data-thumb="/Content/images/thumb3.png" data-src="/Content/images/slide3.jpg">
-                    <div class="caption fadeFromBottom">
-                        Only creative ideas
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--Banner-->
+@{ Html.RenderAction("_Banner", "Home");}
+
 <div class="page1_block">
     <div class="container_12">
         <div class="grid_12">
-            <div class="center">
-                <h2>Welcome!</h2>
-                Our company offers you the best design solutions to make your home interior unique and stylish
-                <div class="alright">
-                    <a href="#" class="btn">Xem thêm</a>
-                </div>
+            <div class="center pd-t-85">
+                @{Html.RenderAction("_Slogan", "Home");}
             </div>
         </div>
     </div>
 </div>
 <!--==============================Content=================================-->
 <div class="content">
-    <div class="container_12">
-        <div class="grid_12 center">
-            <h3>Công Trình Thực Tế</h3>
-            <section class="tt-grid-wrapper">
-                <ul class="tt-grid tt-effect-stackback tt-effect-delay">
+    @{ Html.RenderAction("_Construction", "Home");}
 
-                    <li><a href="#"><img src="/Content/images/feat1.jpg" alt="img01"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat2.jpg" alt="img02"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat3.jpg" alt="img03"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat4.jpg" alt="img04"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat5.jpg" alt="img05"></a></li>
-                    <li><a href="#"><img src="/Content/images/feat6.jpg" alt="img06"></a></li>
-                </ul>
-                <nav>
-                    <a class="tt-current"></a><a></a><a></a><a></a>
-                </nav>
-            </section>
-            <div class="clear"></div>
-            <div class="alright">
-                <a href="#" class="btn">Xem thêm</a>
-            </div>
-        </div>
-    </div>
     <div class="hor"></div>
     <div class="container_12">
         <div class="grid_12 center">
-            <h3>Services</h3>
+            <h3>Cộng Đồng</h3>
         </div>
-        <div class="grid_3">
-            <h4>Articles</h4>
-            <img src="/Content/images/page1_img1.jpg" alt="" class="img_inner">
-            Lorem ipsum dolor sit t,tetur adipiscing elit. In molliseri eratttis neque facilisi
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
-        <div class="grid_3">
-            <h4>Color Analysis</h4>
-            <ul class="list">
-                <li><a href="#">Lorem ipsum dolor sit </a></li>
-                <li><a href="#">Amet,tetur adipiscing elit</a></li>
-                <li><a href="#">In mollis eratttis neque </a></li>
-                <li><a href="#">Facilisis, sit amet ultretr</a></li>
-                <li><a href="#">Icies erat rutrums facilisis</a></li>
-                <li><a href="#">Nulla vel viverra auctoreo</a></li>
-                <li><a href="#">Magna sodales felis, quis</a></li>
-            </ul>
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
-        <div class="grid_3">
-            <h4>Accessory Installation</h4>
-            <ul class="list">
-                <li><a href="#">Morem ipsum dolor site</a></li>
-                <li><a href="#">Kmet,tetur adipiscing eli</a></li>
-                <li><a href="#">In mollis eratttis nequ </a></li>
-                <li><a href="#">Facilisis, sit amet ultretre</a></li>
-                <li><a href="#">Cies erat rutrums facilis </a></li>
-                <li><a href="#">Kulla vel viverra auctore</a></li>
-                <li><a href="#">Bagna sodales felisquik </a></li>
-            </ul>
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
-        <div class="grid_3">
-            <h4>Floral Design</h4>
-            <ul class="list">
-                <li><a href="#">Korem ipsum dolor sitilo</a></li>
-                <li><a href="#">Pmet, tetur adipiscing eli</a></li>
-                <li><a href="#">On mollis eratttis nequ </a></li>
-                <li><a href="#">Gacilisis, sit amet ultre</a></li>
-                <li><a href="#">Mcies erat rutrumsu </a></li>
-                <li><a href="#">Vacilisis Nulla vel uivra </a></li>
-                <li><a href="#">Nuctoreo Magna sodale </a></li>
-            </ul>
-            <div class="alright"><a href="#" class="btn">Xem thêm</a></div>
-        </div>
+
+        @{ Html.RenderAction("_Footer_Video", "Home");}
+
+        <!--xu huong-->
+        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 1 });}
+
+
+        <!--Khach hang-->
+        @{ Html.RenderAction("_Footer_News", "Home", new { newsCategoryId = 2 });}
+
+
+        <!--cong trinh tieu bieu-->
+        @{ Html.RenderAction("_Footer_Construction", "Home");}
+
     </div>
 </div>
 <!--==============================footer=================================-->

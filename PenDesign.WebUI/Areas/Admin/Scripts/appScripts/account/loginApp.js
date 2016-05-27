@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module("loginApp", [])
-    .controller('loginController', function ($scope, loginService, $window) {
+    .controller('loginController', ['$scope', 'loginService', '$window', function ($scope, loginService, $window) {
         $scope.avatar = "";
         $scope.clicked = false;
         $scope.signIn = function (user) {
@@ -28,7 +28,7 @@ angular.module("loginApp", [])
                         
                 })
         }
-    })
+    }])
     .factory("loginService", ['$http', '$q', function ($http, $q) {
         var accountService = {};
 

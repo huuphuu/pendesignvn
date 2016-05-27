@@ -1,8 +1,10 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("projectController", function ($rootScope, $scope, toaster, projectService, projectNewsService, projectImageService, checkFileNameService, $sce,
-                                            $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs, $state) {
+    .controller("projectController", ['$rootScope', '$scope', 'toaster', 'projectService', 'projectNewsService', 'projectImageService', 'checkFileNameService', '$sce',
+                                                '$location', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'dialogs', '$state', '$filter',
+                                                function ($rootScope, $scope, toaster, projectService, projectNewsService, projectImageService, checkFileNameService, $sce,
+                                                $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs, $state, $filter) {
 
         $scope.allProjects = {};
         $scope.getAllProjects = function () {
@@ -63,9 +65,9 @@ angular.module("adminApp")
 
             projectService.addNewProject(project).$promise.then(
                 function (response) {
+                    //$scope.getAllProjects();
                     $rootScope.showModal = false;
                     toaster.pop('success', "Thành công!", "Đã thêm bài viết " + project.name + " - " + response.message);
-                    $scope.getAllProjects();
                     $location.path("/controlPanel/project-list");
                 }
                 , function (response) {
@@ -83,17 +85,19 @@ angular.module("adminApp")
             var currentProject = {};
             //project news
             currentProject = angular.copy($scope.allProjects[index].projects);
-            console.log("currentProject", currentProject);
+
             for (var i = 0; i < currentProject.news[0].newsMappings.length; i++) {
                 if (currentProject.news[0].newsMappings[i].languageId == languageId)
                     currentProject.news[0].currentNewsMappings = currentProject.news[0].newsMappings[i];
             }
             //project images
             currentProject.projectImages = angular.copy($scope.allProjects[index].projects.projectImages);
+            currentProject.projectImages = $filter('orderBy')(currentProject.projectImages, 'zOrder');
             for (var i = 0; i < currentProject.projectImages.length; i++) {
                 for (var j = 0; j < currentProject.projectImages[i].projectImageMappings.length; j++) {
                     if (currentProject.projectImages[i].projectImageMappings[j].languageId == languageId) {
                         currentProject.projectImages[i].currentProjectImageMappings = currentProject.projectImages[i].projectImageMappings[j];
+                        $scope.currentEditingLanguageIndex = j;
                     }
                 }
             }
@@ -101,7 +105,7 @@ angular.module("adminApp")
             $scope.currentProjectLanguage = currentProject;
             $scope.currentLanguageId = languageId;
 
-            console.log('$scope.currentProjectLanguage', $scope.currentProjectLanguage);
+            //console.log('$scope.currentProjectLanguage', $scope.currentProjectLanguage);
 
             CKEDITOR.instances.detail.setData($scope.currentProjectLanguage.news[0].currentNewsMappings.detail);
             $('html,body').animate({ scrollTop: $('.currentProjectLanguage').offset().top });
@@ -129,25 +133,19 @@ angular.module("adminApp")
         };
 
         $scope.updateProjectLanguage = function (project) {
-
-            $('#uploadBanner').trigger('click');
             var languageName = "";
-            if (news.languageId == 29)
+            if ($scope.currentLanguageId == 29)
                 languageName = "Tiếng Anh";
             else
                 languageName = "Tiếng Việt";
-
-            if ($scope.resourceUrl != "")
-                project.resourceUrl = $scope.resourceUrl;
-
-            project.detail = CKEDITOR.instances.detail.getData();
+            project.news[0].newsMappings[$scope.currentEditingLanguageIndex].detail = CKEDITOR.instances.detail.getData();
 
             var bodyMessage = "Bạn muốn cập nhật dự án: " + project.name + " (" + languageName + ") ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return projectNewsService.updateProject(project).$promise.then(
+                return projectService.updateProject(project).$promise.then(
                 function (response) {
                     $scope.getAllProjects();
                     $rootScope.showModal = false;
@@ -162,26 +160,43 @@ angular.module("adminApp")
             }, function () { })
         }
 
-        //Sortable & inline editing
-        var i;
-        $scope.itemsList = {
-            items1: [],
-            items2: []
-        };
-
-        for (i = 0; i <= 5; i += 1) {
-            $scope.itemsList.items1.push({ 'Id': i, 'Label': 'Item ' + i });
-        }
-
         $scope.sortableOptions = {
             containment: '#sortable-container',
             //restrict move across columns. move only within column.
             accept: function (sourceItemHandleScope, destSortableScope) {
                 return sourceItemHandleScope.itemScope.sortableScope.$id === destSortableScope.$id;
+            },
+            orderChanged: function (event) {
+                for (var i = 0; i < $scope.currentProjectLanguage.projectImages.length; i++) {
+                    $scope.currentProjectLanguage.projectImages[i].zOrder = i + 1;
+                }
+
+                return projectService.updateProject($scope.currentProjectLanguage).$promise.then(
+                function (response) {
+                    $scope.getAllProjects();
+                    //$scope.getProject($scope.currentGettingIndex, $scope.currentGettingLanguage);
+                    $rootScope.showModal = false;
+                    $('html,body').animate({ scrollTop: $('.currentProjectLanguage').offset().top });
+                    toaster.pop('success', "Thành công!", "Đã cập nhật vị trí -" + response.message);
+                }, function (response) {
+                    $rootScope.showModal = false;
+                    toaster.pop('error', "Lỗi!", response.message);
+                })
             }
         };
 
-
+        $scope.deleteImage = function(projectImage) {
+            $rootScope.showModal = true;
+            return projectImageService.deleteProjectImage(projectImage).$promise.then(
+                function(response) {
+                    $scope.currentProjectLanguage.projectImages.splice($scope.currentProjectLanguage.projectImages.indexOf(projectImage), 1);
+                    $rootScope.showModal = false;
+                    toaster.pop('success', "Thành công!", "Đã xóa hình ảnh -" + response.message);
+                }, function(response) {
+                    $rootScope.showModal = false;
+                    toaster.pop('error', "Lỗi!", response.message);
+                });
+        }
         //DataTable
         $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withPaginationType('full_numbers')
@@ -201,7 +216,8 @@ angular.module("adminApp")
         $scope.dtColumnDefs = [
             DTColumnDefBuilder.newColumnDef(0),
             //DTColumnDefBuilder.newColumnDef(1).notVisible(),
-            DTColumnDefBuilder.newColumnDef(6).notSortable()
+            //DTColumnDefBuilder.newColumnDef(6).notSortable()
+            DTColumnDefBuilder.newColumnDef(5).notSortable()
         ];
 
 
@@ -213,6 +229,7 @@ angular.module("adminApp")
                 'url': '/admin/api/upload',
                 'acceptedFiles': "image/*",
                 'maxFiles': 1,
+                'maxFilesize': 10000,
                 'autoProcessQueue': false,
                 'addRemoveLinks': true,
                 init: function () {
@@ -221,7 +238,6 @@ angular.module("adminApp")
                     //    dz.processQueue();
                     //});
                     $("#uploadBanner").click(function () {
-                        alert("dadada");
                         dz.processQueue();
                     });
 
@@ -231,15 +247,18 @@ angular.module("adminApp")
                         }
                         checkFileNameService.checkFileName(this.files[0].name).then(
                             function () {
-                                $scope.thumbUrl = dz.files[0].name;
+                                $scope.resourceUrl = dz.files[0].name;
                             },
                             function () {
-                                $scope.thumbUrl = dz.files[0].name;
+                                $scope.resourceUrl = dz.files[0].name;
                                 toaster.pop("warning", "Lưu ý!", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
                             }
                         )
                     });
-
+                    this.on("error", function (file, message) {
+                        toaster.pop("error", "Lỗi", "Vui lòng chọn ảnh có dung lượng dưới 1 Mb!")
+                        this.removeFile(file);
+                    });
 
                 }
             },
@@ -254,51 +273,135 @@ angular.module("adminApp")
             }
         };
 
+        $scope.addingProjectImage = { name: "", description: "", resourceUrl: "", projectId: "" };
+        $scope.dropzoneAddProjectImage = {
+            'options': { // passed into the Dropzone constructor
+                'url': '/admin/api/upload',
+                'acceptedFiles': "image/*",
+                'maxFiles': 1,
+                'maxFilesize': 1,
+                'autoProcessQueue': false,
+                'addRemoveLinks': true,
+                init: function () {
+                    var dz = this;
+                    this.on("addedfile", function () {
+                        if ($scope.addingProjectImage.description == "" || $scope.addingProjectImage.name == "") {
+                            if (dz.files[0] != null) {
+                                dz.removeFile(dz.files[0]);
+                            }
+                            toaster.pop('warning', "Vui lòng nhập tên và nội dung ảnh trước");
+                            return;
+                        }
+                           
+                        checkFileNameService.checkFileName(this.files[0].name).then(
+                            function () {
+                                var bodyMessage = "Bạn muốn thêm ảnh này ?";
+                                var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
+                                dlg.result.then(function (btn) {
+                                    $rootScope.showModal = true;
+                                    dz.processQueue();
 
-        $scope.uploadingFile = true;
+                                    $scope.addingProjectImage.resourceUrl = dz.files[0].name;
+                                    $scope.addingProjectImage.projectId = $scope.currentProjectLanguage.id;
+
+                                    return projectImageService.addNewProjectImage($scope.addingProjectImage).$promise.then(
+                                    function (response) {
+                                        $scope.getAllProjects();
+
+                                        $scope.$watch('allProjects', function (newVal, oldVal) {
+                                            $scope.getProject($scope.currentGettingIndex, $scope.currentGettingLanguage);
+                                            $rootScope.showModal = false;
+                                            $('html,body').animate({ scrollTop: $('.currentProjectLanguage').offset().top });
+                                        });
+                                        $scope.addingProjectImage = { name: "", description: "", resourceUrl: "", projectId: "" };
+                                        
+                                        toaster.pop('success', "Thành công!", "Đã thêm hình ảnh " + response.message);
+                                    }, function (response) {
+                                        $rootScope.showModal = false;
+                                        $scope.addingProjectImage = { name: "", description: "", resourceUrl: "", projectId: "" };
+                                        toaster.pop('error', "Lỗi!", response.message);
+                                    })
+                                }, function () {
+                                    if (dz.files[0] != null) {
+                                        dz.removeFile(dz.files[0]);
+                                    }
+                                })
+                            },
+                            function () {
+                                $scope.resourceUrl = dz.files[0].name;
+                                if (dz.files[0] != null) {
+                                    dz.removeFile(dz.files[0]);
+                                }
+                                toaster.pop("warning", "Lưu ý!", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
+                            }
+                        )
+
+
+                        if (this.files[1] != null) {
+                            this.removeFile(this.files[0]);
+                        }
+                    });
+                    this.on("error", function (file, message) {
+                        toaster.pop("error", "Lỗi", "Vui lòng chọn ảnh có dung lượng dưới 1 Mb!")
+                        this.removeFile(file);
+                    });
+
+                }
+            },
+            'eventHandlers': {
+                'sending': function (file, xhr, formData) {
+                },
+                'success': function (file, response) {
+                    if (this.files[0] != null) {
+                        this.removeFile(this.files[0]);
+                    }
+                    $rootScope.showModal = false;
+                }
+            }
+        };
+
         $scope.dropzoneProjectImage = {
             'options': { // passed into the Dropzone constructor
                 'url': '/admin/api/upload',
                 'acceptedFiles': "image/*",
                 'maxFiles': 1,
+                'maxFilesize': 1,
                 'autoProcessQueue': false,
                 'addRemoveLinks': true,
                 init: function () {
                     var dz = this;
-                    //$("#addNewBanner, #updateBanner").click(function () {
-                    //    dz.processQueue();
-                    //});
-                    //$("#uploadBanner").click(function () {
-                    //    alert("dadada");
-                    //    dz.processQueue();
-                    //});
 
                     this.on("addedfile", function () {
+                        var currentProjetImageIndex = dz.element.getAttribute('index');
+                        
                         checkFileNameService.checkFileName(this.files[0].name).then(
                             function () {
-                                $scope.resourceUrl = dz.files[0].name;
                                 var bodyMessage = "Bạn muốn upload và thay đổi ảnh này ?";
                                 var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
                                 dlg.result.then(function (btn) {
                                     $rootScope.showModal = true;
                                     dz.processQueue();
-                                    $scope.uploadingFile = false;
 
+                                    var updateCurrentProjectImage = angular.copy($scope.currentProjectLanguage.projectImages[currentProjetImageIndex]);
+                                    updateCurrentProjectImage.resourceUrl = dz.files[0].name;
 
-                                    //return projectNewsService.updateProject(project).$promise.then(
-                                    //function (response) {
-                                    //    dz.processQueue();
-                                    //    $scope.getAllProjects();
-                                    //    $scope.getProject($scope.currentGettingIndex, $scope.currentGettingLanguage);
-                                    //    $scope.uploadingFile = false;
-                                    //    toaster.pop('success', "Thành công!", "Đã cập nhật hình ảnh " + dz.files[0].name + " - " + response.message);
-                                    //    $('html,body').animate({ scrollTop: 0 });
-                                    //}, function (response) {
-                                    //    $rootScope.showModal = false;
-                                    //    toaster.pop('error', "Lỗi!", response.message);
-                                    //})
+                                    return projectImageService.updateProjectImage(updateCurrentProjectImage).$promise.then(
+                                    function (response) {
+                                        $scope.getAllProjects();
+
+                                        $scope.$watch('allProjects', function (newVal, oldVal) {
+                                            $scope.getProject($scope.currentGettingIndex, $scope.currentGettingLanguage);
+                                            $rootScope.showModal = false;
+                                            $('html,body').animate({ scrollTop: $('.currentProjectLanguage').offset().top });
+                                        });
+                                        
+                                        
+                                        toaster.pop('success', "Thành công!", "Đã cập nhật hình ảnh " + response.message);
+                                    }, function (response) {
+                                        $rootScope.showModal = false;
+                                        toaster.pop('error', "Lỗi!", response.message);
+                                    })
                                 }, function () {
-                                    alert("no");
                                     if (dz.files[0] != null) {
                                         dz.removeFile(dz.files[0]);
                                     }
@@ -318,7 +421,10 @@ angular.module("adminApp")
                             this.removeFile(this.files[0]);
                         }
                     });
-
+                    this.on("error", function (file, message) {
+                        toaster.pop("error", "Lỗi", "Vui lòng chọn ảnh có dung lượng dưới 1 Mb!")
+                        this.removeFile(file);
+                    });
 
                 }
             },
@@ -334,19 +440,29 @@ angular.module("adminApp")
                 }
             }
         };
-    })
-.directive('editInPlace', function () {
+    }])
+.directive('editInPlace', ['$rootScope', 'projectImageService', 'toaster', function ($rootScope, projectImageService, toaster) {
     return {
         restrict: 'E',
-        scope: { value: '='},
-        template: '<div class="form-group text-center" style="margin-top:20px;">' +
-                        '<span class="todoName" ng-dblclick="edit()" ng-bind="value"></span>' +
-                        '<input class="todoField form-control" ng-model="value"></input>' +
-                    '</div>',
+        scope: { description: '=', name: '=', currentProjectLanguage: '=', currentEditingLanguageIndex: '=', rootScope: '=', projectImageIndex: '=' },
+        transclude: true,
+        template: '<div class="form-group text-center">' +
+                        '<span class="todoName" ng-dblclick="editName()" ng-bind="name"></span>' +
+                        '<span class="todoName text-muted" ng-dblclick="editName()" ng-if="name.length <= 1 " >Nhấp 2 lần để chỉnh sửa Tên ảnh</span>' +
+                        '<input class="todoField form-control name" ng-model="name" placeholder="Tên ảnh:"></input>' +
+                    '</div>' +
+                    '<div class="form-group text-center">' +
+                        '<span class="todoName" ng-dblclick="editDescription()" ng-bind="description"></span>' +
+                        '<span class="todoName text-muted" ng-dblclick="editDescription()" ng-if="description.length <= 1 " >Nhấp 2 lần để chỉnh sửa nội dung ảnh</span>' +
+                        '<input class="todoField form-control description" ng-model="description" placeholder="Nội dung ảnh: "></input>' +
+                    '</div>'+
+                    '<ng-transclude></ng-transclude>',
+                    
         link: function ($scope, element, attrs) {
             // Let's get a reference to the input element, as we'll want to reference it.
             //var inputElement = angular.element(element.children()[1]);
-            var inputElement = angular.element(element.find('.todoField'));
+            var inputDescriptionElement = angular.element(element.find('.todoField.description'));
+            var inputNameElement = angular.element(element.find('.todoField.name'));
             //console.log("element.children() ---", inputElement);
             // This directive should have a set class so we can style it.
             element.addClass('edit-in-place');
@@ -355,7 +471,7 @@ angular.module("adminApp")
             $scope.editing = false;
 
             // ng-dblclick handler to activate edit-in-place
-            $scope.edit = function () {
+            $scope.editDescription = function () {
                 $scope.editing = true;
 
                 // We control display through a class on the directive itself. See the CSS.
@@ -364,41 +480,83 @@ angular.module("adminApp")
                 // And we must focus the element.
                 // `angular.element()` provides a chainable array, like jQuery so to access a native DOM function,
                 // we have to reference the first element in the array.
-                inputElement.focus();
+                inputDescriptionElement.focus();
+            };
+            $scope.editName = function () {
+                $scope.editing = true;
+                element.addClass('active');
+                inputNameElement.focus();
             };
 
             // When we leave the input, we're done editing.
-            inputElement.on("blur", function () {
-                $scope.editing = false;
-                element.removeClass('active');
-            });
-            inputElement.on('keyup', function (e) {
+            //inputDescriptionElement.on("blur", function () {
+            //    updateProjectLanguage($scope.currentProjectLanguage);
+            //    $scope.editing = false;
+            //    element.removeClass('active');
+            //});
+            inputDescriptionElement.on('keydown', function (e) {
                 if (e.which == 13) {
+                    updateProjectLanguage($scope.currentProjectLanguage);
                     $scope.editing = false;
                     element.removeClass('active');
                     e.preventDefault();
                 }
             });
 
+            //inputNameElement.on("blur", function () {
+            //    updateProjectLanguage($scope.currentProjectLanguage);
+            //    $scope.editing = false;
+            //    element.removeClass('active');
+            //});
+            inputNameElement.on('keydown', function (e) {
+                if (e.which == 13) {
+                    updateProjectLanguage($scope.currentProjectLanguage);
+                    $scope.editing = false;
+                    element.removeClass('active');
+                    e.preventDefault();
+                }
+            });
+
+            var updateProjectLanguage = function (project) {
+                $rootScope.showModal = true;
+                var languageName = "";
+                if (project.news[0].currentNewsMappings == 29)
+                    languageName = "Tiếng Anh";
+                else
+                    languageName = "Tiếng Việt";
+
+                //project.news[0].newsMappings[$scope.currentEditingLanguageIndex].detail = CKEDITOR.instances.detail.getData();
+//                console.log("project.projectImages[projectImageIndex]", project.projectImages[$scope.projectImageIndex]);
+                return projectImageService.updateProjectImage(project.projectImages[$scope.projectImageIndex]).$promise.then(
+                    function (response) {
+                        $rootScope.showModal = false;
+                        toaster.pop('success', "Thành công!", "Đã cập nhật " + response.message);
+                        CKEDITOR.instances.detail.setData('');
+
+                        //$('html,body').animate({ scrollTop: 0 });
+                    }, function (response) {
+                        $rootScope.showModal = false;
+                        toaster.pop('error', "Lỗi!", response.data);
+                    })
+            }
 
         }
     };
-})
+}])
 .directive('uploadFileEditInPlace', function () {
     return {
         restrict: 'E',
-        scope: { value: '=', dropzoneImage: '='},
+        scope: { value: '=', dropzoneImage: '=', projectImageIndex: '='},
         template: '<div class="row form-group">' +
                     '<div class="col-md-12 text-center">' +
-                        '<img ng-src="{{value}}" ng-dblclick="edit()" alt="" class="img-responsive display-inline-block upload-file-edit-in-place" />' +
-                        '<button dropzone="dropzoneImage" class="dropzone">' +
+                        '<img ng-src="{{value}}" ng-dblclick="edit()" alt="" class="img-responsive display-inline-block upload-file-edit-in-place height-150" />' +
+                        '<button dropzone="dropzoneImage" class="dropzone" index="{{projectImageIndex}}">' +
                             '<span class="dz-message">Chọn ảnh Dự án<br /></span> ' +
                         '</button> ' +
                         '<a class="btn btn-danger btn-xs cancel" ng-click="cancel()" style="margin-top:20px" title="Hủy">Hủy</a>' +
                     '</div>' +
                 '</div>',
         link: function ($scope, element, attrs) {
-
             // Let's get a reference to the input element, as we'll want to reference it.
             //var inputElement = angular.element(element.children()[1]);
             var inputElement = angular.element(element.find('.dropzone'));
@@ -430,10 +588,6 @@ angular.module("adminApp")
             };
 
             // When we leave the input, we're done editing.
-            //inputElement.on("blur", function () {
-            //    $scope.editing = false;
-            //    element.removeClass('active');
-            //});
             inputElement.on('keyup', function (e) {
                 if (e.which == 13) {
                     $scope.editing = false;

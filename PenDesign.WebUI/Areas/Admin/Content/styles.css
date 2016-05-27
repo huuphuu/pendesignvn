@@ -135,18 +135,48 @@ html *, .alert, .panel-group .panel, Button,
 }*/
 
 #sortable-container {
-    display: inline-block;
+    display: block;
 }
+
 .as-sortable-item, .as-sortable-placeholder {
-    margin: 0 !important;
+    margin: 1px 0px 5px 0px !important;
 }
+
 #sortable-container {
     display: block !important;
     margin: 20px 0;
 }
+
 .as-sortable-item {
     border: 0 !important;
+    height: 380px;
 }
+
 .display-inline-block {
     display: inline-block;
+}
+
+.height-150 {
+    height: 150px;
+}
+
+.img-position {
+    font-size: 16px;
+    background: #4169e1;
+    padding: 5px 12px;
+    color: white;
+    margin: 20px 0;
+}
+.upload-file-edit-in-place.active .dropzone {
+    position: relative;
+}
+a.btn.cancel {
+    margin-top: 20px;
+    position: absolute;
+    top: -5px;
+    right: 30px;
+}
+
+upload-file-edit-in-place.active .dropzone {
+    min-height: 150px !important;
 }

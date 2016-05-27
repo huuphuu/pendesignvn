@@ -1,220 +1,221 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller("constructionController", function ($rootScope, $scope, toaster, constructionService, checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
+    .controller("constructionController", ['$rootScope', '$scope', 'toaster', 'constructionService', 'newsMappingService',
+                                            'checkFileNameService', '$sce', '$location', 'DTOptionsBuilder', 'DTColumnDefBuilder', '$stateParams', 'dialogs'
+                                            , function ($rootScope, $scope, toaster, constructionService, newsMappingService,
+                                            checkFileNameService, $sce, $location, DTOptionsBuilder, DTColumnDefBuilder, $stateParams, dialogs) {
 
-        $scope.allConstructions = {};
-        $scope.getallConstructions = function () {
-            $rootScope.showModal = true;
-            return constructionService.getallConstructions().$promise.then(
-            function (data) {
+$scope.allNews = {};
+$scope.getAllNews = function () {
+    $rootScope.showModal = true;
+    return constructionService.getAllConstruction().$promise.then(
+    function (data) {
+        $rootScope.showModal = false;
+        $scope.allNews = data;
+    }, function (response) {
+        $rootScope.showModal = true;
+        toaster.pop('error', "Lỗi!", response.data);
+    });
+}
+$scope.getAllNews();
+
+$scope.defaultLanguageId = 129;
+$scope.orderReadonlyIndex = -1;
+
+
+//update zorder
+$scope.editZorder = function (index) {
+    $scope.orderReadonlyIndex = index;
+}
+
+$scope.updateZorder = function (index) {
+    var currentNews = $scope.allNews[index];
+    var bodyMessage = "Bạn muốn cập nhật: " + currentNews.newses.name + " ?";
+    var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
+
+    dlg.result.then(function (btn) {
+        $rootScope.showModal = true;
+
+        return constructionService.updateConstruction(currentNews.newses).$promise.then(
+            function (response) {
+                $scope.getAllNews();
+                $scope.orderReadonlyIndex = -1;
                 $rootScope.showModal = false;
-                $scope.allConstructions = data;
+                toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + currentNews.newses.name + " - " + response.message);
+                $('html,body').animate({ scrollTop: 0 });
             }, function (response) {
-                $rootScope.showModal = true;
-                //toaster.pop('error', "Lỗi!", response.data);
-            });
+                $rootScope.showModal = false;
+                $scope.orderReadonlyIndex = -1;
+                toaster.pop('error', "Lỗi!", response.data);
+            })
+    }, function () { $scope.orderReadonlyIndex = -1; })
+}
+
+
+$scope.addNewNews = function (news) {
+
+    $rootScope.showModal = true;
+    $('#uploadBanner').trigger('click');
+
+    if ($scope.thumbUrl != "")
+        news.thumbUrl = $scope.thumbUrl;
+
+    news.detail = CKEDITOR.instances.detail.getData();
+
+    constructionService.addNewConstruction(news).$promise.then(
+        function (response) {
+            $rootScope.showModal = false;
+            toaster.pop('success', "Thành công!", "Đã thêm bài viết " + news.name + " - " + response.message);
+            $scope.getAllNews();
+            $location.path("/controlPanel/news-list/" + $scope.newsCategoryId);
         }
-        $scope.getallConstructions();
-
-        $scope.addNewConstruction = function (construction) {
-            $rootScope.showModal = true;
-            if ($scope.HomeBannerImageUrl != "")
-                construction.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
-            if ($scope.SubBannerImageUrl != "")
-                construction.SubBannerImageUrl = $scope.SubBannerImageUrl;
-
-            construction.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            construction.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            construction.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            construction.contentRight = CKEDITOR.instances.contentRight.getData();
-            construction.newsCategoryId = $scope.newsCategoryId;
-
-            constructionService.addNewConstruction(construction).$promise.then(
-                function (response) {
-                    $rootScope.showModal = false;
-                    toaster.pop('success', "Thành công!", "Đã thêm bài viết " + construction.name + " - " + response.message);
-                    $scope.getallConstructions();
-                    $location.path("/controlPanel/construction-list");
-                }
-                , function (response) {
-                    $rootScope.showModal = false;
-                    toaster.pop('error', "Lỗi!", response.data);
-                })
-        };
-
-        $scope.getConstruction = function (index) {
-            $scope.currentConstruction = $scope.allConstructions[index];
-            CKEDITOR.instances.bannerImageIntro.setData($scope.currentConstruction.bannerImageIntro);
-            CKEDITOR.instances.contentIntro.setData($scope.currentConstruction.contentIntro);
-            CKEDITOR.instances.contentLeft.setData($scope.currentConstruction.contentLeft);
-            CKEDITOR.instances.contentRight.setData($scope.currentConstruction.contentRight);
-            $('html,body').animate({ scrollTop: $('.editConstruction').offset().top });
-        }
-
-        $scope.deleteNews = function (news) {
-
-            var bodyMessage = "Bạn muốn xóa bài viết: " + news.name + " ?";
-            var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
-
-            dlg.result.then(function (btn) {
-                $rootScope.showModal = true;
-                return constructionService.deleteNews(news).$promise.then(
-                function (response) {
-                    $scope.currentConstruction = null;
-                    $rootScope.showModal = false;
-                    toaster.pop('success', "Thành công!", "Đã xóa bài viết " + news.name + " - " + response.message);
-                    $scope.allConstructions.splice($scope.allConstructions.indexOf(news), 1);
-                }, function (response) {
-                    $rootScope.showModal = false;
-                    toaster.pop('error', "Lỗi!", response.data);
-                })
-            }, function () { })
-        };
-
-        $scope.updateNews = function (news) {
-
-            if ($scope.HomeBannerImageUrl != "")
-                news.HomeBannerImageUrl = $scope.HomeBannerImageUrl;
-            if ($scope.SubBannerImageUrl != "")
-                news.SubBannerImageUrl = $scope.SubBannerImageUrl;
-            news.bannerImageIntro = CKEDITOR.instances.bannerImageIntro.getData();
-            news.contentIntro = CKEDITOR.instances.contentIntro.getData();
-            news.contentLeft = CKEDITOR.instances.contentLeft.getData();
-            news.contentRight = CKEDITOR.instances.contentRight.getData();
-
-            var bodyMessage = "Bạn muốn cập nhật bài viết: " + news.name + " ?";
-            var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
-
-            dlg.result.then(function (btn) {
-                $rootScope.showModal = true;
-                return constructionService.updateNews(news).$promise.then(
-                function (response) {
-                    $scope.getallConstructions();
-                    $rootScope.showModal = false;
-                    $scope.currentConstruction = null;
-                    CKEDITOR.instances.bannerImageIntro.setData('');
-                    CKEDITOR.instances.contentIntro.setData('');
-                    CKEDITOR.instances.contentLeft.setData('');
-                    CKEDITOR.instances.contentRight.setData('');
-                    toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + news.name + " - " + response.message);
-                    $('html,body').animate({ scrollTop: 0 });
-                }, function (response) {
-                    $rootScope.showModal = false;
-                    toaster.pop('error', "Lỗi!", response.data);
-                })
-            }, function () { })
-        }
-
-        //DataTable
-        $scope.$watch('allConstructions', function (newVal, oldVal) {
-            if (newVal && newVal != null) {
-                $scope.dtOptions = DTOptionsBuilder.newOptions()
-                                   .withPaginationType('full_numbers')
-                                   .withOption('responsive', true)
-                                   .withDisplayLength(10)
-                                   .withLanguageSource('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/vnLanguageDataTable.json')
-                                   .withTableTools('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/copy_csv_xls_pdf.swf')
-                                   .withTableToolsButtons([
-                                       'copy',
-                                       'print', {
-                                           'sExtends': 'collection',
-                                           'sButtonText': 'Save',
-                                           'aButtons': ['csv', 'xls', 'pdf']
-                                       }
-                                   ]);
-
-                $scope.dtColumnDefs = [
-                    DTColumnDefBuilder.newColumnDef(0),
-                    //DTColumnDefBuilder.newColumnDef(1).notVisible(),
-                    DTColumnDefBuilder.newColumnDef(6).notSortable()
-                ];
-            }
+        , function (response) {
+            $rootScope.showModal = false;
+            toaster.pop('error', "Lỗi!", response.data);
         })
-
-        // Uploader Plugin Code
-        $scope.HomeBannerImageUrl = "";
-        $scope.SubBannerImageUrl = "";
-        $scope.dropzoneConfigHome = {
-            'options': { // passed into the Dropzone constructor
-                'url': '/admin/api/upload',
-                'acceptedFiles': "image/*",
-                'maxFiles': 1,
-                'autoProcessQueue': false,
-                'addRemoveLinks': true,
-                init: function () {
-                    var dz = this;
-                    $("#addNews").click(function () {
-                        dz.processQueue();
-                    });
-
-                    this.on("addedfile", function () {
-                        if (this.files[1] != null) {
-                            this.removeFile(this.files[0]);
-                        }
-                        checkFileNameService.checkFileName(this.files[0].name).then(
-                            function () {
-                                $scope.HomeBannerImageUrl = dz.files[0].name;
-                            },
-                            function () {
-                                $scope.HomeBannerImageUrl = dz.files[0].name;
-                                toaster.pop("warning", "Lỗi", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
-                            }
-                        )
-                    });
+};
 
 
+$scope.getNews = function (index, languageId) {
+    var currentNews = $scope.allNews[index].newses.newsMappings;
+    for (var i = 0; i < currentNews.length; i++) {
+        if (currentNews[i].languageId == languageId)
+            $scope.currentNewsLanguage = currentNews[i];
+    }
+    CKEDITOR.instances.detail.setData($scope.currentNewsLanguage.detail);
+    $('html,body').animate({ scrollTop: $('.currentNewsLanguage').offset().top });
+}
+
+$scope.deleteNews = function (index, news) {
+
+    var bodyMessage = "Bạn muốn xóa bài viết: " + news.name + " ?";
+    var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
+
+    dlg.result.then(function (btn) {
+        $rootScope.showModal = true;
+
+        return constructionService.deleteConstruction(news).$promise.then(
+            function (response) {
+                $rootScope.showModal = false;
+                $scope.currentNewsLanguage = null;
+                toaster.pop('success', "Thành công!", "Đã xóa bài viết " + news.name + " - " + response.message);
+                $scope.allNews.splice(index, 1);
+            }, function (response) {
+                $rootScope.showModal = false;
+                toaster.pop('error', "Lỗi!", response.data);
+            })
+    }, function () { })
+};
+
+$scope.updateNewsLanguage = function (news) {
+    $('#uploadBanner').trigger('click');
+    var languageName = "";
+    if (news.languageId == 29)
+        languageName = "Tiếng Anh";
+    else
+        languageName = "Tiếng Việt";
+
+    var bodyMessage = "Bạn muốn cập nhật bài viết: " + news.title + " (" + languageName + ") ?";
+    var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
+
+    dlg.result.then(function (btn) {
+        $rootScope.showModal = true;
+
+        if ($scope.thumbUrl != "")
+            news.thumbUrl = $scope.thumbUrl;
+
+        news.detail = CKEDITOR.instances.detail.getData();
+
+        return newsMappingService.updateNews(news).$promise.then(
+            function (response) {
+                $scope.getAllNews();
+                $rootScope.showModal = false;
+                $scope.currentNewsLanguage = null;
+                toaster.pop('success', "Thành công!", "Đã cập nhật bài viết " + news.title + " - " + response.message);
+                $('html,body').animate({ scrollTop: 0 });
+            }, function (response) {
+                $rootScope.showModal = false;
+                toaster.pop('error', "Lỗi!", response.data);
+            })
+    }, function () { })
+}
+
+
+//DataTable
+$scope.dtOptions = DTOptionsBuilder.newOptions()
+.withPaginationType('full_numbers')
+.withOption('responsive', true)
+.withDisplayLength(10)
+.withLanguageSource('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/vnLanguageDataTable.json')
+.withTableTools('/Areas/Admin/Scripts/angularjs/angularjsPlugin/angularjsDataTable/copy_csv_xls_pdf.swf')
+.withTableToolsButtons([
+    'copy',
+    'print', {
+        'sExtends': 'collection',
+        'sButtonText': 'Save',
+        'aButtons': ['csv', 'xls', 'pdf']
+    }
+]);
+
+$scope.dtColumnDefs = [
+    DTColumnDefBuilder.newColumnDef(0),
+    //DTColumnDefBuilder.newColumnDef(1).notVisible(),
+    //DTColumnDefBuilder.newColumnDef(6).notSortable()
+    DTColumnDefBuilder.newColumnDef(5).notSortable()
+];
+
+
+
+// Uploader Plugin Code
+$scope.thumbUrl = "";
+$scope.dropzoneConfigHome = {
+    'options': { // passed into the Dropzone constructor
+        'url': '/admin/api/upload',
+        'acceptedFiles': "image/*",
+        'maxFiles': 1,
+        'maxFilesize': 10000,
+        'autoProcessQueue': false,
+        'addRemoveLinks': true,
+        init: function () {
+            var dz = this;
+            //$("#addNewBanner, #updateBanner").click(function () {
+            //    dz.processQueue();
+            //});
+            $("#uploadBanner").click(function () {
+                dz.processQueue();
+            });
+
+            this.on("addedfile", function () {
+                if (this.files[1] != null) {
+                    this.removeFile(this.files[0]);
                 }
-            },
-            'eventHandlers': {
-                'sending': function (file, xhr, formData) {
-                },
-                'success': function (file, response) {
-                    if (this.files[0] != null) {
-                        this.removeFile(this.files[0]);
+                checkFileNameService.checkFileName(this.files[0].name).then(
+                    function () {
+                        $scope.thumbUrl = dz.files[0].name;
+                    },
+                    function () {
+                        $scope.thumbUrl = dz.files[0].name;
+                        toaster.pop("warning", "Lưu ý!", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
                     }
-                }
+                )
+            });
+            this.on("error", function (file, message) {
+                toaster.pop("error", "Lỗi", "Vui lòng chọn ảnh có dung lượng dưới 1 Mb!")
+                this.removeFile(file);
+            });
+
+        }
+    },
+    'eventHandlers': {
+        'sending': function (file, xhr, formData) {
+        },
+        'success': function (file, response) {
+            if (this.files[0] != null) {
+                this.removeFile(this.files[0]);
             }
-        };
+        }
+    }
+};
 
-        $scope.dropzoneConfigSub = {
-            'options': { // passed into the Dropzone constructor
-                'url': '/admin/api/upload',
-                'acceptedFiles': "image/*",
-                'maxFiles': 1,
-                'autoProcessQueue': false,
-                'addRemoveLinks': true,
-                init: function () {
-                    var dz = this;
-                    $("#addNews").click(function () {
-                        dz.processQueue();
-                    });
-                    this.on("addedfile", function () {
-                        if (this.files[1] != null) {
-                            this.removeFile(this.files[0]);
-                        }
-                        checkFileNameService.checkFileName(this.files[0].name).then(
-                            function () {
-                                $scope.SubBannerImageUrl = dz.files[0].name;
-                            },
-                            function () {
-                                $scope.SubBannerImageUrl = dz.files[0].name;
-                                toaster.pop("warning", "Lỗi", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
-                            }
-                        )
-                    });
-                }
-            },
-            'eventHandlers': {
-                'sending': function (file, xhr, formData) {
-
-                },
-                'success': function (file, response) {
-                    if (this.files[0] != null) {
-                        this.removeFile(this.files[0]);
-                    }
-                }
-            }
-        };
-
-    })
+}])

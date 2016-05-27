@@ -32,10 +32,12 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         protected UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         protected RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
         private INewsDraftService _newDraftService;
+        private IUserInfoService _userInfoService;
 
-        public UserAccountController(INewsDraftService newsDraftService)
+        public UserAccountController(INewsDraftService newsDraftService, IUserInfoService userInfoService)
         {
             this._newDraftService = newsDraftService;
+            this._userInfoService = userInfoService;
         }
 
         //CRUD USER
@@ -72,11 +74,24 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    var result = await UserManager.DeleteAsync(user);
-                    if (result.Succeeded)
-                        return Request.CreateResponse(HttpStatusCode.OK);
+                    var userModel = UserManager.Users.SingleOrDefault(u => u.Id == user.Id);
+                    if (userModel != null)
+                    {
+                        _userInfoService.DeletePersistent(n => n.AspNetUser_Id == userModel.Id);
+                        var removeFromRole = await UserManager.RemoveFromRoleAsync(user.Id, "users");
+                        if (removeFromRole.Succeeded)
+                        {
+                            var result = await UserManager.DeleteAsync(userModel);
+                            if (result.Succeeded)
+                                return Request.CreateResponse(HttpStatusCode.OK);
+                            else
+                                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                        }
+                        else
+                            return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                    }
                     else
-                        return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                        return Request.CreateResponse(HttpStatusCode.NotFound);
                 }
                 else
                     return Request.CreateResponse(HttpStatusCode.Unauthorized);
@@ -89,7 +104,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
 
         [HttpGet]
         [Route("api/userAccount/getUserInfo")]
-        [CustomAuthorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Users")]
         public HttpResponseMessage getUserInfo() //lay thong tin user dang dang nhap va cac thong bao can duyet
         {
             try

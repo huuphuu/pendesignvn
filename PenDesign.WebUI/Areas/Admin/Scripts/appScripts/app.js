@@ -1,9 +1,9 @@
 ﻿'use strict';
 
-var app = angular.module('adminApp', ['as.sortable', 'ui.bootstrap', 'dialogs.main', 'toaster', 'angularMoment', 'ui.router', 'angularFileUpload', 'ngCookies', 'ngResource', 'ngMessages', 'datatables', 'datatables.tabletools']); //'todo',
+var app = angular.module('adminApp', ['ngRoute', 'youtube-embed', 'as.sortable', 'ui.bootstrap', 'dialogs.main', 'toaster', 'angularMoment', 'ui.router', 'angularFileUpload', 'ngCookies', 'ngResource', 'ngMessages', 'datatables', 'datatables.tabletools']); //'todo'
 
 //ui.router
-app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/controlPanel/banner-list');
 
@@ -24,20 +24,24 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         //Banner
         .state('controlPanel.addBanner', {
             url: '/add-banner',
-            templateUrl: '/Areas/Admin/Templates/Views/Banner/addBanner.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Banner/addBanner.view.html',
+            controller: 'bannerController'
         })
         .state('controlPanel.bannerList', {
             url: '/banner-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Banner/banner.list.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Banner/banner.list.view.html',
+            controller: 'bannerController'
         })
         //User
         .state('controlPanel.register', {
             url: '/user-regiser',
-            templateUrl: '/Areas/Admin/Templates/Views/User/user-register.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/User/user-register.view.html',
+            controller: 'accountController'
         })
         .state('controlPanel.userList', {
             url: '/users-list',
-            templateUrl: '/Areas/Admin/Templates/Views/User/user.list.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/User/user.list.view.html',
+            controller: 'accountController'
         })
         //News
         .state('controlPanel.addNews', {
@@ -53,39 +57,46 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
          //Project
         .state('controlPanel.addProject', {
             url: '/add-project',
-            templateUrl: '/Areas/Admin/Templates/Views/Project/addProject.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Project/addProject.view.html',
+            controller: 'projectController'
         })
         .state('controlPanel.projectList', {
             url: '/project-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Project/project.list.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Project/project.list.view.html',
+            controller: 'projectController'
         })
          //Construction
         .state('controlPanel.addConstruction', {
             url: '/add-construction',
-            templateUrl: '/Areas/Admin/Templates/Views/Construction/addConstruction.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Construction/addConstruction.view.html',
+            controller: 'constructionController'
         })
         .state('controlPanel.constructionList', {
             url: '/Construction-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Construction/construction.list.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Construction/construction.list.view.html',
+            controller: 'constructionController'
         })
         //Video
         .state('controlPanel.addVideo', {
             url: '/add-video',
-            templateUrl: '/Areas/Admin/Templates/Views/Video/addVideo.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Video/addVideo.view.html',
+            controller: 'videoController'
         })
         .state('controlPanel.videoList', {
             url: '/video-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Video/video.list.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Video/video.list.view.html',
+            controller: 'videoController'
         })
         //Email
         .state('controlPanel.contactEmail', {
             url: '/contact-email-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Email/contactEmail.list.view.html'
+            templateUrl: '/Areas/Admin/Templates/Views/Email/contactEmail.list.view.html',
+            controller: 'contactEmailController'
         })
-        .state('controlPanel.email', {
-            url: '/email-list',
-            templateUrl: '/Areas/Admin/Templates/Views/Email/email.list.view.html'
-        })
+//        .state('controlPanel.email', {
+//            url: '/email-list',
+//            templateUrl: '/Areas/Admin/Templates/Views/Email/email.list.view.html'
+//        })
         //Configs
         .state('controlPanel.configs', {
             url: '/configs',
@@ -95,7 +106,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     //if (window.history && window.history.pushState) {
     //    $locationProvider.html5Mode(true);
     //}
-})
+}])
 .run(['$templateCache', function ($templateCache) {
     $templateCache.put('/Areas/Admin/Templates/dialogs/confirmDialog.html',
                         '<div class="modal-header">' +

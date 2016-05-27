@@ -7,7 +7,7 @@
 </section>
 
 
-<section class="content" ng-controller="bannerController">
+<section class="content">
     <h3></h3>
     <!--danh sach email lien he-->
     <div class="row">
@@ -32,7 +32,7 @@
                                 <!--<th>Hình ảnh</th>
                                 <th>Liên kết</th>-->
                                 <th>Thứ tự</th>
-                                <th>Ngôn ngữ khác</th>
+                                <!--<th>Ngôn ngữ khác</th>-->
                                 <th>Người cập nhật</th>
                                 <th>Hiển thị</th>
                                 <th>Thao tác</th>
@@ -64,7 +64,7 @@
                                         <i class="fa fa-check-square-o"></i>
                                     </a>
                                 </td>
-                                <td>
+                                <!--<td>
                                     <a ng-repeat="bannerMapping in banner.banners.bannerMappings"
                                        ng-click="getBanner(parentIndex, bannerMapping.languageId)" style="margin-right: 10px;"
                                        ng-if="bannerMapping.languageId != 129"
@@ -77,7 +77,7 @@
                                         </span>
                                     </a>&nbsp;
                                     <span ng-if="banner.banners.bannerMappings.length <= 1">Không có</span>
-                                </td>
+                                </td>-->
                                 <td>{{banner.editedUser}}</td>
                                 <td>
                                     <label>
@@ -99,7 +99,7 @@
                                 <!--<th>Hình ảnh</th>
                                 <th>Liên kết</th>-->
                                 <th>Thứ tự</th>
-                                <th>Ngôn ngữ</th>
+                                <!--<th>Ngôn ngữ</th>-->
                                 <th>Người cập nhật</th>
                                 <th>Hiển thị</th>
                                 <th>Thao tác</th>

@@ -71,6 +71,12 @@ namespace PenDesign.Core.Interface.Service
         void Delete(Expression<Func<T, bool>> where);
 
         /// <summary>
+        /// Xoa THAT nhieu phan tu thoai dieu kien
+        /// </summary>
+        /// <param name="where"></param>
+        void DeletePersistent(Expression<Func<T, bool>> where);
+
+        /// <summary>
         /// Trả về tối đa MaxHints phần tử thỏa điều kiện
         /// </summary>
         /// <param name="where"></param>

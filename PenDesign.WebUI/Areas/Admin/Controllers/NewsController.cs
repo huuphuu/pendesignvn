@@ -74,7 +74,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 var detail = AdminNewsVMInput.Detail;
                 var newsCategoryId = AdminNewsVMInput.NewsCategoryId;
 
-                var maxOrder = _newsService.Entities.Where(n => n.NewsCategoryId == newsCategoryId).Max(b => b.ZOrder);
+                var maxOrder = _newsService.Entities.Where(n => n.NewsCategoryId == newsCategoryId && n.Deleted == false).Max(b => b.ZOrder);
 
                 var news = new News();
                 news.NewsCategoryId = newsCategoryId;
@@ -126,6 +126,9 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
+                news.ModifiedById = _userId;
+                news.ModifiedDateTime = DateTime.Now;
+
                 _newsService.Update(news);
                 var responseMessage = new { message = "Chỉnh sửa thành công!" };
                 return Request.CreateResponse(HttpStatusCode.OK, responseMessage);

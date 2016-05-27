@@ -92,6 +92,7 @@ namespace PenDesign.WebUI.App_Start
             kernel.Bind<IRepository<ProjectImageMapping>>().To<Repository<ProjectImageMapping>>().InRequestScope();
             kernel.Bind<IRepository<Config>>().To<Repository<Config>>().InRequestScope();
             kernel.Bind<IRepository<OtherPageSEO>>().To<Repository<OtherPageSEO>>().InRequestScope();
+            kernel.Bind<IRepository<UserInfo>>().To<Repository<UserInfo>>().InRequestScope();
 
 
             //Service
@@ -114,6 +115,7 @@ namespace PenDesign.WebUI.App_Start
             kernel.Bind<IProjectImageMappingService>().To<ProjectImageMappingService>().InRequestScope();
             kernel.Bind<IConfigService>().To<ConfigService>().InRequestScope();
             kernel.Bind<IOtherPageSEOService>().To<OtherPageSEOService>().InRequestScope();
+            kernel.Bind<IUserInfoService>().To<UserInfoService>().InRequestScope();
         }        
     }
 }

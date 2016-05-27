@@ -35,11 +35,12 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var companyName = _configService.GetAll().FirstOrDefault().CompanyName;
-                var sendingEmail = _configService.GetAll().FirstOrDefault().Email;
-                var emailPassword = _configService.GetAll().FirstOrDefault().EmailPassword;
-                var emailPort = _configService.GetAll().FirstOrDefault().EmailPort;
-                var emailSignature = _configService.GetAll().FirstOrDefault().EmailSignature;
+                var configService = _configService.GetAll().FirstOrDefault();
+                var companyName = configService.CompanyName;
+                var sendingEmail = configService.Email;
+                var emailPassword = configService.EmailPassword;
+                var emailPort = configService.EmailPort;
+                var emailSignature = configService.EmailSignature;
                 var emailFrom = companyName +  "<" + sendingEmail + ">";
 
                 var emailBody = "";
@@ -62,19 +63,12 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         }
 
 
-        //[HttpGet]
-        //[Route("api/email/GetAllEmails")]
-        //public IQueryable<EmailRegister> GetAllEmails()
-        //{
-        //    return db.EmailRegister;
-        //}
-
-        //[HttpGet]
-        //[Route("api/email/GetContactEmails")]
-        //public IQueryable<EmailRegister> GetContactEmails()
-        //{
-        //    return db.EmailRegister.Where(m => m.Type == "contact" );
-        //}
+        [HttpGet]
+        [Route("api/email/GetContactEmails")]
+        public IQueryable<Contact> GetContactEmails()
+        {
+            return _contactService.GetAll();
+        }
 
         [HttpPost]
         [Route("api/email/DeleteEmail/{id}")]
@@ -82,9 +76,6 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                //var email = db.EmailRegister.Find(id);
-                //db.EmailRegister.Remove(email);
-                //db.SaveChanges();
                 var email = _contactService.GetById(id);
                 _contactService.Delete(email);
                 _unitOfWork.Commit();

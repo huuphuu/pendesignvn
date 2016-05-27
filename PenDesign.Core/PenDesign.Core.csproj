@@ -109,6 +109,7 @@
     <Compile Include="Interface\Service\BasicServiceInterface\IProjectImageService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IProjectMappingService.cs" />
     <Compile Include="Interface\Service\BasicServiceInterface\IProjectService.cs" />
+    <Compile Include="Interface\Service\BasicServiceInterface\IUserInfoService.cs" />
     <Compile Include="Interface\Service\IService.cs" />
     <Compile Include="Model\AdminMenu.cs" />
     <Compile Include="Model\ApplicationRole.cs" />

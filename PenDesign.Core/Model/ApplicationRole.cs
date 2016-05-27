@@ -18,7 +18,7 @@ namespace PenDesign.Core.Model
 
         //public int RolePermissionId { get; set; }
         //[ForeignKey("RolePermissionId")]
-        public string RolePermissionId { get; set; }
+//        public string RolePermissionId { get; set; }
         public virtual List<RolePermission> RolePermissions { get; set; }
     }
 }

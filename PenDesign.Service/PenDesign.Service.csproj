@@ -59,6 +59,7 @@
     <Compile Include="Base\ProjectImageService.cs" />
     <Compile Include="Base\ProjectMappingService.cs" />
     <Compile Include="Base\ProjectService.cs" />
+    <Compile Include="Base\UserInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

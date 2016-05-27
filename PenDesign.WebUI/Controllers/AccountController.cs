@@ -120,7 +120,7 @@ namespace PenDesign.WebUI.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)//RegisterViewModel model
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 model.Available = true;
                 if (model.Avatar != null && model.Avatar.ToString() != "")
@@ -177,6 +177,40 @@ namespace PenDesign.WebUI.Controllers
             // If we got this far, something failed, redisplay form
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest); //return View(model);
         }
+
+//        //
+//        // POST: /Account/Delete
+//        [HttpPost]
+//        [AllowAnonymous]
+//        //[ValidateAntiForgeryToken]
+//        public async Task<ActionResult> Delete(ApplicationUser user)//RegisterViewModel model
+//        {
+////            try
+////            {
+//                if (User.Identity.IsAuthenticated)
+//                {
+//                    // Remove user from role first!
+//                    var remFromRole = await UserManager.RemoveFromRoleAsync(user.Id, "Users");
+//                    if (remFromRole.Succeeded)
+//                    {
+//                        var result = await UserManager.DeleteAsync(user);
+//                        if (result.Succeeded)
+//                            return new HttpStatusCodeResult(HttpStatusCode.OK);
+//                        else
+//                            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+//                    }
+//                    else
+//                        return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+//                   
+//                }
+//                else
+//                    return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+////            }
+////            catch
+////            {
+////                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+////            }
+//        }
 
         //
         // GET: /Account/ForgotPassword

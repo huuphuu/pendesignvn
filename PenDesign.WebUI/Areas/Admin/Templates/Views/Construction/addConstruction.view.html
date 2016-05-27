@@ -1,4 +1,4 @@
-﻿<section class="content-header" ng-controller="constructionController">
+﻿<section class="content-header">
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="#"><i class="fa fa-dashboard"></i> Công trình thực tế</a></li>
@@ -7,7 +7,7 @@
 </section>
 
 
-<section class="content" ng-controller="constructionController">
+<section class="content">
     <h3></h3>
     <!--them bai viet-->
     <div class="row">
@@ -15,7 +15,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <i class="fa fa-plus-circle"></i>
-                    <h3 class="box-title text-uppercase">THÊM BÀI VIẾT {{categoryName}}</h3>
+                    <h3 class="box-title text-uppercase">THÊM BÀI VIẾT CÔNG TRÌNH THỰC TẾ</h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
                         <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
@@ -27,25 +27,50 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <label for="name">Tên bài viết: </label>
                                     <input type="text" class="form-control" name="name" ng-model="news.name" placeholder="Tên bài viết:" required />
                                     <div ng-messages="addNewsForm.name.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
+                            </div>
+                            <!--<div class="col-md-4">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="keyword" ng-model="news.keyword" placeholder="Keywork (SEO):" required></textarea>
-                                    <div ng-messages="addNewsForm.keyword.$error"
+                                    <label for="name">Thứ tự: </label>
+                                    <input type="text" class="form-control" name="zOrder" ng-model="news.zOrder" placeholder="Thứ tự:" required min="1"/>
+                                    <div ng-messages="addNewsForm.zOrder.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
+                            </div>-->
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="description" ng-model="news.description" placeholder="Description (SEO):" required></textarea>
-                                    <div ng-messages="addNewsForm.description.$error"
-                                         ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    <label for="name">Nội dung Intro: </label>
+                                    <input type="text" class="form-control" name="intro" ng-model="news.intro" placeholder="Nội dung Intro:" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="name">Keyword (SEO): </label>
+                                    <textarea class="form-control" name="keyword" ng-model="news.keyword" placeholder="Keywork (SEO):"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="name">Description (SEO): </label>
+                                    <textarea class="form-control" name="description" ng-model="news.description" placeholder="Description (SEO)"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="name">MetaData (SEO): </label>
+                                    <textarea class="form-control" name="metaData" ng-model="news.metaData" placeholder="MetaData (SEO) - (Chỉ nhập nếu bạn biết chắc chắn mình đang làm gì)"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="name">Hình đại diện: </label>
                                             <div>
                                                 <button dropzone="dropzoneConfigHome" class="dropzone">
                                                     <span class="dz-message">Chọn ảnh đại diện (Trang chủ)<br /></span>
@@ -53,37 +78,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div>
-                                                <button dropzone="dropzoneConfigSub" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chi tiết)<br /></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea id="bannerImageIntro" required name="bannerImageIntro" ng-model="news.bannerImageIntro" class="textarea" placeholder="Nội dung Intro của ảnh đại diện Trang chủ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea id="contentIntro" required name="contentIntro" ng-model="news.contentIntro" class="textarea" placeholder="Nội dung Intro của trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <label for="name">Nội dung: </label>
+                                    <textarea class="form-control" name="detail" ng-model="news.detail" placeholder="Nội dung"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <textarea id="contentLeft" name="courseLeft" ng-model="news.contentLeft" class="textarea" placeholder="Nội dung bên trái trang chi tiết (nếu bỏ trống phần này, phần nội dung bên phải sẽ hiển thị)" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <textarea id="contentRight" name="contentRight" ng-model="news.contentRight" class="textarea" placeholder="Nội dung bên phải trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                        </div>
-
                     </form>
                 </div>
                 <div class="box-footer clearfix">
@@ -95,12 +98,12 @@
                         </div>
                         <div class="col-xs-12 col-md-2 pull-right">
                             <button class="pull-right btn btn-success" id="addNews" ng-click="addNewNews(news)"
-                                    ng-disabled="addNewsForm.name.$error.required
-                                                || addNewsForm.keyword.$error.required
-                                                || addNewsForm.description.$error.required
-                                    ">
+                                    ng-disabled="addNewsForm.name.$error.required">
                                 Thêm bài viết&nbsp;<i class="fa fa-cloud-upload"></i>
                             </button>
+                        </div>
+                        <div class="hide">
+                            <button id="uploadBanner"></button>
                         </div>
                     </div>
 
@@ -112,35 +115,13 @@
 </section>
 
 <script type="text/javascript">
-    //CKEditor & ckfinder Noi dung bannerImageIntro
-    var editor1 = CKEDITOR.instances['bannerImageIntro'];
+    //CKEditor & ckfinder Noi dung detail
+    var editor1 = CKEDITOR.instances['detail'];
     if (editor1) { editor1.destroy(true); }
-    CKEDITOR.replace('bannerImageIntro', {
+    CKEDITOR.replace('detail', {
         enterMode: CKEDITOR.ENTER_BR,
         customConfig: '/ckeditor/config.js'
     });
-
-    //CKEditor & ckfinder Noi dung Intro Homepage
-    var editor2 = CKEDITOR.instances['contentIntro'];
-    if (editor2) { editor2.destroy(true); }
-    CKEDITOR.replace('contentIntro', {
-        enterMode: CKEDITOR.ENTER_BR,
-        customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung course
-    var editor3 = CKEDITOR.instances['contentLeft'];
-    if (editor3) { editor3.destroy(true); }
-    CKEDITOR.replace('contentLeft', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
-    var editor4 = CKEDITOR.instances['contentRight'];
-    if (editor4) { editor4.destroy(true); }
-    CKEDITOR.replace('contentRight', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
     CKFinder.setupCKEditor(null, "/ckfinder/");
 
     //Toggle button

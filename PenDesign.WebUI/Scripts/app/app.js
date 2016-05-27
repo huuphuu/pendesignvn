@@ -2,7 +2,7 @@
 
 
 var registerApp = angular.module("registerApp", ['ngResource', 'toaster', 'vcRecaptcha', 'ngMessages'])
-    .controller("formController", function ($scope, $resource, toaster, $http, vcRecaptchaService) {
+    .controller("formController", ['$scope', '$resource', 'toaster', '$http', 'vcRecaptchaService', function ($scope, $resource, toaster, $http, vcRecaptchaService) {
         $scope.showModal = false;
 
         $scope.sendContact = function (contact) {
@@ -16,6 +16,7 @@ var registerApp = angular.module("registerApp", ['ngResource', 'toaster', 'vcRec
                     toaster.pop('success', "Cám ơn bạn đã liên hệ, yêu cầu của bạn đang được xử lý!");
                 },
                 function () {
+                    document.getElementById("form").reset();
                     $scope.response = null;
                     $scope.showModal = false;
                     vcRecaptchaService.reload($scope.widgetId);
@@ -45,4 +46,4 @@ var registerApp = angular.module("registerApp", ['ngResource', 'toaster', 'vcRec
             console.info('Captcha expired. Resetting response object');
             $scope.response = null;
         };
-    })
+    }])

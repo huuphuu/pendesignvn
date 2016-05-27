@@ -23,64 +23,49 @@
                     </div><!-- /. tools -->
                 </div>
                 <div class="box-body">
-                    <form id="addNewsForm" name="addNewsForm" method="post" novalidate>
+                    <form id="editVideoForm" name="editVideoForm" method="post" novalidate>
                         <div class="row">
                             <div class="col-md-12">
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name" ng-model="news.name" placeholder="Tên bài viết:" required />
-                                    <div ng-messages="addNewsForm.name.$error"
+                                    <label for="name">Tên: </label>
+                                    <input type="text" class="form-control" name="name" ng-model="video.name" placeholder="Tên Video:" required />
+                                    <div ng-messages="editVideoForm.name.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
+
                                 <div class="form-group">
-                                    <textarea class="form-control" name="keyword" ng-model="news.keyword" placeholder="Keywork (SEO):" required></textarea>
-                                    <div ng-messages="addNewsForm.keyword.$error"
+                                    <label for="title">Nội dung: </label>
+                                    <input type="text" class="form-control" name="description" ng-model="video.description" placeholder="Tên Video:" required />
+                                    <div ng-messages="editVideoForm.description.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
+
                                 <div class="form-group">
-                                    <textarea class="form-control" name="description" ng-model="news.description" placeholder="Description (SEO):" required></textarea>
-                                    <div ng-messages="addNewsForm.description.$error"
+                                    <label for="title">Youtube Video Id: </label>
+                                    <input type="text" class="form-control" name="resourceUrl" ng-model="video.resourceUrl" placeholder="Youtube Video Id:" required />
+                                    <div ng-messages="editVideoForm.resourceUrl.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-6">
+                                        <label for="name">&nbsp;</label>
                                         <div class="form-group">
                                             <div>
                                                 <button dropzone="dropzoneConfigHome" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chủ)<br /></span>
+                                                    <span class="dz-message">Chọn ảnh đại diện Video<br /></span>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div>
-                                                <button dropzone="dropzoneConfigSub" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chi tiết)<br /></span>
-                                                </button>
-                                            </div>
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <youtube-video class="embed-responsive-item" video-id="video.resourceUrl"></youtube-video>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea id="bannerImageIntro" required name="bannerImageIntro" ng-model="news.bannerImageIntro" class="textarea" placeholder="Nội dung Intro của ảnh đại diện Trang chủ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea id="contentIntro" required name="contentIntro" ng-model="news.contentIntro" class="textarea" placeholder="Nội dung Intro của trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <textarea id="contentLeft" name="courseLeft" ng-model="news.contentLeft" class="textarea" placeholder="Nội dung bên trái trang chi tiết (nếu bỏ trống phần này, phần nội dung bên phải sẽ hiển thị)" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <textarea id="contentRight" name="contentRight" ng-model="news.contentRight" class="textarea" placeholder="Nội dung bên phải trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
                         </div>
 
@@ -89,18 +74,21 @@
                 <div class="box-footer clearfix">
                     <div class="row">
                         <div class="col-xs-5 col-md-1 pull-right">
-                            <a ui-sref="controlPanel.newsList({newsCategoryId: newsCategoryId })" class="pull-right btn btn-danger" id="cancelNews">
+                            <a ui-sref="controlPanel.videoList" class="pull-right btn btn-danger" id="cancelNews">
                                 Hủy&nbsp;<i class="fa fa-times"></i>
                             </a>
                         </div>
                         <div class="col-xs-12 col-md-2 pull-right">
-                            <button class="pull-right btn btn-success" id="addNews" ng-click="addNewNews(news)"
+                            <button class="pull-right btn btn-success" id="addVideo" ng-click="addNewVideo(video)"
                                     ng-disabled="addNewsForm.name.$error.required
                                                 || addNewsForm.keyword.$error.required
                                                 || addNewsForm.description.$error.required
                                     ">
-                                Thêm bài viết&nbsp;<i class="fa fa-cloud-upload"></i>
+                                Thêm Video&nbsp;<i class="fa fa-cloud-upload"></i>
                             </button>
+                        </div>
+                        <div class="hide">
+                            <button id="uploadBanner"></button>
                         </div>
                     </div>
 
@@ -112,36 +100,7 @@
 </section>
 
 <script type="text/javascript">
-    //CKEditor & ckfinder Noi dung bannerImageIntro
-    var editor1 = CKEDITOR.instances['bannerImageIntro'];
-    if (editor1) { editor1.destroy(true); }
-    CKEDITOR.replace('bannerImageIntro', {
-        enterMode: CKEDITOR.ENTER_BR,
-        customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung Intro Homepage
-    var editor2 = CKEDITOR.instances['contentIntro'];
-    if (editor2) { editor2.destroy(true); }
-    CKEDITOR.replace('contentIntro', {
-        enterMode: CKEDITOR.ENTER_BR,
-        customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung course
-    var editor3 = CKEDITOR.instances['contentLeft'];
-    if (editor3) { editor3.destroy(true); }
-    CKEDITOR.replace('contentLeft', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
-    var editor4 = CKEDITOR.instances['contentRight'];
-    if (editor4) { editor4.destroy(true); }
-    CKEDITOR.replace('contentRight', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
-    CKFinder.setupCKEditor(null, "/ckfinder/");
+  
 
     //Toggle button
     var o = $.AdminLTE.options;

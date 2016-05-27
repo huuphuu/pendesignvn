@@ -12,8 +12,8 @@ namespace PenDesign.Core.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Available { get; set; }
-        public string ApplicationRoleId { get; set; }
-        [ForeignKey("ApplicationRoleId")]
+//        public string ApplicationRoleId { get; set; }
+//        [ForeignKey("ApplicationRoleId")]
         public virtual List<ApplicationRole> ApplicationRoles { get; set; }
 
     }

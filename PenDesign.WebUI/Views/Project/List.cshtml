@@ -24,8 +24,8 @@
             <a href="/" title="Trang chủ">Trang chủ</a> / Dự án
         </div>
         @*<div class="grid_12">
-            <h2>Dự án</h2>
-        </div>*@
+                <h2>Dự án</h2>
+            </div>*@
         <div class="clear cl1"></div>
         <div class="serv">
             @if (Model.Project != null && Model.Project.Count() > 0)
@@ -39,23 +39,28 @@
                             var projectNews = item.News.SingleOrDefault().NewsMappings.SingleOrDefault(nm => nm.LanguageId == languageId);
                             var title = projectNews.Title;
                             var intro = projectNews.Intro;
-                            
+
                             var detailUrl = "/du-an/" + XString.ToAscii(title) + "-" + item.Id;
                             var firstImage = item.ProjectImages.First();
-                            foreach (var image in item.ProjectImages)
+                            if (item.ProjectImages.Where(pi => pi.Deleted == false).Count() > 0 && item.ProjectImages != null)
                             {
-                                var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Name;
-                                if (image.Equals(firstImage))
+                                foreach (var image in item.ProjectImages)
                                 {
-                                    <a class="gal group-@i" href="@image.ResourceUrl" title="@imageName">
-                                        <img src="@image.Thumbnail" class="img-responsive" alt="@imageName"/>
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a class="group-@i hidden" href="@image.ResourceUrl" title="@imageName"></a>
+                                    var imageName = image.ProjectImageMappings.Where(m => m.LanguageId == languageId && m.Status == true && m.Deleted == false).SingleOrDefault().Name;
+
+                                    if (image.Equals(firstImage))
+                                    {
+                                        <a class="gal group-@i" href="@image.ResourceUrl" title="@imageName">
+                                            <img src="@image.Thumbnail" class="img-responsive" alt="@imageName"/>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="group-@i hidden" href="@image.ResourceUrl" title="@imageName"></a>
+                                    }
                                 }
                             }
+
                         }
                         <div class="text1">
                             <a href="@detailUrl">@title</a>
@@ -76,13 +81,16 @@
                     i++;
                 }
             }
+            else
+            {
+                <p>Bài viết đang được cập nhật, vui lòng quay lại sau.</p>
+            }
 
         </div>
         <div class="clear cl1"></div>
         @Html.Paging(new PagingOptions(Model.PagingItems.TotalPages))
     </div>
 </div>
-
 
 
 

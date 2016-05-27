@@ -67,7 +67,7 @@ namespace PenDesign.Common.Utils
 
 
             AlternateView avHtml = AlternateView.CreateAlternateViewFromString(Body, null, MediaTypeNames.Text.Html);
-            var imageLocation = HttpContext.Current.Server.MapPath("~/Content/images/Logo-Brand.png");
+            var imageLocation = HttpContext.Current.Server.MapPath("~/Content/images/logo.png");
             LinkedResource pic1 = new LinkedResource(imageLocation);
             pic1.ContentId = "Pic1";
             avHtml.LinkedResources.Add(pic1);

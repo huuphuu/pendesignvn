@@ -1,7 +1,8 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller('accountController', function ($rootScope, $scope, toaster, accountService, checkFileNameService, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs) {
+    .controller('accountController', ['$rootScope', '$scope', 'toaster', 'accountService', 'checkFileNameService', '$location', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'dialogs',
+                                    function ($rootScope, $scope, toaster, accountService, checkFileNameService, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs) {
         //DataTable
         $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withPaginationType('full_numbers')
@@ -33,6 +34,7 @@ angular.module("adminApp")
                 'url': '/admin/api/upload',
                 'acceptedFiles': "image/*",
                 'maxFiles': 1,
+                'maxFilesize': 1,
                 'autoProcessQueue': false,
                 'addRemoveLinks': true,
                 init: function () {
@@ -53,6 +55,10 @@ angular.module("adminApp")
                                 toaster.pop("warning", "Lỗi", "Tên file này đã có trong thư mục, vui lòng đổi tên khác HOẶC file đã có sẽ bị chép đè!")
                             }
                         )
+                    });
+                    this.on("error", function (file, message) {
+                        toaster.pop("error", "Lỗi", "Vui lòng chọn ảnh có dung lượng dưới 1 Mb!")
+                        this.removeFile(file);
                     });
                 }
             },
@@ -82,7 +88,7 @@ angular.module("adminApp")
                     function (response) {
                         $rootScope.showModal = false;
                         $scope.clicked = false;
-                        toaster.pop('error', "Lỗi!", response.data);
+                        toaster.pop('error', "Lỗi!", response);
                     });
         }
 
@@ -134,7 +140,8 @@ angular.module("adminApp")
         }
 
         $scope.deleteUser = function (user) {
-
+            console.log('user', user, user.userId);
+            user.id = user.userId;
             var bodyMessage = "Bạn muốn xóa người dùng: " + user.userName + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
@@ -166,49 +173,50 @@ angular.module("adminApp")
         }
         $scope.getAllRoles();
 
-        $scope.getRole = function (roleName) {
-            return accountService.getRole(roleName).then(
-                    function () { },
-                    function () { });
-        }
-
-        $scope.createRole = function (roleName) {
-            return accountService.createRole(roleName).then(
-                    function () { },
-                    function () { });
-        }
-
-        $scope.deleteRole = function (roleName) {
-            return accountService.deleteRole(roleName).then(
-                    function () { },
-                    function () { });
-        }
-
-        $scope.editRole = function (roleObj) {
-            return accountService.editRole(roleObj).then(
-                    function () { },
-                    function () { });
-        }
-
-        $scope.roleAddToUser = function (roleName, userName) {
-            return accountService.roleAddToUser(roleName, userName).then(
-                    function () { },
-                    function () { });
-        }
-
-        $scope.getUserRoles = function (userName) {
-            return accountService.roleAddToUser(userName).then(
-                    function () { },
-                    function () { });
-        }
-
-        $scope.DeleteRoleForUser = function (roleName, userName) {
-            return accountService.DeleteRoleForUser(roleName, userName).then(
-                    function () { },
-                    function () { });
-        }
-    })
-   .controller('changePasswordDialogCtrl', function ($scope, $modalInstance, data) {
+//        $scope.getRole = function (roleName) {
+//            return accountService.getRole(roleName).then(
+//                    function () { },
+//                    function () { });
+//        }
+//
+//        $scope.createRole = function (roleName) {
+//            return accountService.createRole(roleName).then(
+//                    function () { },
+//                    function () { });
+//        }
+//
+//        $scope.deleteRole = function (roleName) {
+//            return accountService.deleteRole(roleName).then(
+//                    function () { },
+//                    function () { });
+//        }
+//
+//        $scope.editRole = function (roleObj) {
+//            return accountService.editRole(roleObj).then(
+//                    function () { },
+//                    function () { });
+//        }
+//
+//        $scope.roleAddToUser = function (roleName, userName) {
+//            return accountService.roleAddToUser(roleName, userName).then(
+//                    function () { },
+//                    function () { });
+//        }
+//
+//        $scope.getUserRoles = function (userName) {
+//            return accountService.roleAddToUser(userName).then(
+//                    function () { },
+//                    function () { });
+//        }
+//
+//        $scope.DeleteRoleForUser = function (roleName, userName) {
+//            return accountService.DeleteRoleForUser(roleName, userName).then(
+//                    function () { },
+//                    function () { });
+//        }
+    }])
+   .controller('changePasswordDialogCtrl', ['$scope', '$modalInstance', 'data',
+                                            function ($scope, $modalInstance, data) {
        $scope.title = data.title;
        $scope.enableChange = true;
        $scope.ConfirmNewPassword = '';
@@ -237,4 +245,4 @@ angular.module("adminApp")
        $scope.IsRequestObject = function (object) {
            return ($scope.dataSelected.RequestObjects & object == object) ? true : false;
        }
-   })
+   }])

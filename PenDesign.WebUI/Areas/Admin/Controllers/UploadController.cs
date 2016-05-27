@@ -70,7 +70,7 @@ namespace PenDesign.WebUI.Areas.Admin.Controllers
                 {
                     fileName = "/Content/UploadFiles/images/images/" + filename
                 };
-                if (!WebTools.CreateThumbnail(filename, "/Content/UploadFiles/images/images/", 78, 56, false))
+                if (!WebTools.CreateThumbnail(filename, "/Content/UploadFiles/images/images/", 300, 178, false))
                     return new HttpResponseMessage(HttpStatusCode.InternalServerError);
 
                 return Request.CreateResponse(HttpStatusCode.OK, responseObj);

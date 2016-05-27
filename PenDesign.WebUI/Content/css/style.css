@@ -1,13 +1,13 @@
-@import "reset.css";
+/*@import "reset.css";
 @import "skeleton.css";
 @import "font-awesome.css";
 @import "superfish.css";
 
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300);
-@import url(//fonts.googleapis.com/css?family=Open+Sans:600);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:600);*/
 /*@import url(//http://fonts.googleapis.com/css?family=Dorsa);*/
-@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,700,700italic&subset=latin,vietnamese);
+/*@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,700,700italic&subset=latin,vietnamese);*/
 
 html {
     width: 100%;
@@ -131,7 +131,7 @@ ul {
 
         ul.list li {
             padding-left: 22px;
-            background: url(../images/marker.png) 0 7px no-repeat;
+            background: url(/Content/images/marker.png) 0 7px no-repeat;
         }
 
             ul.list li + li {
@@ -380,12 +380,12 @@ header {
 
 a.gal {
     display: block;
-    background: url(../images/magnify.png) center center no-repeat #e97d25;
+    background: url(/Content/images/magnify.png) center center no-repeat #e97d25;
 }
 
     a.gal.video {
         display: block;
-        background: url(../images/magnify-video.png) center center no-repeat #e97d25;
+        background: url(/Content/images/magnify-video.png) center center no-repeat #e97d25;
     }
 
     a.gal img {
@@ -552,7 +552,7 @@ footer {
     border: none;
     text-indent: -999px;
     z-index: 20;
-    background: url(../images/totop.png) no-repeat left 0;
+    background: url(/Content/images/totop.png) no-repeat left 0;
     transition: 0s ease;
     -o-transition: 0s ease;
     -webkit-transition: 0s ease;

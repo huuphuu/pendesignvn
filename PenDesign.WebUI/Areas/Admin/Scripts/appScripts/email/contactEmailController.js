@@ -1,7 +1,8 @@
 ﻿'use strict';
 
 angular.module("adminApp")
-    .controller('contactEmailController', function ($rootScope, $scope, toaster, emailService, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs) {
+    .controller('contactEmailController', ['$rootScope', '$scope', 'toaster', 'emailService', '$location', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'dialogs',
+                                            function ($rootScope, $scope, toaster, emailService, $location, DTOptionsBuilder, DTColumnDefBuilder, dialogs) {
 
         ////////////////////////////////////////////////////////////
         //DataTable
@@ -74,19 +75,20 @@ angular.module("adminApp")
         }
 
         $scope.sendEmail = function (email) {
-
+            email.toEmail = $scope.currentEmail.email;
             email.body = CKEDITOR.instances.body.getData();
-            console.log("email ", email);
-            var bodyMessage = "Bạn muốn gửi email đến: " + email.email + " ?";
+
+            var bodyMessage = "Bạn muốn gửi email đến: " + $scope.currentEmail.email + " ?";
             var dlg = dialogs.confirm('Xác nhận', bodyMessage, { size: 'md', keyboard: true, backdrop: false, windowClass: 'my-class' });
 
             dlg.result.then(function (btn) {
                 $rootScope.showModal = true;
-                return emailService.sendEmail(email.id).then(
+                return emailService.sendEmail(email).then(
                function (data) {
+                   toaster.pop('success', "Thành công!", "Đã gửi email đến: " + $scope.currentEmail.email);
                    $scope.currentEmail = null;
                    $rootScope.showModal = false;
-                   toaster.pop('success', "Thành công!", "Đã gửi email đến: " + email.email);
+                   
                    $('html,body').animate({ scrollTop: 0 });
                },
                function(response) {
@@ -96,4 +98,4 @@ angular.module("adminApp")
             }, function() {})
         }
 
-    })
+    }])

@@ -1,4 +1,4 @@
-﻿<section class="content-header" ng-controller="newsController">
+﻿<section class="content-header">
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="#"><i class="fa fa-dashboard"></i> {{categoryName}}</a></li>
@@ -7,7 +7,7 @@
 </section>
 
 
-<section class="content" ng-controller="newsController">
+<section class="content">
     <h3></h3>
     <!--danh sach tin tuc-->
     <div class="row">
@@ -30,7 +30,7 @@
                                 <th>#</th>
                                 <th>Tên</th>
                                 <th>Thứ tự</th>
-                                <th>Ngôn ngữ khác</th>
+                                <!--<th>Ngôn ngữ khác</th>-->
                                 <th>Người cập nhật</th>
                                 <th>Hiển thị</th>
                                 <th>Thao tác</th>
@@ -56,7 +56,7 @@
                                         <i class="fa fa-check-square-o"></i>
                                     </a>
                                 </td>
-                                <td>
+                                <!--<td>
                                     <a ng-repeat="newsMapping in news.newses.newsMappings"
                                        ng-click="getNews(parentIndex, newsMapping.languageId)" style="margin-right: 10px;"
                                        ng-if="newsMapping.languageId != 129"
@@ -69,7 +69,7 @@
                                         </span>
                                     </a>&nbsp;
                                     <span ng-if="news.newses.bannerMappings.length <= 1">Không có</span>
-                                </td>
+                                </td>-->
                                 <td>{{news.editedUser}}</td>
                                 <td>
                                     <label>
@@ -89,7 +89,7 @@
                                 <th>#</th>
                                 <th>Tên</th>
                                 <th>Thứ tự</th>
-                                <th>Ngôn ngữ</th>
+                                <!--<th>Ngôn ngữ</th>-->
                                 <th>Người cập nhật</th>
                                 <th>Hiển thị</th>
                                 <th>Thao tác</th>
@@ -175,7 +175,7 @@
                                 <div class="row form-group">
                                     <div class="col-md-4">
                                         <label for="name">Ảnh đại diện: </label>
-                                        <img src="{{currentNewsLanguage.thumbUrl}}" alt="" class="img-responsive" />
+                                        <img ng-src="{{currentNewsLanguage.thumbUrl}}" alt="" class="img-responsive" />
                                     </div>
                                     <div class="col-md-8">
                                         <label for="name">&nbsp;</label>

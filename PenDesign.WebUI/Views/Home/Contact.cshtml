@@ -15,16 +15,14 @@
 @section ScriptsFooter{
     <script src="~/Scripts/PenDesign/TMForm.js"></script>
 
+    <link href="~/Content/metroUI/metro-icons.css" rel="stylesheet" />
     <link href="~/Scripts/angularjs/toaster.min.css" rel="stylesheet" />
-    <script src="~/Scripts/angularjs/angular.min.js"></script>
-    <script src="~/Scripts/angularjs/angular-animate.min.js"></script>
-    <script src="~/Scripts/angularjs/angular-resource.min.js"></script>
-    <script src="~/Scripts/angularjs/angular-sanitize.min.js"></script>
-    <script src="~/Scripts/angularjs/angular-messages.min.js"></script>
-    <script src="~/Scripts/angularjs/toaster.min.js"></script>
-    <script src="~/Scripts/app/app.js"></script>
+
+    @Scripts.Render("~/bundles/angularjs")
     <script src='//www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' async defer></script>
-    <script src="~/Scripts/angularjs/angular-recaptcha.js"></script>
+
+
+
 
 }
 <div class="content" ng-app="registerApp" ng-controller="formController">
@@ -62,18 +60,18 @@
                     <div class="success-message">Contact form submitted</div>
                 </div>
                 <label class="name">
-                    <input type="text" placeholder="Name:" ng-model="contact.name" name="name" required/>
+                    <input type="text" placeholder="Name:" ng-model="contact.name" name="name" required />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid name.</span>
                 </label>
 
                 <label class="email">
-                    <input type="text" placeholder="E-mail:" ng-model="contact.email" name="email"/>
+                    <input type="text" placeholder="E-mail:" ng-model="contact.email" name="email" />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid email.</span>
                 </label>
                 <label class="phone">
-                    <input type="text" placeholder="Phone:" ng-model="contact.phone" name="phone"/>
+                    <input type="text" placeholder="Phone:" ng-model="contact.phone" name="phone" />
                     <span class="empty-message">*This field is required.</span>
                     <span class="error-message">*This is not a valid phone.</span>
                 </label>
@@ -86,7 +84,7 @@
                 <div>
                     <div vc-recaptcha
                          theme="'light'"
-                         key="'6LcL-AoTAAAAAObVhV2B5hllIV2lHGknd-prcN9y'"
+                         key="'6Lc1uw4TAAAAAF1kpJ8cBR6bG1XdIVyALs_HRXZy'"
                          on-create="setWidgetId(widgetId)"
                          on-success="setResponse(response)"
                          on-expire="cbExpiration()"></div>
@@ -95,7 +93,9 @@
                         <button type="reset" class="btn">Clear</button>
                         <button type="button" class="btn" ng-click="sendContact(contact)"
                                 ng-disabled="response == null || contactForm.name.$error.required
-                           ">Send</button>
+                           ">
+                            Send
+                        </button>
                     </div>
                 </div>
             </form>

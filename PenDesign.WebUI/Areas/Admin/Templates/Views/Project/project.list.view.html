@@ -1,4 +1,4 @@
-﻿<section class="content-header" ng-controller="projectController">
+﻿<section class="content-header">
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="#"><i class="fa fa-dashboard"></i> Dự án</a></li>
@@ -7,7 +7,7 @@
 </section>
 
 
-<section class="content" ng-controller="projectController">
+<section class="content">
     <h3></h3>
     <!--danh sach tin tuc-->
     <div class="row">
@@ -30,7 +30,7 @@
                                 <th>#</th>
                                 <th>Tên</th>
                                 <th>Thứ tự</th>
-                                <th>Ngôn ngữ khác</th>
+                                <!--<th>Ngôn ngữ khác</th>-->
                                 <th>Người cập nhật</th>
                                 <th>Hiển thị</th>
                                 <th>Thao tác</th>
@@ -56,20 +56,20 @@
                                         <i class="fa fa-check-square-o"></i>
                                     </a>
                                 </td>
-                                <td>
-                                    <a ng-repeat="projectMapping in project.projects.projectMappings"
-                                       ng-click="getProject(parentIndex, projectMapping.languageId)" style="margin-right: 10px;"
-                                       ng-if="projectMapping.languageId != 129"
+                                <!--<td>
+                                    <a ng-repeat="newsMappings in project.projects.news[0].newsMappings"
+                                       ng-click="getProject(parentIndex, newsMappings.languageId)" style="margin-right: 10px;"
+                                       ng-if="newsMappings.languageId != 129"
                                        title="Click để chỉnh sửa nội dung cho ngôn ngữ này">
-                                        <span ng-if="projectMapping.languageId == 129">
+                                        <span ng-if="newsMappings.languageId == 129">
                                             <img src="/Areas/Admin/Content/Images/icons/flags/VietNam.png" />
                                         </span>
-                                        <span ng-if="projectMapping.languageId == 29">
+                                        <span ng-if="newsMappings.languageId == 29">
                                             <img src="/Areas/Admin/Content/Images/icons/flags/usa.png" />
                                         </span>
                                     </a>&nbsp;
-                                    <span ng-if="project.projects.projectMappings.length <= 1">Không có</span>
-                                </td>
+                                    <span ng-if="project.projects.news[0].newsMappings.length <= 1">Không có</span>
+                                </td>-->
                                 <td>{{project.editedUser}}</td>
                                 <td>
                                     <label>
@@ -89,7 +89,7 @@
                                 <th>#</th>
                                 <th>Tên</th>
                                 <th>Thứ tự</th>
-                                <th>Ngôn ngữ</th>
+                                <!--<th>Ngôn ngữ</th>-->
                                 <th>Người cập nhật</th>
                                 <th>Hiển thị</th>
                                 <th>Thao tác</th>
@@ -180,24 +180,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--<div class="col-md-12">
-                        <div class="row form-group">
-                            <div class="col-md-6">
-                                <label for="name">Ảnh đại diện: </label>
-                                <img src="{{currentProjectLanguage.projectImages[0].resourceUrl}}" alt="" class="img-responsive"/>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="name">&nbsp;</label>
-                                <div class="form-group">
-                                    <div>
-                                        <button dropzone="dropzoneConfigHome" class="dropzone">
-                                            <span class="dz-message">Chọn ảnh đại diện Dự án<br /></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
                                         <div class="col-md-12">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -214,12 +196,39 @@
                                         <div class="col-md-12">
                                             <div id="sortable-container">
                                                 <div class="sortable-row" as-sortable="sortableOptions" ng-model="currentProjectLanguage.projectImages">
-                                                    <div class="col-md-4 text-center" ng-repeat="projectImage in currentProjectLanguage.projectImages" as-sortable-item>
+                                                    <div class="col-md-4 text-center" style="margin-bottom: 20px;" ng-repeat="projectImage in currentProjectLanguage.projectImages | orderBy:'zOrder'" as-sortable-item>
                                                         <div as-sortable-item-handle>
-                                                            <!--<img upload-file-edit-in-place ng-src="{{projectImage.thumbnail}}" alt="" class="img-responsive display-inline-block" />-->
-                                                            <upload-file-edit-in-place value="projectImage.thumbnail" dropzone-image="dropzoneProjectImage"></upload-file-edit-in-place>
+                                                            <!--<img upload-file-edit-in-place ng-src="{{projectImage.resourceUrl}}" alt="" class="img-responsive display-inline-block"/>-->
+                                                            <div class="col-md-12 img-position">
+                                                                Ảnh {{$index + 1}} <span ng-if="$first">(Hình đại diện)</span>
+                                                            </div>
+
+                                                            <upload-file-edit-in-place project-image-index="$index" value="projectImage.resourceUrl" dropzone-image="dropzoneProjectImage"></upload-file-edit-in-place>
                                                             <div class="col-md-12">
-                                                                <edit-in-place value="projectImage.currentProjectImageMappings.description"></edit-in-place>
+                                                                <edit-in-place description="projectImage.currentProjectImageMappings.description"
+                                                                               name="projectImage.currentProjectImageMappings.name"
+                                                                               current-project-language="currentProjectLanguage"
+                                                                               current-editing-language-index="currentEditingLanguageIndex"
+                                                                               project-image-index="$index">
+                                                                    <div class="form-group text-center">
+                                                                        <a class="btn btn-danger btn-md deleteImage" ng-click="deleteImage(projectImage)" title="Hủy">Xóa ảnh</a>        
+                                                                    </div>
+                                                                </edit-in-place>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                    </div>
+                                                    <div class="col-md-4 text-center">
+                                                        <div class="col-md-12 img-position">
+                                                            Thêm ảnh
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12 text-center">
+                                                                <input type="text" ng-model="addingProjectImage.name" placeholder="Nhập tên ảnh" class="form-control"/> <br/>
+                                                                <input type="description" ng-model="addingProjectImage.description" placeholder="Nhập nội dung ảnh" class="form-control" style="margin-bottom: 20px;"/>
+                                                                <button dropzone="dropzoneAddProjectImage" class="dropzone">
+                                                                    <span class="dz-message">Thêm ảnh Dự án<br /></span>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -244,12 +253,8 @@
                                 </button>
                             </div>
                             <div class="col-xs-5 pull-right">
-                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentProjectLanguage)"
-                                        ng-disabled="editProjectForm.name.$error.required
-                                                    ||  editProjectForm.keyword.$error.required
-                                                    ||  editProjectForm.description.$error.required
-                                                    || editProjectForm.order.$error.required ||  editProjectForm.order.$error.min
-                                    ">
+                                <button class="pull-right btn btn-success" id="updateProject" ng-click="updateProjectLanguage(currentProjectLanguage)"
+                                        ng-disabled="editProjectForm.name.$error.required">
                                     Cập nhật bài viết&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                 </button>
                             </div>

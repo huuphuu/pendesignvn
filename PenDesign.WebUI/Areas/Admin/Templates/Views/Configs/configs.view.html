@@ -143,8 +143,6 @@
                                             ng-disabled="editConfigForm.companyName.$error.required
                                                     ||  editConfigForm.slogan.$error.required
                                                     ||  editConfigForm.address.$error.required
-                                                    ||  editConfigForm.about.$error.required
-                                                    || editConfigForm.footerContent.$error.required
                                                     || clicked
                                     ">
                                         Cập nhật&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
@@ -215,6 +213,14 @@
                                         <textarea id="emailSignature" required name="emailSignature" ng-model="config.emailSignature" class="textarea" placeholder="Nội dung giới thiệu" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-2">Email nhận kèm:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="ccEmail" ng-model="config.ccEmail" placeholder="Email nhận kèm:" required />
+                                        <div ng-messages="editConfigForm.ccEmail.$error" ng-if="editConfigForm.ccEmail.$dirty"
+                                             ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -283,10 +289,7 @@
                                 </div>
                                 <div class="col-md-5 pull-right">
                                     <button class="pull-right btn btn-success" id="addNewBanner" ng-click="updateConfig(config)"
-                                            ng-disabled="editConfigForm.registerForm.$error.required
-                                                    ||  editConfigForm.contactForm.$error.required
-                                                    || clicked
-                                    ">
+                                            ng-disabled="clicked">
                                         Cập nhật&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                     </button>
                                 </div>

@@ -6,35 +6,40 @@
 
 @section sectionHeader{
     <base href="/">
-    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Scripts/jquery/jqueryPlugin/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/skins/_all-skins.css" rel="stylesheet" />
 
     <link href="~/Areas/Admin/Scripts/jquery/jqueryPlugin/iCheck/all.css" rel="stylesheet" />
     <link href="~/Scripts/dropzone/basic.css" rel="stylesheet" />
     <link href="~/Scripts/dropzone/dropzone.min.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/metroUI/metro-icons.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/metroUI/metro-icons.css" rel="stylesheet"/>*@
+
+    @Styles.Render("~/bundles/AdminAppIndexCss")
 }
 
 @section sectionFooter{
     <!--jquery plugin-->
-    <script src="~/Areas/Admin/Scripts/jquery/jqueryPlugin/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    @*<script src="~/Areas/Admin/Scripts/jquery/jqueryPlugin/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <script src="~/Areas/Admin/Scripts/jquery/jqueryPlugin/fastclick/fastclick.min.js"></script>
     <script src="~/Areas/Admin/Scripts/jquery/jqueryPlugin/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="~/Areas/Admin/Scripts/jquery/jqueryPlugin/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Areas/Admin/Scripts/jquery/jqueryPlugin/daterangepicker/daterangepicker.js"></script>*@
 
 
     <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/ckfinder/ckfinder.js"></script>
 
-    <script src="~/Scripts/dropzone/dropzone.min.js"></script>
+    @*<script src="~/Scripts/dropzone/dropzone.min.js"></script>*@
     <!--LTE scripts-->
     <script>
         //$.widget.bridge('uibutton', $.ui.button);
     </script>
-    <script src="~/Areas/Admin/Scripts/LTEScripts/app.js"></script>
+    @*<script src="~/Areas/Admin/Scripts/LTEScripts/app.js"></script>
     <script src="~/Areas/Admin/Scripts/LTEScripts/dashboard.js"></script>
-    <script src="~/Areas/Admin/Scripts/LTEScripts/demo.js"></script>
+    <script src="~/Areas/Admin/Scripts/LTEScripts/demo.js"></script>*@
+
+
+    @Scripts.Render("~/bundles/AdminAppIndexJs")
 }
 
 <div>

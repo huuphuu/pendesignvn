@@ -69,18 +69,18 @@ namespace PenDesign.Data.MigrationConfiguration
                     }
 
                     //var adminRoleId = db.ApplicationRoles.Where(m => m.Name == "Admin").Select(m => m.Id);
-                    var adminRoleId = roleManager.Roles.Where(m => m.Name == "Admin").SingleOrDefault().Id;
-                    var rolePermissions = new List<RolePermission>()
-                    {
-                        new RolePermission()
-                        {
-                            Name = "UserAccount-GetAllUsers",
-                            Available = true,
-                            ApplicationRoleId = adminRoleId
-                        }
-                    };
-
-                    rolePermissions.ForEach(m => context.RolePermissions.AddOrUpdate(p => p.Name, m));
+//                    var adminRoleId = roleManager.Roles.Where(m => m.Name == "Admin").SingleOrDefault().Id;
+//                    var rolePermissions = new List<RolePermission>()
+//                    {
+//                        new RolePermission()
+//                        {
+//                            Name = "UserAccount-GetAllUsers",
+//                            Available = true,
+////                            ApplicationRoleId = adminRoleId
+//                        }
+//                    };
+//
+//                    rolePermissions.ForEach(m => context.RolePermissions.AddOrUpdate(p => p.Name, m));
                     try
                     {
                         context.SaveChanges();
@@ -2046,7 +2046,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectImage()
                             {
                                 ProjectId = 15, Type = 2, Status = true, Deleted = false, ZOrder = 1,
-                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img1.jpg",
+                                ResourceUrl = "uE6A0G4Luog", Thumbnail = "/Content/images/page2_img1.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ProjectImageMappings = new List<ProjectImageMapping>()
@@ -2070,7 +2070,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectImage()
                             {
                                 ProjectId = 15, Type = 2, Status = true, Deleted = false, ZOrder = 2,
-                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img2.jpg",
+                                ResourceUrl = "uE6A0G4Luog", Thumbnail = "/Content/images/page2_img2.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ProjectImageMappings = new List<ProjectImageMapping>()
@@ -2094,7 +2094,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectImage()
                             {
                                 ProjectId = 15, Type = 2, Status = true, Deleted = false, ZOrder = 3,
-                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img3.jpg",
+                                ResourceUrl = "uE6A0G4Luog", Thumbnail = "/Content/images/page2_img3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ProjectImageMappings = new List<ProjectImageMapping>()
@@ -2118,7 +2118,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectImage()
                             {
                                 ProjectId = 15, Type = 2, Status = true, Deleted = false, ZOrder = 4,
-                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img1.jpg",
+                                ResourceUrl = "uE6A0G4Luog", Thumbnail = "/Content/images/page2_img1.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ProjectImageMappings = new List<ProjectImageMapping>()
@@ -2142,7 +2142,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectImage()
                             {
                                 ProjectId = 15, Type = 2, Status = true, Deleted = false, ZOrder = 5,
-                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img2.jpg",
+                                ResourceUrl = "uE6A0G4Luog", Thumbnail = "/Content/images/page2_img2.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ProjectImageMappings = new List<ProjectImageMapping>()
@@ -2166,7 +2166,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectImage()
                             {
                                 ProjectId = 15, Type = 2, Status = true, Deleted = false, ZOrder = 6,
-                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img3.jpg",
+                                ResourceUrl = "uE6A0G4Luog", Thumbnail = "/Content/images/page2_img3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ProjectImageMappings = new List<ProjectImageMapping>()
@@ -2190,7 +2190,7 @@ namespace PenDesign.Data.MigrationConfiguration
                             new ProjectImage()
                             {
                                 ProjectId = 15, Type = 2, Status = true, Deleted = false, ZOrder = 7,
-                                ResourceUrl = "https://www.youtube.com/embed/0UL1qogQyEQ", Thumbnail = "/Content/images/page2_img3.jpg",
+                                ResourceUrl = "uE6A0G4Luog", Thumbnail = "/Content/images/page2_img3.jpg",
                                 CreatedById = userId, CreatedDateTime = DateTime.Now,
                                 ModifiedById = userId, ModifiedDateTime = DateTime.Now,
                                 ProjectImageMappings = new List<ProjectImageMapping>()
@@ -3259,8 +3259,9 @@ namespace PenDesign.Data.MigrationConfiguration
                     Slogan = slogan,
                     Email = "mrthanh.testemail@gmail.com",
                     EmailPassword = "kt123456789",
-                    EmailPort = 487,
+                    EmailPort = 587,
                     EmailSignature = "<b>Mr.Thanh - Web Deverloper<br />Website: www.thanhit.net<br />Phone: 099.661.4884 - 0938.039.131</b>",
+                    CCEmail = "pendesignteam@gmail.com",
                     //for SEO
                     GoogleAnalytics = "<script>var google = 'googleAnalytics';</script>",
                     FacebookRetager = "<script>facebook<script>",
@@ -3274,9 +3275,9 @@ namespace PenDesign.Data.MigrationConfiguration
                     FooterContent = footerContent,
                     Yahoo = "lonely_start10882000@yahoo.com",
                     Skype = "mrthanh.kientao",
-                    FacebookSocial = "https://www.facebook.com/anhlee19",
+                    FacebookSocial = "https://www.facebook.com/pages/Pendesign/1578482475737329?ref=hl",
                     GoogleSocial = "www.google.com",
-                    TwitterSocial = "www.twitter.com",
+                    TwitterSocial = "https://twitter.com/pendesignteam",
                     PicasaSocial = "",
                     Youtube = "www.youtube.com",
                     Instagram = ""

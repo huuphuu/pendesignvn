@@ -1,4 +1,4 @@
-﻿<section class="content-header" ng-controller="videoController">
+﻿<section class="content-header">
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="#"><i class="fa fa-dashboard"></i> Video</a></li>
@@ -7,7 +7,7 @@
 </section>
 
 
-<section class="content" ng-controller="videoController">
+<section class="content">
     <h3></h3>
     <!--danh sach tin tuc-->
     <div class="row">
@@ -23,53 +23,76 @@
                     </div><!-- /. tools -->
                 </div>
                 <div class="box-body">
-                    <table datatable="ng" id="newsTable" class="table table-bordered table-hover"
+                    <table datatable="ng" id="bannerTable" class="table table-bordered table-hover"
                            dt-options="dtOptions" dt-column-defs="dtColumnDefs">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tên bài viết</th>
-                                <th>Ngày tạo</th>
-                                <th>Ngày cập nhật</th>
+                                <th>Tên</th>
+                                <th>Thứ tự</th>
+                                <!--<th>Ngôn ngữ khác</th>-->
                                 <th>Người cập nhật</th>
-                                <th>Tình trạng</th>
-                                <th>Vị trí</th>
-                                <th>Chỉnh sửa</th>
+                                <th>Hiển thị</th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="news in allVideos | orderBy:'zOrder'">
+                            <tr ng-repeat="video in allVideos track by $index | orderBy:'video.ProjectImages.zOrder'" ng-init="parentIndex = $index">
                                 <td>{{$index + 1}}</td>
-                                <td>{{news.name}}</td>
-                                <td>{{news.createTime | date: dateTimeFormat }}</td>
-                                <td>{{news.editDeleteTime | date: dateTimeFormat}}</td>
-                                <td>{{news.editDeleteBy}}</td>
+                                <td>{{video.projectImages.projectImageMappings[0].name}}</td>
+                                <td>
+                                    <span class="hide">{{video.projectImages.zOrder}}</span>
+                                    <input type="number" ng-model="video.projectImages.zOrder" class="form-control max-width-60"
+                                           ng-readonly="orderReadonlyIndex != parentIndex || orderReadonlyIndex == -1"
+                                           min="1" maxlength="3" />
+                                    <a class="btn btn-warning btn-xs"
+                                       ng-show="orderReadonlyIndex != parentIndex"
+                                       ng-click="editZorder($index)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-success btn-xs"
+                                       ng-show="orderReadonlyIndex == parentIndex"
+                                       ng-click="updateZorder($index)">
+                                        <i class="fa fa-check-square-o"></i>
+                                    </a>
+                                </td>
+                                <!--<td>
+                                    <a ng-repeat="projectImageMapping in video.projectImages.projectImageMappings"
+                                       ng-click="getVideo(parentIndex, projectImageMapping.languageId)" style="margin-right: 10px;"
+                                       ng-if="projectImageMapping.languageId != 129"
+                                       title="Click để chỉnh sửa nội dung cho ngôn ngữ này">
+                                        <span ng-if="projectImageMapping.languageId == 129">
+                                            <img src="/Areas/Admin/Content/Images/icons/flags/VietNam.png" />
+                                        </span>
+                                        <span ng-if="projectImageMapping.languageId == 29">
+                                            <img src="/Areas/Admin/Content/Images/icons/flags/usa.png" />
+                                        </span>
+                                    </a>&nbsp;
+                                    <span ng-if="video.projectImages.projectImageMappings.length <= 1">Không có</span>
+                                </td>-->
+                                <td>{{video.editedUser}}</td>
                                 <td>
                                     <label>
-                                        <input type="checkbox" name="status" ng-model="news.available" />
-                                        <span ng-show="news.available">&nbsp;Hiển thị</span>
-                                        <span ng-show="!news.available">&nbsp;Ẩn</span>
+                                        <input type="checkbox" name="status" ng-model="video.projectImages.status" ng-change="updateZorder($index)" />
+                                        <span ng-show="video.projectImages.status">&nbsp;Hiển thị</span>
+                                        <span ng-show="!video.projectImages.status">&nbsp;Ẩn</span>
                                     </label>
                                 </td>
                                 <td>
-                                    {{news.order}}
-                                </td>
-                                <td>
-                                    <a class="btn btn-xs btn-warning" title="Chỉnh sửa" ng-click="getNews($index)"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteNews(news)"><i class="fa fa-times"></i></a>
+                                    <a class="btn btn-xs btn-warning" title="Sửa" ng-click="getVideo(parentIndex, defaultLanguageId)"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-xs btn-danger" title="Xóa" ng-click="deleteVideo(parentIndex, video.projectImages)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Tên bài viết</th>
-                                <th>Ngày tạo</th>
-                                <th>Ngày cập nhật</th>
+                                <th>Tên</th>
+                                <th>Thứ tự</th>
+                                <!--<th>Ngôn ngữ</th>-->
                                 <th>Người cập nhật</th>
-                                <th>Tình trạng</th>
-                                <th>Vị trí</th>
-                                <th>Chỉnh sửa</th>
+                                <th>Hiển thị</th>
+                                <th>Thao tác</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -77,7 +100,7 @@
                 <div class="box-footer clearfix">
                     <div class="row">
                         <div class="col-md-6">
-                            <a ui-sref="controlPanel.addNews({newsCategoryId: newsCategoryId })" class="btn btn-danger btn-flat">Thêm bài viết mới</a>
+                            <a ui-sref="controlPanel.addVideo" class="btn btn-danger btn-flat">Thêm Video mới</a>
                         </div>
                     </div>
 
@@ -86,108 +109,72 @@
         </div>
     </div>
     <!--chinh sua khoa hoc-->
-    <div class="editVideo"></div>
-    <div class="row" ng-show="currentVideo">
+    <div class="currenVideoLanguage"></div>
+    <div class="row" ng-show="currenVideoLanguage">
         <div class="col-xs-12">
             <div class="box box-info">
                 <div class="box-header">
                     <i class="fa fa-plus-circle"></i>
-                    <h3 class="box-title">CHỈNH SỬA BÀI VIẾT: <b>{{currentVideo.name}}</b></h3>
+                    <h3 class="box-title">
+                        CHỈNH SỬA BÀI VIẾT: <b>{{currenVideoLanguage.currentImageMapping.name}}</b>
+                        <span ng-if="currenVideoLanguage.currentImageMapping.languageId == 129">(Tiếng Việt - ngôn ngữ mặc định)</span>
+                        <span ng-if="currenVideoLanguage.currentImageMapping.languageId == 29">(English)</span>
+                    </h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
                         <button class="btn btn-info btn-sm" data-widget="collapse" title="Rút gọn"><i class="fa fa-minus"></i></button>
                         <!--<button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Tắt"><i class="fa fa-times"></i></button>-->
-                        <button class="btn btn-info btn-sm" ng-click="currentVideo = null" title="Tắt"><i class="fa fa-times"></i></button>
+                        <button class="btn btn-info btn-sm" ng-click="currenVideoLanguage = null" title="Tắt"><i class="fa fa-times"></i></button>
                     </div><!-- /. tools -->
                 </div>
                 <div class="box-body">
-                    <form id="editNewsForm" name="editNewsForm" method="post" novalidate>
+                    <form id="editVideoForm" name="editVideoForm" method="post" novalidate>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label for="name">Tên: </label>
-                                            <input type="text" class="form-control" name="name" ng-model="currentVideo.name" placeholder="Tên khóa học:" required />
-                                            <div ng-messages="editNewsForm.name.$error"
-                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="order">Vị trí: </label>
-                                            <input type="number" class="form-control" name="order" ng-model="currentVideo.order" placeholder="Vị trí:" required min="1" />
-                                            <div ng-messages="editNewsForm.order.$error"
-                                                 ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
 
                                 <div class="form-group">
-                                    <label for="keyword">Keyword: </label>
-                                    <textarea class="form-control" name="keyword" ng-model="currentVideo.keyword" placeholder="Keywork (SEO):" required></textarea>
-                                    <div ng-messages="editNewsForm.keyword.$error"
+                                    <label for="name">Tên: </label>
+                                    <input type="text" class="form-control" name="name" ng-model="currenVideoLanguage.currentImageMapping.name" placeholder="Tên Video:" required />
+                                    <div ng-messages="editVideoForm.name.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="description">Description: </label>
-                                    <textarea class="form-control" name="description" ng-model="currentVideo.description" placeholder="Description (SEO):" required></textarea>
-                                    <div ng-messages="editNewsForm.description.$error"
+                                    <label for="title">Nội dung: </label>
+                                    <input type="text" class="form-control" name="description" ng-model="currenVideoLanguage.currentImageMapping.description" placeholder="Tên Video:" required />
+                                    <div ng-messages="editVideoForm.description.$error"
+                                         ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Youtube Video Id: </label>
+                                    <input type="text" class="form-control" name="resourceUrl" ng-model="currenVideoLanguage.resourceUrl" placeholder="Youtube Video Id:" required />
+                                    <div ng-messages="editVideoForm.resourceUrl.$error"
                                          ng-messages-include="Areas/Admin/Templates/Directives/ngMessage/message.html"></div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-3">
-                                        <label for="name">Hình đại diện trang chủ: </label>
-                                        <img src="{{currentVideo.homeBannerImageUrl}}" alt="" class="img-responsive" />
+                                        <label for="name">Ảnh đại diện: </label>
+                                        <img ng-src="{{currenVideoLanguage.thumbnail}}" alt="" class="img-responsive" />
                                     </div>
                                     <div class="col-md-3">
+                                        <label for="name">&nbsp;</label>
                                         <div class="form-group">
                                             <div>
                                                 <button dropzone="dropzoneConfigHome" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chủ)<br /></span>
+                                                    <span class="dz-message">Chọn ảnh đại diện Video<br /></span>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="name">Hình đại diện trang chi tiết: </label>
-                                        <img src="{{currentVideo.subBannerImageUrl}}" alt="" class="img-responsive" />
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div>
-                                                <button dropzone="dropzoneConfigSub" class="dropzone">
-                                                    <span class="dz-message">Chọn ảnh đại diện (Trang chi tiết)<br /></span>
-                                                </button>
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <youtube-video class="embed-responsive-item" video-id="currenVideoLanguage.resourceUrl"></youtube-video>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="bannerImageIntro">Nội dung intro trang chủ: </label>
-                                    <textarea id="bannerImageIntro" required name="bannerImageIntro" ng-model="currentVideo.bannerImageIntro" class="textarea" placeholder="Nội dung Intro của ảnh đại diện Trang chủ" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="contentIntro">Nội dung intro trang chi tiết: </label>
-                                    <textarea id="contentIntro" required name="contentIntro" ng-model="currentVideo.contentIntro" class="textarea" placeholder="Nội dung Intro của trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="contentLeft">Nội dung chi tiết (trái): </label>
-                                <textarea id="contentLeft" name="contentLeft" ng-model="currentVideo.contentLeft" class="textarea" placeholder="Nội dung bên trái trang chi tiết (nếu bỏ trống phần này, phần nội dung bên phải sẽ hiển thị)" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="contentRight">Nội dung chi tiết (phải): </label>
-                                <textarea id="contentRight" name="contentRight" ng-model="currentVideo.contentRight" class="textarea" placeholder="Nội dung bên phải trang chi tiết" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
                         </div>
 
@@ -197,19 +184,18 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-6 pull-right">
                             <div class="col-xs-3 pull-right">
-                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currentVideo = null">
+                                <button class="pull-right btn btn-danger" id="cancel" ng-click="currenVideoLanguage = null">
                                     Hủy&nbsp;&nbsp;<i class="fa fa-times"></i>
                                 </button>
                             </div>
                             <div class="col-xs-5 pull-right">
-                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateNews(currentVideo)"
-                                        ng-disabled="editNewsForm.name.$error.required
-                                                    ||  editNewsForm.keyword.$error.required
-                                                    ||  editNewsForm.description.$error.required
-                                                    || editNewsForm.order.$error.required ||  editNewsForm.order.$error.min
-                                    ">
-                                    Cập nhật bài viết&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
+                                <button class="pull-right btn btn-success" id="addNews" ng-click="updateVideo(currenVideoLanguage)"
+                                        ng-disabled="editVideoForm.name.$error.required">
+                                    Cập nhật Video&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>
                                 </button>
+                            </div>
+                            <div class="hide">
+                                <button id="uploadBanner"></button>
                             </div>
                         </div>
                     </div>
@@ -219,37 +205,6 @@
 </section>
 
 <script type="text/javascript">
-    //CKEditor & ckfinder Noi dung bannerImageIntro
-    var editor1 = CKEDITOR.instances['bannerImageIntro'];
-    if (editor1) { editor1.destroy(true); }
-    CKEDITOR.replace('bannerImageIntro', {
-        enterMode: CKEDITOR.ENTER_BR,
-        customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung Intro Homepage
-    var editor2 = CKEDITOR.instances['contentIntro'];
-    if (editor2) { editor2.destroy(true); }
-    CKEDITOR.replace('contentIntro', {
-        enterMode: CKEDITOR.ENTER_BR,
-        customConfig: '/ckeditor/config.js'
-    });
-
-    //CKEditor & ckfinder Noi dung course
-    var editor3 = CKEDITOR.instances['contentLeft'];
-    if (editor3) { editor3.destroy(true); }
-    CKEDITOR.replace('contentLeft', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
-    var editor4 = CKEDITOR.instances['contentRight'];
-    if (editor4) { editor4.destroy(true); }
-    CKEDITOR.replace('contentRight', {
-        enterMode: CKEDITOR.ENTER_BR
-    });
-
-    CKFinder.setupCKEditor(null, "/ckfinder/");
-
     //Toggle button
     var o = $.AdminLTE.options;
     if (o.enableBoxWidget) {
